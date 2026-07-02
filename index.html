@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panos Khan | Owner & Principal AI SEO Architect</title>
-    <meta name="description" content="Panos Khan - Greek web developer, digital strategist & Principal AI SEO Architect. Specializing in e-commerce frameworks, ethical AI integration, and advanced systems architecture.">
-    <meta name="keywords" content="AI SEO, e-commerce, web development, digital strategy, Athens">
+    <title>Panos Khan | AI & Digital Transformation Consultant</title>
+    <meta name="description" content="Panos Khan - Principal AI SEO Architect at Panos Khan Agency. Specializing in ethical AI integration, advanced SEO frameworks, and high-scale e-commerce systems.">
+    <meta name="keywords" content="AI SEO, e-commerce, web development, digital strategy, Athens, systems architecture">
     <meta name="author" content="Panos Khan">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#0f1419">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="profile">
     <meta property="og:url" content="https://panoskhan.github.io">
     <meta property="og:title" content="Panos Khan | Principal AI SEO Architect">
-    <meta property="og:description" content="Owner & Principal AI SEO Architect specializing in e-commerce and ethical AI integration">
+    <meta property="og:description" content="Owner & Principal AI SEO Architect specializing in AI integration and advanced SEO frameworks">
     <meta property="profile:first_name" content="Panos">
     <meta property="profile:last_name" content="Khan">
     <meta property="profile:username" content="panos43">
@@ -38,7 +38,7 @@
         "addressLocality": "Athens",
         "addressCountry": "GR"
       },
-      "description": "Panos Khan is a Greek web developer, digital strategist, and owner of the Panos Khan Agency. Over ten years of systems architecture expertise in building high-scale e-commerce platforms, AI-driven SEO strategies, and ethical generative AI solutions.",
+      "description": "Panos Khan is owner of Panos Khan Agency with over 10 years of systems architecture expertise in AI SEO, high-scale e-commerce, and ethical generative AI integration.",
       "sameAs": [
         "https://github.com/panos43"
       ],
@@ -62,258 +62,648 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        :root {
+            --dark-bg: #0f1419;
+            --slate-bg: #1a1f2e;
+            --slate-light: #252d3d;
+            --white-primary: #f5f7fa;
+            --white-secondary: #e0e6ed;
+            --accent-blue: #00d4ff;
+            --accent-mint: #00f0a0;
+            --accent-gold: #ffd700;
+            --text-muted: #8b94a5;
+            --border-subtle: #2a3142;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 100%);
-            color: #f8fafc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--white-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        
-        .container {
-            max-width: 600px;
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
             width: 100%;
-        }
-        
-        .card {
-            padding: 50px 40px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border: 1px solid #334155;
-            box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.1);
+            background: rgba(15, 20, 25, 0.95);
             backdrop-filter: blur(10px);
-            animation: slideUp 0.6s ease-out;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 1rem 2rem;
         }
-        
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .avatar-container {
-            margin-bottom: 30px;
-        }
-        
-        .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            margin: 0 auto;
+
+        nav .container {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            font-weight: bold;
-            border: 3px solid #334155;
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+            max-width: 1400px;
+            margin: 0 auto;
         }
-        
-        h1 {
-            font-size: 2.5rem;
+
+        nav .logo {
+            font-size: 1.5rem;
             font-weight: 700;
-            margin: 20px 0 10px 0;
-            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-mint));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
-        .title {
-            font-size: 1.2rem;
-            color: #60a5fa;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        
-        .subtitle {
-            font-size: 0.95rem;
-            color: #94a3b8;
-            margin-bottom: 25px;
+
+        nav .nav-links {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            gap: 2rem;
+            list-style: none;
         }
-        
-        .location-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #1e293b;
-            padding: 6px 12px;
-            border-radius: 20px;
-            border: 1px solid #334155;
-        }
-        
-        .about {
-            background: #0f172a;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 25px 0;
-            border-left: 3px solid #3b82f6;
-            line-height: 1.7;
-            color: #cbd5e1;
-            font-size: 0.95rem;
-        }
-        
-        .expertise {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 25px 0;
-            justify-content: center;
-        }
-        
-        .tag {
-            background: #334155;
-            color: #f1f5f9;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border: 1px solid #475569;
-            transition: all 0.3s ease;
-        }
-        
-        .tag:hover {
-            background: #3b82f6;
-            border-color: #3b82f6;
-            transform: translateY(-2px);
-        }
-        
-        .links {
-            margin: 30px 0;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .link-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px 20px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
-            color: #f1f5f9;
+
+        nav .nav-links a {
+            color: var(--white-secondary);
             text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Container Utility */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Block 1: Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--slate-bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            color: var(--white-primary);
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
             font-weight: 600;
-            border: 1px solid #475569;
-            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text .location {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-text .location::before {
+            content: '📍';
+            font-size: 1rem;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--white-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
-        
-        .link-btn:hover {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            border-color: #3b82f6;
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-mint));
+            color: var(--dark-bg);
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 12px 48px rgba(0, 212, 255, 0.5);
         }
-        
-        .link-btn.primary {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            border-color: #3b82f6;
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
         }
-        
-        .link-btn.primary:hover {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-2px);
         }
-        
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, #334155 50%, transparent 100%);
-            margin: 25px 0;
+
+        .hero-asset {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, var(--slate-light) 0%, var(--slate-bg) 100%);
+            border-radius: 12px;
+            border: 2px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
-        
-        .footer {
+
+        .hero-asset::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 240, 160, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-asset-content {
+            position: relative;
+            z-index: 1;
             text-align: center;
-            font-size: 0.85rem;
-            color: #64748b;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #334155;
         }
-        
-        .footer a {
-            color: #60a5fa;
+
+        .hero-asset-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-asset-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Block 2: Enterprise Credentials */
+        .credentials {
+            padding: 5rem 0;
+            background: var(--slate-bg);
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--white-primary), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--white-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .credential-card {
+            background: var(--slate-light);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .credential-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-mint));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .credential-card:hover {
+            border-color: var(--accent-blue);
+            background: rgba(0, 212, 255, 0.05);
+            transform: translateY(-4px);
+        }
+
+        .credential-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .credential-card.highlight {
+            border: 2px solid var(--accent-mint);
+            background: rgba(0, 240, 160, 0.05);
+        }
+
+        .credential-card.highlight::before {
+            background: linear-gradient(90deg, var(--accent-mint), var(--accent-blue));
+        }
+
+        .credential-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .credential-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--white-primary);
+        }
+
+        .credential-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Block 3: Services */
+        .services {
+            padding: 5rem 0;
+            background: var(--dark-bg);
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .service-item {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .service-item::before {
+            content: '→';
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .service-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--white-primary);
+        }
+
+        .service-content p {
+            font-size: 0.95rem;
+            color: var(--white-secondary);
+            line-height: 1.7;
+        }
+
+        /* Block 4: Call to Action */
+        .cta-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--slate-light) 0%, rgba(0, 212, 255, 0.08) 100%);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-mint));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: var(--white-secondary);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--slate-light);
+            border-top: 1px solid var(--border-subtle);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--accent-blue);
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        
-        .footer a:hover {
-            color: #93c5fd;
-            text-decoration: underline;
+
+        .social-links a:hover {
+            color: var(--accent-mint);
         }
-        
-        @media (max-width: 600px) {
-            .card {
-                padding: 35px 25px;
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
-            
-            h1 {
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-asset {
+                height: 300px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .credentials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
                 font-size: 2rem;
             }
-            
-            .title {
-                font-size: 1rem;
+
+            nav .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
             }
-            
-            .about {
-                font-size: 0.9rem;
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            nav .nav-links {
+                display: none;
+            }
+
+            nav .logo {
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <div class="avatar-container">
-                <div class="avatar">PK</div>
-            </div>
-            
-            <h1>Panos Khan</h1>
-            <div class="title">Principal AI SEO Architect</div>
-            <div class="subtitle">
-                <span class="location-badge">📍 Athens, Greece</span>
-            </div>
-            
-            <div class="about">
-                <strong>Owner</strong> of Panos Khan Agency • Over 10 years in systems architecture • Specializing in AI-driven SEO, high-scale e-commerce frameworks, and ethical generative AI solutions.
-            </div>
-            
-            <div class="expertise">
-                <span class="tag">AI SEO</span>
-                <span class="tag">E-commerce</span>
-                <span class="tag">Web Development</span>
-                <span class="tag">Systems Architecture</span>
-                <span class="tag">Digital Strategy</span>
-            </div>
-            
-            <div class="links">
-                <a href="https://github.com/panos43" target="_blank" rel="noopener noreferrer" class="link-btn primary">
-                    💻 GitHub Profile
-                </a>
-            </div>
-            
-            <div class="divider"></div>
-            
-            <div class="footer">
-                © 2024 Panos Khan. All rights reserved.
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">PK</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#credentials">Credentials</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#cta">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Block 1: Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Panos Khan</h1>
+                    <p class="subtitle">Owner & Principal AI SEO Architect</p>
+                    <p class="location">Athens, Greece — Operating Globally (Greece & Switzerland)</p>
+                    
+                    <p>Bridging the gap between complex software systems architecture and algorithmic visibility. Over a decade of verified hands-on web engineering specializing in the strategic deployment of ethical, multi-agent generative AI integrations inside advanced Search Engine Optimization (SEO) frameworks to drive high-ticket digital scale and long-term user acquisition.</p>
+                    
+                    <div class="hero-buttons">
+                        <a href="https://linkedin.com/in/panos-khan" target="_blank" class="btn btn-primary">Schedule Systems Consultation</a>
+                        <a href="#credentials" class="btn btn-secondary">Explore Enterprise Credentials</a>
+                    </div>
+                </div>
+                
+                <div class="hero-asset">
+                    <div class="hero-asset-content">
+                        <div class="hero-asset-icon">🏗️</div>
+                        <div class="hero-asset-text">Enterprise Systems Architecture & AI Integration</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Block 2: Enterprise Credentials -->
+    <section class="credentials" id="credentials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Vetted Industry Integrations</h2>
+                <p>Elite systems integration requires a deep understanding of corporate architectures. My engineering profile is backed by over 10 years of direct background delivering solutions for recognized multinational technology ecosystems.</p>
+            </div>
+            
+            <div class="credentials-grid">
+                <div class="credential-card highlight">
+                    <div class="credential-icon">🔍</div>
+                    <h3>Google Partner Program</h3>
+                    <p>Certified Professional keeping technical systems running perfectly inside strict modern search engine indexing guidelines.</p>
+                </div>
+                
+                <div class="credential-card">
+                    <div class="credential-icon">🛍️</div>
+                    <h3>AliRoom by AliExpress</h3>
+                    <p>Former systems web developer optimizing heavy backend e-commerce channels, data feeds, and international infrastructure pipelines.</p>
+                </div>
+                
+                <div class="credential-card">
+                    <div class="credential-icon">☁️</div>
+                    <h3>Microsoft Education Partner</h3>
+                    <p>Experienced Sales and Marketing Specialist who designed and automated high-yield cloud-marketing architectures for scale.</p>
+                </div>
+                
+                <div class="credential-card">
+                    <div class="credential-icon">📋</div>
+                    <h3>Athens Chamber of Commerce (EBEA)</h3>
+                    <p>Registered contractor operating under regulatory guidelines in Greece with proven compliance and industry standards adherence.</p>
+                </div>
+                
+                <div class="credential-card">
+                    <div class="credential-icon">🏪</div>
+                    <h3>Greek E-Commerce Association (GRECA)</h3>
+                    <p>Active contributor shaping the strategies of modern digital commerce and automated dropshipping platforms across Europe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Block 3: Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Core Agency Capabilities</h2>
+                <p>The Panos Khan Agency builds production-grade automations that scale traffic and clean operations without sacrificing brand compliance.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-content">
+                        <h3>Programmatic SEO Infrastructure</h3>
+                        <p>Automating database-driven keyword and entity setups to launch thousands of highly targeted, index-ready layout structures instantly.</p>
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-content">
+                        <h3>Multi-Agent AI Automation Loops</h3>
+                        <p>Hardcoding independent, task-isolated machine learning nodes that process research, categorize search intent, and draft high-scale media data automatically.</p>
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-content">
+                        <h3>High-Scale E-Commerce Frameworks</h3>
+                        <p>Designing heavy-duty web structures built to stabilize multi-supplier dropshipping hubs, coordinate automated inventory tracking, and maximize page-load performance.</p>
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-content">
+                        <h3>Ethical AI & Structural Data Governance</h3>
+                        <p>Programming clear algorithmic guardrails, validation modules, and output sanitizers into web scraper apps to match updating platform safety boundaries.</p>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-content">
+                        <h3>Corporate Outreach & Revenue Funnels</h3>
+                        <p>Connecting legacy sales infrastructures directly to dynamic digital channels using advanced cloud APIs to seamlessly track and capture leads.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Block 4: Call to Action -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2>Secure Your Digital Transformation Blueprint</h2>
+            <p>Transition your legacy digital properties into completely automated, high-yield search capture platforms. Let us deploy an enterprise-vetted infrastructure layout specifically structured to match your conversion metrics this quarter.</p>
+            <a href="https://linkedin.com/in/panos-khan" target="_blank" class="btn btn-primary">Launch Engineering Audit</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Panos Khan Agency. All rights reserved. | AI & Digital Transformation Consulting</p>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/panos-khan" target="_blank">LinkedIn</a>
+            <a href="https://github.com/panos43" target="_blank">GitHub</a>
+        </div>
+        <p style="margin-top: 2rem; font-size: 0.8rem;">Based in Athens, Greece • Operating Globally (GR & CH)</p>
+    </footer>
 </body>
 </html>

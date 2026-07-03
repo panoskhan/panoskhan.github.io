@@ -20,7 +20,7 @@
       "name": "Panos Khan",
       "jobTitle": "Owner & Principal AI SEO Architect",
       "nationality": "Greek",
-      "url": "https://panos43.github.io/panoskhan.github.io/",
+      "url": "https://panoskhan.github.io/",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Athens",
@@ -278,6 +278,42 @@
             color: var(--dark-bg);
             box-shadow: 0 0 15px var(--accent-mint);
         }
+
+        /* Footer / Social links */
+        footer {
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+            padding: 2rem 0;
+            background: transparent;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0 0;
+        }
+
+        .social-links a {
+            color: var(--white-secondary);
+            font-size: 0.95rem;
+            text-decoration: none;
+            padding: 0.35rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .footer-brand {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
     </style>
 </head>
 <body>
@@ -319,6 +355,25 @@
             </div>
         </div>
     </section>
+
+    <!-- Footer with visible, verified links mirroring JSON-LD sameAs -->
+    <footer>
+        <div class="container">
+            <div class="footer-brand">Verified Identity Directory</div>
+            <ul class="social-links" aria-label="Verified profiles">
+                <li><a href="https://github.com/panos43" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://linkedin.com/in/panos-khan" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://www.instagram.com/panos_khan" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="https://www.crunchbase.com/person/panos-khan" target="_blank" rel="noopener noreferrer">Crunchbase</a></li>
+                <li><a href="https://panoskhan.blogspot.com/" target="_blank" rel="noopener noreferrer">Blogspot</a></li>
+                <li><a href="https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u000000TowBCAS&lang=en_US" target="_blank" rel="noopener noreferrer">Palo Alto Networks KB</a></li>
+                <li><a href="https://about.me/panoskhan" target="_blank" rel="noopener noreferrer">About.me</a></li>
+                <li><a href="https://medium.com/@panoskhan40" target="_blank" rel="noopener noreferrer">Medium</a></li>
+                <li><a href="https://www.reddit.com/user/Ok-Benefit1902/comments/1bu8vj5/unveiling_the_genius_panos_khans_quest_in/" target="_blank" rel="noopener noreferrer">Reddit Announcement</a></li>
+                <li><a href="https://www.wikidata.org/wiki/Q140133847" target="_blank" rel="noopener noreferrer">Wikidata Profile</a></li>
+            </ul>
+        </div>
+    </footer>
 
     <!-- Core interaction scripts -->
     <script>

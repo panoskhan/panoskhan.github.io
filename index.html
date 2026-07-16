@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://panoskhan.github.io/">
+    <link rel="canonical" href="https://github.io">
     <meta name="robots" content="index,follow">
     <title>Panos Khan | AI & Digital Transformation Consultant</title>
     <meta name="description" content="Panos Khan - Principal AI SEO Architect at Panos Khan Agency. Specializing in ethical AI integration, advanced SEO frameworks, and high-scale e-commerce systems.">
@@ -13,9 +13,6 @@
 
     <meta name="google-site-verification" content="BFHtlDuMBG6dtMuQyip_jte7hn8aUUp-PjZzRqEioCI" />
     
-    <!-- Stable Three.js Graphic Rendering Component Build Engine -->
-    <script src="https://cloudflare.com"></script>
-
     <!-- Google Knowledge Panel Schema Markup Mapping Directives -->
     <script type="application/ld+json">
     {
@@ -24,7 +21,7 @@
       "name": "Panos Khan",
       "jobTitle": "Owner & Principal AI SEO Architect",
       "nationality": "Greek",
-      "url": "https://panos43.github.io/panoskhan.github.io/",
+      "url": "https://github.io",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Athens",
@@ -32,16 +29,16 @@
       },
       "description": "Panos Khan is owner of Panos Khan Agency with over 10 years of systems architecture expertise in AI SEO, high-scale e-commerce, and ethical generative AI integration.",
       "sameAs": [
-        "https://github.com",
-        "https://linkedin.com/in/panos-khan",
-        "https://www.instagram.com/panos_khan",
-        "https://www.crunchbase.com/person/panos-khan",
-        "https://panoskhan.blogspot.com/",
-        "https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u000000TowBCAS&lang=en_US",
-        "https://about.me/panoskhan",
-        "https://medium.com/@panoskhan40",
-        "https://www.reddit.com/user/Ok-Benefit1902/comments/1bu8vj5/unveiling_the_genius_panos_khans_quest_in/",
-        "https://www.wikidata.org/wiki/Q140133847"
+        "https://linkedin.com",
+        "https://instagram.com",
+        "https://crunchbase.com",
+        "https://credential.net",
+        "https://blogspot.com",
+        "https://paloaltonetworks.com",
+        "https://about.me",
+        "https://medium.com",
+        "https://reddit.com",
+        "https://wikidata.org"
       ],
       "brand": {
         "@type": "Organization",
@@ -140,12 +137,13 @@
 
         .hero {
             margin-top: 80px;
-            min-height: 100vh;
+            min-height: 85vh;
             display: flex;
             align-items: center;
             background: linear-gradient(135deg, var(--dark-bg) 0%, var(--slate-bg) 100%);
             position: relative;
             overflow: hidden;
+            padding: 4rem 0;
         }
 
         .hero-content {
@@ -156,6 +154,13 @@
             position: relative;
             z-index: 1;
             width: 100%;
+        }
+
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
         .hero-text h1 {
@@ -201,6 +206,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            text-align: center;
         }
 
         .btn-primary {
@@ -226,115 +232,99 @@
 
         .hero-asset-container {
             position: relative;
-            height: 450px;
+            min-height: 400px;
             background: rgba(26, 31, 46, 0.6);
             border-radius: 12px;
             border: 1px solid var(--border-subtle);
             overflow: hidden;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 2rem;
         }
 
-        #ai-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .canvas-overlay-text {
-            position: relative;
-            z-index: 2;
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
             text-align: center;
-            pointer-events: none;
+            background: linear-gradient(135deg, #ffffff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .canvas-overlay-text h3 {
-            font-size: 1.2rem;
+        .section-padding {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        /* Responsive Grids */
+        .services-grid, .profiles-grid, .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .profile-card, .service-card, .pub-card {
+            background: var(--slate-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 2rem;
+            text-decoration: none;
             color: var(--white-primary);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
-
-        .btn-3d-toggle {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            z-index: 3;
-            background: rgba(15, 20, 25, 0.8);
-            border: 1px solid var(--accent-mint);
-            color: var(--accent-mint);
-            padding: 0.5rem 1rem;
-            font-size: 0.85rem;
-            border-radius: 4px;
-            cursor: pointer;
-            backdrop-filter: blur(5px);
             transition: all 0.3s ease;
         }
 
-        .btn-3d-toggle:hover {
-            background: var(--accent-mint);
-            color: var(--dark-bg);
-            box-shadow: 0 0 15px var(--accent-mint);
+        .profile-card:hover, .service-card:hover, .pub-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-4px);
+            background: var(--slate-light);
         }
 
-        footer {
-            background-color: var(--dark-bg);
-            border-top: 1px solid var(--border-subtle);
-            padding: 3rem 2rem;
-            margin-top: 4rem;
+        .card-icon {
+            font-size: 1.5rem;
+            color: var(--accent-mint);
+            margin-bottom: 1rem;
         }
-        
-        .footer-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            align-items: center;
+
+        .profile-card h3, .service-card h3, .pub-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
         }
-        
-        .footer-title {
-            font-size: 0.95rem;
-            font-weight: 600;
+
+        .profile-card p, .service-card p, .pub-card p {
             color: var(--text-muted);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-            list-style: none;
-        }
-        
-        .footer-links a {
-            color: var(--white-secondary);
-            text-decoration: none;
             font-size: 0.95rem;
-            transition: color 0.3s ease;
         }
-        
-        .footer-links a:hover {
-            color: var(--accent-blue);
+
+        /* Widget Container Styling */
+        .joke-widget {
+            background: var(--dark-bg);
+            border: 1px dashed var(--accent-blue);
+            padding: 1.5rem;
+            border-radius: 8px;
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        #joke-display {
+            min-height: 60px;
+            font-size: 0.95rem;
+            color: var(--white-secondary);
+            margin-bottom: 1rem;
         }
     </style>
 </head>
 <body>
 
+    <!-- Top Sticky Glass Navigation Menu -->
     <nav>
         <div class="container">
-            <div class="logo">PK</div>
+            <div class="logo">PANOS KHAN</div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#credentials">Credentials</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
+                <li><a href="#profiles">Profiles</a></li>

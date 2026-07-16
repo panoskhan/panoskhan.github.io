@@ -7,15 +7,12 @@
     <meta name="robots" content="index,follow">
     <title>Panos Khan | AI & Digital Transformation Consultant</title>
     <meta name="description" content="Panos Khan - Principal AI SEO Architect at Panos Khan Agency. Specializing in ethical AI integration, advanced SEO frameworks, and high-scale e-commerce systems.">
-    <meta name="keywords" content="AI SEO, e-commerce, web development, digital strategy, Athens, systems architecture">
+    <meta name="keywords" content="AI SEO, e-commerce, web development, digital strategy, Athens, systems architecture, Panos Khan">
     <meta name="author" content="Panos Khan">
     <meta name="theme-color" content="#0f1419">
 
     <meta name="google-site-verification" content="BFHtlDuMBG6dtMuQyip_jte7hn8aUUp-PjZzRqEioCI" />
     
-    <!-- Stable Three.js Graphic Rendering Component Build Engine -->
-    <script src="https://cloudflare.com"></script>
-
     <!-- Google Knowledge Panel Schema Markup Mapping Directives -->
     <script type="application/ld+json">
     {
@@ -24,7 +21,7 @@
       "name": "Panos Khan",
       "jobTitle": "Owner & Principal AI SEO Architect",
       "nationality": "Greek",
-      "url": "https://panos43.github.io/panoskhan.github.io/",
+      "url": "https://panoskhan.github.io/",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Athens",
@@ -33,15 +30,16 @@
       "description": "Panos Khan is owner of Panos Khan Agency with over 10 years of systems architecture expertise in AI SEO, high-scale e-commerce, and ethical generative AI integration.",
       "sameAs": [
         "https://github.com",
-        "https://linkedin.com/in/panos-khan",
-        "https://www.instagram.com/panos_khan",
-        "https://www.crunchbase.com/person/panos-khan",
-        "https://panoskhan.blogspot.com/",
-        "https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u000000TowBCAS&lang=en_US",
-        "https://about.me/panoskhan",
-        "https://medium.com/@panoskhan40",
-        "https://www.reddit.com/user/Ok-Benefit1902/comments/1bu8vj5/unveiling_the_genius_panos_khans_quest_in/",
-        "https://www.wikidata.org/wiki/Q140133847"
+        "https://linkedin.com",
+        "https://instagram.com",
+        "https://crunchbase.com",
+        "https://blogspot.com",
+        "https://paloaltonetworks.com",
+        "https://about.me",
+        "https://medium.com",
+        "https://reddit.com",
+        "https://wikidata.org",
+        "https://credential.net"
       ],
       "brand": {
         "@type": "Organization",
@@ -56,9 +54,6 @@
       ]
     }
     </script>
-
-    <link rel="stylesheet" href="assets/joke.css">
-
     
     <style>
         * {
@@ -204,6 +199,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            text-align: center;
         }
 
         .btn-primary {
@@ -263,306 +259,88 @@
             margin-bottom: 1rem;
         }
 
-        .btn-3d-toggle {
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        section h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2::after {
+            content: '';
             position: absolute;
-            bottom: 20px;
-            right: 20px;
-            z-index: 3;
-            background: rgba(15, 20, 25, 0.8);
-            border: 1px solid var(--accent-mint);
-            color: var(--accent-mint);
-            padding: 0.5rem 1rem;
-            font-size: 0.85rem;
-            border-radius: 4px;
-            cursor: pointer;
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-mint));
+            border-radius: 2px;
         }
 
-        .btn-3d-toggle:hover {
-            background: var(--accent-mint);
-            color: var(--dark-bg);
-            box-shadow: 0 0 15px var(--accent-mint);
-        }
-
-        footer {
-            background-color: var(--dark-bg);
-            border-top: 1px solid var(--border-subtle);
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-        }
-        
-        .footer-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            align-items: center;
-        }
-        
-        .footer-title {
-            font-size: 0.95rem;
-            font-weight: 600;
+        .section-desc {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            letter-spacing: 1px;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            margin-top: 0.5rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            padding: 2rem;
+            background: var(--slate-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-date {
+            color: var(--accent-mint);
+            font-weight: 700;
+            font-size: 0.9rem;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
         }
-        
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-            list-style: none;
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white-primary);
+            margin-bottom: 0.5rem;
         }
-        
-        .footer-links a {
-            color: var(--white-secondary);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
+
+        .timeline-company {
             color: var(--accent-blue);
-        }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <div class="container">
-            <div class="logo">PK</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#credentials">Credentials</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <p class="subtitle">Owner & Principal AI SEO Architect</p>
-                    <h1>Panos Khan</h1>
-                    <div class="location">Athens, Greece — Operating Globally (GR & CH)</div>
-                    <p>Bridging the gap between complex software systems architecture and algorithmic visibility. Over a decade of verified hands-on web engineering specializing in strategic optimization structures.</p>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary">Schedule Systems Consultation</a>
-                        <a href="#credentials" class="btn btn-secondary">Explore Credentials</a>
-                    </div>
-                </div>
-
-                <div class="hero-asset-container">
-                    <canvas id="ai-canvas" aria-hidden="true"></canvas>
-                    <div class="canvas-overlay-text">
-                        <h3 id="panel-status">Systems Architecture Active</h3>
-                    </div>
-                    <button class="btn-3d-toggle" id="btn-3d" aria-pressed="false">Enter 3D Experience</button>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Joke generator section -->
-    <section class="joke-section" id="joke-section">
-        <div class="container">
-            <div class="joke-card" role="region" aria-live="polite" aria-labelledby="joke-heading">
-                <h2 id="joke-heading" style="font-size:1.25rem;">Random Joke Generator</h2>
-                <div class="joke-text" id="joke-text">Click the button to fetch a joke — powered by public joke APIs.</div>
-                <div class="joke-meta" id="joke-source">Source: —</div>
-                <div class="joke-actions">
-                    <button class="btn-joke" id="joke-btn" aria-label="Tell me a joke">Tell me a joke</button>
-                    <button class="btn-joke" id="joke-copy" aria-label="Copy joke" title="Copy joke">Copy</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer with visible, verified links mirroring JSON-LD sameAs -->
-    <footer>
-        <div class="container">
-            <div class="footer-brand">Verified Identity Directory</div>
-            <ul class="social-links" aria-label="Verified profiles">
-                <li><a href="https://github.com/panos43" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                <li><a href="https://linkedin.com/in/panos-khan" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                <li><a href="https://www.instagram.com/panos_khan" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                <li><a href="https://www.crunchbase.com/person/panos-khan" target="_blank" rel="noopener noreferrer">Crunchbase</a></li>
-                <li><a href="https://panoskhan.blogspot.com/" target="_blank" rel="noopener noreferrer">Blogspot</a></li>
-                <li><a href="https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u000000TowBCAS&lang=en_US" target="_blank" rel="noopener noreferrer">Palo Alto Networks KB</a></li>
-                <li><a href="https://about.me/panoskhan" target="_blank" rel="noopener noreferrer">About.me</a></li>
-                <li><a href="https://medium.com/@panoskhan40" target="_blank" rel="noopener noreferrer">Medium</a></li>
-                <li><a href="https://www.reddit.com/user/Ok-Benefit1902/comments/1bu8vj5/unveiling_the_genius_panos_khans_quest_in/" target="_blank" rel="noopener noreferrer">Reddit Announcement</a></li>
-                <li><a href="https://www.wikidata.org/wiki/Q140133847" target="_blank" rel="noopener noreferrer">Wikidata Profile</a></li>
-            </ul>
-        </div>
-    </footer>
-
-    <!-- Core interaction scripts -->
-    <script>
-    (function () {
-        'use strict';
-
-        const canvas = document.getElementById('ai-canvas');
-        const statusEl = document.getElementById('panel-status');
-        const btn3D = document.getElementById('btn-3d');
-        let ctx = null;
-        let animationFrameId = null;
-        let is3DActive = false;
-        let particles = [];
-
-        function resizeCanvas() {
-            const parent = canvas.parentElement;
-            if (!parent) return;
-            const dpr = window.devicePixelRatio || 1;
-            const width = Math.max(300, parent.clientWidth);
-            const height = Math.max(200, parent.clientHeight);
-            canvas.width = Math.floor(width * dpr);
-            canvas.height = Math.floor(height * dpr);
-            canvas.style.width = width + 'px';
-            canvas.style.height = height + 'px';
-            if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
 
-        function init2D() {
-            if (!canvas.getContext) return;
-            ctx = canvas.getContext('2d');
-            particles = [];
-            for (let i = 0; i < 65; i++) {
-                particles.push({
-                    x: Math.random() * (canvas.width || 400),
-                    y: Math.random() * (canvas.height || 450),
-                    radius: Math.random() * 2 + 1,
-                    vx: (Math.random() - 0.5) * 0.8,
-                    vy: (Math.random() - 0.5) * 0.8
-                });
-            }
+        .timeline-item ul {
+            list-style-type: none;
+            padding-left: 0;
         }
 
-        function animateNeuralNet() {
-            if (is3DActive) return;
-            if (!ctx) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'rgba(0, 212, 255, 0.4)';
-            particles.forEach(p => {
-                p.x += p.vx;
-                p.y += p.vy;
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fill();
-            });
-
-            ctx.strokeStyle = 'rgba(0, 240, 160, 0.05)';
-            ctx.lineWidth = 1;
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    let dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
-                    if (dist < 90) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            animationFrameId = requestAnimationFrame(animateNeuralNet);
+        .timeline-item ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--white-secondary);
         }
 
-        // 3D scene variables
-        let scene, camera, renderer, mesh;
-
-        function activate3D() {
-            // Ensure THREE is available
-            if (typeof THREE === 'undefined') {
-                statusEl.innerText = '3D engine unavailable';
-                return;
-            }
-            is3DActive = true;
-            cancelAnimationFrame(animationFrameId);
-            if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
-            statusEl.innerText = '3D Core Engine Rendered';
-
-            // Create renderer using existing canvas
-            renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-            renderer.setPixelRatio(window.devicePixelRatio || 1);
-            renderer.setSize(canvas.width / (window.devicePixelRatio || 1), canvas.height / (window.devicePixelRatio || 1), false);
-
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-            camera.position.z = 4;
-
-            const geom = new THREE.IcosahedronGeometry(1.8, 1);
-            const mat = new THREE.MeshBasicMaterial({ color: 0x00d4ff, wireframe: true, opacity: 0.95, transparent: true });
-            mesh = new THREE.Mesh(geom, mat);
-            scene.add(mesh);
-
-            // Render loop
-            (function render3D() {
-                if (!is3DActive) return;
-                mesh.rotation.x += 0.005;
-                mesh.rotation.y += 0.01;
-                renderer.render(scene, camera);
-                requestAnimationFrame(render3D);
-            })();
-        }
-
-        function deactivate3D() {
-            is3DActive = false;
-            statusEl.innerText = 'Systems Architecture Active';
-            try {
-                if (renderer) {
-                    renderer.forceContextLoss && renderer.forceContextLoss();
-                    renderer.dispose && renderer.dispose();
-                    renderer = null;
-                }
-                scene = null;
-                camera = null;
-                mesh = null;
-            } catch (e) {
-                // ignore
-            }
-            // restart 2D
-            animateNeuralNet();
-        }
-
-        function toggle3DMode() {
-            if (!is3DActive) activate3D(); else deactivate3D();
-        }
-
-        // Attach events
-        window.addEventListener('resize', function () {
-            resizeCanvas();
-            if (renderer && camera) {
-                renderer.setSize(canvas.width / (window.devicePixelRatio || 1), canvas.height / (window.devicePixelRatio || 1), false);
-                camera.aspect = canvas.clientWidth / canvas.clientHeight;
-                camera.updateProjectionMatrix();
-            }
-        });
-
-        btn3D.addEventListener('click', toggle3DMode);
-
-        // Initialize on DOM ready
-        document.addEventListener('DOMContentLoaded', function () {
-            resizeCanvas();
-            init2D();
-            // slight delay so sizes settle
-            setTimeout(animateNeuralNet, 100);
-        });
-
-        // Expose for testing
-        window.toggle3DMode = toggle3DMode;
-
-    })();
-    </script>
-
-    <script src="assets/joke.js" defer></script>
-</body>
-</html>
+        .timeline-item ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);

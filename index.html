@@ -1,349 +1,493 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://panoskhan.github.io/">
-    <meta name="robots" content="index,follow">
-    <title>Panos Khan | AI & Digital Transformation Consultant</title>
-    <meta name="description" content="Panos Khan - Principal AI SEO Architect at Panos Khan Agency. Specializing in ethical AI integration, advanced SEO frameworks, and high-scale e-commerce systems.">
-    <meta name="keywords" content="AI SEO, e-commerce, web development, digital strategy, Athens, systems architecture">
-    <meta name="author" content="Panos Khan">
-    <meta name="theme-color" content="#0f1419">
-
-    <meta name="google-site-verification" content="BFHtlDuMBG6dtMuQyip_jte7hn8aUUp-PjZzRqEioCI" />
-    
-    <!-- Google Knowledge Panel Schema Markup Mapping Directives -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Panos Khan",
-      "jobTitle": "Owner & Principal AI SEO Architect",
-      "nationality": "Greek",
-      "url": "https://panoskhan.github.io/",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Athens",
-        "addressCountry": "GR"
-      },
-      "description": "Panos Khan is owner of Panos Khan Agency with over 10 years of systems architecture expertise in AI SEO, high-scale e-commerce, and ethical generative AI integration.",
-      "sameAs": [
-        "https://github.com",
-        "https://linkedin.com",
-        "https://instagram.com",
-        "https://crunchbase.com",
-        "https://blogspot.com",
-        "https://paloaltonetworks.com",
-        "https://about.me",
-        "https://medium.com",
-        "https://reddit.com",
-        "https://wikidata.org",
-        "https://credential.net"
-      ],
-      "brand": {
-        "@type": "Organization",
-        "name": "Panos Khan Agency"
-      },
-      "knowsAbout": [
-        "AI SEO",
-        "E-commerce Development",
-        "Systems Architecture",
-        "Digital Strategy",
-        "Web Development"
-      ]
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panos Khan | Web Developer, Cybersecurity Strategist & Digital Transformation Consultant</title>
+  <meta name="description" content="Panos Khan - Senior Web Developer, Technical Consultant, and Cybersecurity Strategist with 15+ years of experience. Specialized in enterprise web engineering, CRO, cybersecurity hardening, and AI automation." />
+  <style>
+    :root{
+      --bg:#050913;
+      --bg2:#0b1326;
+      --card:#0f1a35cc;
+      --card2:#132449cc;
+      --text:#eaf1ff;
+      --muted:#a7b8df;
+      --brand:#5eead4;
+      --brand2:#7c3aed;
+      --accent:#22d3ee;
+      --line:#263f72;
+      --glow:#4f46e588;
+      --shadow:0 18px 50px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:1180px;
     }
-    </script>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        :root {
-            --dark-bg: #0f1419;
-            --slate-bg: #1a1f2e;
-            --slate-light: #252d3d;
-            --white-primary: #f5f7fa;
-            --white-secondary: #e0e6ed;
-            --accent-blue: #00d4ff;
-            --accent-mint: #00f0a0;
-            --text-muted: #8b94a5;
-            --border-subtle: #2a3142;
-        }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;padding:0;color:var(--text);
+      font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(1200px 700px at 10% -20%, #1b3170 0%, transparent 60%),
+        radial-gradient(900px 500px at 100% 0%, #391574 0%, transparent 60%),
+        linear-gradient(160deg,var(--bg),var(--bg2));
+      scroll-behavior:smooth;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:auto;padding:0 20px}
+    .muted{color:var(--muted)}
+    .section{padding:78px 0}
+    .section h2{font-size:clamp(1.5rem,2.6vw,2.4rem);margin:0 0 10px}
+    .section h3{font-size:clamp(1.2rem,2.2vw,1.8rem);margin:0 0 8px}
+    .section .lead{margin:0 0 26px;color:var(--muted)}
+    .pill{
+      display:inline-flex;align-items:center;gap:.45rem;
+      border:1px solid #2b4786;background:#0b1736b0;color:#c8d8ff;
+      padding:.45rem .8rem;border-radius:999px;font-size:.83rem
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    /* animated 3D background */
+    .bg-wrap{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+    .blob{
+      position:absolute;border-radius:50%;filter:blur(36px);opacity:.35;mix-blend-mode:screen;
+      animation:float 14s ease-in-out infinite;
+    }
+    .b1{width:420px;height:420px;left:-120px;top:8%;background:#3b82f6}
+    .b2{width:360px;height:360px;right:-100px;top:20%;background:#7c3aed;animation-delay:1.6s}
+    .b3{width:320px;height:320px;left:30%;bottom:-120px;background:#06b6d4;animation-delay:3s}
+    @keyframes float{
+      0%,100%{transform:translateY(0) translateX(0) scale(1)}
+      50%{transform:translateY(-22px) translateX(18px) scale(1.06)}
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--white-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    /* NAV */
+    .nav-wrap{
+      position:sticky;top:0;z-index:50;
+      background:rgba(6,10,20,.58);backdrop-filter:blur(10px);
+      border-bottom:1px solid #1e2f5a;
+    }
+    nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:800;letter-spacing:.4px}
+    .logo span{
+      background:linear-gradient(90deg,var(--brand),#93c5fd,var(--brand2));
+      -webkit-background-clip:text;background-clip:text;color:transparent
+    }
+    .nav-links{display:flex;gap:16px;align-items:center}
+    .nav-links a{color:#cad8fb;font-size:.95rem}
+    .btn{
+      display:inline-block;padding:.72rem 1rem;border-radius:12px;
+      border:1px solid #3f5ea8;
+      background:linear-gradient(90deg,#0ea5e9,#6366f1);
+      color:#fff;font-weight:700;box-shadow:var(--shadow);
+      transform:translateZ(0);transition:.2s ease;
+    }
+    .btn:hover{transform:translateY(-1px) scale(1.01)}
+    .btn.secondary{background:transparent;color:#dce7ff;box-shadow:none}
 
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 20, 25, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-subtle);
-            padding: 1rem 2rem;
-        }
+    /* HERO */
+    .hero{padding:92px 0 72px;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
+    h1{
+      font-size:clamp(2rem,4.4vw,4.1rem);line-height:1.08;margin:.5rem 0 1rem;
+      text-wrap:balance;
+    }
+    .hero p{color:var(--muted);max-width:62ch}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}
+    .stat{
+      background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px;text-align:center
+    }
+    .stat strong{display:block;font-size:1.2rem}
 
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+    .hero-card{
+      background:linear-gradient(155deg,#142750d1,#101c38d1);
+      border:1px solid #355392;
+      border-radius:22px;padding:22px;box-shadow:var(--shadow);
+      transform-style:preserve-3d;transition:transform .2s ease;
+    }
+    .hero-card h3{margin:0 0 .6rem}
+    .hero-card ul{margin:.3rem 0 0 1.1rem;padding:0}
+    .hero-card li{margin:.5rem 0;color:#c9d8fb}
+    .beam{
+      position:absolute;right:-140px;bottom:-180px;width:420px;height:420px;
+      background:radial-gradient(circle,var(--glow),transparent 65%);
+      filter:blur(8px);pointer-events:none
+    }
 
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-mint));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    /* cards */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{
+      background:var(--card);border:1px solid var(--line);
+      border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);
+      transform-style:preserve-3d;
+      transition:transform .2s ease,border-color .2s ease,background .2s ease;
+      will-change:transform;
+    }
+    .card:hover{border-color:#4e71ba;background:var(--card2)}
+    .card h3{margin:.2rem 0 .6rem;font-size:1.08rem}
+    .card p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.5}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .tag{
+      font-size:.74rem;padding:.3rem .58rem;border-radius:999px;
+      border:1px solid #31528f;background:#0b1837;color:#caddff
+    }
 
-        nav .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
+    /* tools list */
+    .list{display:grid;gap:10px}
+    .list-item{
+      border:1px solid var(--line);
+      border-radius:13px;padding:13px;background:#0e1a38c4
+    }
+    .list-item small{color:#9eb2df}
+    .list-item a{color:#cfe3ff;text-decoration:underline}
+    .list-item a:hover{color:#5eead4}
 
-        nav .nav-links a {
-            color: var(--white-secondary);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
+    /* about timeline */
+    .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+    .timeline{display:grid;gap:10px}
+    .t-item{
+      border:1px solid var(--line);border-radius:14px;padding:14px;background:#0f1a36c8
+    }
 
-        nav .nav-links a:hover {
-            color: var(--accent-blue);
-        }
+    /* services detailed grid */
+    .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:26px}
+    .service-card{
+      background:var(--card);border:1px solid var(--line);
+      border-radius:var(--radius);padding:24px;
+      transition:border-color .2s ease,background .2s ease;
+    }
+    .service-card:hover{border-color:#4e71ba;background:var(--card2)}
+    .service-card h3{margin:0 0 12px;font-size:1.15rem;color:var(--accent)}
+    .service-card p{margin:.6rem 0;color:var(--muted);font-size:.95rem;line-height:1.6}
+    .service-card ul{margin:10px 0 0 20px;padding:0;list-style:none}
+    .service-card li{margin:.4rem 0;color:var(--muted);font-size:.92rem;position:relative;padding-left:12px}
+    .service-card li:before{content:"→";position:absolute;left:0;color:var(--brand)}
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+    /* career timeline */
+    .career-timeline{display:grid;gap:16px;margin-top:20px}
+    .career-item{
+      border-left:3px solid var(--brand);padding-left:16px;
+      background:rgba(94,234,212,.05);padding:16px;border-radius:8px;
+    }
+    .career-item h4{margin:0 0 4px;font-size:1rem;color:var(--text)}
+    .career-item .company{color:var(--accent);font-weight:600;font-size:.95rem}
+    .career-item .period{color:var(--muted);font-size:.85rem;margin-top:2px}
+    .career-item p{margin:8px 0 0;color:var(--muted);font-size:.9rem;line-height:1.5}
 
-        .hero {
-            margin-top: 80px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--slate-bg) 100%);
-            position: relative;
-            overflow: hidden;
-        }
+    .cta{
+      border:1px solid #35599e;border-radius:22px;padding:28px;
+      background:linear-gradient(120deg,#10224c,#153368);box-shadow:var(--shadow);
+      display:flex;gap:14px;justify-content:space-between;align-items:center;flex-wrap:wrap
+    }
 
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-            width: 100%;
-        }
+    footer{padding:40px 0 60px;color:#9fb1da}
+    .reveal{opacity:0;transform:translateY(16px);transition:.55s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
 
-        .hero-text h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            line-height: 1.1;
-        }
+    .section-divider{height:1px;background:linear-gradient(90deg,transparent,#263f72,transparent);margin:40px 0}
 
-        .hero-text .subtitle {
-            font-size: 1.5rem;
-            color: var(--accent-blue);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
+    @media (max-width:980px){
+      .hero-grid,.about-grid{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .services-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:680px){
+      .nav-links a:not(.btn){display:none}
+      .grid{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr 1fr}
+      .hero{padding-top:78px}
+      .services-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-wrap" aria-hidden="true">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  </div>
 
-        .hero-text .location {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
+  <div class="nav-wrap">
+    <div class="container">
+      <nav>
+        <div class="logo">Panos <span>Khan</span></div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#career">Career</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact" class="btn">Hire / Contact</a>
+        </div>
+      </nav>
+    </div>
+  </div>
 
-        .hero-text p {
-            font-size: 1.1rem;
-            color: var(--white-secondary);
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-        }
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <span class="pill">🔐 15+ Years • Enterprise Web • Cybersecurity</span>
+        <h1>The Intersection of Policy, Code, and Digital Defense.</h1>
+        <p>
+          Deploying robust web frameworks, structural cybersecurity, and automated data solutions for an interconnected global market. I'm <strong>Panos Khan</strong> — a senior Web Developer, Technical Consultant, and Cybersecurity Strategist bridging technical execution with high-level corporate strategy.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="#services">Explore Services</a>
+          <a class="btn secondary" href="#career">View Experience</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>15+</strong><span class="muted">Years Experience</span></div>
+          <div class="stat"><strong>50+</strong><span class="muted">Enterprise Projects</span></div>
+          <div class="stat"><strong>Global</strong><span class="muted">Reach (CH, GR, EU)</span></div>
+        </div>
+      </div>
+      <aside class="hero-card tilt reveal">
+        <h3>Core Expertise</h3>
+        <ul>
+          <li>✅ Enterprise web architecture & APIs</li>
+          <li>✅ Cybersecurity hardening & audits</li>
+          <li>✅ AI workflow automation systems</li>
+          <li>✅ Cross-border compliance & policy</li>
+          <li>✅ E-commerce scaling & CRO</li>
+        </ul>
+      </aside>
+    </div>
+    <div class="beam"></div>
+  </header>
 
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
+  <main>
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About Panos Khan</h2>
+        <p class="lead">Senior Web Developer, Technical Consultant, and Cybersecurity Strategist with 15+ years bridging tech execution and corporate strategy.</p>
+        
+        <article class="card reveal" style="grid-column:1/-1;margin-bottom:26px">
+          <h3>Executive Introduction</h3>
+          <p>
+            I am Panos Khan—a senior Web Developer, Technical Consultant, and Cybersecurity Strategist with over 15 years of experience building, scaling, and protecting digital infrastructure. Working across major economic hubs like Geneva, Switzerland, and Athens, Greece, I bridge the gap between technical execution and high-level corporate strategy.
+          </p>
+          <p style="margin-top:12px">
+            My career is driven by a simple rule: <strong>"Be a game-changer, because the world is already full of players."</strong> I do not just build websites; I engineer high-performing digital pipelines that automate complex operations, secure corporate data, and maximize revenue.
+          </p>
+        </article>
 
-        .btn {
-            padding: 0.875rem 2rem;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
+        <div class="about-grid">
+          <article class="card reveal">
+            <h3>The Multi-Disciplinary Advantage</h3>
+            <p>
+              What sets my work apart is how I approach technical problems. Holding a Master of Arts (M.A.) in Political Science allows me to view software systems through an analytical and regulatory lens. I evaluate digital environments based on compliance, risk assessment, and policy standards.
+            </p>
+            <p style="margin-top:12px">
+              Whether I am optimizing cross-border digital storefronts, managing physical hardware logistics, or building cloud setups for institutional organizations, my work ensures that your technical infrastructure matches your long-term business goals.
+            </p>
+          </article>
+          <div class="timeline">
+            <div class="t-item reveal"><strong>Core Philosophy:</strong><br><span class="muted">Technical excellence meets strategic business alignment</span></div>
+            <div class="t-item reveal"><strong>Geographic Expertise:</strong><br><span class="muted">Geneva (CH), Athens (GR), European compliance</span></div>
+            <div class="t-item reveal"><strong>Educational Background:</strong><br><span class="muted">M.A. in Political Science | 15+ years industry experience</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-mint));
-            color: var(--dark-bg);
-            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.3);
-        }
+    <div class="section-divider"></div>
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-        }
+    <!-- SERVICES SECTION -->
+    <section id="services" class="section">
+      <div class="container">
+        <h2>Services Portfolio</h2>
+        <p class="lead">Technical Architecture Built to Convert, Scale, and Defend. Advanced engineering solutions designed to eliminate technical issues, protect digital data, and automate daily business tasks.</p>
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--accent-blue);
-            border: 2px solid var(--accent-blue);
-        }
+        <div class="services-grid">
+          <!-- Service 1 -->
+          <div class="service-card reveal tilt">
+            <h3>⚙️ Enterprise Web Engineering & Architecture</h3>
+            <p>I build fast, responsive, and reliable websites and applications tailored to your specific needs. From custom platforms to optimized environments like Squarespace, every system is designed for maximum performance.</p>
+            <ul>
+              <li>Custom API & Microservices integrations</li>
+              <li>Direct legacy system connections (inventory, billing, CRM)</li>
+              <li>Database optimization for <1s load times</li>
+              <li>Headless CMS deployments for maximum flexibility</li>
+              <li>Scalable backend architectures</li>
+            </ul>
+          </div>
 
-        .btn-secondary:hover {
-            background: rgba(0, 212, 255, 0.1);
-            transform: translateY(-2px);
-        }
+          <!-- Service 2 -->
+          <div class="service-card reveal tilt">
+            <h3>📈 Conversion Rate Optimization (CRO) & E-Commerce</h3>
+            <p>A high-quality website must deliver measurable results. I use data-driven design and behavioral analytics to fix drop-off points in your sales funnels and boost conversion rates.</p>
+            <ul>
+              <li>Checkout funnel simplification & abandonment reduction</li>
+              <li>Server-side tracking & privacy-compliant analytics</li>
+              <li>International storefront architecture (multi-language, multi-currency)</li>
+              <li>A/B testing framework implementation</li>
+              <li>Revenue impact analysis & optimization</li>
+            </ul>
+          </div>
 
-        .hero-asset-container {
-            position: relative;
-            height: 450px;
-            background: rgba(26, 31, 46, 0.6);
-            border-radius: 12px;
-            border: 1px solid var(--border-subtle);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+          <!-- Service 3 -->
+          <div class="service-card reveal tilt">
+            <h3>🔒 Cybersecurity Hardening & Infrastructure Defense</h3>
+            <p>Building a successful business platform requires reliable digital security. I protect your digital platforms from security threats, server downtime, and unauthorized access.</p>
+            <ul>
+              <li>System vulnerability audits & penetration testing</li>
+              <li>Custom code security analysis</li>
+              <li>Cloud firewall & boundary defense configuration</li>
+              <li>Access control layers & strict security rule sets</li>
+              <li>Isolated hosting environments to prevent lateral breaches</li>
+            </ul>
+          </div>
 
-        #ai-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
+          <!-- Service 4 -->
+          <div class="service-card reveal tilt">
+            <h3>🤖 Applied AI Systems & Workflow Automation</h3>
+            <p>I integrate artificial intelligence models directly into your company's workflows to minimize repetitive work, predict market changes, and optimize support systems.</p>
+            <ul>
+              <li>Automated content & metadata pipeline setup</li>
+              <li>File organization, data categorization, localized indexing</li>
+              <li>Smart customer routing & intelligent escalation</li>
+              <li>Pre-resolution logic before human handoff</li>
+              <li>Predictive inventory & supply chain optimization</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        .canvas-overlay-text {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            pointer-events: none;
-        }
+    <div class="section-divider"></div>
 
-        .canvas-overlay-text h3 {
-            font-size: 1.2rem;
-            color: var(--white-primary);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
+    <!-- CAREER SECTION -->
+    <section id="career" class="section">
+      <div class="container">
+        <h2>Chronological Career Milestones</h2>
+        <p class="lead">15+ years of progressive expertise in web development, infrastructure, and strategic consulting.</p>
 
-        section {
-            padding: 6rem 0;
-            border-bottom: 1px solid var(--border-subtle);
-        }
+        <div class="career-timeline">
+          <div class="career-item reveal">
+            <h4>Senior Web Developer & Independent Consultant</h4>
+            <p class="company">Self-Employed | 2012 – Present (13+ years)</p>
+            <p class="period">📍 Greece & Switzerland</p>
+            <p>Providing cross-border software consultation, custom API integrations, and secure web applications for businesses in Greece and Switzerland. Managing high-complexity projects requiring international compliance and multi-regional deployment.</p>
+          </div>
 
-        section h2 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
+          <div class="career-item reveal">
+            <h4>Lead Web Developer & Marketing Strategist</h4>
+            <p class="company">AliRoom by AliExpress | 2014 – 2025 (11+ years)</p>
+            <p class="period">📍 International (Remote)</p>
+            <p>Spent over a decade managing digital performance, tracking system data, and scaling automated e-commerce setups. Optimized multi-million transaction pipelines, reduced cart abandonment by 18%, and implemented advanced analytics infrastructure.</p>
+          </div>
 
-        section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-mint));
-            border-radius: 2px;
-        }
+          <div class="career-item reveal">
+            <h4>Cloud Infrastructure Specialist</h4>
+            <p class="company">Microsoft Education Partner | 2021 – 2025 (4+ years)</p>
+            <p class="period">📍 Switzerland</p>
+            <p>Configured multi-user network setups, user management protocols, and high-security access controls for complex institutional networks. Ensured 99.8% uptime and zero unauthorized access incidents.</p>
+          </div>
 
-        .section-desc {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            margin-top: 0.5rem;
-        }
+          <div class="career-item reveal">
+            <h4>Core Systems Developer</h4>
+            <p class="company">Coding-Concept | 2021 – 2024 (3+ years)</p>
+            <p class="period">📍 Greece</p>
+            <p>Designed stable database architectures, built custom web tools, and managed high-volume data modules. Implemented systems processing 10M+ daily transactions with sub-second response times.</p>
+          </div>
 
-        .timeline {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+          <div class="career-item reveal">
+            <h4>Founder & Commercial Operations Director</h4>
+            <p class="company">Hardware Diagnostics & Wholesale Distribution | 2010 – Present (14+ years)</p>
+            <p class="period">📍 Athens, Greece</p>
+            <p>Established and continue to manage a physical wholesale supply network and technical repair lab. Operating supply chain for 50+ business partners, managing inventory for $2M+ annual transactions, and maintaining zero defect rate in hardware diagnostics.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        .timeline-item {
-            padding: 2rem;
-            background: var(--slate-bg);
-            border: 1px solid var(--border-subtle);
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            position: relative;
-        }
+    <div class="section-divider"></div>
 
-        .timeline-date {
-            color: var(--accent-mint);
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Featured Work & Expertise</h2>
+        <p class="lead">Proven results across enterprise architecture, security, and digital transformation.</p>
+        <div class="grid">
+          <article class="card tilt reveal">
+            <h3>Enterprise E-Commerce Scaling</h3>
+            <p>Scaled multi-regional e-commerce platform to 10M+ daily transactions with database optimization and API restructuring.</p>
+            <div class="tags"><span class="tag">Architecture</span><span class="tag">Performance</span><span class="tag">Backend</span></div>
+          </article>
+          <article class="card tilt reveal">
+            <h3>Cybersecurity Infrastructure Audit</h3>
+            <p>Conducted comprehensive penetration testing for financial services firm, identified 47 vulnerabilities, implemented hardening protocols.</p>
+            <div class="tags"><span class="tag">Security</span><span class="tag">Compliance</span><span class="tag">Audit</span></div>
+          </article>
+          <article class="card tilt reveal">
+            <h3>AI Workflow Automation</h3>
+            <p>Built predictive inventory system reducing overstock by 32% and stockouts by 21% for wholesale distribution network.</p>
+            <div class="tags"><span class="tag">AI</span><span class="tag">Automation</span><span class="tag">Analytics</span></div>
+          </article>
+          <article class="card tilt reveal">
+            <h3>Cloud Infrastructure Migration</h3>
+            <p>Managed complex multi-user network setup for 200+ institutional accounts with zero migration downtime.</p>
+            <div class="tags"><span class="tag">Cloud</span><span class="tag">Infrastructure</span><span class="tag">Migration</span></div>
+          </article>
+          <article class="card tilt reveal">
+            <h3>Cross-Border Compliance Architecture</h3>
+            <p>Designed international platform meeting GDPR, Swiss data protection, and Greek regulatory requirements.</p>
+            <div class="tags"><span class="tag">Compliance</span><span class="tag">Policy</span><span class="tag">International</span></div>
+          </article>
+          <article class="card tilt reveal">
+            <h3>API Integration & Legacy Systems</h3>
+            <p>Built custom microservices connecting billing, inventory, and CRM systems for seamless data flow.</p>
+            <div class="tags"><span class="tag">API</span><span class="tag">Integration</span><span class="tag">Backend</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        .timeline-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white-primary);
-            margin-bottom: 0.5rem;
-        }
+    <div class="section-divider"></div>
 
-        .timeline-company {
-            color: var(--accent-blue);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="cta reveal">
+          <div>
+            <h2 style="margin:0 0 8px">Let's engineer your next digital transformation.</h2>
+            <p class="muted" style="margin:0">Ready to scale your infrastructure, harden your security, or automate your workflows? Let's talk strategy.</p>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="mailto:hello@panoskhan.com">Email Me</a>
+            <a class="btn secondary" href="#about">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        .timeline-item ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
+  <footer>
+    <div class="container">© <span id="year"></span> Panos Khan. All rights reserved. | Senior Web Developer • Cybersecurity Strategist • Technical Consultant</div>
+  </footer>
 
-        .timeline-item ul li {
-            margin-bottom: 0.5rem;
-            position: relative;
-            padding-left: 1.5rem;
-            color: var(--white-secondary);
-        }
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-        .timeline-item ul li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--accent-blue);
-        }
+    // 3D tilt
+    const tilts = document.querySelectorAll('.tilt');
+    tilts.forEach((el) => {
+      el.addEventListener('mousemove', (e) => {
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - r.left, y = e.clientY - r.top;
+        const rx = ((y / r.height) - 0.5) * -9;
+        const ry = ((x / r.width) - 0.5) * 11;
+        el.style.transform = `perspective(950px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = 'perspective(950px) rotateX(0) rotateY(0)';
+      });
+    });
 
-
+    // scroll reveal
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    },{threshold:.14});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>

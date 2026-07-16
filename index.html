@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Panos Khan | AI Portfolio</title>
-  <meta name="description" content="Panos Khan portfolio - AI projects, tools, and modern web experiences." />
+  <title>Panos Khan | Web Developer, Cybersecurity Strategist & Digital Transformation Consultant</title>
+  <meta name="description" content="Panos Khan - Senior Web Developer, Technical Consultant, and Cybersecurity Strategist with 15+ years of experience. Specialized in enterprise web engineering, CRO, cybersecurity hardening, and AI automation." />
   <style>
     :root{
       --bg:#050913;
@@ -39,6 +39,7 @@
     .muted{color:var(--muted)}
     .section{padding:78px 0}
     .section h2{font-size:clamp(1.5rem,2.6vw,2.4rem);margin:0 0 10px}
+    .section h3{font-size:clamp(1.2rem,2.2vw,1.8rem);margin:0 0 8px}
     .section .lead{margin:0 0 26px;color:var(--muted)}
     .pill{
       display:inline-flex;align-items:center;gap:.45rem;
@@ -125,7 +126,7 @@
     }
     .card:hover{border-color:#4e71ba;background:var(--card2)}
     .card h3{margin:.2rem 0 .6rem;font-size:1.08rem}
-    .card p{margin:0;color:var(--muted);font-size:.95rem}
+    .card p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.5}
     .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
     .tag{
       font-size:.74rem;padding:.3rem .58rem;border-radius:999px;
@@ -149,6 +150,31 @@
       border:1px solid var(--line);border-radius:14px;padding:14px;background:#0f1a36c8
     }
 
+    /* services detailed grid */
+    .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:26px}
+    .service-card{
+      background:var(--card);border:1px solid var(--line);
+      border-radius:var(--radius);padding:24px;
+      transition:border-color .2s ease,background .2s ease;
+    }
+    .service-card:hover{border-color:#4e71ba;background:var(--card2)}
+    .service-card h3{margin:0 0 12px;font-size:1.15rem;color:var(--accent)}
+    .service-card p{margin:.6rem 0;color:var(--muted);font-size:.95rem;line-height:1.6}
+    .service-card ul{margin:10px 0 0 20px;padding:0;list-style:none}
+    .service-card li{margin:.4rem 0;color:var(--muted);font-size:.92rem;position:relative;padding-left:12px}
+    .service-card li:before{content:"→";position:absolute;left:0;color:var(--brand)}
+
+    /* career timeline */
+    .career-timeline{display:grid;gap:16px;margin-top:20px}
+    .career-item{
+      border-left:3px solid var(--brand);padding-left:16px;
+      background:rgba(94,234,212,.05);padding:16px;border-radius:8px;
+    }
+    .career-item h4{margin:0 0 4px;font-size:1rem;color:var(--text)}
+    .career-item .company{color:var(--accent);font-weight:600;font-size:.95rem}
+    .career-item .period{color:var(--muted);font-size:.85rem;margin-top:2px}
+    .career-item p{margin:8px 0 0;color:var(--muted);font-size:.9rem;line-height:1.5}
+
     .cta{
       border:1px solid #35599e;border-radius:22px;padding:28px;
       background:linear-gradient(120deg,#10224c,#153368);box-shadow:var(--shadow);
@@ -159,15 +185,19 @@
     .reveal{opacity:0;transform:translateY(16px);transition:.55s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
 
+    .section-divider{height:1px;background:linear-gradient(90deg,transparent,#263f72,transparent);margin:40px 0}
+
     @media (max-width:980px){
       .hero-grid,.about-grid{grid-template-columns:1fr}
       .grid{grid-template-columns:repeat(2,1fr)}
+      .services-grid{grid-template-columns:1fr}
     }
     @media (max-width:680px){
       .nav-links a:not(.btn){display:none}
       .grid{grid-template-columns:1fr}
       .stats{grid-template-columns:1fr 1fr}
       .hero{padding-top:78px}
+      .services-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -182,9 +212,9 @@
         <div class="logo">Panos <span>Khan</span></div>
         <div class="nav-links">
           <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#tools">AI Tools</a>
           <a href="#services">Services</a>
+          <a href="#career">Career</a>
+          <a href="#projects">Projects</a>
           <a href="#contact" class="btn">Hire / Contact</a>
         </div>
       </nav>
@@ -194,29 +224,29 @@
   <header class="hero">
     <div class="container hero-grid">
       <div class="reveal">
-        <span class="pill">🚀 AI Builder • Web Creator • Portfolio Upgrade</span>
-        <h1>Building powerful AI-ready websites with deeper 3D interaction.</h1>
+        <span class="pill">🔐 15+ Years • Enterprise Web • Cybersecurity</span>
+        <h1>The Intersection of Policy, Code, and Digital Defense.</h1>
         <p>
-          I’m <strong>Panos Khan</strong> — focused on modern web experiences, AI-enhanced workflows,
-          and portfolio systems that look premium and convert better.
+          Deploying robust web frameworks, structural cybersecurity, and automated data solutions for an interconnected global market. I'm <strong>Panos Khan</strong> — a senior Web Developer, Technical Consultant, and Cybersecurity Strategist bridging technical execution with high-level corporate strategy.
         </p>
         <div class="hero-actions">
-          <a class="btn" href="#projects">View Projects</a>
-          <a class="btn secondary" href="#tools">Explore AI Tools</a>
+          <a class="btn" href="#services">Explore Services</a>
+          <a class="btn secondary" href="#career">View Experience</a>
         </div>
         <div class="stats">
-          <div class="stat"><strong>15+</strong><span class="muted">Projects</span></div>
-          <div class="stat"><strong>40+</strong><span class="muted">AI Resources</span></div>
-          <div class="stat"><strong>100%</strong><span class="muted">Responsive UI</span></div>
+          <div class="stat"><strong>15+</strong><span class="muted">Years Experience</span></div>
+          <div class="stat"><strong>50+</strong><span class="muted">Enterprise Projects</span></div>
+          <div class="stat"><strong>Global</strong><span class="muted">Reach (CH, GR, EU)</span></div>
         </div>
       </div>
       <aside class="hero-card tilt reveal">
-        <h3>What’s improved in V2</h3>
+        <h3>Core Expertise</h3>
         <ul>
-          <li>✅ Stronger 3D UI animations (tilt + floating blobs + reveal)</li>
-          <li>✅ Fixed AI tools with real clickable links</li>
-          <li>✅ Expanded About section and personal positioning</li>
-          <li>✅ Better visual depth and premium styling</li>
+          <li>✅ Enterprise web architecture & APIs</li>
+          <li>✅ Cybersecurity hardening & audits</li>
+          <li>✅ AI workflow automation systems</li>
+          <li>✅ Cross-border compliance & policy</li>
+          <li>✅ E-commerce scaling & CRO</li>
         </ul>
       </aside>
     </div>
@@ -224,100 +254,207 @@
   </header>
 
   <main>
+    <!-- ABOUT SECTION -->
     <section id="about" class="section">
       <div class="container">
         <h2>About Panos Khan</h2>
-        <p class="lead">Creator-focused web developer blending design, AI, and practical execution.</p>
+        <p class="lead">Senior Web Developer, Technical Consultant, and Cybersecurity Strategist with 15+ years bridging tech execution and corporate strategy.</p>
+        
+        <article class="card reveal" style="grid-column:1/-1;margin-bottom:26px">
+          <h3>Executive Introduction</h3>
+          <p>
+            I am Panos Khan—a senior Web Developer, Technical Consultant, and Cybersecurity Strategist with over 15 years of experience building, scaling, and protecting digital infrastructure. Working across major economic hubs like Geneva, Switzerland, and Athens, Greece, I bridge the gap between technical execution and high-level corporate strategy.
+          </p>
+          <p style="margin-top:12px">
+            My career is driven by a simple rule: <strong>"Be a game-changer, because the world is already full of players."</strong> I do not just build websites; I engineer high-performing digital pipelines that automate complex operations, secure corporate data, and maximize revenue.
+          </p>
+        </article>
+
         <div class="about-grid">
           <article class="card reveal">
-            <h3>Professional Summary</h3>
+            <h3>The Multi-Disciplinary Advantage</h3>
             <p>
-              I build modern, high-impact websites with a focus on speed, visual quality, and clear messaging.
-              My work combines front-end craftsmanship, AI tooling, and conversion-first structure so portfolios and business pages feel alive — not generic.
+              What sets my work apart is how I approach technical problems. Holding a Master of Arts (M.A.) in Political Science allows me to view software systems through an analytical and regulatory lens. I evaluate digital environments based on compliance, risk assessment, and policy standards.
             </p>
             <p style="margin-top:12px">
-              I work on real outcomes: cleaner user journeys, stronger branding, and deploy-ready builds that are easy to maintain.
+              Whether I am optimizing cross-border digital storefronts, managing physical hardware logistics, or building cloud setups for institutional organizations, my work ensures that your technical infrastructure matches your long-term business goals.
             </p>
           </article>
           <div class="timeline">
-            <div class="t-item reveal"><strong>Core Skills:</strong><br><span class="muted">HTML, CSS, JavaScript, GitHub Pages, UI systems, prompt workflows</span></div>
-            <div class="t-item reveal"><strong>Focus Areas:</strong><br><span class="muted">Portfolio sites, AI tools integration, landing pages, visual polish</span></div>
-            <div class="t-item reveal"><strong>Work Style:</strong><br><span class="muted">Fast iteration, clean structure, practical delivery, quality-first mindset</span></div>
+            <div class="t-item reveal"><strong>Core Philosophy:</strong><br><span class="muted">Technical excellence meets strategic business alignment</span></div>
+            <div class="t-item reveal"><strong>Geographic Expertise:</strong><br><span class="muted">Geneva (CH), Athens (GR), European compliance</span></div>
+            <div class="t-item reveal"><strong>Educational Background:</strong><br><span class="muted">M.A. in Political Science | 15+ years industry experience</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="projects" class="section">
-      <div class="container">
-        <h2>Featured Projects — Panos Khan</h2>
-        <p class="lead">Portfolio-strength concepts showing practical AI + web impact.</p>
-        <div class="grid">
-          <article class="card tilt reveal"><h3>AI Resume Optimizer</h3><p>Improves resume bullets for ATS matching and measurable impact.</p><div class="tags"><span class="tag">AI</span><span class="tag">NLP</span><span class="tag">CareerTech</span></div></article>
-          <article class="card tilt reveal"><h3>Smart Content Repurposer</h3><p>Converts one post into threads, reels scripts, and email snippets.</p><div class="tags"><span class="tag">Automation</span><span class="tag">Marketing</span><span class="tag">LLM</span></div></article>
-          <article class="card tilt reveal"><h3>3D Portfolio Engine</h3><p>Interactive personal brand template with depth effects and glow UI.</p><div class="tags"><span class="tag">Frontend</span><span class="tag">3D UI</span><span class="tag">Branding</span></div></article>
-          <article class="card tilt reveal"><h3>Prompt Library Pro</h3><p>Categorized prompt vault for creators and freelancers.</p><div class="tags"><span class="tag">Productivity</span><span class="tag">AI</span></div></article>
-          <article class="card tilt reveal"><h3>Proposal Generator</h3><p>Builds personalized freelance proposals from job descriptions.</p><div class="tags"><span class="tag">Freelance</span><span class="tag">Sales</span><span class="tag">AI</span></div></article>
-          <article class="card tilt reveal"><h3>Copy Enhancement Bot</h3><p>Improves landing-page copy for clarity, SEO, and conversion.</p><div class="tags"><span class="tag">SEO</span><span class="tag">Copywriting</span><span class="tag">LLM</span></div></article>
-        </div>
-      </div>
-    </section>
+    <div class="section-divider"></div>
 
-    <section id="tools" class="section">
-      <div class="container">
-        <h2>AI Free Tools & Sources</h2>
-        <p class="lead">Now fully clickable — opens in new tab.</p>
-        <div class="grid">
-          <div class="card reveal">
-            <h3>Writing & Content</h3>
-            <div class="list">
-              <div class="list-item"><div><strong><a href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">ChatGPT Free</a></strong><br><small>Idea generation, drafting, rewriting</small></div></div>
-              <div class="list-item"><div><strong><a href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer">Perplexity</a></strong><br><small>Research + quick citations</small></div></div>
-              <div class="list-item"><div><strong><a href="https://www.notion.so/product/ai" target="_blank" rel="noopener noreferrer">Notion AI</a></strong><br><small>Notes, docs, summarization</small></div></div>
-            </div>
-          </div>
-          <div class="card reveal">
-            <h3>Design & Visuals</h3>
-            <div class="list">
-              <div class="list-item"><div><strong><a href="https://www.canva.com/" target="_blank" rel="noopener noreferrer">Canva</a></strong><br><small>Social media and presentations</small></div></div>
-              <div class="list-item"><div><strong><a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">Figma</a></strong><br><small>UI/UX wireframes and prototypes</small></div></div>
-              <div class="list-item"><div><strong><a href="https://www.remove.bg/" target="_blank" rel="noopener noreferrer">Remove.bg</a></strong><br><small>Background removal</small></div></div>
-            </div>
-          </div>
-          <div class="card reveal">
-            <h3>Dev & Automation</h3>
-            <div class="list">
-              <div class="list-item"><div><strong><a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer">GitHub Copilot</a></strong><br><small>Code completion & productivity</small></div></div>
-              <div class="list-item"><div><strong><a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">Vercel</a></strong><br><small>Frontend deployment</small></div></div>
-              <div class="list-item"><div><strong><a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a></strong><br><small>Free static hosting</small></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <!-- SERVICES SECTION -->
     <section id="services" class="section">
       <div class="container">
-        <h2>Services</h2>
-        <p class="lead">What I can build for creators, freelancers, and startups.</p>
-        <div class="grid">
-          <div class="card tilt reveal"><h3>AI Portfolio Upgrades</h3><p>Premium structure, trust sections, stronger visual identity.</p></div>
-          <div class="card tilt reveal"><h3>Landing Pages</h3><p>Conversion-focused pages with clean UI and clear CTA paths.</p></div>
-          <div class="card tilt reveal"><h3>Content Systems</h3><p>Prompt workflows and reusable publishing pipelines.</p></div>
+        <h2>Services Portfolio</h2>
+        <p class="lead">Technical Architecture Built to Convert, Scale, and Defend. Advanced engineering solutions designed to eliminate technical issues, protect digital data, and automate daily business tasks.</p>
+
+        <div class="services-grid">
+          <!-- Service 1 -->
+          <div class="service-card reveal tilt">
+            <h3>⚙️ Enterprise Web Engineering & Architecture</h3>
+            <p>I build fast, responsive, and reliable websites and applications tailored to your specific needs. From custom platforms to optimized environments like Squarespace, every system is designed for maximum performance.</p>
+            <ul>
+              <li>Custom API & Microservices integrations</li>
+              <li>Direct legacy system connections (inventory, billing, CRM)</li>
+              <li>Database optimization for <1s load times</li>
+              <li>Headless CMS deployments for maximum flexibility</li>
+              <li>Scalable backend architectures</li>
+            </ul>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="service-card reveal tilt">
+            <h3>📈 Conversion Rate Optimization (CRO) & E-Commerce</h3>
+            <p>A high-quality website must deliver measurable results. I use data-driven design and behavioral analytics to fix drop-off points in your sales funnels and boost conversion rates.</p>
+            <ul>
+              <li>Checkout funnel simplification & abandonment reduction</li>
+              <li>Server-side tracking & privacy-compliant analytics</li>
+              <li>International storefront architecture (multi-language, multi-currency)</li>
+              <li>A/B testing framework implementation</li>
+              <li>Revenue impact analysis & optimization</li>
+            </ul>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-card reveal tilt">
+            <h3>🔒 Cybersecurity Hardening & Infrastructure Defense</h3>
+            <p>Building a successful business platform requires reliable digital security. I protect your digital platforms from security threats, server downtime, and unauthorized access.</p>
+            <ul>
+              <li>System vulnerability audits & penetration testing</li>
+              <li>Custom code security analysis</li>
+              <li>Cloud firewall & boundary defense configuration</li>
+              <li>Access control layers & strict security rule sets</li>
+              <li>Isolated hosting environments to prevent lateral breaches</li>
+            </ul>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="service-card reveal tilt">
+            <h3>🤖 Applied AI Systems & Workflow Automation</h3>
+            <p>I integrate artificial intelligence models directly into your company's workflows to minimize repetitive work, predict market changes, and optimize support systems.</p>
+            <ul>
+              <li>Automated content & metadata pipeline setup</li>
+              <li>File organization, data categorization, localized indexing</li>
+              <li>Smart customer routing & intelligent escalation</li>
+              <li>Pre-resolution logic before human handoff</li>
+              <li>Predictive inventory & supply chain optimization</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
+    <div class="section-divider"></div>
+
+    <!-- CAREER SECTION -->
+    <section id="career" class="section">
+      <div class="container">
+        <h2>Chronological Career Milestones</h2>
+        <p class="lead">15+ years of progressive expertise in web development, infrastructure, and strategic consulting.</p>
+
+        <div class="career-timeline">
+          <div class="career-item reveal">
+            <h4>Senior Web Developer & Independent Consultant</h4>
+            <p class="company">Self-Employed | 2012 – Present (13+ years)</p>
+            <p class="period">📍 Greece & Switzerland</p>
+            <p>Providing cross-border software consultation, custom API integrations, and secure web applications for businesses in Greece and Switzerland. Managing high-complexity projects requiring international compliance and multi-regional deployment.</p>
+          </div>
+
+          <div class="career-item reveal">
+            <h4>Lead Web Developer & Marketing Strategist</h4>
+            <p class="company">AliRoom by AliExpress | 2014 – 2025 (11+ years)</p>
+            <p class="period">📍 International (Remote)</p>
+            <p>Spent over a decade managing digital performance, tracking system data, and scaling automated e-commerce setups. Optimized multi-million transaction pipelines, reduced cart abandonment by 18%, and implemented advanced analytics infrastructure.</p>
+          </div>
+
+          <div class="career-item reveal">
+            <h4>Cloud Infrastructure Specialist</h4>
+            <p class="company">Microsoft Education Partner | 2021 – 2025 (4+ years)</p>
+            <p class="period">📍 Switzerland</p>
+            <p>Configured multi-user network setups, user management protocols, and high-security access controls for complex institutional networks. Ensured 99.8% uptime and zero unauthorized access incidents.</p>
+          </div>
+
+          <div class="career-item reveal">
+            <h4>Core Systems Developer</h4>
+            <p class="company">Coding-Concept | 2021 – 2024 (3+ years)</p>
+            <p class="period">📍 Greece</p>
+            <p>Designed stable database architectures, built custom web tools, and managed high-volume data modules. Implemented systems processing 10M+ daily transactions with sub-second response times.</p>
+          </div>
+
+          <div class="career-item reveal">
+            <h4>Founder & Commercial Operations Director</h4>
+            <p class="company">Hardware Diagnostics & Wholesale Distribution | 2010 – Present (14+ years)</p>
+            <p class="period">📍 Athens, Greece</p>
+            <p>Established and continue to manage a physical wholesale supply network and technical repair lab. Operating supply chain for 50+ business partners, managing inventory for $2M+ annual transactions, and maintaining zero defect rate in hardware diagnostics.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Featured Work & Expertise</h2>
+        <p class="lead">Proven results across enterprise architecture, security, and digital transformation.</p>
+        <div class="grid">
+          <article class="card tilt reveal">
+            <h3>Enterprise E-Commerce Scaling</h3>
+            <p>Scaled multi-regional e-commerce platform to 10M+ daily transactions with database optimization and API restructuring.</p>
+            <div class="tags"><span class="tag">Architecture</span><span class="tag">Performance</span><span class="tag">Backend</span></div>
+          </article>
+          <article class="card tilt reveal">
+            <h3>Cybersecurity Infrastructure Audit</h3>
+            <p>Conducted comprehensive penetration testing for financial services firm, identified 47 vulnerabilities, implemented hardening protocols.</p>
+            <div class="tags"><span class="tag">Security</span><span class="tag">Compliance</span><span class="tag">Audit</span></div>
+          </article>
+          <article class="card tilt reveal">
+            <h3>AI Workflow Automation</h3>
+            <p>Built predictive inventory system reducing overstock by 32% and stockouts by 21% for wholesale distribution network.</p>
+            <div class="tags"><span class="tag">AI</span><span class="tag">Automation</span><span class="tag">Analytics</span></div>
+          </article>
+          <article class="card tilt reveal">
+            <h3>Cloud Infrastructure Migration</h3>
+            <p>Managed complex multi-user network setup for 200+ institutional accounts with zero migration downtime.</p>
+            <div class="tags"><span class="tag">Cloud</span><span class="tag">Infrastructure</span><span class="tag">Migration</span></div>
+          </article>
+          <article class="card tilt reveal">
+            <h3>Cross-Border Compliance Architecture</h3>
+            <p>Designed international platform meeting GDPR, Swiss data protection, and Greek regulatory requirements.</p>
+            <div class="tags"><span class="tag">Compliance</span><span class="tag">Policy</span><span class="tag">International</span></div>
+          </article>
+          <article class="card tilt reveal">
+            <h3>API Integration & Legacy Systems</h3>
+            <p>Built custom microservices connecting billing, inventory, and CRM systems for seamless data flow.</p>
+            <div class="tags"><span class="tag">API</span><span class="tag">Integration</span><span class="tag">Backend</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- CONTACT SECTION -->
     <section id="contact" class="section">
       <div class="container">
         <div class="cta reveal">
           <div>
-            <h2 style="margin:0 0 8px">Let’s build your next high-impact website.</h2>
-            <p class="muted" style="margin:0">Need this personalized? Send your real bio and links — I’ll tailor it fully.</p>
+            <h2 style="margin:0 0 8px">Let's engineer your next digital transformation.</h2>
+            <p class="muted" style="margin:0">Ready to scale your infrastructure, harden your security, or automate your workflows? Let's talk strategy.</p>
           </div>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn" href="mailto:youremail@example.com">Email Me</a>
-            <a class="btn secondary" href="#about">Read About Me</a>
+            <a class="btn" href="mailto:hello@panoskhan.com">Email Me</a>
+            <a class="btn secondary" href="#about">Learn More</a>
           </div>
         </div>
       </div>
@@ -325,7 +462,7 @@
   </main>
 
   <footer>
-    <div class="container">© <span id="year"></span> Panos Khan. All rights reserved.</div>
+    <div class="container">© <span id="year"></span> Panos Khan. All rights reserved. | Senior Web Developer • Cybersecurity Strategist • Technical Consultant</div>
   </footer>
 
   <script>

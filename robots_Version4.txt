@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://panoskhan.github.io/sitemap.xml

@@ -207,10 +207,24 @@
     form.addEventListener("submit", function(event){
       event.preventDefault();
       const toolId = form.getAttribute("data-tool");
-      const output = generators[toolId](new FormData(form)) || "No output generated.";
       const resultEl = document.getElementById("result-" + toolId);
-      resultEl.textContent = output;
-      resultEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      const submitBtn = form.querySelector("button[type=submit]");
+
+      // Loading state
+      resultEl.textContent = "⚡ Generating…";
+      if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = "Generating…"; }
+
+      setTimeout(function(){
+        try {
+          const output = generators[toolId](new FormData(form)) || "No output generated.";
+          resultEl.textContent = output;
+        } catch(err) {
+          resultEl.textContent = "Error generating output. Please check your inputs and try again.";
+        } finally {
+          if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = "Generate"; }
+        }
+        resultEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 220);
     });
   });
 

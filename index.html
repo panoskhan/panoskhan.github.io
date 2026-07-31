@@ -3,311 +3,107 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Panos Khan | AI & Digital Transformation Consultant</title>
-  <meta name="description" content="Official website of Panos Khan — AI & Digital Transformation Consultant, Web Developer, and Sales & Marketing Specialist based in Greece." />
+  <title>Panos Khan | AI &amp; Digital Transformation Consultant</title>
+  <meta name="description" content="Official website of Panos Khan — AI &amp; Digital Transformation Consultant, Web Developer, and Growth Strategist based in Greece. Book a consultation or explore AI tools." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://panoskhan.github.io/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Panos Khan | AI & Digital Transformation Consultant" />
-  <meta property="og:description" content="Professional profile, verified links, credentials, services, and consultation booking for Panos Khan." />
+  <meta property="og:title" content="Panos Khan | AI &amp; Digital Transformation Consultant" />
+  <meta property="og:description" content="AI consulting, web engineering, SEO architecture, and digital growth strategy by Panos Khan. Based in Greece." />
   <meta property="og:url" content="https://panoskhan.github.io/" />
   <meta property="og:site_name" content="Panos Khan" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:locale:alternate" content="el_GR" />
   <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
-  <meta property="og:image:alt" content="Panos Khan — AI & Digital Transformation Consultant" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Panos Khan — AI &amp; Digital Transformation Consultant" />
 
-  <!-- Twitter -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Panos Khan | AI & Digital Transformation Consultant" />
+  <meta name="twitter:title" content="Panos Khan | AI &amp; Digital Transformation Consultant" />
   <meta name="twitter:description" content="Official website of Panos Khan — AI, web engineering, digital growth strategy, and certifications." />
   <meta name="twitter:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
-  <meta name="twitter:image:alt" content="Panos Khan — AI & Digital Transformation Consultant" />
+  <meta name="twitter:image:alt" content="Panos Khan — AI &amp; Digital Transformation Consultant" />
 
-  <style>
-    :root{
-      --bg:#070b14;
-      --surface:#0f172a;
-      --surface-2:#111c33;
-      --text:#e6edf7;
-      --muted:#9aa9c4;
-      --line:#24324d;
-      --neon:#00e5ff;
-      --neon2:#7c3aed;
-      --max:1140px;
-      --radius:16px;
-    }
+  <!-- Preload key CSS -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
 
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.65;
-      overflow-x:hidden;
-      position:relative;
-    }
-
-    a{color:var(--neon);text-decoration:none}
-    a:hover{text-decoration:underline;text-shadow:0 0 8px rgba(0,229,255,.35)}
-
-    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
-    .section{padding:68px 0;scroll-margin-top:110px}
-    .card{
-      background:linear-gradient(180deg,var(--surface),var(--surface-2));
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:24px;
-      box-shadow:0 12px 34px rgba(0,0,0,.28);
-    }
-    .grid{display:grid;gap:18px}
-    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    @media (max-width:980px){.grid-3{grid-template-columns:1fr 1fr}}
-    @media (max-width:760px){.grid-2,.grid-3{grid-template-columns:1fr}}
-
-    .langbar{
-      position:sticky;top:0;z-index:100;
-      border-bottom:1px solid var(--line);
-      background:rgba(7,11,20,.92);
-      backdrop-filter:blur(8px);
-    }
-    .langbar-inner{
-      max-width:var(--max);margin:0 auto;padding:8px 20px;
-      display:flex;justify-content:flex-end;gap:8px;
-    }
-    .toggle-btn{
-      border:1px solid rgba(0,229,255,.55);
-      background:#0b1222;color:#dff8ff;border-radius:999px;
-      padding:7px 12px;cursor:pointer;font-weight:700;
-      box-shadow:0 0 12px rgba(0,229,255,.22);
-    }
-    .toggle-btn[aria-pressed="true"]{
-      background:linear-gradient(90deg,#083642,#212c4e);
-      border-color:var(--neon);
-    }
-
-    header{
-      position:sticky;top:44px;z-index:90;
-      background:rgba(10,16,31,.92);
-      border-bottom:1px solid var(--line);
-      box-shadow:0 0 0 1px rgba(0,229,255,.16),0 0 20px rgba(0,229,255,.08) inset;
-      backdrop-filter:blur(8px);
-    }
-    .nav{
-      max-width:var(--max);margin:0 auto;padding:12px 20px;
-      display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
-    }
-    .brand{font-weight:900;letter-spacing:.3px}
-    .brand span{color:var(--neon)}
-    nav{display:flex;gap:8px;flex-wrap:wrap}
-    nav a{
-      border:1px solid var(--line);
-      color:#dce8ff;
-      border-radius:999px;
-      padding:7px 11px;
-      font-size:.92rem;
-      background:#0d172c;
-    }
-    nav a.cta{
-      border-color:var(--neon);
-      box-shadow:0 0 14px rgba(0,229,255,.18);
-    }
-
-    .hero{padding:78px 0 40px}
-    .kicker{color:#9edfff;font-weight:700;letter-spacing:.4px;text-transform:uppercase;font-size:.83rem}
-    h1{font-size:clamp(1.9rem,4vw,3.1rem);line-height:1.12;margin:.4rem 0 .8rem}
-    h2{font-size:clamp(1.3rem,2.4vw,2rem);margin:0 0 14px}
-    h3{margin:0 0 8px}
-    .lead{font-size:1.05rem;color:#dbe8ff}
-    .muted{color:var(--muted)}
-    .list{margin:0;padding-left:18px}
-    .pill{
-      display:inline-block;
-      padding:7px 11px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:#0d172c;
-      color:#d7e8ff;
-      font-size:.88rem;
-      margin:4px 6px 0 0;
-    }
-    .btn{
-      display:inline-block;padding:11px 16px;border-radius:10px;border:1px solid var(--line);
-      color:#dff6ff;background:#101a31;font-weight:700;
-    }
-    .btn-primary{
-      border-color:var(--neon);
-      background:linear-gradient(90deg,#083642,#212c4e);
-      box-shadow:0 0 18px rgba(0,229,255,.18);
-    }
-
-    .timeline{display:grid;gap:12px}
-    .timeline .item{
-      border:1px solid var(--line);
-      border-radius:12px;
-      padding:14px;
-      background:#0b1428;
-    }
-    .timeline .year{font-weight:800;color:#8fdfff}
-
-    .links-registry a{word-break:break-word}
-
-    form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media (max-width:760px){form .row{grid-template-columns:1fr}}
-    label{display:block;margin-bottom:6px}
-    input,textarea{
-      width:100%;
-      padding:12px;
-      border-radius:10px;
-      border:1px solid #2a3b5d;
-      background:#0b1428;
-      color:#e8f0ff;
-      outline:none;
-    }
-    input:focus,textarea:focus{
-      border-color:var(--neon);
-      box-shadow:0 0 0 3px rgba(0,229,255,.15);
-    }
-    textarea{min-height:130px;resize:vertical}
-    .btn-submit{
-      margin-top:10px;
-      padding:12px 16px;
-      border-radius:10px;
-      cursor:pointer;
-      border:1px solid rgba(0,229,255,.55);
-      background:#122344;
-      color:#eaffff;
-      font-weight:800;
-      box-shadow:0 0 12px rgba(0,229,255,.22);
-    }
-    .form-note{font-size:.9rem;margin-top:10px}
-
-    footer{
-      padding:26px 0 40px;
-      color:#95a8c7;
-      border-top:1px solid var(--line);
-      margin-top:30px;
-    }
-
-    /* Cyber layer */
-    .cyber-bg{
-      position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
-    }
-    .cyber-grid{
-      position:absolute;inset:-20%;
-      background:
-        linear-gradient(rgba(0,229,255,.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(124,58,237,.08) 1px, transparent 1px);
-      background-size:44px 44px,44px 44px;
-      transform:perspective(700px) rotateX(58deg) translateY(8%);
-      animation:gridDrift 18s linear infinite;
-      filter:drop-shadow(0 0 8px rgba(0,229,255,.15));
-    }
-    @keyframes gridDrift{
-      0%{background-position:0 0,0 0}
-      100%{background-position:0 120px,120px 0}
-    }
-    .cyber-orb{
-      position:absolute;
-      width:36vmax;height:36vmax;border-radius:50%;
-      filter:blur(52px);
-      opacity:.22;
-      will-change:transform;
-    }
-    .orb1{left:-12vmax;top:8vh;background:#00e5ff}
-    .orb2{right:-10vmax;top:22vh;background:#7c3aed}
-    .orb3{left:35vw;bottom:-12vmax;background:#22d3ee}
-    .emoji-field{position:absolute;inset:0;overflow:hidden}
-    .float-emoji{
-      position:absolute;
-      font-size:clamp(14px,1.8vw,22px);
-      opacity:.18;
-      animation:emojiFloat linear infinite;
-      filter:drop-shadow(0 0 6px rgba(0,229,255,.25));
-    }
-    @keyframes emojiFloat{
-      0%{transform:translateY(110vh) translateX(0) rotate(0);opacity:0}
-      10%{opacity:.2}
-      90%{opacity:.2}
-      100%{transform:translateY(-20vh) translateX(24px) rotate(12deg);opacity:0}
-    }
-
-    header,main,footer,.langbar{position:relative;z-index:2}
-    [data-lang="el"]{display:none}
-  </style>
-
-  <!-- JSON-LD Person -->
+  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@graph":[
+    "@context": "https://schema.org",
+    "@graph": [
       {
-        "@type":"Person",
-        "@id":"https://panoskhan.github.io/#person",
-        "name":"Panos Khan",
-        "url":"https://panoskhan.github.io/",
-        "image":"https://panoskhan.github.io/assets/profile.jpg",
-        "jobTitle":"AI & Digital Transformation Consultant",
-        "description":"Web Developer, Sales & Marketing Specialist, and Digital Transformation Consultant based in Greece.",
-        "nationality": {
-          "@type": "Country",
-          "name": "Greece"
-        },
-        "sameAs":[
-          "https://orcid.org",
+        "@type": "Person",
+        "@id": "https://panoskhan.github.io/#person",
+        "name": "Panos Khan",
+        "url": "https://panoskhan.github.io/",
+        "image": "https://panoskhan.github.io/assets/profile.jpg",
+        "jobTitle": "AI & Digital Transformation Consultant",
+        "description": "Web Developer, Sales & Marketing Specialist, and Digital Transformation Consultant based in Greece.",
+        "nationality": { "@type": "Country", "name": "Greece" },
+        "address": { "@type": "PostalAddress", "addressCountry": "GR", "addressLocality": "Athens" },
+        "sameAs": [
+          "https://www.linkedin.com/in/panos-khan-pk",
           "https://panoskhan.github.io/",
           "https://skillshop.credential.net/profile/panoskhan/wallet",
-          "https://www.linkedin.com/in/panos-khan-pk",
-          "https://panoskhan.github.io/tools/website-audit.html",
-          "https://contactout.com/panos-khan-43927",
-          "https://www.crunchbase.com/person/panos-khan",
           "https://about.me/panoskhan",
-          "https://medium.com/@panoskhan40"
+          "https://medium.com/@panoskhan40",
+          "https://www.crunchbase.com/person/panos-khan",
+          "https://commons.wikimedia.org/wiki/User:PanosKhan",
+          "https://www.instagram.com/panoskhan",
+          "https://websitesbykhan.com"
         ],
-        "address":{"@type":"PostalAddress","addressCountry":"GR"}
-      },
-      {
-        "@type":"WebSite",
-        "@id":"https://panoskhan.github.io/#website",
-        "url":"https://panoskhan.github.io/",
-        "name":"Panos Khan",
-        "inLanguage":["en","el"],
-        "publisher":{"@id":"https://panoskhan.github.io/#person"}
-      },
-      {
-        "@type":"WebPage",
-        "@id":"https://panoskhan.github.io/#webpage",
-        "url":"https://panoskhan.github.io/",
-        "name":"Panos Khan | AI & Digital Transformation Consultant",
-        "description":"Official website of Panos Khan — AI & Digital Transformation Consultant, Web Developer, and Sales & Marketing Specialist based in Greece.",
-        "isPartOf":{"@id":"https://panoskhan.github.io/#website"},
-        "about":{"@id":"https://panoskhan.github.io/#person"},
-        "inLanguage":["en","el"]
-      },
-      {
-        "@type":"ProfessionalService",
-        "@id":"https://panoskhan.github.io/#service",
-        "name":"Panos Khan Consulting",
-        "url":"https://panoskhan.github.io/",
-        "areaServed":"Greece",
-        "founder":{"@id":"https://panoskhan.github.io/#person"},
-        "serviceType":[
-          "AI consulting",
-          "Digital transformation consulting",
-          "Web development",
-          "Performance marketing"
+        "hasCredential": [
+          { "@type": "EducationalOccupationalCredential", "name": "Google Ads Apps Certification", "credentialCategory": "certificate", "recognizedBy": { "@type": "Organization", "name": "Google Skillshop" } },
+          { "@type": "EducationalOccupationalCredential", "name": "Google Ads Video Certification", "credentialCategory": "certificate", "recognizedBy": { "@type": "Organization", "name": "Google Skillshop" } },
+          { "@type": "EducationalOccupationalCredential", "name": "Conversion Optimisation Certification", "credentialCategory": "certificate", "recognizedBy": { "@type": "Organization", "name": "Google Skillshop" } },
+          { "@type": "EducationalOccupationalCredential", "name": "Crypto101", "credentialCategory": "certificate", "recognizedBy": { "@type": "Organization", "name": "Blockchain Council" } }
         ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://panoskhan.github.io/#website",
+        "url": "https://panoskhan.github.io/",
+        "name": "Panos Khan",
+        "inLanguage": ["en", "el"],
+        "publisher": { "@id": "https://panoskhan.github.io/#person" },
+        "potentialAction": { "@type": "SearchAction", "target": "https://panoskhan.github.io/?s={search_term_string}", "query-input": "required name=search_term_string" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://panoskhan.github.io/#webpage",
+        "url": "https://panoskhan.github.io/",
+        "name": "Panos Khan | AI & Digital Transformation Consultant",
+        "description": "Official website of Panos Khan — AI & Digital Transformation Consultant, Web Developer, and Growth Strategist based in Greece.",
+        "isPartOf": { "@id": "https://panoskhan.github.io/#website" },
+        "about": { "@id": "https://panoskhan.github.io/#person" },
+        "inLanguage": ["en", "el"],
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://panoskhan.github.io/" }]
+        }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://panoskhan.github.io/#service",
+        "name": "Panos Khan Consulting",
+        "url": "https://panoskhan.github.io/",
+        "areaServed": ["GR", "EU"],
+        "founder": { "@id": "https://panoskhan.github.io/#person" },
+        "serviceType": ["AI consulting", "Digital transformation consulting", "Web development", "Performance marketing", "SEO architecture"]
       }
     ]
   }
   </script>
 </head>
 <body>
+
+  <!-- ─── Background FX ─────────────────────────────── -->
   <div class="cyber-bg" aria-hidden="true">
     <div class="cyber-grid"></div>
     <div class="cyber-orb orb1"></div>
@@ -316,313 +112,958 @@
     <div class="emoji-field" id="emojiField"></div>
   </div>
 
-  <div class="langbar">
+  <!-- ─── Language Bar ─────────────────────────────── -->
+  <div class="langbar" role="navigation" aria-label="Language selector">
     <div class="langbar-inner">
-      <button class="toggle-btn" id="btnEN" aria-pressed="true">EN</button>
-      <button class="toggle-btn" id="btnEL" aria-pressed="false">GR</button>
+      <button class="toggle-btn" id="btnEN" aria-pressed="true" aria-label="Switch to English">EN</button>
+      <button class="toggle-btn" id="btnEL" aria-pressed="false" aria-label="Αλλαγή σε Ελληνικά">GR</button>
     </div>
   </div>
 
-  <header>
-    <div class="nav">
-      <div class="brand">Panos <span>Khan</span></div>
-      <nav>
+  <!-- ─── Navigation ───────────────────────────────── -->
+  <header class="site-header" role="banner">
+    <div class="nav-inner">
+      <a href="/" class="brand" aria-label="Panos Khan — Home">Panos <span>Khan</span></a>
+      <nav class="nav-links" aria-label="Main navigation">
         <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#tools">AI Tools</a>
-        <a href="/tools.html">AI Tools Lab</a>
-        <a href="#process">Method</a>
-        <a href="#industries">Industries</a>
-        <a href="#stack">Stack</a>
-        <a href="#achievements">Achievements</a>
-        <a href="#credentials">Credentials</a>
-        <a href="#links">Links</a>
-        <a class="cta" href="#consultation">Consultation</a>
+        <a href="#transformation">Services</a>
+        <a href="#ai">AI Tools</a>
+        <a href="#projects">Projects</a>
+        <a href="#articles">Blog</a>
+        <a href="#certifications">Credentials</a>
+        <a href="/tools.html">Tools Lab</a>
+        <a href="#contact" class="nav-cta">Consultation</a>
       </nav>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navDrawer">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <main>
-    <section class="hero container">
-      <p class="kicker" data-lang="en">Official Professional Website</p>
-      <p class="kicker" data-lang="el">Επίσημη Επαγγελματική Ιστοσελίδα</p>
+  <!-- ─── Mobile Nav Drawer ─────────────────────────── -->
+  <div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <div class="nav-drawer-overlay" id="navOverlay"></div>
+    <div class="nav-drawer-panel">
+      <div class="nav-drawer-close">
+        <button id="navClose" aria-label="Close navigation menu">✕</button>
+      </div>
+      <nav class="nav-drawer-links" aria-label="Mobile navigation">
+        <a href="#about">About</a>
+        <a href="#transformation">AI &amp; Digital Transformation</a>
+        <a href="#ai">Panos Khan AI</a>
+        <a href="#tools-lab">Panos Khan Tools</a>
+        <a href="#projects">Featured Projects</a>
+        <a href="#research">Research &amp; Insights</a>
+        <a href="#articles">Latest Articles</a>
+        <a href="#certifications">Certifications</a>
+        <a href="/tools.html">Tools Lab</a>
+        <a href="#contact" class="nav-cta">Book Consultation</a>
+      </nav>
+    </div>
+  </div>
 
-      <h1 data-lang="en">AI, Web Engineering & Growth Systems for Organizations That Want Measurable Results.</h1>
-      <h1 data-lang="el">AI, Web Engineering και Συστήματα Ανάπτυξης για Οργανισμούς που Θέλουν Μετρήσιμα Αποτελέσματα.</h1>
+  <main id="main-content">
 
-      <p class="lead" data-lang="en">I am Panos Khan, an AI & Digital Transformation Consultant based in Greece, combining technical web development with performance-driven marketing strategy.</p>
-      <p class="lead" data-lang="el">Είμαι ο Panos Khan, AI & Digital Transformation Consultant με έδρα την Ελλάδα, και συνδυάζω τεχνική ανάπτυξη ιστοσελίδων με στρατηγική marketing προσανατολισμένη στα αποτελέσματα.</p>
+    <!-- ══════════════════════════════════════════════════ -->
+    <!--  1. HERO                                          -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <section class="hero container" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <p class="kicker" data-lang="en">Official Professional Website</p>
+          <p class="kicker" data-lang="el">Επίσημη Επαγγελματική Ιστοσελίδα</p>
 
-      <div style="margin-top:14px">
-        <a class="btn btn-primary" href="#consultation" data-lang="en">Book Consultation</a>
-        <a class="btn btn-primary" href="#consultation" data-lang="el">Κλείστε Συνεδρία</a>
-        <a class="btn" href="#links" style="margin-left:8px" data-lang="en">View Verification Links</a>
-        <a class="btn" href="#links" style="margin-left:8px" data-lang="el">Δείτε Συνδέσμους Επαλήθευσης</a>
+          <h1 id="hero-heading">
+            <span data-lang="en">AI-Powered Growth <br><span class="gradient-text">for Modern Organizations.</span></span>
+            <span data-lang="el">AI &amp; Ψηφιακός Μετασχηματισμός <br><span class="gradient-text">για Σύγχρονους Οργανισμούς.</span></span>
+          </h1>
+
+          <p class="lead" data-lang="en">
+            I am Panos Khan — AI &amp; Digital Transformation Consultant based in Greece. I combine technical web engineering, SEO architecture, and performance-driven growth strategy to deliver measurable results.
+          </p>
+          <p class="lead" data-lang="el">
+            Είμαι ο Panos Khan — AI &amp; Digital Transformation Consultant με έδρα την Ελλάδα. Συνδυάζω web engineering, SEO αρχιτεκτονική και performance marketing για μετρήσιμα αποτελέσματα.
+          </p>
+
+          <div class="hero-ctas">
+            <a class="btn btn-primary btn-lg" href="#contact" data-lang="en">Book Consultation</a>
+            <a class="btn btn-primary btn-lg" href="#contact" data-lang="el">Κλείστε Συνεδρία</a>
+            <a class="btn btn-lg" href="#ai" data-lang="en">Explore AI Tools</a>
+            <a class="btn btn-lg" href="#ai" data-lang="el">AI Εργαλεία</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-num">10+</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">10+</div>
+              <div class="stat-label">Google Certifications</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">4</div>
+              <div class="stat-label">AI Tools Built</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">GR</div>
+              <div class="stat-label">Based in Greece</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-avatar-ring">
+            <div class="hero-avatar">
+              <img src="/assets/profile.jpg" alt="Panos Khan" width="200" height="200" loading="eager" onerror="this.style.display='none';this.parentElement.innerHTML='🤖';" />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="about" class="section container">
-      <div class="card">
-        <h2 data-lang="en">About</h2>
-        <h2 data-lang="el">Σχετικά</h2>
-        <p data-lang="en">
-          Panos Khan is a versatile Web Developer and certified Sales & Marketing Specialist with over a decade of hands-on experience driving digital transformation.
-          Strategically based in Greece, he combines responsive front-end development, SEO-focused web architecture, and measurable performance marketing.
-        </p>
-        <p data-lang="el">
-          Ο Panos Khan είναι ευέλικτος Web Developer και πιστοποιημένος Sales & Marketing Specialist με περισσότερα από δέκα χρόνια πρακτικής εμπειρίας στον ψηφιακό μετασχηματισμό.
-          Με έδρα την Ελλάδα, συνδυάζει responsive front-end development, SEO-focused αρχιτεκτονική ιστοσελίδων και performance marketing με μετρήσιμα αποτελέσματα.
-        </p>
+    <!-- ══════════════════════════════════════════════════ -->
+    <!--  2. ABOUT PANOS KHAN                              -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <section id="about" class="section container" aria-labelledby="about-heading">
+      <div class="section-header reveal">
+        <p class="kicker" data-lang="en">Who I Am</p>
+        <p class="kicker" data-lang="el">Ποιος Είμαι</p>
+        <h2 id="about-heading" data-lang="en">About Panos Khan</h2>
+        <h2 data-lang="el">Σχετικά με τον Panos Khan</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-bio card reveal">
+          <p data-lang="en">
+            Panos Khan is a versatile Web Developer and certified Sales &amp; Marketing Specialist with over a decade of hands-on experience driving digital transformation. Strategically based in Greece, he combines responsive front-end development, AI-ready SEO architecture, and measurable performance marketing to help organizations grow.
+          </p>
+          <p data-lang="el">
+            Ο Panos Khan είναι ευέλικτος Web Developer και πιστοποιημένος Sales &amp; Marketing Specialist με περισσότερα από δέκα χρόνια πρακτικής εμπειρίας στον ψηφιακό μετασχηματισμό. Με έδρα την Ελλάδα, συνδυάζει responsive front-end development, AI-ready SEO αρχιτεκτονική και performance marketing.
+          </p>
+          <p data-lang="en">
+            His cross-disciplinary model unifies technical implementation with strategic marketing — delivering end-to-end digital transformation for startups, SMEs, and service businesses across Greece and Europe.
+          </p>
+          <p data-lang="el">
+            Το cross-disciplinary μοντέλο του ενώνει τεχνική υλοποίηση με στρατηγικό marketing — δίνοντας ολοκληρωμένο digital transformation για startups, ΜΜΕ και επιχειρήσεις σε Ελλάδα και Ευρώπη.
+          </p>
+          <div style="margin-top:16px">
+            <span class="pill">Web Development</span>
+            <span class="pill">AI Consulting</span>
+            <span class="pill">SEO Architecture</span>
+            <span class="pill">Google Ads</span>
+            <span class="pill">Conversion Optimization</span>
+            <span class="pill">Digital Transformation</span>
+            <span class="pill">Performance Marketing</span>
+            <span class="pill">Blockchain / Crypto</span>
+          </div>
+        </div>
+
+        <div class="about-facts reveal reveal-delay-1">
+          <div class="fact-item">
+            <span class="fact-icon">📍</span>
+            <div>
+              <div class="fact-label">Location</div>
+              <div class="fact-value">Athens, Greece</div>
+            </div>
+          </div>
+          <div class="fact-item">
+            <span class="fact-icon">💼</span>
+            <div>
+              <div class="fact-label">Primary Role</div>
+              <div class="fact-value">AI &amp; Digital Transformation Consultant</div>
+            </div>
+          </div>
+          <div class="fact-item">
+            <span class="fact-icon">🗓️</span>
+            <div>
+              <div class="fact-label">Self-Employed Since</div>
+              <div class="fact-value">April 5, 2002</div>
+            </div>
+          </div>
+          <div class="fact-item">
+            <span class="fact-icon">🏢</span>
+            <div>
+              <div class="fact-label">Notable Collaboration</div>
+              <div class="fact-value">AliRoom — Marketing Team</div>
+            </div>
+          </div>
+          <div class="fact-item">
+            <span class="fact-icon">🎓</span>
+            <div>
+              <div class="fact-label">Certifications</div>
+              <div class="fact-value">10+ Google Skillshop &amp; Industry</div>
+            </div>
+          </div>
+          <div class="fact-item">
+            <span class="fact-icon">🌐</span>
+            <div>
+              <div class="fact-label">Portfolio</div>
+              <div class="fact-value"><a href="https://websitesbykhan.com" target="_blank" rel="noopener">websitesbykhan.com</a></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="services" class="section container">
-      <h2 data-lang="en">Services</h2>
-      <h2 data-lang="el">Υπηρεσίες</h2>
+    <!-- ══════════════════════════════════════════════════ -->
+    <!--  3. AI & DIGITAL TRANSFORMATION                   -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <section id="transformation" class="section container" aria-labelledby="transformation-heading">
+      <div class="section-header reveal">
+        <p class="kicker" data-lang="en">Core Services</p>
+        <p class="kicker" data-lang="el">Βασικές Υπηρεσίες</p>
+        <h2 id="transformation-heading" data-lang="en">AI &amp; Digital Transformation</h2>
+        <h2 data-lang="el">AI &amp; Ψηφιακός Μετασχηματισμός</h2>
+        <p class="muted" data-lang="en">A unified approach that turns technology, data, and strategy into measurable business growth.</p>
+        <p class="muted" data-lang="el">Μια ενιαία προσέγγιση που μετατρέπει τεχνολογία, δεδομένα και στρατηγική σε μετρήσιμη ανάπτυξη.</p>
+      </div>
+
+      <!-- Transformation Pillars -->
+      <div class="pillars-grid mb-32">
+        <div class="pillar-card reveal">
+          <div class="pillar-icon">🧠</div>
+          <h3>AI Strategy</h3>
+          <p class="muted" style="font-size:.87rem">AI-readiness assessments, use-case mapping, and implementation roadmaps tailored to your business.</p>
+        </div>
+        <div class="pillar-card reveal reveal-delay-1">
+          <div class="pillar-icon">🌐</div>
+          <h3>Web Engineering</h3>
+          <p class="muted" style="font-size:.87rem">Responsive, performant front-end builds with AI-ready architecture, speed optimization, and security.</p>
+        </div>
+        <div class="pillar-card reveal reveal-delay-2">
+          <div class="pillar-icon">📈</div>
+          <h3>Growth Systems</h3>
+          <p class="muted" style="font-size:.87rem">Performance marketing, Google Ads, CRO loops, and funnel engineering for measurable ROI.</p>
+        </div>
+        <div class="pillar-card reveal reveal-delay-3">
+          <div class="pillar-icon">🔍</div>
+          <h3>SEO Architecture</h3>
+          <p class="muted" style="font-size:.87rem">Entity-based technical SEO, schema markup, content strategy, and authority building.</p>
+        </div>
+      </div>
+
+      <!-- Services Grid -->
       <div class="grid grid-3">
-        <article class="card">
+        <article class="card reveal">
+          <div class="card-icon">🏗️</div>
           <h3>AI-Ready Website Architecture</h3>
-          <ul class="list">
-            <li>Entity-based page structures</li>
-            <li>Technical SEO + schema strategy</li>
-            <li>Speed and UX optimization</li>
+          <ul class="cert-list mt-8">
+            <li><span class="cert-year">→</span> Entity-based page structures</li>
+            <li><span class="cert-year">→</span> Technical SEO + schema strategy</li>
+            <li><span class="cert-year">→</span> Speed and Core Web Vitals</li>
+            <li><span class="cert-year">→</span> Structured data implementation</li>
           </ul>
         </article>
-        <article class="card">
-          <h3>Web Engineering & Development</h3>
-          <ul class="list">
-            <li>Responsive front-end builds</li>
-            <li>WordPress & custom frameworks</li>
-            <li>Security layers, SSL, backups</li>
+        <article class="card reveal reveal-delay-1">
+          <div class="card-icon">💻</div>
+          <h3>Web Engineering &amp; Development</h3>
+          <ul class="cert-list mt-8">
+            <li><span class="cert-year">→</span> Responsive front-end builds</li>
+            <li><span class="cert-year">→</span> WordPress &amp; custom frameworks</li>
+            <li><span class="cert-year">→</span> Security layers, SSL, backups</li>
+            <li><span class="cert-year">→</span> Analytics &amp; data layer setup</li>
           </ul>
         </article>
-        <article class="card">
+        <article class="card reveal reveal-delay-2">
+          <div class="card-icon">🚀</div>
           <h3>Performance Marketing Systems</h3>
-          <ul class="list">
-            <li>Google Ads Apps / Display / Video support</li>
-            <li>Conversion rate optimization workflows</li>
-            <li>Retargeting and funnel improvement</li>
+          <ul class="cert-list mt-8">
+            <li><span class="cert-year">→</span> Google Ads Apps / Display / Video</li>
+            <li><span class="cert-year">→</span> Conversion rate optimization</li>
+            <li><span class="cert-year">→</span> Retargeting &amp; funnel improvement</li>
+            <li><span class="cert-year">→</span> GA4 reporting &amp; insights</li>
           </ul>
         </article>
       </div>
+
+      <!-- Process Timeline -->
+      <div class="card mt-32 reveal">
+        <h3 data-lang="en" style="margin-bottom:20px">Engagement Process</h3>
+        <h3 data-lang="el" style="margin-bottom:20px">Διαδικασία Συνεργασίας</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-step">01</div>
+            <div class="timeline-body">
+              <strong data-lang="en">Discovery &amp; Diagnostic Audit</strong>
+              <strong data-lang="el">Ανακάλυψη &amp; Διαγνωστικός Έλεγχος</strong>
+              <p class="muted" style="font-size:.87rem" data-lang="en">Deep dive into your current digital presence, goals, and gaps.</p>
+              <p class="muted" style="font-size:.87rem" data-lang="el">Βαθιά ανάλυση της ψηφιακής σας παρουσίας, στόχων και κενών.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-step">02</div>
+            <div class="timeline-body">
+              <strong data-lang="en">Architecture Blueprint</strong>
+              <strong data-lang="el">Αρχιτεκτονικό Σχέδιο</strong>
+              <p class="muted" style="font-size:.87rem" data-lang="en">Custom strategy and technical roadmap for your transformation.</p>
+              <p class="muted" style="font-size:.87rem" data-lang="el">Προσαρμοσμένη στρατηγική και τεχνικό roadmap.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-step">03</div>
+            <div class="timeline-body">
+              <strong data-lang="en">Implementation Sprint</strong>
+              <strong data-lang="el">Sprint Υλοποίησης</strong>
+              <p class="muted" style="font-size:.87rem" data-lang="en">Rapid, focused execution of the agreed deliverables.</p>
+              <p class="muted" style="font-size:.87rem" data-lang="el">Γρήγορη, εστιασμένη εκτέλεση των συμφωνημένων παραδοτέων.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-step">04</div>
+            <div class="timeline-body">
+              <strong data-lang="en">Launch &amp; Stabilization</strong>
+              <strong data-lang="el">Λανσάρισμα &amp; Σταθεροποίηση</strong>
+              <p class="muted" style="font-size:.87rem" data-lang="en">Monitoring, performance checks, and quick-win optimizations.</p>
+              <p class="muted" style="font-size:.87rem" data-lang="el">Παρακολούθηση, έλεγχοι απόδοσης και γρήγορες βελτιστοποιήσεις.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-step">05</div>
+            <div class="timeline-body">
+              <strong data-lang="en">Growth Iteration &amp; Reporting</strong>
+              <strong data-lang="el">Επανάληψη Ανάπτυξης &amp; Αναφορές</strong>
+              <p class="muted" style="font-size:.87rem" data-lang="en">Ongoing data-driven improvements and transparent reporting.</p>
+              <p class="muted" style="font-size:.87rem" data-lang="el">Συνεχείς βελτιώσεις βασισμένες σε δεδομένα και διαφανείς αναφορές.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="tools" class="section container">
-      <h2 data-lang="en">AI Tools &amp; Portfolio Projects</h2>
-      <h2 data-lang="el">AI Εργαλεία &amp; Portfolio Projects</h2>
-      <div class="grid grid-3">
-        <article class="card">
+    <!-- ══════════════════════════════════════════════════ -->
+    <!--  4. PANOS KHAN AI                                 -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <section id="ai" class="section container" aria-labelledby="ai-heading">
+      <div class="section-header reveal">
+        <p class="kicker" data-lang="en">AI-Powered Tools</p>
+        <p class="kicker" data-lang="el">AI-Powered Εργαλεία</p>
+        <h2 id="ai-heading" data-lang="en">Panos Khan AI</h2>
+        <h2 data-lang="el">Panos Khan AI</h2>
+        <p class="muted" data-lang="en">A suite of practical AI tools built for consultants, marketers, and web professionals.</p>
+        <p class="muted" data-lang="el">Μια σειρά πρακτικών AI εργαλείων για consultants, marketers και web professionals.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card tool-card reveal">
+          <div class="card-tag">AI Tool</div>
+          <div class="tool-icon">🔍</div>
+          <div class="tool-status" data-lang="en">Live</div>
+          <div class="tool-status" data-lang="el">Ενεργό</div>
           <h3>Khan AI Website Audit Assistant</h3>
-          <p class="muted" data-lang="en">Consultant-style website review for messaging clarity, SEO opportunities, UX trust signals, and conversion priorities.</p>
-          <p class="muted" data-lang="el">Demo έλεγχος ιστοσελίδας με consultant λογική για positioning, SEO, UX εμπιστοσύνη και conversion βελτιώσεις.</p>
-          <a class="btn btn-primary" href="/tools/website-audit.html" data-lang="en">Open Tool</a>
-          <a class="btn btn-primary" href="/tools/website-audit.html" data-lang="el">Άνοιγμα Εργαλείου</a>
+          <p class="muted" data-lang="en">Consultant-style website review for messaging clarity, SEO opportunities, UX trust signals, and conversion priorities. Get actionable insights fast.</p>
+          <p class="muted" data-lang="el">Έλεγχος ιστοσελίδας με consultant λογική για positioning, SEO, UX εμπιστοσύνη και conversion βελτιώσεις.</p>
+          <div class="mt-16" style="display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn btn-primary btn-sm" href="/tools/website-audit.html" data-lang="en">Open Tool</a>
+            <a class="btn btn-primary btn-sm" href="/tools/website-audit.html" data-lang="el">Άνοιγμα Εργαλείου</a>
+            <span class="tag cyan">SEO</span>
+            <span class="tag">UX Audit</span>
+          </div>
         </article>
-        <article class="card">
+
+        <article class="card tool-card reveal reveal-delay-1">
+          <div class="card-tag">AI Tool</div>
+          <div class="tool-icon">📝</div>
+          <div class="tool-status" data-lang="en">Live</div>
+          <div class="tool-status" data-lang="el">Ενεργό</div>
           <h3>Khan AI SEO Brief Generator</h3>
-          <p class="muted" data-lang="en">Generate practical SEO content briefs with title options, structured outlines, FAQs, schema ideas, and search intent guidance.</p>
+          <p class="muted" data-lang="en">Generate practical SEO content briefs with title options, structured H2 outlines, FAQs, schema ideas, and search intent guidance.</p>
           <p class="muted" data-lang="el">Παράγει πρακτικά SEO briefs με τίτλους, H2 outline, FAQs, schema προτάσεις και κατεύθυνση search intent.</p>
-          <a class="btn btn-primary" href="/tools/seo-brief.html" data-lang="en">Open Tool</a>
-          <a class="btn btn-primary" href="/tools/seo-brief.html" data-lang="el">Άνοιγμα Εργαλείου</a>
+          <div class="mt-16" style="display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn btn-primary btn-sm" href="/tools/seo-brief.html" data-lang="en">Open Tool</a>
+            <a class="btn btn-primary btn-sm" href="/tools/seo-brief.html" data-lang="el">Άνοιγμα Εργαλείου</a>
+            <span class="tag cyan">Content</span>
+            <span class="tag">SEO</span>
+          </div>
         </article>
-        <article class="card">
+
+        <article class="card tool-card reveal reveal-delay-2">
+          <div class="card-tag">AI Tool</div>
+          <div class="tool-icon">📣</div>
+          <div class="tool-status" data-lang="en">Live</div>
+          <div class="tool-status" data-lang="el">Ενεργό</div>
           <h3>Khan AI Ad Copy Studio</h3>
           <p class="muted" data-lang="en">Build ad headline and description variations with CTA ideas and test angles aligned to audience, benefit, and brand tone.</p>
-          <p class="muted" data-lang="el">Δημιουργεί headline/description παραλλαγές, CTA ideas και test angles με βάση audience, benefit και tone.</p>
-          <a class="btn btn-primary" href="/tools/ad-copy-studio.html" data-lang="en">Open Tool</a>
-          <a class="btn btn-primary" href="/tools/ad-copy-studio.html" data-lang="el">Άνοιγμα Εργαλείου</a>
+          <p class="muted" data-lang="el">Δημιουργεί headline/description παραλλαγές, CTA ideas και test angles με βάση audience, benefit και brand tone.</p>
+          <div class="mt-16" style="display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn btn-primary btn-sm" href="/tools/ad-copy-studio.html" data-lang="en">Open Tool</a>
+            <a class="btn btn-primary btn-sm" href="/tools/ad-copy-studio.html" data-lang="el">Άνοιγμα Εργαλείου</a>
+            <span class="tag cyan">Ads</span>
+            <span class="tag">Copywriting</span>
+          </div>
         </article>
-        <article class="card">
+
+        <article class="card tool-card reveal reveal-delay-3">
+          <div class="card-tag card-tag purple">Tools Lab</div>
+          <div class="tool-icon">⚗️</div>
+          <div class="tool-status" data-lang="en">Live</div>
+          <div class="tool-status" data-lang="el">Ενεργό</div>
           <h3>Panos Khan AI Tools Lab</h3>
-          <p class="muted" data-lang="en">Explore 10 practical business AI tools for readiness, process design, risk simulation, trust, and transformation planning.</p>
-          <p class="muted" data-lang="el">Ανακαλύψτε 10 πρακτικά AI εργαλεία για readiness, process design, risk simulation, trust και transformation planning.</p>
-          <a class="btn btn-primary" href="/tools.html" data-lang="en">Open Tools Lab</a>
-          <a class="btn btn-primary" href="/tools.html" data-lang="el">Άνοιγμα Tools Lab</a>
+          <p class="muted" data-lang="en">Explore 10+ practical business AI tools for readiness assessment, process design, risk simulation, AI trust analysis, and transformation planning.</p>
+          <p class="muted" data-lang="el">Ανακαλύψτε 10+ πρακτικά AI εργαλεία για readiness, process design, risk simulation, trust και transformation planning.</p>
+          <div class="mt-16" style="display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn btn-primary btn-sm" href="/tools.html" data-lang="en">Open Tools Lab</a>
+            <a class="btn btn-primary btn-sm" href="/tools.html" data-lang="el">Άνοιγμα Tools Lab</a>
+            <span class="tag purple">10+ Tools</span>
+          </div>
         </article>
       </div>
     </section>
 
-    <section id="process" class="section container">
-      <h2 data-lang="en">Process / Methodology</h2>
-      <h2 data-lang="el">Διαδικασία / Μεθοδολογία</h2>
-      <div class="timeline">
-        <div class="item"><span class="year">01</span> — Discovery & diagnostic audit</div>
-        <div class="item"><span class="year">02</span> — Architecture blueprint</div>
-        <div class="item"><span class="year">03</span> — Implementation sprint</div>
-        <div class="item"><span class="year">04</span> — Launch & stabilization</div>
-        <div class="item"><span class="year">05</span> — Growth iteration & reporting</div>
-      </div>
-    </section>
-
-    <section id="industries" class="section container">
-      <h2>Industries</h2>
-      <div class="card">
-        <p class="muted">Startups, SMEs, education-focused projects, service businesses, and e-commerce growth initiatives.</p>
-        <span class="pill">E-commerce</span>
-        <span class="pill">Education</span>
-        <span class="pill">Professional Services</span>
-        <span class="pill">Local Business</span>
-      </div>
-    </section>
-
-    <section id="stack" class="section container">
-      <h2>Technology & Marketing Stack</h2>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Engineering Stack</h3>
-          <ul class="list">
-            <li>HTML5 / CSS3 / JavaScript</li>
-            <li>WordPress / Squarespace</li>
-            <li>SEO architecture / schema markup</li>
-            <li>Tracking + analytics instrumentation</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Growth Stack</h3>
-          <ul class="list">
-            <li>Google Ads (Apps, Display, Video)</li>
-            <li>GA4 reporting & insights</li>
-            <li>A/B testing and CRO loops</li>
-            <li>Audience segmentation and retargeting</li>
-          </ul>
+    <!-- ══════════════════════════════════════════════════ -->
+    <!--  5. PANOS KHAN TOOLS                              -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <section id="tools-lab" class="cta-band" aria-labelledby="tools-heading">
+      <div class="container">
+        <p class="kicker" data-lang="en">Full Collection</p>
+        <p class="kicker" data-lang="el">Πλήρης Συλλογή</p>
+        <h2 id="tools-heading" data-lang="en">Panos Khan Tools</h2>
+        <h2 data-lang="el">Panos Khan Tools</h2>
+        <p data-lang="en">The AI Tools Lab houses 10+ interactive tools designed for AI adoption, business transformation, and strategic planning.</p>
+        <p data-lang="el">Το AI Tools Lab περιέχει 10+ διαδραστικά εργαλεία για AI adoption, επιχειρηματικό μετασχηματισμό και στρατηγικό σχεδιασμό.</p>
+        <div class="cta-band-btns">
+          <a class="btn btn-primary btn-lg" href="/tools.html" data-lang="en">Explore All Tools</a>
+          <a class="btn btn-primary btn-lg" href="/tools.html" data-lang="el">Εξερεύνηση Εργαλείων</a>
+          <a class="btn btn-lg" href="/services.html" data-lang="en">View Services</a>
+          <a class="btn btn-lg" href="/services.html" data-lang="el">Υπηρεσίες</a>
         </div>
       </div>
     </section>
 
-    <section id="achievements" class="section container">
-      <h2>Case-Style Achievements</h2>
+    <!-- ══════════════════════════════════════════════════ -->
+    <!--  6. FEATURED PROJECTS                             -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <section id="projects" class="section container" aria-labelledby="projects-heading">
+      <div class="section-header reveal">
+        <p class="kicker" data-lang="en">Work</p>
+        <p class="kicker" data-lang="el">Έργα</p>
+        <h2 id="projects-heading" data-lang="en">Featured Projects</h2>
+        <h2 data-lang="el">Επιλεγμένα Έργα</h2>
+        <p class="muted" data-lang="en">A selection of projects showcasing cross-disciplinary expertise in AI, web development, and digital growth.</p>
+        <p class="muted" data-lang="el">Επιλεγμένα έργα που αναδεικνύουν εμπειρογνωμοσύνη σε AI, web development και digital growth.</p>
+      </div>
+
       <div class="grid grid-3">
-        <div class="card"><h3>10+ Years Experience</h3><p class="muted">Long-term delivery across web engineering and growth systems.</p></div>
-        <div class="card"><h3>AliRoom Marketing Team</h3><p class="muted">Multi-year campaign contribution and digital execution support.</p></div>
-        <div class="card"><h3>Cross-Disciplinary Model</h3><p class="muted">Unified technical + marketing implementation for measurable outcomes.</p></div>
+        <article class="card project-card reveal">
+          <div class="project-meta">
+            <span class="card-tag">Portfolio</span>
+          </div>
+          <h3>Websites by Khan</h3>
+          <p class="muted" data-lang="en">Full-service web development and digital consulting portfolio. Responsive builds, WordPress, and custom front-end solutions.</p>
+          <p class="muted" data-lang="el">Portfolio web development και digital consulting. Responsive builds, WordPress και custom front-end λύσεις.</p>
+          <div class="project-tags">
+            <span class="tag cyan">Web Dev</span>
+            <span class="tag">WordPress</span>
+            <span class="tag">SEO</span>
+          </div>
+          <div class="mt-16">
+            <a class="btn btn-sm" href="https://websitesbykhan.com" target="_blank" rel="noopener" data-lang="en">Visit Site</a>
+            <a class="btn btn-sm" href="https://websitesbykhan.com" target="_blank" rel="noopener" data-lang="el">Επίσκεψη</a>
+          </div>
+        </article>
+
+        <article class="card project-card reveal reveal-delay-1">
+          <div class="project-meta">
+            <span class="card-tag">AI Platform</span>
+          </div>
+          <h3>Panos Khan AI Tools Lab</h3>
+          <p class="muted" data-lang="en">A suite of 10+ interactive AI tools for business transformation planning, risk simulation, AI readiness assessment, and process design.</p>
+          <p class="muted" data-lang="el">Μια σειρά από 10+ διαδραστικά AI εργαλεία για transformation planning, risk simulation και AI readiness.</p>
+          <div class="project-tags">
+            <span class="tag cyan">AI</span>
+            <span class="tag purple">10+ Tools</span>
+            <span class="tag">Interactive</span>
+          </div>
+          <div class="mt-16">
+            <a class="btn btn-sm btn-primary" href="/tools.html" data-lang="en">Open Lab</a>
+            <a class="btn btn-sm btn-primary" href="/tools.html" data-lang="el">Άνοιγμα Lab</a>
+          </div>
+        </article>
+
+        <article class="card project-card reveal reveal-delay-2">
+          <div class="project-meta">
+            <span class="card-tag">Marketing</span>
+          </div>
+          <h3>AliRoom Marketing Campaign</h3>
+          <p class="muted" data-lang="en">Multi-year marketing team contribution including digital campaign management, conversion optimization, and performance advertising strategy.</p>
+          <p class="muted" data-lang="el">Πολυετής συνεισφορά στο marketing team, συμπεριλαμβανομένης διαχείρισης καμπανιών και CRO.</p>
+          <div class="project-tags">
+            <span class="tag">Google Ads</span>
+            <span class="tag">CRO</span>
+            <span class="tag">GA4</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- Industries & Stack -->
+      <div class="grid grid-2 mt-24">
+        <div class="card reveal">
+          <h3 data-lang="en">Industries Served</h3>
+          <h3 data-lang="el">Κλάδοι</h3>
+          <p class="muted mt-8" data-lang="en">Startups, SMEs, education-focused projects, service businesses, and e-commerce growth initiatives.</p>
+          <p class="muted mt-8" data-lang="el">Startups, ΜΜΕ, εκπαιδευτικά projects, επιχειρήσεις υπηρεσιών και e-commerce.</p>
+          <div class="mt-12">
+            <span class="pill">E-commerce</span>
+            <span class="pill">Education</span>
+            <span class="pill">Professional Services</span>
+            <span class="pill">Local Business</span>
+            <span class="pill">Startups</span>
+          </div>
+        </div>
+        <div class="card reveal reveal-delay-1">
+          <h3>Technology &amp; Marketing Stack</h3>
+          <div class="grid grid-2 mt-12" style="gap:10px">
+            <div>
+              <p style="font-size:.78rem;font-weight:700;color:var(--text-subtle);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Engineering</p>
+              <div>
+                <span class="pill">HTML5 / CSS3 / JS</span>
+                <span class="pill">WordPress</span>
+                <span class="pill">Schema Markup</span>
+                <span class="pill">Analytics</span>
+              </div>
+            </div>
+            <div>
+              <p style="font-size:.78rem;font-weight:700;color:var(--text-subtle);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Growth</p>
+              <div>
+                <span class="pill">Google Ads</span>
+                <span class="pill">GA4</span>
+                <span class="pill">A/B Testing</span>
+                <span class="pill">CRO</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="credentials" class="section container">
-      <h2>Certifications, Credentials & Career Record</h2>
-      <div class="card" style="margin-bottom:16px">
+    <!-- ══════════════════════════════════════════════════ -->
+    <!--  7. RESEARCH & INSIGHTS                           -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <section id="research" class="section container" aria-labelledby="research-heading">
+      <div class="section-header reveal">
+        <p class="kicker" data-lang="en">Knowledge</p>
+        <p class="kicker" data-lang="el">Γνώση</p>
+        <h2 id="research-heading" data-lang="en">Research &amp; Insights</h2>
+        <h2 data-lang="el">Έρευνα &amp; Insights</h2>
+        <p class="muted" data-lang="en">Key focus areas combining AI, digital transformation, and practical marketing intelligence.</p>
+        <p class="muted" data-lang="el">Βασικά θέματα που συνδυάζουν AI, ψηφιακό μετασχηματισμό και πρακτική marketing intelligence.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card insight-card reveal">
+          <div class="card-tag">AI Research</div>
+          <h3 data-lang="en">AI Adoption for SMEs</h3>
+          <h3 data-lang="el">AI Adoption για ΜΜΕ</h3>
+          <p class="muted" data-lang="en">Practical frameworks for small and mid-size businesses to identify high-ROI AI use cases and avoid common implementation pitfalls.</p>
+          <p class="muted" data-lang="el">Πρακτικά frameworks για ΜΜΕ για εντοπισμό AI use cases υψηλού ROI και αποφυγή παγίδων υλοποίησης.</p>
+        </div>
+        <div class="card insight-card purple reveal reveal-delay-1">
+          <div class="card-tag card-tag purple">SEO Strategy</div>
+          <h3 data-lang="en">Entity SEO &amp; AI Search</h3>
+          <h3 data-lang="el">Entity SEO &amp; AI Search</h3>
+          <p class="muted" data-lang="en">How entity-based SEO architecture positions websites for AI-generated search results, knowledge graphs, and semantic relevance.</p>
+          <p class="muted" data-lang="el">Πώς η entity-based αρχιτεκτονική SEO τοποθετεί ιστοσελίδες για AI search, knowledge graphs και σημασιολογική συνάφεια.</p>
+        </div>
+        <div class="card insight-card reveal reveal-delay-2">
+          <div class="card-tag">Growth</div>
+          <h3 data-lang="en">Conversion-First Web Design</h3>
+          <h3 data-lang="el">Web Design Προσανατολισμένο στο Conversion</h3>
+          <p class="muted" data-lang="en">Design and architecture principles that turn website visitors into qualified leads through strategic UX and messaging.</p>
+          <p class="muted" data-lang="el">Αρχές σχεδιασμού που μετατρέπουν επισκέπτες σε qualified leads μέσω στρατηγικού UX και messaging.</p>
+        </div>
+        <div class="card insight-card purple reveal">
+          <div class="card-tag card-tag purple">Marketing Tech</div>
+          <h3 data-lang="en">Performance Marketing Automation</h3>
+          <h3 data-lang="el">Αυτοματοποίηση Performance Marketing</h3>
+          <p class="muted" data-lang="en">Combining Google Ads smart bidding, audience segmentation, and analytics data for self-optimizing campaign systems.</p>
+          <p class="muted" data-lang="el">Συνδυασμός Google Ads smart bidding, audience segmentation και analytics για αυτοβελτιούμενα campaign systems.</p>
+        </div>
+        <div class="card insight-card reveal reveal-delay-1">
+          <div class="card-tag">Blockchain</div>
+          <h3 data-lang="en">Blockchain &amp; Decentralized Systems</h3>
+          <h3 data-lang="el">Blockchain &amp; Αποκεντρωμένα Συστήματα</h3>
+          <p class="muted" data-lang="en">Foundational blockchain concepts, cryptography fundamentals, and practical applications for business trust and transparency.</p>
+          <p class="muted" data-lang="el">Βασικές έννοιες blockchain, θεμέλια κρυπτογραφίας και πρακτικές εφαρμογές για επιχειρηματική εμπιστοσύνη.</p>
+        </div>
+        <div class="card insight-card purple reveal reveal-delay-2">
+          <div class="card-tag card-tag purple">AI Tools</div>
+          <h3 data-lang="en">Generative AI for Business</h3>
+          <h3 data-lang="el">Generative AI για Επιχειρήσεις</h3>
+          <p class="muted" data-lang="en">Leveraging Microsoft, Google, and open-source AI productivity tools to accelerate workflows and reduce operational overhead.</p>
+          <p class="muted" data-lang="el">Αξιοποίηση Microsoft, Google και open-source AI εργαλείων για επιτάχυνση ροών εργασίας.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════ -->
+    <!--  8. LATEST ARTICLES                               -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <section id="articles" class="section container" aria-labelledby="articles-heading">
+      <div class="section-header reveal">
+        <p class="kicker" data-lang="en">Blog</p>
+        <p class="kicker" data-lang="el">Blog</p>
+        <h2 id="articles-heading" data-lang="en">Latest Articles</h2>
+        <h2 data-lang="el">Τελευταία Άρθρα</h2>
+        <p class="muted" data-lang="en">Practical guides on AI tools, prompt engineering, SEO workflows, and digital transformation.</p>
+        <p class="muted" data-lang="el">Πρακτικοί οδηγοί για AI εργαλεία, prompt engineering, SEO workflows και digital transformation.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card article-card reveal">
+          <div class="article-date" data-lang="en">AI Productivity</div>
+          <div class="article-date" data-lang="el">AI Παραγωγικότητα</div>
+          <h3 data-lang="en">How to Use AI for Small Business Content</h3>
+          <h3 data-lang="el">Πώς να χρησιμοποιήσετε AI για περιεχόμενο μικρής επιχείρησης</h3>
+          <p class="muted" data-lang="en">Practical strategies for leveraging generative AI tools to create, optimize, and scale content without a large team.</p>
+          <p class="muted" data-lang="el">Πρακτικές στρατηγικές για αξιοποίηση generative AI εργαλείων για δημιουργία και κλιμάκωση περιεχομένου.</p>
+          <div class="article-footer">
+            <span class="article-cat">AI</span>
+            <a href="/ai-blog.html" class="btn btn-sm" data-lang="en">Read More</a>
+            <a href="/ai-blog.html" class="btn btn-sm" data-lang="el">Διαβάστε Περισσότερα</a>
+          </div>
+        </article>
+
+        <article class="card article-card reveal reveal-delay-1">
+          <div class="article-date" data-lang="en">Prompt Engineering</div>
+          <div class="article-date" data-lang="el">Prompt Engineering</div>
+          <h3 data-lang="en">Prompt Engineering for Marketing Teams</h3>
+          <h3 data-lang="el">Prompt Engineering για Ομάδες Marketing</h3>
+          <p class="muted" data-lang="en">A structured approach to writing AI prompts that consistently produce marketing-ready outputs for ads, email, and social.</p>
+          <p class="muted" data-lang="el">Δομημένη προσέγγιση για γραφή AI prompts που παράγουν marketing-ready αποτελέσματα.</p>
+          <div class="article-footer">
+            <span class="article-cat">Marketing</span>
+            <a href="/ai-blog.html" class="btn btn-sm" data-lang="en">Read More</a>
+            <a href="/ai-blog.html" class="btn btn-sm" data-lang="el">Διαβάστε Περισσότερα</a>
+          </div>
+        </article>
+
+        <article class="card article-card reveal reveal-delay-2">
+          <div class="article-date" data-lang="en">SEO Strategy</div>
+          <div class="article-date" data-lang="el">Στρατηγική SEO</div>
+          <h3 data-lang="en">AI + SEO Topic Authority</h3>
+          <h3 data-lang="el">AI + SEO Topic Authority</h3>
+          <p class="muted" data-lang="en">How to build topical authority in your niche using AI-assisted content planning, entity optimization, and semantic clustering.</p>
+          <p class="muted" data-lang="el">Πώς να χτίσετε topical authority χρησιμοποιώντας AI-assisted content planning και entity optimization.</p>
+          <div class="article-footer">
+            <span class="article-cat">SEO</span>
+            <a href="/ai-blog.html" class="btn btn-sm" data-lang="en">Read More</a>
+            <a href="/ai-blog.html" class="btn btn-sm" data-lang="el">Διαβάστε Περισσότερα</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="section-cta reveal">
+        <a href="/ai-blog.html" class="btn btn-primary" data-lang="en">View All Articles</a>
+        <a href="/ai-blog.html" class="btn btn-primary" data-lang="el">Όλα τα Άρθρα</a>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════ -->
+    <!--  9. CERTIFICATIONS                                -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <section id="certifications" class="section container" aria-labelledby="certs-heading">
+      <div class="section-header reveal">
+        <p class="kicker" data-lang="en">Credentials</p>
+        <p class="kicker" data-lang="el">Πιστοποιητικά</p>
+        <h2 id="certs-heading" data-lang="en">Certifications &amp; Credentials</h2>
+        <h2 data-lang="el">Πιστοποιήσεις &amp; Διαπιστευτήρια</h2>
+        <p class="muted" data-lang="en">Verified professional certifications from Google Skillshop, Blockchain Council, and Microsoft.</p>
+        <p class="muted" data-lang="el">Επαληθευμένες επαγγελματικές πιστοποιήσεις από Google Skillshop, Blockchain Council και Microsoft.</p>
+      </div>
+
+      <div class="card mb-24 reveal">
         <p><strong>Credentials Wallet:</strong> <a href="https://skillshop.credential.net/profile/imrankhan986875/wallet" target="_blank" rel="noopener">skillshop.credential.net/profile/imrankhan986875/wallet</a></p>
-        <p class="muted">Profile: Panos Khan — Athens, Greece | Accredible / Skillshop verified credential record.</p>
+        <p class="muted" style="font-size:.88rem">Profile: Panos Khan — Athens, Greece | Accredible / Skillshop verified credential record.</p>
       </div>
 
       <div class="grid grid-2">
-        <div class="card">
-          <h3>Active / No Expiry</h3>
-          <ul class="list">
-            <li>Conversion Optimisation Certification Exam — Skillshop (Sep 29, 2025)</li>
-            <li>Google Ads Apps Certification — Skillshop (Sep 14, 2025)</li>
-            <li>Conversion Optimisation Certification Exam — Skillshop (Sep 13, 2025)</li>
-            <li>Google Ads Apps Certification — Skillshop (Sep 12, 2025)</li>
-            <li>Grow Offline Sales Certification — Skillshop (Sep 12, 2025)</li>
-            <li>Google Ads Video Certification — Skillshop (Sep 12, 2025)</li>
-            <li>Crypto101 — Blockchain Council (Apr 22, 2024)</li>
-            <li>Advanced Google Analytics Concepts — User uploaded</li>
-            <li>Build Your Generative AI Productivity Skills with Microsoft + LinkedIn — User uploaded</li>
+        <div class="card reveal">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <h3 data-lang="en">Active Certifications</h3>
+            <h3 data-lang="el">Ενεργές Πιστοποιήσεις</h3>
+            <span class="badge-cert badge-active" data-lang="en">No Expiry / Current</span>
+            <span class="badge-cert badge-active" data-lang="el">Ενεργές</span>
+          </div>
+          <ul class="cert-list">
+            <li><span class="cert-year">2025</span> Conversion Optimisation Certification Exam — Skillshop</li>
+            <li><span class="cert-year">2025</span> Google Ads Apps Certification — Skillshop</li>
+            <li><span class="cert-year">2025</span> Conversion Optimisation Certification Exam — Skillshop</li>
+            <li><span class="cert-year">2025</span> Google Ads Apps Certification — Skillshop</li>
+            <li><span class="cert-year">2025</span> Grow Offline Sales Certification — Skillshop</li>
+            <li><span class="cert-year">2025</span> Google Ads Video Certification — Skillshop</li>
+            <li><span class="cert-year">2024</span> Crypto101 — Blockchain Council</li>
+            <li><span class="cert-year">★</span> Advanced Google Analytics Concepts</li>
+            <li><span class="cert-year">★</span> Build Generative AI Productivity Skills — Microsoft + LinkedIn</li>
           </ul>
         </div>
 
-        <div class="card">
-          <h3>Historical / Expired Record</h3>
-          <ul class="list">
-            <li>Conversion Optimisation Certification Exam (Dec 3, 2024 → Dec 3, 2025)</li>
-            <li>Google Ads Apps Certification (Apr 14, 2024 → Apr 14, 2025)</li>
-            <li>Google Ads Search Certification (Apr 14, 2024 → Apr 14, 2025)</li>
-            <li>Google Ads Display Certification (Apr 14, 2024 → Apr 14, 2025)</li>
-            <li>Discover AI-powered Shopping Ads (Apr 14, 2024 → Apr 14, 2025)</li>
-            <li>Manage GA4 Data and Reports (Apr 13, 2024 → Apr 13, 2025)</li>
-            <li>Google Web Designer Creatives (Apr 13, 2024 → Apr 13, 2025)</li>
-            <li>Get Started Using Google Analytics (Apr 11, 2024 → Apr 11, 2025)</li>
+        <div class="card reveal reveal-delay-1">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <h3 data-lang="en">Historical Record</h3>
+            <h3 data-lang="el">Ιστορικό Αρχείο</h3>
+            <span class="badge-cert badge-history" data-lang="en">Expired / Renewed</span>
+            <span class="badge-cert badge-history" data-lang="el">Έληξαν / Ανανεώθηκαν</span>
+          </div>
+          <ul class="cert-list">
+            <li><span class="cert-year">2024</span> Conversion Optimisation Certification Exam (Dec 2024 → Dec 2025)</li>
+            <li><span class="cert-year">2024</span> Google Ads Apps Certification (Apr 2024 → Apr 2025)</li>
+            <li><span class="cert-year">2024</span> Google Ads Search Certification (Apr 2024 → Apr 2025)</li>
+            <li><span class="cert-year">2024</span> Google Ads Display Certification (Apr 2024 → Apr 2025)</li>
+            <li><span class="cert-year">2024</span> Discover AI-powered Shopping Ads (Apr 2024 → Apr 2025)</li>
+            <li><span class="cert-year">2024</span> Manage GA4 Data and Reports (Apr 2024 → Apr 2025)</li>
+            <li><span class="cert-year">2024</span> Google Web Designer Creatives (Apr 2024 → Apr 2025)</li>
+            <li><span class="cert-year">2024</span> Get Started Using Google Analytics (Apr 2024 → Apr 2025)</li>
           </ul>
         </div>
       </div>
 
-      <div class="grid grid-2" style="margin-top:16px">
-        <div class="card">
-          <h3>Skills</h3>
-          <span class="pill">Web Development</span>
-          <span class="pill">SEO</span>
-          <span class="pill">Google Ads</span>
-          <span class="pill">Conversion Optimization</span>
-          <span class="pill">AI Marketing</span>
-          <span class="pill">Cryptography</span>
-          <span class="pill">Cryptocurrency</span>
-        </div>
-        <div class="card">
-          <h3>Work Experience</h3>
-          <ul class="list">
-            <li><strong>Self Employed — Panos Khan</strong> (April 5, 2002 – Present)</li>
-            <li><strong>Marketing Team Member — AliRoom</strong> (multi-year track record)</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="links" class="section container">
-      <h2>Complete Digital Footprint & Link Registry</h2>
-      <div class="card links-registry">
-        <ul class="list">
-          <li><strong>Biography:</strong> <a href="https://www.wikinames.org/wiki/Panos_Khan" target="_blank" rel="noopener">WikiNameNg</a></li>
-          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/panos-khan" target="_blank" rel="noopener">linkedin.com/in/panos-khan</a></li>
-          <li><strong>Wikimedia Commons:</strong> <a href="https://commons.wikimedia.org/wiki/User:PanosKhan" target="_blank" rel="noopener">User:PanosKhan</a></li>
-          <li><strong>Portfolio:</strong> <a href="https://websitesbykhan.com" target="_blank" rel="noopener">websitesbykhan.com</a></li>
-          <li><strong>Instagram:</strong> <a href="https://www.instagram.com/panoskhan" target="_blank" rel="noopener">@panoskhan</a></li>
-          <li><strong>11888 Listing:</strong> <a href="https://11888.gr/white-pages/pannoa-khan" target="_blank" rel="noopener">PANNO A KHAN</a></li>
-          <li><strong>Facebook:</strong> <a href="https://www.facebook.com/panos9khan" target="_blank" rel="noopener">facebook.com/panos9khan</a></li>
-          <li><strong>Credential Wallet:</strong> <a href="https://skillshop.credential.net/profile/imrankhan986875/wallet" target="_blank" rel="noopener">Accredible Skillshop Wallet</a></li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="consultation" class="section container">
-      <div class="card">
-        <h2 data-lang="en">Consultation Request</h2>
-        <h2 data-lang="el">Αίτημα Συνεδρίας</h2>
-        <p class="muted" data-lang="en">Share your goals and current challenges. I will respond with a practical implementation roadmap.</p>
-        <p class="muted" data-lang="el">Μοιραστείτε τους στόχους και τις προκλήσεις σας. Θα λάβετε ένα πρακτικό roadmap υλοποίησης.</p>
-
-        <form action="mailto:panoskhan40@gmail.com" method="POST" enctype="text/plain">
-          <div class="row">
-            <div>
-              <label data-lang="en" for="name">Full Name</label>
-              <label data-lang="el" for="name">Ονοματεπώνυμο</label>
-              <input id="name" type="text" name="name" required />
-            </div>
-            <div>
-              <label for="email">Email</label>
-              <input id="email" type="email" name="email" required />
+      <div class="card mt-24 reveal">
+        <h3 data-lang="en" style="margin-bottom:12px">Work Experience</h3>
+        <h3 data-lang="el" style="margin-bottom:12px">Επαγγελματική Εμπειρία</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-step">▶</div>
+            <div class="timeline-body">
+              <strong>Self Employed — Panos Khan</strong>
+              <p class="muted" style="font-size:.87rem">April 5, 2002 – Present · AI Consulting, Web Engineering, Digital Transformation, SEO, Performance Marketing</p>
             </div>
           </div>
-          <div style="margin-top:10px">
-            <label data-lang="en" for="project_type">Project / Business Type</label>
-            <label data-lang="el" for="project_type">Τύπος Έργου / Επιχείρησης</label>
-            <input id="project_type" type="text" name="project_type" />
+          <div class="timeline-item">
+            <div class="timeline-step">▶</div>
+            <div class="timeline-body">
+              <strong>Marketing Team Member — AliRoom</strong>
+              <p class="muted" style="font-size:.87rem">Multi-year track record · Campaign management, digital execution, performance advertising</p>
+            </div>
           </div>
-          <div style="margin-top:10px">
-            <label data-lang="en" for="message">Message</label>
-            <label data-lang="el" for="message">Μήνυμα</label>
-            <textarea id="message" name="message" required></textarea>
-          </div>
-          <button class="btn-submit" type="submit" data-lang="en">Send Request</button>
-          <button class="btn-submit" type="submit" data-lang="el">Αποστολή</button>
-          <p class="muted form-note" data-lang="en">This form will open your email app to send the consultation request directly.</p>
-          <p class="muted form-note" data-lang="el">Αυτή η φόρμα θα ανοίξει την εφαρμογή email σας για να στείλετε απευθείας το αίτημα συνεδρίας.</p>
-        </form>
+        </div>
+      </div>
+
+      <div class="section-cta reveal">
+        <a href="/credentials.html" class="btn btn-primary" data-lang="en">View Full Credentials</a>
+        <a href="/credentials.html" class="btn btn-primary" data-lang="el">Πλήρη Πιστοποιητικά</a>
       </div>
     </section>
+
+    <!-- ══════════════════════════════════════════════════ -->
+    <!--  Digital Footprint & Links                        -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <section id="links" class="section-sm container" aria-labelledby="links-heading">
+      <div class="section-header reveal">
+        <p class="kicker">Digital Footprint</p>
+        <h2 id="links-heading" data-lang="en">Complete Link Registry</h2>
+        <h2 data-lang="el">Πλήρης Κατάλογος Συνδέσμων</h2>
+      </div>
+      <div class="links-grid">
+        <a href="https://www.linkedin.com/in/panos-khan-pk" target="_blank" rel="noopener" class="link-card reveal">
+          <span class="link-card-icon">💼</span>
+          <div>
+            <div class="link-card-label">LinkedIn</div>
+            <div class="link-card-value">panos-khan-pk</div>
+          </div>
+        </a>
+        <a href="https://websitesbykhan.com" target="_blank" rel="noopener" class="link-card reveal reveal-delay-1">
+          <span class="link-card-icon">🌐</span>
+          <div>
+            <div class="link-card-label">Portfolio</div>
+            <div class="link-card-value">websitesbykhan.com</div>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/panoskhan" target="_blank" rel="noopener" class="link-card reveal reveal-delay-2">
+          <span class="link-card-icon">📸</span>
+          <div>
+            <div class="link-card-label">Instagram</div>
+            <div class="link-card-value">@panoskhan</div>
+          </div>
+        </a>
+        <a href="https://www.facebook.com/panos9khan" target="_blank" rel="noopener" class="link-card reveal">
+          <span class="link-card-icon">👤</span>
+          <div>
+            <div class="link-card-label">Facebook</div>
+            <div class="link-card-value">panos9khan</div>
+          </div>
+        </a>
+        <a href="https://skillshop.credential.net/profile/imrankhan986875/wallet" target="_blank" rel="noopener" class="link-card reveal reveal-delay-1">
+          <span class="link-card-icon">🎓</span>
+          <div>
+            <div class="link-card-label">Credentials Wallet</div>
+            <div class="link-card-value">Accredible / Skillshop</div>
+          </div>
+        </a>
+        <a href="https://commons.wikimedia.org/wiki/User:PanosKhan" target="_blank" rel="noopener" class="link-card reveal reveal-delay-2">
+          <span class="link-card-icon">📚</span>
+          <div>
+            <div class="link-card-label">Wikimedia Commons</div>
+            <div class="link-card-value">User:PanosKhan</div>
+          </div>
+        </a>
+        <a href="https://about.me/panoskhan" target="_blank" rel="noopener" class="link-card reveal">
+          <span class="link-card-icon">ℹ️</span>
+          <div>
+            <div class="link-card-label">About.me</div>
+            <div class="link-card-value">about.me/panoskhan</div>
+          </div>
+        </a>
+        <a href="https://medium.com/@panoskhan40" target="_blank" rel="noopener" class="link-card reveal reveal-delay-1">
+          <span class="link-card-icon">✍️</span>
+          <div>
+            <div class="link-card-label">Medium</div>
+            <div class="link-card-value">@panoskhan40</div>
+          </div>
+        </a>
+        <a href="https://www.crunchbase.com/person/panos-khan" target="_blank" rel="noopener" class="link-card reveal reveal-delay-2">
+          <span class="link-card-icon">📊</span>
+          <div>
+            <div class="link-card-label">Crunchbase</div>
+            <div class="link-card-value">panos-khan</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════ -->
+    <!-- 10. CONTACT                                        -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <section id="contact" class="section container" aria-labelledby="contact-heading">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p class="kicker" data-lang="en">Let's Work Together</p>
+          <p class="kicker" data-lang="el">Ας Συνεργαστούμε</p>
+          <h2 id="contact-heading" data-lang="en">Book a Consultation</h2>
+          <h2 data-lang="el">Κλείστε Συνεδρία</h2>
+          <p class="muted" data-lang="en">Share your goals and current challenges. I will respond with a practical implementation roadmap tailored to your business.</p>
+          <p class="muted" data-lang="el">Μοιραστείτε τους στόχους και τις προκλήσεις σας. Θα λάβετε ένα πρακτικό roadmap υλοποίησης.</p>
+          <div class="contact-links mt-16">
+            <a href="mailto:panoskhan40@gmail.com" class="contact-link">
+              <span class="contact-link-icon">✉️</span>
+              <div>
+                <div class="contact-link-label">Email</div>
+                <div class="contact-link-value">panoskhan40@gmail.com</div>
+              </div>
+            </a>
+            <a href="/contact.html" class="contact-link">
+              <span class="contact-link-icon">🔗</span>
+              <div>
+                <div class="contact-link-label" data-lang="en">Full Contact Page</div>
+                <div class="contact-link-label" data-lang="el">Σελίδα Επικοινωνίας</div>
+                <div class="contact-link-value" data-lang="en">View all contact options</div>
+                <div class="contact-link-value" data-lang="el">Όλες οι επιλογές</div>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/panos-khan-pk" target="_blank" rel="noopener" class="contact-link">
+              <span class="contact-link-icon">💼</span>
+              <div>
+                <div class="contact-link-label">LinkedIn</div>
+                <div class="contact-link-value">linkedin.com/in/panos-khan-pk</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="card reveal reveal-delay-1">
+          <h3 data-lang="en" style="margin-bottom:18px">Consultation Request</h3>
+          <h3 data-lang="el" style="margin-bottom:18px">Αίτημα Συνεδρίας</h3>
+          <form action="mailto:panoskhan40@gmail.com" method="POST" enctype="text/plain">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="name" data-lang="en">Full Name</label>
+                <label for="name" data-lang="el">Ονοματεπώνυμο</label>
+                <input id="name" type="text" name="name" required autocomplete="name" placeholder="Your name" />
+              </div>
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+              </div>
+              <div class="form-field full">
+                <label for="project_type" data-lang="en">Project / Business Type</label>
+                <label for="project_type" data-lang="el">Τύπος Έργου / Επιχείρησης</label>
+                <input id="project_type" type="text" name="project_type" placeholder="e.g. E-commerce, SaaS startup, Local business" />
+              </div>
+              <div class="form-field full">
+                <label for="message" data-lang="en">Message &amp; Goals</label>
+                <label for="message" data-lang="el">Μήνυμα &amp; Στόχοι</label>
+                <textarea id="message" name="message" required placeholder="Describe your project, goals, and current challenges..."></textarea>
+              </div>
+            </div>
+            <div class="mt-16" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+              <button class="btn btn-primary" type="submit" data-lang="en">Send Request</button>
+              <button class="btn btn-primary" type="submit" data-lang="el">Αποστολή</button>
+              <p class="form-note" data-lang="en">Opens your email app to send the consultation request directly.</p>
+              <p class="form-note" data-lang="el">Ανοίγει την εφαρμογή email σας για απευθείας αποστολή.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer>
-    <div class="container">© <span id="year"></span> Panos Khan — AI & Digital Transformation Consultant.</div>
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 11. FOOTER                                        -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand">Panos <span>Khan</span></span>
+          <p data-lang="en">AI &amp; Digital Transformation Consultant based in Athens, Greece. Building the future of business through intelligent technology and growth-focused strategy.</p>
+          <p data-lang="el">AI &amp; Digital Transformation Consultant με έδρα την Αθήνα. Χτίζω το μέλλον των επιχειρήσεων μέσω ευφυούς τεχνολογίας και στρατηγικής ανάπτυξης.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang="en">Navigation</h4>
+          <h4 data-lang="el">Πλοήγηση</h4>
+          <ul>
+            <li><a href="#about" data-lang="en">About</a><a href="#about" data-lang="el">Σχετικά</a></li>
+            <li><a href="#transformation" data-lang="en">Services</a><a href="#transformation" data-lang="el">Υπηρεσίες</a></li>
+            <li><a href="#ai" data-lang="en">AI Tools</a><a href="#ai" data-lang="el">AI Εργαλεία</a></li>
+            <li><a href="#projects" data-lang="en">Projects</a><a href="#projects" data-lang="el">Έργα</a></li>
+            <li><a href="#certifications" data-lang="en">Credentials</a><a href="#certifications" data-lang="el">Πιστοποιητικά</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang="en">Tools &amp; Resources</h4>
+          <h4 data-lang="el">Εργαλεία &amp; Πόροι</h4>
+          <ul>
+            <li><a href="/tools.html">AI Tools Lab</a></li>
+            <li><a href="/tools/website-audit.html">Website Audit</a></li>
+            <li><a href="/tools/seo-brief.html">SEO Brief Generator</a></li>
+            <li><a href="/tools/ad-copy-studio.html">Ad Copy Studio</a></li>
+            <li><a href="/ai-blog.html" data-lang="en">AI Blog</a><a href="/ai-blog.html" data-lang="el">AI Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang="en">Connect</h4>
+          <h4 data-lang="el">Επικοινωνία</h4>
+          <ul>
+            <li><a href="/contact.html" data-lang="en">Contact</a><a href="/contact.html" data-lang="el">Επικοινωνία</a></li>
+            <li><a href="https://www.linkedin.com/in/panos-khan-pk" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://medium.com/@panoskhan40" target="_blank" rel="noopener">Medium</a></li>
+            <li><a href="https://websitesbykhan.com" target="_blank" rel="noopener">Portfolio</a></li>
+            <li><a href="/credentials.html" data-lang="en">Credentials</a><a href="/credentials.html" data-lang="el">Διαπιστευτήρια</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> Panos Khan — AI &amp; Digital Transformation Consultant. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/panos-khan-pk" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a href="https://medium.com/@panoskhan40" target="_blank" rel="noopener" aria-label="Medium">M</a>
+          <a href="https://www.instagram.com/panoskhan" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="https://websitesbykhan.com" target="_blank" rel="noopener" aria-label="Portfolio">🌐</a>
+        </div>
+      </div>
+    </div>
   </footer>
 
   <script>
-    // Language toggle
+  (function() {
+    // ── Language Toggle ──────────────────────────────
     const btnEN = document.getElementById('btnEN');
     const btnEL = document.getElementById('btnEL');
 
-    function setLang(lang){
+    function setLang(lang) {
       document.documentElement.lang = lang === 'el' ? 'el' : 'en';
-      document.querySelectorAll('[data-lang]').forEach(el=>{
+      document.querySelectorAll('[data-lang]').forEach(el => {
         el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
       });
       btnEN.setAttribute('aria-pressed', String(lang === 'en'));
@@ -634,42 +1075,91 @@
     btnEL.addEventListener('click', () => setLang('el'));
     setLang(localStorage.getItem('pk_lang') || 'en');
 
-    // Cyber floating emojis + parallax orbs
-    (function(){
-      const field = document.getElementById('emojiField');
-      if(field){
-        const icons = ["🤖","🧠","⚡","🛰️","💠","🧬","🔹","✨"];
-        const count = window.innerWidth < 768 ? 10 : 18;
-        for(let i=0;i<count;i++){
-          const s = document.createElement('span');
-          s.className = 'float-emoji';
-          s.textContent = icons[Math.floor(Math.random() * icons.length)];
-          s.style.left = (Math.random() * 100) + "vw";
-          s.style.animationDuration = (14 + Math.random() * 16) + "s";
-          s.style.animationDelay = (-Math.random() * 20) + "s";
-          s.style.opacity = (0.12 + Math.random() * 0.14).toFixed(2);
-          field.appendChild(s);
-        }
-      }
+    // ── Mobile Navigation ────────────────────────────
+    const hamburger = document.getElementById('navHamburger');
+    const drawer    = document.getElementById('navDrawer');
+    const overlay   = document.getElementById('navOverlay');
+    const closeBtn  = document.getElementById('navClose');
 
-      const orbs = document.querySelectorAll('.cyber-orb');
-      let mx = innerWidth / 2, my = innerHeight / 2, tx = mx, ty = my;
-      window.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+    function openDrawer() {
+      drawer.classList.add('open');
+      hamburger.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
 
-      (function tick(){
-        mx += (tx - mx) * 0.05;
-        my += (ty - my) * 0.05;
-        const dx = (mx - innerWidth/2) / (innerWidth/2);
-        const dy = (my - innerHeight/2) / (innerHeight/2);
-        orbs.forEach((o, i) => {
-          const p = (i + 1) * 10;
-          o.style.transform = `translate3d(${dx*p}px,${dy*p}px,0)`;
+    hamburger.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeDrawer();
+    });
+
+    // ── Scroll Reveal ────────────────────────────────
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
         });
-        requestAnimationFrame(tick);
-      })();
+      }, { threshold: 0.12 });
+      reveals.forEach(el => observer.observe(el));
+    } else {
+      reveals.forEach(el => el.classList.add('visible'));
+    }
+
+    // ── Cyber Background ─────────────────────────────
+    const field = document.getElementById('emojiField');
+    if (field) {
+      const icons = ['🤖', '🧠', '⚡', '🛰️', '💠', '🧬', '🔹', '✨'];
+      const count = window.innerWidth < 768 ? 8 : 16;
+      for (let i = 0; i < count; i++) {
+        const s = document.createElement('span');
+        s.className = 'float-emoji';
+        s.textContent = icons[Math.floor(Math.random() * icons.length)];
+        s.style.left = (Math.random() * 100) + 'vw';
+        s.style.animationDuration = (14 + Math.random() * 16) + 's';
+        s.style.animationDelay   = (-Math.random() * 22) + 's';
+        field.appendChild(s);
+      }
+    }
+
+    // ── Orb Parallax ─────────────────────────────────
+    const orbs = document.querySelectorAll('.cyber-orb');
+    let mx = innerWidth / 2, my = innerHeight / 2;
+    let tx = mx, ty = my;
+
+    window.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
+
+    (function tick() {
+      mx += (tx - mx) * 0.04;
+      my += (ty - my) * 0.04;
+      const dx = (mx - innerWidth  / 2) / (innerWidth  / 2);
+      const dy = (my - innerHeight / 2) / (innerHeight / 2);
+      orbs.forEach((o, i) => {
+        const p = (i + 1) * 9;
+        o.style.transform = 'translate3d(' + (dx * p) + 'px,' + (dy * p) + 'px,0)';
+      });
+      requestAnimationFrame(tick);
     })();
 
+    // ── Footer Year ──────────────────────────────────
     document.getElementById('year').textContent = new Date().getFullYear();
+  })();
   </script>
 </body>
 </html>

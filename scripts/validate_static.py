@@ -21,7 +21,9 @@ def contains(page: str, pattern: str) -> bool:
 
 def site_path(location: str) -> Path:
     path = location.removeprefix("https://panoskhan.github.io/").split("#", 1)[0]
-    return ROOT / (path + "index.html" if path.endswith("/") else path)
+    if not path or path.endswith("/"):
+        return ROOT / path / "index.html"
+    return ROOT / path
 
 
 def main() -> int:
@@ -30,7 +32,7 @@ def main() -> int:
         for name, pattern in (
             ("title", r"<title>[^<]+</title>"),
             ("description", r'<meta\s+name="description"\s+content="[^"]+"'),
-            ("canonical", r'<link\s+rel="canonical"\s+href="https://panoskhan\.github\.io/[^"]+"'),
+            ("canonical", r'<link\s+rel="canonical"\s+href="https://panoskhan\.github\.io/[^"]*"'),
             ("Open Graph title", r'<meta\s+property="og:title"\s+content="[^"]+"'),
         ):
             if not contains(page, pattern):

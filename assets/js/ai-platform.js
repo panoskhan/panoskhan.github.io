@@ -33,7 +33,7 @@ const AIPlatform = (function() {
       id: "seo-brief",
       name: "AI SEO Brief Generator",
       category: "Growth",
-      description: "Generates deterministic, portfolio-ready SEO content briefs with strategic consultant framing.",
+      description: "Generates deterministic, client-ready SEO content briefs with strategic consultant framing.",
       featured: false,
       url: "/ai/tools/seo-brief.html",
       icon: "✍️",
@@ -371,6 +371,48 @@ const AIPlatform = (function() {
     // Clear current body and append the newly structured layout
     document.body.innerHTML = '';
     document.body.appendChild(pageWrapper);
+
+    // Automatically inject a beautiful, glassmorphic, floating "Made by Panos Khan" badge
+    const floatingBadge = document.createElement('a');
+    floatingBadge.href = "/";
+    floatingBadge.className = "floating-made-by-badge";
+    floatingBadge.setAttribute('aria-label', 'Made by Panos Khan');
+    floatingBadge.style.cssText = `
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      background: rgba(10, 15, 30, 0.6);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 8px 32px rgba(0, 229, 255, 0.15);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    `;
+    floatingBadge.innerHTML = `
+      <span style="width: 8px; height: 8px; background: var(--neon, #00e5ff); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--neon, #00e5ff);"></span>
+      <span style="color: var(--text, #ffffff); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">Made by Panos Khan</span>
+    `;
+    
+    floatingBadge.addEventListener('mouseenter', () => {
+      floatingBadge.style.transform = 'translateY(-4px) scale(1.05)';
+      floatingBadge.style.borderColor = 'var(--purple, #9d4edd)';
+      floatingBadge.style.boxShadow = '0 12px 40px rgba(157, 78, 221, 0.3)';
+    });
+    floatingBadge.addEventListener('mouseleave', () => {
+      floatingBadge.style.transform = 'none';
+      floatingBadge.style.borderColor = 'rgba(0, 229, 255, 0.3)';
+      floatingBadge.style.boxShadow = '0 8px 32px rgba(0, 229, 255, 0.15)';
+    });
+
+    document.body.appendChild(floatingBadge);
 
     // Render related tools
     renderRelatedTools(tool.related);

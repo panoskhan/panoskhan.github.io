@@ -198,6 +198,7 @@ const AIPlatform = (function() {
               <li><a href="/#transformation">Services</a></li>
               <li><a href="/ai/">AI Platform</a></li>
               <li><a href="/tools.html">Legacy Tools Lab</a></li>
+              <li><a href="/quality-dashboard.html">Quality Dashboard</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -215,7 +216,7 @@ const AIPlatform = (function() {
               <li><a href="/contact.html">Contact</a></li>
               <li><a href="https://www.linkedin.com/in/panos-khan-pk" target="_blank" rel="noopener">LinkedIn</a></li>
               <li><a href="https://medium.com/@panoskhan40" target="_blank" rel="noopener">Medium</a></li>
-              <li><a href="https://websitesbykhan.com" target="_blank" rel="noopener">Portfolio</a></li>
+              <li><a href="/ai/">AI Platform</a></li>
               <li><a href="/credentials.html">Credentials</a></li>
             </ul>
           </div>
@@ -226,8 +227,9 @@ const AIPlatform = (function() {
           <div class="footer-social">
             <a href="https://www.linkedin.com/in/panos-khan-pk" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
             <a href="https://medium.com/@panoskhan40" target="_blank" rel="noopener" aria-label="Medium">M</a>
-            <a href="https://www.instagram.com/panoskhan" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
-            <a href="https://websitesbykhan.com" target="_blank" rel="noopener" aria-label="Portfolio">🌐</a>
+            <a href="https://orcid.org/0009-0002-9718-4637" target="_blank" rel="noopener" aria-label="ORCID">ID</a>
+            <a href="https://contactout.com/panos-khan-43927" target="_blank" rel="noopener" aria-label="ContactOut">CO</a>
+            <a href="/tools/website-audit.html" aria-label="AI Tools">🛠️</a>
           </div>
         </div>
       </div>
@@ -283,6 +285,14 @@ const AIPlatform = (function() {
               <!-- Injected original unique tool input interface -->
               <div id="ai-injected-container">
                 ${formHtml}
+              </div>
+
+              <!-- Made by Panos Khan Badge -->
+              <div style="display:flex; justify-content:center; margin-top: 24px; padding-top: 16px; border-top: 1px dashed var(--border-soft);">
+                <a href="/" class="made-by-badge" style="display:inline-flex; align-items:center; gap:8px; padding:6px 14px; background:rgba(7, 11, 20, 0.4); border:1px solid rgba(0, 229, 255, 0.15); border-radius:50px; text-decoration:none; transition:all var(--t);">
+                  <span style="width:6px; height:6px; background:var(--neon); border-radius:50%; display:inline-block; box-shadow: 0 0 6px var(--neon);"></span>
+                  <span style="color:var(--text); font-size:0.82rem; font-weight:600;">Made by Panos Khan</span>
+                </a>
               </div>
               
               <!-- Shared output area -->

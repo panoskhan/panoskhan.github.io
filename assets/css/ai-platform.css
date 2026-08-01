@@ -1,0 +1,557 @@
+/* ============================================================
+   Panos Khan AI Platform — ai-platform.css
+   Premium Dark UI Extension for the AI Section
+   ============================================================ */
+
+/* ── Breadcrumbs ────────────────────────────────────────── */
+.ai-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--text-subtle);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.ai-breadcrumbs a {
+  color: var(--text-muted);
+  transition: color var(--t);
+}
+.ai-breadcrumbs a:hover {
+  color: var(--neon);
+  text-shadow: none;
+}
+.ai-breadcrumbs .separator {
+  color: var(--border);
+}
+.ai-breadcrumbs .current {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ── Layout Grid ────────────────────────────────────────── */
+.ai-layout-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+@media (max-width: 992px) {
+  .ai-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* ── Tool Cards & Forms ──────────────────────────────────── */
+.ai-card {
+  background: var(--grad-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+.ai-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--grad-brand);
+  opacity: 0.8;
+}
+.ai-card.featured-card::before {
+  height: 4px;
+}
+.ai-card.featured-card {
+  border-color: rgba(0, 229, 255, 0.3);
+  box-shadow: 0 16px 48px rgba(0, 229, 255, 0.06);
+}
+
+.ai-form-group {
+  margin-bottom: 20px;
+}
+.ai-form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.94rem;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.ai-form-group input,
+.ai-form-group select,
+.ai-form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-3);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color var(--t), box-shadow var(--t);
+}
+.ai-form-group input:focus,
+.ai-form-group select:focus,
+.ai-form-group textarea:focus {
+  border-color: var(--neon);
+  box-shadow: 0 0 0 3px var(--neon-dim);
+}
+.ai-form-group textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.ai-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--t);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+}
+.ai-btn-primary {
+  border-color: var(--neon);
+  background: linear-gradient(135deg, #083642 0%, #111c33 100%);
+  color: var(--text);
+  box-shadow: 0 4px 15px var(--neon-dim);
+}
+.ai-btn-primary:hover {
+  border-color: var(--neon);
+  background: linear-gradient(135deg, #0d535e 0%, #15274d 100%);
+  box-shadow: 0 4px 20px var(--neon-glow);
+  transform: translateY(-1px);
+}
+.ai-btn:hover {
+  background: var(--surface);
+  border-color: var(--text-subtle);
+}
+
+/* ── Output Wrapping ────────────────────────────────────── */
+.ai-output-wrap {
+  margin-top: 28px;
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  display: none;
+}
+.ai-output-wrap.visible {
+  display: block;
+}
+.ai-output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.ai-output-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--neon);
+}
+.ai-output-box {
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #cde6ff;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  margin: 0;
+}
+.ai-output-formatted {
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  color: var(--text);
+}
+.ai-output-formatted section {
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-soft);
+  padding-bottom: 16px;
+}
+.ai-output-formatted section:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.ai-output-formatted h4 {
+  color: var(--neon);
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+}
+.ai-output-formatted ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.ai-output-formatted li {
+  margin-bottom: 8px;
+}
+
+/* ── Documentation Tabs ─────────────────────────────────── */
+.ai-docs-card {
+  margin-bottom: 24px;
+}
+.ai-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 18px;
+  gap: 8px;
+  overflow-x: auto;
+}
+.ai-tab-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all var(--t);
+  white-space: nowrap;
+}
+.ai-tab-btn:hover {
+  color: var(--text);
+}
+.ai-tab-btn.active {
+  color: var(--neon);
+  border-bottom-color: var(--neon);
+}
+.ai-tab-pane {
+  display: none;
+  font-size: 0.93rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.ai-tab-pane.active {
+  display: block;
+}
+
+/* ── FAQ Accordion ──────────────────────────────────────── */
+.ai-faq-card {
+  margin-bottom: 24px;
+}
+.ai-faq-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  background: var(--surface-3);
+  overflow: hidden;
+}
+.ai-faq-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background var(--t);
+}
+.ai-faq-trigger:hover {
+  background: rgba(30, 45, 77, 0.2);
+}
+.ai-faq-icon {
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+  transition: transform var(--t);
+}
+.ai-faq-item.active .ai-faq-icon {
+  transform: rotate(180deg);
+  color: var(--neon);
+}
+.ai-faq-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--t) ease-out;
+}
+.ai-faq-content {
+  padding: 0 18px 18px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ── Changelog / Version History ────────────────────────── */
+.ai-changelog-card {
+  margin-bottom: 24px;
+}
+.ai-changelog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ai-changelog-item {
+  border-left: 2px solid var(--border);
+  padding-left: 16px;
+  position: relative;
+}
+.ai-changelog-item::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background var(--t);
+}
+.ai-changelog-item:first-child {
+  border-left-color: var(--neon);
+}
+.ai-changelog-item:first-child::before {
+  background: var(--neon);
+  box-shadow: 0 0 8px var(--neon);
+}
+.ai-changelog-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.ai-changelog-version {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--neon);
+  background: var(--neon-dim);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+}
+.ai-changelog-item:not(:first-child) .ai-changelog-version {
+  color: var(--text-muted);
+  background: none;
+  border-color: var(--border);
+}
+.ai-changelog-date {
+  font-size: 0.82rem;
+  color: var(--text-subtle);
+}
+.ai-changelog-changes {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+.ai-changelog-changes li {
+  margin-bottom: 4px;
+}
+
+/* ── Related Tools ──────────────────────────────────────── */
+.ai-related-section {
+  border-top: 1px solid var(--border);
+  padding-top: 40px;
+  margin-top: 48px;
+}
+.ai-related-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+.ai-related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ── Hub Homepage Specifics ─────────────────────────────── */
+.ai-hub-hero {
+  text-align: center;
+  padding: 60px 0 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.ai-hub-hero h1 {
+  margin-bottom: 16px;
+}
+.ai-hub-hero p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+.ai-hub-controls {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+.ai-search-wrapper {
+  position: relative;
+  width: 100%;
+}
+.ai-search-input {
+  width: 100%;
+  padding: 16px 20px 16px 48px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface-3);
+  color: var(--text);
+  font-size: 1.05rem;
+  outline: none;
+  transition: border-color var(--t), box-shadow var(--t);
+}
+.ai-search-input:focus {
+  border-color: var(--neon);
+  box-shadow: 0 0 20px var(--neon-dim);
+}
+.ai-search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-subtle);
+  pointer-events: none;
+}
+
+.ai-categories-wrapper {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.ai-category-pill {
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--t);
+}
+.ai-category-pill:hover {
+  border-color: var(--purple);
+  color: var(--text);
+}
+.ai-category-pill.active {
+  background: var(--neon-dim);
+  border-color: var(--neon);
+  color: var(--neon);
+  box-shadow: 0 0 10px var(--neon-glow);
+}
+
+.ai-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+  margin-bottom: 60px;
+}
+@media (max-width: 480px) {
+  .ai-hub-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ai-hub-card {
+  background: var(--grad-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: all var(--t);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.ai-hub-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--purple);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.12);
+}
+.ai-hub-card.featured-hub-card {
+  border-color: rgba(0, 229, 255, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 229, 255, 0.03);
+}
+.ai-hub-card.featured-hub-card:hover {
+  border-color: var(--neon);
+  box-shadow: 0 12px 30px rgba(0, 229, 255, 0.12);
+}
+.ai-hub-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+.ai-hub-card-icon {
+  font-size: 1.8rem;
+  margin-right: 12px;
+}
+.ai-hub-card-tag {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--border);
+  color: var(--text-muted);
+}
+.ai-hub-card.featured-hub-card .ai-hub-card-tag {
+  background: var(--neon-dim);
+  color: var(--neon);
+  border: 1px solid rgba(0, 229, 255, 0.15);
+}
+.ai-hub-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+.ai-hub-card p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+.ai-hub-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--neon);
+}
+.ai-hub-card-footer span {
+  transition: transform var(--t);
+}
+.ai-hub-card:hover .ai-hub-card-footer span {
+  transform: translateX(4px);
+}
+
+.ai-no-results {
+  text-align: center;
+  padding: 40px;
+  grid-column: 1 / -1;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}

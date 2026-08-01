@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI SEO Brief Generator | Panos Khan AI Platform</title>
+  <meta name="description" content="Generate deterministic, portfolio-ready SEO content briefs with strategic consultant framing." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/seo-brief.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AI SEO Brief Generator | Panos Khan AI Platform" />
+  <meta property="og:description" content="Generate deterministic, portfolio-ready SEO content briefs with strategic consultant framing." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/seo-brief.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/seo-brief.html#webapp",
+        "name": "AI SEO Brief Generator",
+        "description": "Generate deterministic, portfolio-ready SEO content briefs with strategic consultant framing.",
+        "url": "https://panoskhan.github.io/ai/tools/seo-brief.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preload and Stylesheets -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="seo-brief">
+  <div id="ai-tool-content">
+    <form id="briefForm">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div class="ai-form-group">
+          <label for="keyword">Primary keyword</label>
+          <input id="keyword" name="keyword" type="text" required placeholder="e.g. cloud security audit" />
+        </div>
+        <div class="ai-form-group">
+          <label for="audience">Audience</label>
+          <input id="audience" name="audience" type="text" required placeholder="e.g. IT Directors" />
+        </div>
+        <div class="ai-form-group">
+          <label for="businessType">Business type</label>
+          <input id="businessType" name="businessType" type="text" required placeholder="e.g. B2B SaaS" />
+        </div>
+        <div class="ai-form-group">
+          <label for="market">Location / market</label>
+          <input id="market" name="market" type="text" required placeholder="e.g. Athens, Greece" />
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Generate SEO Brief</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('briefForm');
+      if (!form) return;
+
+      function cap(v) { return v ? v.charAt(0).toUpperCase() + v.slice(1) : v; }
+
+      function buildBrief(data) {
+        const keyword = data.keyword;
+        const kwCap = cap(keyword);
+        return {
+          titles: [
+            `${kwCap} Guide for ${data.audience} in ${data.market}`,
+            `How ${data.businessType} Teams Use ${keyword} to Improve Results`,
+            `${kwCap}: Practical Strategy for ${data.market}`
+          ],
+          meta: `Discover a practical ${keyword} framework for ${data.audience}. Learn proven tactics, implementation steps, and performance tips for ${data.businessType} in ${data.market}.`,
+          h1: `${kwCap} Strategy for ${data.audience}`,
+          h2: [
+            `Why ${keyword} matters in ${data.market}`,
+            `${keyword} implementation framework for ${data.businessType}`,
+            `Common mistakes to avoid with ${keyword}`,
+            `Measurement plan and KPIs for ${keyword}`
+          ],
+          faqs: [
+            `What is the fastest way to implement ${keyword} for ${data.businessType}?`,
+            `How long does it take to see results from ${keyword}?`,
+            `Which metrics should ${data.audience} track first?`,
+            `How should teams in ${data.market} localize this strategy?`
+          ],
+          schema: ['Article', 'FAQPage', 'Organization', 'Service'],
+          intent: `Primary intent: Commercial investigation. Searchers want a clear plan to evaluate and apply ${keyword}. Secondary intent: Informational, with interest in actionable steps and benchmarks for ${data.market}.`
+        };
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = {
+          keyword: AIPlatform.safeText(form.keyword.value),
+          audience: AIPlatform.safeText(form.audience.value),
+          businessType: AIPlatform.safeText(form.businessType.value),
+          market: AIPlatform.safeText(form.market.value)
+        };
+
+        const brief = buildBrief(data);
+
+        const outputData = {
+          title: `AI SEO Brief Checklist: "${data.keyword}"`,
+          sections: [
+            {
+              title: "1. Optimized Title Options",
+              content: brief.titles.map(item => `* ${item}`).join('\n')
+            },
+            {
+              title: "2. Target Meta Description",
+              content: brief.meta
+            },
+            {
+              title: "3. Recommended H1 Heading",
+              content: brief.h1
+            },
+            {
+              title: "4. Semantic H2 Content Outline",
+              content: brief.h2.map(item => `* ${item}`).join('\n')
+            },
+            {
+              title: "5. FAQ Content Recommendations",
+              content: brief.faqs.map(item => `* ${item}`).join('\n')
+            },
+            {
+              title: "6. Rich Snippet Schema Suggestions",
+              content: brief.schema.map(item => `* ${item}`).join('\n')
+            },
+            {
+              title: "7. User Search Intent Summary",
+              content: brief.intent
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

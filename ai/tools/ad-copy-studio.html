@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Ad Copy Studio | Panos Khan AI Platform</title>
+  <meta name="description" content="Generate deterministic ad headlines, descriptions, CTA ideas, and testing angles based on core offer benefits." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/ad-copy-studio.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AI Ad Copy Studio | Panos Khan AI Platform" />
+  <meta property="og:description" content="Generate ad copy headlines, descriptions, CTAs, and testing variations instantly." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/ad-copy-studio.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/ad-copy-studio.html#webapp",
+        "name": "AI Ad Copy Studio",
+        "description": "Generate deterministic ad headlines, descriptions, CTA ideas, and testing angles.",
+        "url": "https://panoskhan.github.io/ai/tools/ad-copy-studio.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preload and Stylesheets -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="ad-copy-studio">
+  <div id="ai-tool-content">
+    <form id="copyForm">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div class="ai-form-group">
+          <label for="offer">Product / service</label>
+          <input id="offer" name="offer" type="text" required placeholder="e.g. AI Customer Triage" />
+        </div>
+        <div class="ai-form-group">
+          <label for="audience">Audience</label>
+          <input id="audience" name="audience" type="text" required placeholder="e.g. Customer Support Directors" />
+        </div>
+        <div class="ai-form-group">
+          <label for="benefit">Key benefit</label>
+          <input id="benefit" name="benefit" type="text" required placeholder="e.g. cut response times by 80%" />
+        </div>
+        <div class="ai-form-group">
+          <label for="tone">Tone</label>
+          <input id="tone" name="tone" type="text" placeholder="e.g. premium, direct, friendly" required />
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Generate Ad Copy Set</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('copyForm');
+      if (!form) return;
+
+      function buildCopy(data) {
+        const headlines = [
+          `${data.offer} for ${data.audience}`,
+          `${data.benefit} Without the Usual Complexity`,
+          `${data.tone} Results with ${data.offer}`,
+          `${data.audience}: Upgrade with ${data.offer}`,
+          `See How ${data.offer} Delivers ${data.benefit}`
+        ];
+
+        const descriptions = [
+          `${data.offer} helps ${data.audience} achieve ${data.benefit} with a ${data.tone} approach built for measurable performance.`,
+          `Built for ${data.audience}, this solution focuses on ${data.benefit} through a clear, conversion-focused process.`,
+          `Move faster with ${data.offer}. Get ${data.benefit} and a practical implementation path from day one.`
+        ];
+
+        const ctas = [
+          `Book Your Strategy Call`,
+          `Get a Custom Plan`,
+          `Start with an Audit`,
+          `Request a Demo`,
+          `See Pricing & Next Steps`
+        ];
+
+        const angles = [
+          `Pain-point angle: Highlight current obstacles blocking ${data.benefit} for ${data.audience}.`,
+          `Outcome angle: Lead with the measurable end result (${data.benefit}) and support with proof.`,
+          `Process angle: Emphasize the step-by-step method behind ${data.offer}.`,
+          `Trust angle: Focus on reliability, experience, and implementation quality in a ${data.tone} tone.`
+        ];
+
+        return { headlines, descriptions, ctas, angles };
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = {
+          offer: AIPlatform.safeText(form.offer.value),
+          audience: AIPlatform.safeText(form.audience.value),
+          benefit: AIPlatform.safeText(form.benefit.value),
+          tone: AIPlatform.safeText(form.tone.value)
+        };
+
+        const copy = buildCopy(data);
+
+        const outputData = {
+          title: `AI Ad Copy Studio: Campaign Assets for "${data.offer}"`,
+          sections: [
+            {
+              title: "1. Headline Variations",
+              content: copy.headlines.map(item => `* ${item}`).join('\n')
+            },
+            {
+              title: "2. Description Variations",
+              content: copy.descriptions.map(item => `* ${item}`).join('\n')
+            },
+            {
+              title: "3. Direct Action CTA Ideas",
+              content: copy.ctas.map(item => `* ${item}`).join('\n')
+            },
+            {
+              title: "4. Multi-Angle Campaign Testing Frameworks",
+              content: copy.angles.map(item => `* ${item}`).join('\n')
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

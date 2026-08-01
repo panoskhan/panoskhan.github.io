@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Trust Label Generator | Panos Khan AI Platform</title>
+  <meta name="description" content="Create a publishable transparency statement declaring responsible AI usage for your customers and clients." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/trust-label.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AI Trust Label Generator | Panos Khan AI Platform" />
+  <meta property="og:description" content="Generate a structured, professional transparency declaration to showcase responsible AI stewardship." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/trust-label.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/trust-label.html#webapp",
+        "name": "AI Trust Label Generator",
+        "description": "Create a publishable transparency statement declaring responsible AI usage for your customers and clients.",
+        "url": "https://panoskhan.github.io/ai/tools/trust-label.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preload and Stylesheets -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="trust-label">
+  <div id="ai-tool-content">
+    <form id="trustForm">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div class="ai-form-group">
+          <label for="business">Business name</label>
+          <input id="business" name="business" type="text" placeholder="e.g. Acme & Co." required />
+        </div>
+        <div class="ai-form-group">
+          <label for="usage">How do you use AI?</label>
+          <input id="usage" name="usage" type="text" placeholder="e.g. summarizing documents, draft copy, scheduling" required />
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Generate AI Trust Label</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('trustForm');
+      if (!form) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const business = AIPlatform.safeText(form.business.value);
+        const usage = AIPlatform.safeText(form.usage.value);
+
+        const outputData = {
+          title: `${business} AI Trust Label`,
+          sections: [
+            {
+              title: "1. Authorized Operational Scope",
+              content: `We actively utilize Artificial Intelligence models and autonomous workflows to assist in **${usage}**. This usage is specifically bounded to enhance productivity, speed up service delivery, and support internal business planning.`
+            },
+            {
+              title: "2. Core Principles of Trust & Safety",
+              content: `* **Human-in-the-Loop Oversight**: We enforce mandatory human review on any high-impact results, client-facing materials, and core business decisions.
+* **Data Security & Privacy Integrity**: We minimize the usage of personally identifiable information (PII) inside model prompts and apply enterprise-grade security controls.
+* **Accountability & Limitations**: We document boundaries and known limitations of our AI models and provide seamless escalation channels to human client support.
+* **Continuous Monitoring**: We review model outputs regularly to ensure quality control, prevent bias, and maximize customer safety.`
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

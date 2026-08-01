@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Decision Risk Simulator | Panos Khan AI Platform</title>
+  <meta name="description" content="Simulate legal, bias, security, adoption, and brand risk levels for planned corporate AI initiatives." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/decision-risk.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AI Decision Risk Simulator | Panos Khan AI Platform" />
+  <meta property="og:description" content="Identify compliance vulnerabilities, security concerns, and change friction before deploying models." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/decision-risk.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/decision-risk.html#webapp",
+        "name": "AI Decision Risk Simulator",
+        "description": "Simulate legal, bias, security, adoption, and brand risk levels for planned corporate AI initiatives.",
+        "url": "https://panoskhan.github.io/ai/tools/decision-risk.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preload and Stylesheets -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="decision-risk">
+  <div id="ai-tool-content">
+    <form id="riskForm">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div class="ai-form-group">
+          <label for="useCase">Planned AI use-case</label>
+          <input id="useCase" name="useCase" type="text" placeholder="e.g. automating client credit reviews" required />
+        </div>
+        <div class="ai-form-group">
+          <label for="sensitivity">Underlying data sensitivity</label>
+          <select id="sensitivity" name="sensitivity" required>
+            <option value="low">Low (Public or non-critical data)</option>
+            <option value="medium">Medium (Internal business operational data)</option>
+            <option value="high">High (PII, Financial, or Medical records)</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Run Risk Simulation</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('riskForm');
+      if (!form) return;
+
+      function levelFromScore(score) {
+        if (score >= 8) return "🔴 High Risk";
+        if (score >= 5) return "🟡 Moderate Risk";
+        return "🟢 Low Risk";
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const useCase = AIPlatform.safeText(form.useCase.value);
+        const sensitivity = AIPlatform.safeText(form.sensitivity.value);
+
+        const riskBase = sensitivity === "high" ? 8 : sensitivity === "medium" ? 6 : 4;
+
+        const outputData = {
+          title: `AI Decision Risk Simulation: "${useCase}"`,
+          sections: [
+            {
+              title: "1. Core Risk Dimension Ratings",
+              content: `* **Legal & Regulatory Compliance**: ${levelFromScore(riskBase)}
+* **Algorithmic Bias & Fairness**: ${levelFromScore(riskBase - 1)}
+* **Security & Data Privacy**: ${levelFromScore(riskBase + 1)}
+* **Internal Adoption & Process Change**: ${levelFromScore(riskBase - 2)}
+* **Brand Authority & Public Reputation**: ${levelFromScore(riskBase)}`
+            },
+            {
+              title: "2. Governance & Mitigation Action Plan",
+              content: `* **Rule Definition**: Define acceptable output boundaries and strict compliance red lines prior to initial staging.
+* **Human-in-the-Loop**: Implement mandatory human review gates on any high-impact outputs or final approvals.
+* **Audit Transparency**: Log all automated model decisions and exception events to ensure long-term audit visibility.`
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

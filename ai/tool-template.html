@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- ── 1. SEO METADATA (Required on every tool) ───────────── -->
+  <title>TOOL_NAME | Panos Khan AI Platform</title>
+  <meta name="description" content="A clear, high-quality, actionable description of what this specific tool accomplishes (150-160 chars)." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/YOUR-TOOL-ID.html" />
+
+  <!-- ── 2. OPEN GRAPH METADATA (Required on every tool) ────── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="TOOL_NAME | Panos Khan AI Platform" />
+  <meta property="og:description" content="A clear, high-quality description of what this specific tool accomplishes." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/YOUR-TOOL-ID.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- ── 3. JSON-LD STRUCTURED DATA (Required on every tool) ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/YOUR-TOOL-ID.html#webapp",
+        "name": "TOOL_NAME",
+        "description": "A clear, high-quality description of what this specific tool accomplishes.",
+        "url": "https://panoskhan.github.io/ai/tools/YOUR-TOOL-ID.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5."
+      }
+    ]
+  }
+  </script>
+
+  <!-- ── 4. STYLESHEET PRELOADS (Reuses the dark design system) ── -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="YOUR-TOOL-ID">
+  <!-- 
+    NOTE: 
+    The body MUST have a 'data-tool-id' matching its key in toolsRegistry in ai-platform.js.
+    The content inside <div id="ai-tool-content"> will be automatically grabbed, and
+    embedded inside the universal AI Platform template (with top navigation, breadcrumbs, 
+    layout, document tabs, FAQ accordions, changelog versioning, related tools, and footers).
+  -->
+
+  <div id="ai-tool-content">
+    <!-- ── 5. TOOL INPUT FORM (Standard visual wrapper) ──────── -->
+    <form id="toolForm">
+      
+      <!-- Grid Layout (optional, use for fields in columns) -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div class="ai-form-group">
+          <label for="exampleInput">Standard Text Field</label>
+          <input type="text" id="exampleInput" name="fieldName" placeholder="Enter details..." required />
+        </div>
+        
+        <div class="ai-form-group">
+          <label for="exampleSelect">Dropdown Menu</label>
+          <select id="exampleSelect" name="selectName" required>
+            <option value="option1">Option One</option>
+            <option value="option2">Option Two</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="ai-form-group">
+        <label for="exampleTextarea">Large Text Area</label>
+        <textarea id="exampleTextarea" name="textareaName" placeholder="Provide raw copy or workflow mapping details..." required></textarea>
+      </div>
+
+      <!-- Action Button -->
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Generate Strategy Output</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- ── 6. SCRIPTS (Auto-wrapped by the platform) ────────── -->
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('toolForm');
+      if (!form) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Retrieve inputs sanitarily
+        const fieldName = AIPlatform.safeText(form.fieldName.value);
+        const selectName = AIPlatform.safeText(form.selectName.value);
+        const textareaName = AIPlatform.safeText(form.textareaName.value);
+
+        // ── 7. STAGE DETERMINISTIC STRATEGY LOGIC ────────────────
+        // Build diagnostic structures to simulate expert outcomes
+        const outputData = {
+          title: `Diagnostic Executive Blueprint for ${fieldName}`,
+          sections: [
+            {
+              title: "1. Executive Summary",
+              content: `Analysis of **${fieldName}** utilizing strategic focus **${selectName}** has completed with high-impact results.`
+            },
+            {
+              title: "2. Gap Assessment",
+              content: `* **Identified Vulnerability**: Input details indicate a high-priority bottleneck within the following parameters: \`${textareaName}\`.
+* **Standard Benchmark**: Meets 12-month transformation compliance thresholds under category standards.`
+            },
+            {
+              title: "3. Direct Action Roadmap",
+              content: `1. **Action Step One**: Integrate specific directives to streamline execution.
+2. **Action Step Two**: Standardize inputs to reduce ongoing friction and overhead.`
+            }
+          ]
+        };
+
+        // ── 8. RENDER RESULTS VIA SHARED OUTPUT WRAPPER ─────────
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

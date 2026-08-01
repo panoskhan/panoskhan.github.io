@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Readiness Twin | Panos Khan AI Platform</title>
+  <meta name="description" content="Build dual tracks for AI adoption: immediate 30-day quick wins and strategic 12-month transformation priorities." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/readiness-twin.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AI Readiness Twin | Panos Khan AI Platform" />
+  <meta property="og:description" content="Configure immediate 30-day quick wins and strategic 12-month priorities tailored for your industry." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/readiness-twin.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/readiness-twin.html#webapp",
+        "name": "AI Readiness Twin",
+        "description": "Build dual tracks for AI adoption: immediate 30-day quick wins and strategic 12-month transformation priorities.",
+        "url": "https://panoskhan.github.io/ai/tools/readiness-twin.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preload and Stylesheets -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="readiness-twin">
+  <div id="ai-tool-content">
+    <form id="readinessForm">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div class="ai-form-group">
+          <label for="industry">Industry</label>
+          <input id="industry" name="industry" type="text" placeholder="e.g. Legal, Healthcare, Logistics" required />
+        </div>
+        <div class="ai-form-group">
+          <label for="challenge">Top operational challenge</label>
+          <input id="challenge" name="challenge" type="text" placeholder="e.g. manual document triaging" required />
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Generate Readiness Roadmap</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('readinessForm');
+      if (!form) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const industry = AIPlatform.safeText(form.industry.value);
+        const challenge = AIPlatform.safeText(form.challenge.value);
+
+        const outputData = {
+          title: `AI Readiness Twin: Roadmap for ${industry}`,
+          sections: [
+            {
+              title: "1. Track 1: Quick Wins (30 Days)",
+              content: `* **Workflow baseline**: Map one ${industry} workflow linked directly to **"${challenge}"** and measure its baseline cycle time.
+* **Pilot AI Agent**: Deploy one targeted AI assistant for document drafting, summarization, or research and track quality feedback weekly.
+* **Checkpoint Reviews**: Establish a weekly leadership alignment checkpoint with one adoption-rate KPI and one early-stage business KPI.`
+            },
+            {
+              title: "2. Track 2: Strategic Transformation (12 Months)",
+              content: `* **Prioritization matrix**: Build a centralized AI use-case backlog categorized by commercial impact, regulatory risk, and developer effort.
+* **Establish Governance**: Author corporate data governance rules, model approval gates, and data privacy standard operating procedures.
+* **Scale-up Enablement**: Scale from early pilots to cross-department deployments, supported by dedicated training loops and quarterly ROI reviews.`
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

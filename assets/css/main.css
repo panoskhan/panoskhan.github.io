@@ -750,7 +750,41 @@ header, main, footer, .langbar, .topbar { position: relative; z-index: 2; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 
-/* ── 25. Back to Top / Breadcrumb ───────────────────────── */
+/* ── 25. Skip Link ──────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  background: var(--bg);
+  color: var(--neon);
+  padding: 8px 16px;
+  border: 2px solid var(--neon);
+  border-radius: var(--radius-sm);
+  z-index: 9999;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: top 0.15s;
+  white-space: nowrap;
+}
+.skip-link:focus { top: 8px; outline: none; }
+
+/* ── 25b. Active nav link (aria-current="page") ──────────── */
+.nav-links a[aria-current="page"] {
+  color: var(--neon);
+  border-color: rgba(0,229,255,.25);
+  background: rgba(0,229,255,.06);
+}
+.nav-drawer-links a[aria-current="page"] {
+  color: var(--neon);
+  border-color: rgba(0,229,255,.25);
+  background: rgba(0,229,255,.06);
+}
+
+/* Sub-page headers sit flush (no lang bar above them) */
+.site-header--flush { top: 0; }
+
+/* ── 25c. Back to Top / Breadcrumb ──────────────────────── */
 .breadcrumb {
   display: flex; gap: 6px; align-items: center;
   font-size: 0.83rem; color: var(--text-subtle);
@@ -798,3 +832,19 @@ header, main, footer, .langbar, .topbar { position: relative; z-index: 2; }
   border-bottom: 1px solid var(--border);
 }
 .page-hero h1 { margin-top: 10px; }
+
+/* ── 29. Reduced Motion ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  html { scroll-behavior: auto; }
+}

@@ -7,11 +7,26 @@
   <meta name="description" content="AI tools, prompt engineering, SEO workflows, and practical digital transformation guides by Panos Khan." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://panoskhan.github.io/ai-blog.html" />
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="AI Blog | Panos Khan" />
   <meta property="og:description" content="Practical guides on AI tools, prompt engineering, SEO workflows, and digital transformation." />
   <meta property="og:url" content="https://panoskhan.github.io/ai-blog.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Panos Khan — AI &amp; Digital Transformation Consultant" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Blog | Panos Khan" />
+  <meta name="twitter:description" content="Practical guides on AI tools, prompt engineering, SEO workflows, and digital transformation." />
+  <meta name="twitter:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta name="twitter:image:alt" content="Panos Khan — AI &amp; Digital Transformation Consultant" />
+
   <link rel="preload" href="/assets/css/main.css" as="style" />
   <link rel="stylesheet" href="/assets/css/main.css" />
   <script type="application/ld+json">
@@ -34,35 +49,59 @@
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
   <div class="cyber-bg" aria-hidden="true">
     <div class="cyber-grid"></div>
     <div class="cyber-orb orb1"></div>
     <div class="cyber-orb orb2"></div>
   </div>
 
-  <header class="site-header" role="banner" style="top:0">
+  <header class="site-header site-header--flush" role="banner">
     <div class="nav-inner">
       <a href="/" class="brand" aria-label="Panos Khan — Home">Panos <span>Khan</span></a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="/#about">About</a>
-        <a href="/#transformation">Services</a>
+        <a href="/services.html">Services</a>
         <a href="/#ai">AI Tools</a>
         <a href="/#projects">Projects</a>
-        <a href="/ai-blog.html" style="color:var(--neon)">Blog</a>
+        <a href="/ai-blog.html" aria-current="page">Blog</a>
         <a href="/#certifications">Credentials</a>
         <a href="/tools.html">Tools Lab</a>
         <a href="/#contact" class="nav-cta">Consultation</a>
       </nav>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navDrawer">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <main>
+  <div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <div class="nav-drawer-overlay" id="navOverlay"></div>
+    <div class="nav-drawer-panel">
+      <div class="nav-drawer-close">
+        <button id="navClose" aria-label="Close navigation menu">✕</button>
+      </div>
+      <nav class="nav-drawer-links" aria-label="Mobile navigation">
+        <a href="/#about">About</a>
+        <a href="/services.html">Services</a>
+        <a href="/#ai">AI Tools</a>
+        <a href="/#projects">Projects</a>
+        <a href="/ai-blog.html" aria-current="page">Blog</a>
+        <a href="/#certifications">Credentials</a>
+        <a href="/tools.html">Tools Lab</a>
+        <a href="/#contact" class="nav-cta">Book Consultation</a>
+      </nav>
+    </div>
+  </div>
+
+  <main id="main-content">
     <div class="container">
       <div class="page-hero">
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <a href="/">Home</a>
           <span class="breadcrumb-sep" aria-hidden="true">/</span>
-          <span>AI Blog</span>
+          <span aria-current="page">AI Blog</span>
         </nav>
         <p class="kicker">Learning &amp; Insights</p>
         <h1>AI Learning Blog</h1>
@@ -74,7 +113,7 @@
 
           <article class="card article-card">
             <div class="card-tag">AI Productivity</div>
-            <h3 style="margin-top:10px">How to Use AI for Small Business Content</h3>
+            <h2 style="font-size:1rem;font-weight:700;margin-top:10px;margin-bottom:8px">How to Use AI for Small Business Content</h2>
             <p class="muted">Practical strategies for leveraging generative AI tools to create, optimize, and scale content without a large team or big budget.</p>
             <div class="article-footer">
               <span class="article-cat">AI</span>
@@ -84,7 +123,7 @@
 
           <article class="card article-card">
             <div class="card-tag">Prompt Engineering</div>
-            <h3 style="margin-top:10px">Prompt Engineering for Marketing Teams</h3>
+            <h2 style="font-size:1rem;font-weight:700;margin-top:10px;margin-bottom:8px">Prompt Engineering for Marketing Teams</h2>
             <p class="muted">A structured approach to writing AI prompts that consistently produce marketing-ready outputs for ads, email, and social content.</p>
             <div class="article-footer">
               <span class="article-cat">Marketing</span>
@@ -94,7 +133,7 @@
 
           <article class="card article-card">
             <div class="card-tag">SEO Strategy</div>
-            <h3 style="margin-top:10px">AI + SEO Topic Authority</h3>
+            <h2 style="font-size:1rem;font-weight:700;margin-top:10px;margin-bottom:8px">AI + SEO Topic Authority</h2>
             <p class="muted">How to build topical authority using AI-assisted content planning, entity optimization, and semantic keyword clustering.</p>
             <div class="article-footer">
               <span class="article-cat">SEO</span>
@@ -104,7 +143,7 @@
 
           <article class="card article-card">
             <div class="card-tag">Developer Tools</div>
-            <h3 style="margin-top:10px">Top AI Tools for Web Developers</h3>
+            <h2 style="font-size:1rem;font-weight:700;margin-top:10px;margin-bottom:8px">Top AI Tools for Web Developers</h2>
             <p class="muted">A curated list of AI-powered tools that speed up development workflows, from code generation to automated testing and documentation.</p>
             <div class="article-footer">
               <span class="article-cat">Dev</span>
@@ -114,7 +153,7 @@
 
           <article class="card article-card">
             <div class="card-tag">Automation</div>
-            <h3 style="margin-top:10px">No-Code + AI Client Automation</h3>
+            <h2 style="font-size:1rem;font-weight:700;margin-top:10px;margin-bottom:8px">No-Code + AI Client Automation</h2>
             <p class="muted">Combining no-code platforms with AI capabilities to automate client onboarding, reporting, and communication workflows.</p>
             <div class="article-footer">
               <span class="article-cat">Automation</span>
@@ -124,7 +163,7 @@
 
           <article class="card article-card">
             <div class="card-tag card-tag purple">Digital Transformation</div>
-            <h3 style="margin-top:10px">AI Readiness for SMEs</h3>
+            <h2 style="font-size:1rem;font-weight:700;margin-top:10px;margin-bottom:8px">AI Readiness for SMEs</h2>
             <p class="muted">A practical framework for small and mid-size businesses to assess AI readiness, identify high-ROI use cases, and build a phased implementation plan.</p>
             <div class="article-footer">
               <span class="article-cat" style="background:var(--purple-glow);border-color:rgba(124,58,237,.25);color:#c4b5fd">AI Strategy</span>
@@ -156,15 +195,64 @@
   </footer>
 
   <script>
+  (function() {
     document.getElementById('year').textContent = new Date().getFullYear();
-    // Scroll reveal
+
+    // ── Mobile Navigation ────────────────────────────
+    const hamburger = document.getElementById('navHamburger');
+    const drawer    = document.getElementById('navDrawer');
+    const overlay   = document.getElementById('navOverlay');
+    const closeBtn  = document.getElementById('navClose');
+    const panel     = drawer.querySelector('.nav-drawer-panel');
+
+    function getFocusable() {
+      return Array.from(panel.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      ));
+    }
+    function openDrawer() {
+      drawer.classList.add('open');
+      hamburger.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      const focusable = getFocusable();
+      if (focusable.length) focusable[0].focus();
+    }
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      hamburger.focus();
+    }
+
+    hamburger.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    drawer.querySelectorAll('a').forEach(l => l.addEventListener('click', closeDrawer));
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && drawer.classList.contains('open')) { closeDrawer(); return; }
+      if (e.key === 'Tab' && drawer.classList.contains('open')) {
+        const focusable = getFocusable();
+        if (!focusable.length) return;
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+        else            { if (document.activeElement === last)  { e.preventDefault(); first.focus(); } }
+      }
+    });
+
+    // ── Scroll Reveal ────────────────────────────────
     const reveals = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window && reveals.length) {
       const obs = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
       }, { threshold: 0.1 });
       reveals.forEach(el => obs.observe(el));
+    } else {
+      reveals.forEach(el => el.classList.add('visible'));
     }
+  })();
   </script>
 </body>
 </html>

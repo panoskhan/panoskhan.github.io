@@ -103,6 +103,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
   <!-- ─── Background FX ─────────────────────────────── -->
   <div class="cyber-bg" aria-hidden="true">
     <div class="cyber-grid"></div>
@@ -113,7 +115,7 @@
   </div>
 
   <!-- ─── Language Bar ─────────────────────────────── -->
-  <div class="langbar" role="navigation" aria-label="Language selector">
+  <div class="langbar" role="region" aria-label="Language selector">
     <div class="langbar-inner">
       <button class="toggle-btn" id="btnEN" aria-pressed="true" aria-label="Switch to English">EN</button>
       <button class="toggle-btn" id="btnEL" aria-pressed="false" aria-label="Αλλαγή σε Ελληνικά">GR</button>
@@ -787,8 +789,6 @@
           <ul class="cert-list">
             <li><span class="cert-year">2025</span> Conversion Optimisation Certification Exam — Skillshop</li>
             <li><span class="cert-year">2025</span> Google Ads Apps Certification — Skillshop</li>
-            <li><span class="cert-year">2025</span> Conversion Optimisation Certification Exam — Skillshop</li>
-            <li><span class="cert-year">2025</span> Google Ads Apps Certification — Skillshop</li>
             <li><span class="cert-year">2025</span> Grow Offline Sales Certification — Skillshop</li>
             <li><span class="cert-year">2025</span> Google Ads Video Certification — Skillshop</li>
             <li><span class="cert-year">2024</span> Crypto101 — Blockchain Council</li>
@@ -1064,7 +1064,9 @@
     function setLang(lang) {
       document.documentElement.lang = lang === 'el' ? 'el' : 'en';
       document.querySelectorAll('[data-lang]').forEach(el => {
-        el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
+        const active = el.getAttribute('data-lang') === lang;
+        el.style.display = active ? '' : 'none';
+        el.setAttribute('aria-hidden', String(!active));
       });
       btnEN.setAttribute('aria-pressed', String(lang === 'en'));
       btnEL.setAttribute('aria-pressed', String(lang === 'el'));
@@ -1080,18 +1082,29 @@
     const drawer    = document.getElementById('navDrawer');
     const overlay   = document.getElementById('navOverlay');
     const closeBtn  = document.getElementById('navClose');
+    const panel     = drawer.querySelector('.nav-drawer-panel');
+
+    // Focusable elements inside the drawer panel
+    function getFocusable() {
+      return Array.from(panel.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      ));
+    }
 
     function openDrawer() {
       drawer.classList.add('open');
       hamburger.classList.add('open');
       hamburger.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
+      const focusable = getFocusable();
+      if (focusable.length) focusable[0].focus();
     }
     function closeDrawer() {
       drawer.classList.remove('open');
       hamburger.classList.remove('open');
       hamburger.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+      hamburger.focus();
     }
 
     hamburger.addEventListener('click', openDrawer);
@@ -1103,7 +1116,19 @@
     });
 
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeDrawer();
+      if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+      // Focus trap inside drawer
+      if (e.key === 'Tab' && drawer.classList.contains('open')) {
+        const focusable = getFocusable();
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last  = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+          if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+        }
+      }
     });
 
     // ── Scroll Reveal ────────────────────────────────
@@ -1123,8 +1148,10 @@
     }
 
     // ── Cyber Background ─────────────────────────────
+    // Skip emoji if user prefers reduced motion
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const field = document.getElementById('emojiField');
-    if (field) {
+    if (field && !reducedMotion) {
       const icons = ['🤖', '🧠', '⚡', '🛰️', '💠', '🧬', '🔹', '✨'];
       const count = window.innerWidth < 768 ? 8 : 16;
       for (let i = 0; i < count; i++) {
@@ -1138,24 +1165,28 @@
       }
     }
 
-    // ── Orb Parallax ─────────────────────────────────
-    const orbs = document.querySelectorAll('.cyber-orb');
-    let mx = innerWidth / 2, my = innerHeight / 2;
-    let tx = mx, ty = my;
+    // ── Orb Parallax (only on non-touch, non-reduced-motion devices) ─
+    if (!reducedMotion && window.matchMedia('(hover: hover)').matches) {
+      const orbs = document.querySelectorAll('.cyber-orb');
+      let mx = innerWidth / 2, my = innerHeight / 2;
+      let tx = mx, ty = my;
+      let rafActive = true;
 
-    window.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
+      window.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
 
-    (function tick() {
-      mx += (tx - mx) * 0.04;
-      my += (ty - my) * 0.04;
-      const dx = (mx - innerWidth  / 2) / (innerWidth  / 2);
-      const dy = (my - innerHeight / 2) / (innerHeight / 2);
-      orbs.forEach((o, i) => {
-        const p = (i + 1) * 9;
-        o.style.transform = 'translate3d(' + (dx * p) + 'px,' + (dy * p) + 'px,0)';
-      });
-      requestAnimationFrame(tick);
-    })();
+      (function tick() {
+        if (!rafActive) return;
+        mx += (tx - mx) * 0.04;
+        my += (ty - my) * 0.04;
+        const dx = (mx - innerWidth  / 2) / (innerWidth  / 2);
+        const dy = (my - innerHeight / 2) / (innerHeight / 2);
+        orbs.forEach((o, i) => {
+          const p = (i + 1) * 9;
+          o.style.transform = 'translate3d(' + (dx * p) + 'px,' + (dy * p) + 'px,0)';
+        });
+        requestAnimationFrame(tick);
+      })();
+    }
 
     // ── Footer Year ──────────────────────────────────
     document.getElementById('year').textContent = new Date().getFullYear();

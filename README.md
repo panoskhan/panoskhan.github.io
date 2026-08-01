@@ -55,7 +55,7 @@ Want to explore the codebase locally? Follow these simple steps:
 
 I specialize in helping businesses scale through tailored AI integrations and performance-driven web platforms.
 
-* **LinkedIn:** [Panos Khan](https://linkedin.com)
+* **LinkedIn:** [Panos Khan](https://www.linkedin.com/in/panos-khan-pk)
 * **Instagram:** [@panos_khan](https://instagram.com)
 
 ---

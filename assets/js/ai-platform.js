@@ -153,9 +153,9 @@ const AIPlatform = (function() {
           <a href="/#about">About</a>
           <a href="/#transformation">Services</a>
           <a href="/ai/">AI Platform</a>
-          <a href="/#projects">Projects</a>
-          <a href="/#articles">Blog</a>
-          <a href="/tools.html">Tools Lab</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/research.html">Research</a>
+          <a href="/tools.html">Tools</a>
           <a href="/contact.html" class="nav-cta">Consultation</a>
         </nav>
         <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navDrawer">
@@ -173,9 +173,9 @@ const AIPlatform = (function() {
         <a href="/#about">About</a>
         <a href="/#transformation">Services</a>
         <a href="/ai/">AI Platform</a>
-        <a href="/#projects">Projects</a>
-        <a href="/#articles">Blog</a>
-        <a href="/tools.html">Tools Lab</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/research.html">Research</a>
+        <a href="/tools.html">Tools</a>
         <a href="/contact.html">Consultation</a>
       </nav>
     </div>
@@ -319,6 +319,11 @@ const AIPlatform = (function() {
               <div class="ai-tab-pane" id="pane-how" role="tabpanel">${tool.docs.how_it_works}</div>
               <div class="ai-tab-pane" id="pane-practices" role="tabpanel">${tool.docs.best_practices}</div>
             </div>
+
+            <div class="ai-card ai-example-card">
+              <h3 style="margin-bottom: 10px; color: var(--text);">Example</h3>
+              <p class="muted">Use a specific business context and desired outcome. Review the deterministic draft before applying it to a live decision or publication.</p>
+            </div>
             
             <!-- FAQ Accordion -->
             <div class="ai-card ai-faq-card">
@@ -362,6 +367,7 @@ const AIPlatform = (function() {
         <div class="ai-related-section">
           <h2>Related AI Core Tools</h2>
           <div class="ai-related-grid" id="ai-related-target"></div>
+          <p class="ai-share-links"><strong>Share this tool:</strong> <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(location.href)}" target="_blank" rel="noopener">LinkedIn</a> · <a href="mailto:?subject=${encodeURIComponent(tool.name)}&body=${encodeURIComponent(location.href)}">Email</a></p>
         </div>
       </main>
       
@@ -371,6 +377,13 @@ const AIPlatform = (function() {
     // Clear current body and append the newly structured layout
     document.body.innerHTML = '';
     document.body.appendChild(pageWrapper);
+    if (window.PhoenixSite) {
+      window.PhoenixSite.mountGlobalSearch();
+    } else {
+      const searchScript = document.createElement('script');
+      searchScript.src = '/assets/js/site.js';
+      document.body.appendChild(searchScript);
+    }
 
     // Automatically inject a beautiful, glassmorphic, floating "Made by Panos Khan" badge
     const floatingBadge = document.createElement('a');

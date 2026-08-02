@@ -1,0 +1,340 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-08-02",
+  "domains": ["AI", "SEO", "Device", "Developer", "Business"],
+  "capabilities": [
+    {
+      "id": "prompt-engineering",
+      "name": "Prompt Engineering",
+      "domain": "AI",
+      "description": "Turn vague goals into structured prompts, SOPs, and repeatable AI workflows.",
+      "status": "live",
+      "keywords": ["prompts", "sop", "instructions", "llm", "workflow"],
+      "tools": [
+        { "id": "readiness-twin", "title": "AI Readiness Twin", "url": "/ai/tools/readiness-twin.html" }
+      ],
+      "docs": [
+        { "title": "AI Readiness Framework", "url": "/research/#ai-readiness-framework" },
+        { "title": "AI Platform documentation", "url": "/ai/#documentation" }
+      ],
+      "downloads": [
+        { "title": "AI readiness checklist", "url": "/downloads/#ai-readiness-checklist" }
+      ],
+      "projects": [
+        { "title": "Project Phoenix", "url": "/projects/#project-phoenix" }
+      ]
+    },
+    {
+      "id": "ai-workflows",
+      "name": "AI Workflows & Automation",
+      "domain": "AI",
+      "description": "Identify repetitive work, design dual-track transformation plans, and prioritize automation safely.",
+      "status": "live",
+      "keywords": ["automation", "process", "operations", "quick wins", "transformation"],
+      "tools": [
+        { "id": "readiness-twin", "title": "AI Readiness Twin", "url": "/ai/tools/readiness-twin.html" },
+        { "id": "decision-risk", "title": "AI Decision Risk Simulator", "url": "/ai/tools/decision-risk.html" }
+      ],
+      "docs": [
+        { "title": "AI Readiness Framework", "url": "/research/#ai-readiness-framework" }
+      ],
+      "downloads": [
+        { "title": "AI readiness checklist", "url": "/downloads/#ai-readiness-checklist" }
+      ],
+      "projects": [
+        { "title": "Project Phoenix", "url": "/projects/#project-phoenix" }
+      ]
+    },
+    {
+      "id": "knowledge-management",
+      "name": "Knowledge Management",
+      "domain": "AI",
+      "description": "Capture decisions, trust statements, and operating knowledge so teams can reuse AI outputs responsibly.",
+      "status": "live",
+      "keywords": ["knowledge", "trust", "transparency", "documentation", "governance"],
+      "tools": [
+        { "id": "trust-label", "title": "AI Trust Label Generator", "url": "/ai/tools/trust-label.html" },
+        { "id": "decision-risk", "title": "AI Decision Risk Simulator", "url": "/ai/tools/decision-risk.html" }
+      ],
+      "docs": [
+        { "title": "Responsible AI Decision Gates", "url": "/research/#responsible-ai-decision-gates" },
+        { "title": "Prompt library", "url": "/ai/#prompt-library" }
+      ],
+      "downloads": [],
+      "projects": []
+    },
+    {
+      "id": "structured-data",
+      "name": "Structured Data",
+      "domain": "SEO",
+      "description": "Plan JSON-LD, entities, and machine-readable signals that help people and AI systems understand a site.",
+      "status": "live",
+      "keywords": ["schema", "json-ld", "entities", "rich results", "crawlability"],
+      "tools": [
+        { "id": "website-audit", "title": "AI Website Audit", "url": "/ai/tools/website-audit.html" },
+        { "id": "seo-brief", "title": "AI SEO Brief Generator", "url": "/ai/tools/seo-brief.html" }
+      ],
+      "docs": [
+        { "title": "SEO Architecture for AI Discovery", "url": "/research/#seo-architecture-ai-discovery" }
+      ],
+      "downloads": [
+        { "title": "SEO audit checklist", "url": "/downloads/#seo-audit-checklist" }
+      ],
+      "projects": [
+        { "title": "Client-side SEO Tooling", "url": "/projects/#client-side-seo-tooling" }
+      ]
+    },
+    {
+      "id": "technical-seo",
+      "name": "Technical SEO",
+      "domain": "SEO",
+      "description": "Improve crawl paths, performance foundations, metadata consistency, and AI-agent discoverability.",
+      "status": "live",
+      "keywords": ["technical seo", "core web vitals", "indexing", "metadata", "performance"],
+      "tools": [
+        { "id": "website-audit", "title": "AI Website Audit", "url": "/ai/tools/website-audit.html" }
+      ],
+      "docs": [
+        { "title": "SEO Architecture for AI Discovery", "url": "/research/#seo-architecture-ai-discovery" }
+      ],
+      "downloads": [
+        { "title": "SEO audit checklist", "url": "/downloads/#seo-audit-checklist" }
+      ],
+      "projects": [
+        { "title": "Client-side SEO Tooling", "url": "/projects/#client-side-seo-tooling" }
+      ]
+    },
+    {
+      "id": "metadata",
+      "name": "Metadata & Content Briefs",
+      "domain": "SEO",
+      "description": "Generate titles, outlines, FAQs, and intent-aligned briefs before writing or publishing.",
+      "status": "live",
+      "keywords": ["title tags", "briefs", "content", "intent", "headings"],
+      "tools": [
+        { "id": "seo-brief", "title": "AI SEO Brief Generator", "url": "/ai/tools/seo-brief.html" },
+        { "id": "ad-copy-studio", "title": "AI Ad Copy Studio", "url": "/ai/tools/ad-copy-studio.html" }
+      ],
+      "docs": [
+        { "title": "SEO Architecture for AI Discovery", "url": "/research/#seo-architecture-ai-discovery" }
+      ],
+      "downloads": [],
+      "projects": []
+    },
+    {
+      "id": "website-audits",
+      "name": "Website Audits",
+      "domain": "SEO",
+      "description": "Run consultant-style reviews across messaging, SEO structure, trust, and conversion priorities.",
+      "status": "live",
+      "keywords": ["audit", "ux", "conversion", "messaging", "seo"],
+      "tools": [
+        { "id": "website-audit", "title": "AI Website Audit", "url": "/ai/tools/website-audit.html" }
+      ],
+      "docs": [
+        { "title": "SEO Architecture for AI Discovery", "url": "/research/#seo-architecture-ai-discovery" }
+      ],
+      "downloads": [
+        { "title": "SEO audit checklist", "url": "/downloads/#seo-audit-checklist" }
+      ],
+      "projects": [
+        { "title": "Client-side SEO Tooling", "url": "/projects/#client-side-seo-tooling" }
+      ]
+    },
+    {
+      "id": "windows-diagnostics",
+      "name": "Windows Diagnostics",
+      "domain": "Device",
+      "description": "Safe, step-by-step Windows troubleshooting flows before repair or reinstall decisions.",
+      "status": "planned",
+      "keywords": ["windows", "pc", "diagnostics", "troubleshoot", "support"],
+      "tools": [],
+      "docs": [
+        { "title": "Windows diagnostics flow", "url": "/device/#windows-diagnostics" }
+      ],
+      "downloads": [
+        { "title": "Backup-before-repair checklist", "url": "/downloads/#backup-before-repair" }
+      ],
+      "projects": []
+    },
+    {
+      "id": "macos-diagnostics",
+      "name": "macOS Diagnostics",
+      "domain": "Device",
+      "description": "Practical macOS health checks, recovery paths, and support guidance.",
+      "status": "planned",
+      "keywords": ["macos", "mac", "apple", "diagnostics", "support"],
+      "tools": [],
+      "docs": [
+        { "title": "macOS diagnostics flow", "url": "/device/#macos-diagnostics" }
+      ],
+      "downloads": [
+        { "title": "Backup-before-repair checklist", "url": "/downloads/#backup-before-repair" }
+      ],
+      "projects": []
+    },
+    {
+      "id": "android-support",
+      "name": "Android Support",
+      "domain": "Device",
+      "description": "Mobile diagnostics and repair guidance for Android devices without risky binaries.",
+      "status": "planned",
+      "keywords": ["android", "phone", "mobile", "repair", "support"],
+      "tools": [],
+      "docs": [
+        { "title": "Mobile repair guidance", "url": "/device/#mobile-repair" }
+      ],
+      "downloads": [
+        { "title": "Backup-before-repair checklist", "url": "/downloads/#backup-before-repair" }
+      ],
+      "projects": []
+    },
+    {
+      "id": "iphone-support",
+      "name": "iPhone Support",
+      "domain": "Device",
+      "description": "iPhone backup, diagnostics, and repair decision guidance with a safety-first approach.",
+      "status": "planned",
+      "keywords": ["iphone", "ios", "apple", "mobile", "repair"],
+      "tools": [],
+      "docs": [
+        { "title": "Mobile repair guidance", "url": "/device/#mobile-repair" }
+      ],
+      "downloads": [
+        { "title": "Backup-before-repair checklist", "url": "/downloads/#backup-before-repair" }
+      ],
+      "projects": []
+    },
+    {
+      "id": "driver-guidance",
+      "name": "Driver Guidance",
+      "domain": "Device",
+      "description": "Find safe driver sources and avoid opaque installers that create security risk.",
+      "status": "planned",
+      "keywords": ["drivers", "hardware", "windows", "safety", "updates"],
+      "tools": [],
+      "docs": [
+        { "title": "Safe driver sources", "url": "/device/#safe-drivers" }
+      ],
+      "downloads": [],
+      "projects": []
+    },
+    {
+      "id": "backup-guidance",
+      "name": "Backup Guidance",
+      "domain": "Device",
+      "description": "Backup-before-repair checklists and recovery planning for laptops and phones.",
+      "status": "live",
+      "keywords": ["backup", "recovery", "data", "checklist", "repair"],
+      "tools": [],
+      "docs": [
+        { "title": "Backup before repair", "url": "/device/#backup-before-repair" }
+      ],
+      "downloads": [
+        { "title": "Backup-before-repair checklist", "url": "/downloads/#backup-before-repair" }
+      ],
+      "projects": []
+    },
+    {
+      "id": "json-tools",
+      "name": "JSON Tools",
+      "domain": "Developer",
+      "description": "Browser-based JSON utilities for formatting, validation, and inspection.",
+      "status": "planned",
+      "keywords": ["json", "developer", "formatter", "validate"],
+      "tools": [],
+      "docs": [
+        { "title": "Open Source utilities roadmap", "url": "/open-source/#roadmap" }
+      ],
+      "downloads": [],
+      "projects": []
+    },
+    {
+      "id": "html-css-tools",
+      "name": "HTML & CSS Tools",
+      "domain": "Developer",
+      "description": "Lightweight front-end helpers and snippets that stay transparent and client-side.",
+      "status": "planned",
+      "keywords": ["html", "css", "frontend", "snippets", "utilities"],
+      "tools": [],
+      "docs": [
+        { "title": "Open Source utilities roadmap", "url": "/open-source/#roadmap" }
+      ],
+      "downloads": [
+        { "title": "Sample static page starter", "url": "/downloads/#sample-static-starter" }
+      ],
+      "projects": [
+        { "title": "Project Phoenix", "url": "/projects/#project-phoenix" }
+      ]
+    },
+    {
+      "id": "github-utilities",
+      "name": "GitHub Utilities",
+      "domain": "Developer",
+      "description": "Helpers and patterns for GitHub Pages sites, validation scripts, and open workflows.",
+      "status": "live",
+      "keywords": ["github", "pages", "ci", "static site", "validation"],
+      "tools": [],
+      "docs": [
+        { "title": "Project Phoenix architecture", "url": "/projects/#project-phoenix" },
+        { "title": "Open Source hub", "url": "/open-source/" }
+      ],
+      "downloads": [
+        { "title": "Sample static page starter", "url": "/downloads/#sample-static-starter" }
+      ],
+      "projects": [
+        { "title": "Project Phoenix", "url": "/projects/#project-phoenix" }
+      ]
+    },
+    {
+      "id": "templates",
+      "name": "Business Templates",
+      "domain": "Business",
+      "description": "Reusable templates for briefs, trust labels, and transformation planning.",
+      "status": "live",
+      "keywords": ["templates", "business", "planning", "docs"],
+      "tools": [
+        { "id": "seo-brief", "title": "AI SEO Brief Generator", "url": "/ai/tools/seo-brief.html" },
+        { "id": "trust-label", "title": "AI Trust Label Generator", "url": "/ai/tools/trust-label.html" },
+        { "id": "ad-copy-studio", "title": "AI Ad Copy Studio", "url": "/ai/tools/ad-copy-studio.html" }
+      ],
+      "docs": [],
+      "downloads": [
+        { "title": "AI readiness checklist", "url": "/downloads/#ai-readiness-checklist" }
+      ],
+      "projects": []
+    },
+    {
+      "id": "checklists",
+      "name": "Checklists",
+      "domain": "Business",
+      "description": "Printable and browser-friendly checklists for audits, backups, and readiness reviews.",
+      "status": "live",
+      "keywords": ["checklist", "pdf", "process", "ops"],
+      "tools": [
+        { "id": "website-audit", "title": "AI Website Audit", "url": "/ai/tools/website-audit.html" }
+      ],
+      "docs": [],
+      "downloads": [
+        { "title": "AI readiness checklist", "url": "/downloads/#ai-readiness-checklist" },
+        { "title": "SEO audit checklist", "url": "/downloads/#seo-audit-checklist" },
+        { "title": "Backup-before-repair checklist", "url": "/downloads/#backup-before-repair" }
+      ],
+      "projects": []
+    },
+    {
+      "id": "calculators",
+      "name": "Calculators",
+      "domain": "Business",
+      "description": "Lightweight calculators for prioritization and planning. Planned — not shipped yet.",
+      "status": "planned",
+      "keywords": ["calculator", "roi", "priority", "planning"],
+      "tools": [],
+      "docs": [
+        { "title": "Downloads roadmap", "url": "/downloads/#roadmap" }
+      ],
+      "downloads": [],
+      "projects": []
+    }
+  ]
+}

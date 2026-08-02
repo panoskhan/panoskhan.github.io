@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Capability Explorer | Panos Khan</title>
+  <meta name="description" content="Browse Panos Khan platform capabilities across AI, SEO, Device Service, Developer tools, and Business resources." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://panoskhan.github.io/capabilities/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Capability Explorer | Panos Khan" />
+  <meta property="og:description" content="Browse Panos Khan platform capabilities across AI, SEO, Device Service, Developer tools, and Business resources." />
+  <meta property="og:url" content="https://panoskhan.github.io/capabilities/" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Capability Explorer | Panos Khan" />
+  <meta name="twitter:description" content="Browse Panos Khan platform capabilities across AI, SEO, Device Service, Developer tools, and Business resources." />
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://panoskhan.github.io/capabilities/#page",
+    "name": "Capability Explorer | Panos Khan",
+    "url": "https://panoskhan.github.io/capabilities/",
+    "description": "Browse Panos Khan platform capabilities across AI, SEO, Device Service, Developer tools, and Business resources.",
+    "isPartOf": {"@type": "WebSite", "name": "Panos Khan", "url": "https://panoskhan.github.io/"},
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://panoskhan.github.io/"},
+        {"@type": "ListItem", "position": 2, "name": "Capability Explorer", "item": "https://panoskhan.github.io/capabilities/"}
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" role="banner" data-site-nav></header>
+  <main class="container section">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span>/</span><span aria-current="page">Capability Explorer</span>
+    </nav>
+    <header class="section-header" style="text-align:left;max-width:760px;margin-left:0">
+      <p class="kicker">Platform Map</p>
+      <h1>Capability Explorer</h1>
+      <p class="lead">Browse what the ecosystem offers. Each capability links to related tools, documentation, downloads, and projects — with honest planned states when something is not live yet.</p>
+    </header>
+    
+    <section class="capability-controls" aria-label="Capability filters">
+      <div class="capability-search-wrap">
+        <span class="ai-search-icon" aria-hidden="true">🔍</span>
+        <input id="capabilitySearch" class="ai-search-input" type="search" placeholder="Search capabilities by name, domain, or keyword…" aria-label="Search capabilities" />
+      </div>
+      <div class="capability-filters ai-categories-wrapper" id="capabilityFilters" role="group" aria-label="Capability domains"></div>
+      <div class="capability-meta-row">
+        <p id="capabilityCount" class="muted">Loading capabilities…</p>
+        <p class="muted"><a href="/ai/">AI tools</a> · <a href="/downloads/">Downloads</a> · <a href="/device/">Device</a></p>
+      </div>
+    </section>
+    <div id="capabilityEmpty" class="card" hidden>
+      <h2>No capabilities match</h2>
+      <p class="muted">Try another domain filter or clear the search. Planned capabilities still appear unless filtered out by keywords.</p>
+    </div>
+    <div class="capability-grid" id="capabilityGrid" aria-live="polite"></div>
+    <section class="section-sm">
+      <div class="future-note">
+        <strong>Workspace-ready IDs:</strong> every capability and tool uses a stable id so a future Panos Khan Workspace can save favorites, recent tools, and audit exports without redesigning the catalog.
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer" role="contentinfo" data-site-footer></footer>
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/capabilities.js"></script>
+</body>
+</html>

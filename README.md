@@ -1,63 +1,45 @@
-# 🚀 Panos Khan – AI & Digital Transformation Consultant
+# Panos Khan — Technology Ecosystem
 
-<p align="center">
-  <strong>The official repository for my personal portfolio website, featuring a progressively enhanced 3D experience.</strong>
-</p>
+Official site for the **Panos Khan** product ecosystem: AI tools, Device Service guidance, Research, Open Source, Downloads, and consulting.
 
-<p align="center">
-  <a href="https://github.io"><img src="https://shields.io" alt="Live Demo"></a>
-</p>
+## Products
 
----
+| Product | Path |
+|---------|------|
+| AI Platform | `/ai/` |
+| Device Service | `/device/` |
+| Research | `/research/` |
+| Open Source | `/open-source/` |
+| Downloads | `/downloads/` |
+| Capability Explorer | `/capabilities/` |
+| Projects | `/projects/` |
 
-## 🌟 Overview
+Consulting, credentials, and contact remain first-class supporting surfaces.
 
-Welcome! This repository hosts my personal portfolio. It is designed to demonstrate how artificial intelligence, seamless web architecture, and immersive 3D graphics merge to create next-generation web experiences. 
+## Stack
 
-### Key Features
-* 🧠 **AI & Digital Focus:** Tailored for B2B/B2C digital transformation consultations.
-* 📦 **3D Progressive Enhancement:** Features a lightweight, lazy-loaded 3D prototype that scales smoothly depending on device performance.
-* ⚡ **Ultra-Fast Performance:** Built with optimization at its core for rapid load times and superior SEO.
+- HTML5 / CSS3 design system (`assets/css/main.css`)
+- Progressive JavaScript (`assets/js/site.js`, `ai-platform.js`, `capabilities.js`)
+- Static JSON capability catalog (`assets/data/capabilities.json`)
+- GitHub Pages (no build step required)
 
-## 🛠️ Built With
+## Local preview
 
-* **HTML5 / CSS3** - Semantic structure and responsive design.
-* **JavaScript (ES6+)** - Dynamic interface logic and lazy-loading scripts.
-* **WebGL / Three.js** - Driving the immersive 3D enhanced user experience.
+```bash
+python3 -m http.server 8000
+```
 
----
+Open `http://localhost:8000`.
 
-## 🚀 Quick Start & Local Setup
+## Validation
 
-Want to explore the codebase locally? Follow these simple steps:
+```bash
+python3 scripts/validate_static.py
+```
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com
-   ```
+## Principles
 
-2. **Navigate into the project directory:**
-   ```bash
-   cd panoskhan.github.io
-   ```
-
-3. **Run a local server:**
-   * If you use VS Code, install the **Live Server** extension and click "Go Live".
-   * Alternatively, if you have Python installed, run:
-     ```bash
-     python3 -m http.server 8000
-     ```
-   * Open your browser and navigate to `http://localhost:8000`.
-
----
-
-## 📈 Let's Connect!
-
-I specialize in helping businesses scale through tailored AI integrations and performance-driven web platforms.
-
-* **LinkedIn:** [Panos Khan](https://www.linkedin.com/in/panos-khan-pk)
-* **Instagram:** [@panos_khan](https://instagram.com)
-
----
-<p align="center"> ⭐ Drop a star if you find this project helpful or inspiring! </p>
-
+- Product-driven IA with one shared brand/design system
+- Curated excellence over thin page volume
+- Safe-by-default downloads (no privileged opaque binaries)
+- Client-side tools by default; Workspace auth is future-only

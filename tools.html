@@ -3,205 +3,51 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Panos Khan AI Tools | Panos Khan</title>
-  <meta name="description" content="Free practical AI tools by Panos Khan for readiness, automation, risk, process design, vendor fit, and transformation planning." />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
-  <link rel="canonical" href="https://panoskhan.github.io/tools.html" />
+  <title>Tools Lab | Panos Khan</title>
+  <meta name="description" content="Panos Khan Tools Lab now lives inside the AI Platform and Capability Explorer." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Panos Khan AI Tools" />
-  <meta property="og:description" content="Ten practical, privacy-minded client-side tools for AI transformation." />
-  <meta property="og:url" content="https://panoskhan.github.io/tools.html" />
+  <meta property="og:title" content="Tools Lab | Panos Khan" />
+  <meta property="og:description" content="Canonical AI tools and capability map for the Panos Khan ecosystem." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/" />
   <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
-  <link rel="stylesheet" href="/assets/css/tools.css" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">Panos <span>Khan</span> · AI Tools</div>
-      <nav class="nav" aria-label="Main navigation">
-        <a href="/">Home</a>
-        <a href="/#tools">Product Tools</a>
-        <a href="/tools/website-audit.html">Website Audit</a>
-        <a href="/tools/seo-brief.html">SEO Brief</a>
-      </nav>
+  <header class="site-header" data-site-nav role="banner"></header>
+  <main class="container section">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span aria-current="page">Tools Lab</span></nav>
+    <header class="section-header" style="text-align:left;max-width:760px;margin-left:0">
+      <p class="kicker">Alias</p>
+      <h1>Tools Lab</h1>
+      <p class="lead">The legacy Tools Lab is now part of the product ecosystem. Canonical interactive tools live under the AI Platform; browse everything by capability in Explore.</p>
+    </header>
+    <div class="grid grid-2">
+      <article class="card">
+        <h2>AI Platform</h2>
+        <p class="muted">Consultant-grade client-side tools for strategy, SEO, growth, and risk.</p>
+        <p><a class="btn btn-primary" href="/ai/">Open AI Platform</a></p>
+      </article>
+      <article class="card">
+        <h2>Capability Explorer</h2>
+        <p class="muted">Browse AI, SEO, Device, Developer, and Business capabilities with linked resources.</p>
+        <p><a class="btn btn-primary" href="/capabilities/">Open Explorer</a></p>
+      </article>
     </div>
-  </header>
-
-  <main class="container">
-    <section class="section intro-card">
-      <h1>Panos Khan AI Tools</h1>
-      <p class="muted">Panos Khan – AI &amp; Digital Transformation Consultant</p>
-      <p>Free practical tools for visitors to quickly shape AI decisions, spot transformation gaps, and build action-ready next steps with lightweight business logic.</p>
-    </section>
-
-    <section class="section tool-grid" aria-label="AI tools">
-      <article class="tool-card">
-        <h2>AI Readiness Twin</h2>
-        <p class="tool-desc">Builds dual tracks: immediate quick wins and strategic 12-month transformation priorities.</p>
-        <form data-tool="readinessTwin">
-          <label for="readinessIndustry">Industry</label>
-          <input id="readinessIndustry" name="industry" type="text" required />
-          <label for="readinessChallenge">Top challenge</label>
-          <input id="readinessChallenge" name="challenge" type="text" required />
-          <button class="btn btn-primary" type="submit">Generate</button>
-        </form>
-        <div class="result-wrap">
-          <div class="result-head"><h3>Generated Output</h3><button class="btn copy-btn" type="button" data-copy-target="result-readinessTwin">Copy Result</button></div>
-          <pre id="result-readinessTwin" class="result-box">Submit inputs to generate output.</pre>
-        </div>
-      </article>
-
-      <article class="tool-card">
-        <h2>Shadow-Automation Detector</h2>
-        <p class="tool-desc">Flags hidden repetitive work in spreadsheets, inboxes, and manual team handoffs.</p>
-        <form data-tool="shadowAutomation">
-          <label for="shadowWorkflow">Workflow</label>
-          <textarea id="shadowWorkflow" name="workflow" required></textarea>
-          <label for="shadowTeam">Team size</label>
-          <input id="shadowTeam" name="teamSize" type="number" min="1" required />
-          <button class="btn btn-primary" type="submit">Generate</button>
-        </form>
-        <div class="result-wrap">
-          <div class="result-head"><h3>Generated Output</h3><button class="btn copy-btn" type="button" data-copy-target="result-shadowAutomation">Copy Result</button></div>
-          <pre id="result-shadowAutomation" class="result-box">Submit inputs to generate output.</pre>
-        </div>
-      </article>
-
-      <article class="tool-card">
-        <h2>Decision Risk Simulator</h2>
-        <p class="tool-desc">Simulates legal, bias, security, adoption, and brand risk levels for a planned AI initiative.</p>
-        <form data-tool="decisionRisk">
-          <label for="riskUseCase">Planned AI use-case</label>
-          <input id="riskUseCase" name="useCase" type="text" required />
-          <label for="riskSensitivity">Data sensitivity</label>
-          <select id="riskSensitivity" name="sensitivity" required>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-          </select>
-          <button class="btn btn-primary" type="submit">Generate</button>
-        </form>
-        <div class="result-wrap">
-          <div class="result-head"><h3>Generated Output</h3><button class="btn copy-btn" type="button" data-copy-target="result-decisionRisk">Copy Result</button></div>
-          <pre id="result-decisionRisk" class="result-box">Submit inputs to generate output.</pre>
-        </div>
-      </article>
-
-      <article class="tool-card">
-        <h2>Prompt-to-Process Converter</h2>
-        <p class="tool-desc">Converts a single prompt into an execution-ready SOP with owner, KPI, and handoff steps.</p>
-        <form data-tool="promptProcess">
-          <label for="promptRaw">Prompt text</label>
-          <textarea id="promptRaw" name="prompt" required></textarea>
-          <label for="promptOwner">Process owner role</label>
-          <input id="promptOwner" name="owner" type="text" required />
-          <button class="btn btn-primary" type="submit">Generate</button>
-        </form>
-        <div class="result-wrap">
-          <div class="result-head"><h3>Generated Output</h3><button class="btn copy-btn" type="button" data-copy-target="result-promptProcess">Copy Result</button></div>
-          <pre id="result-promptProcess" class="result-box">Submit inputs to generate output.</pre>
-        </div>
-      </article>
-
-      <article class="tool-card">
-        <h2>AI Vendor Fit Matcher</h2>
-        <p class="tool-desc">Recommends buy vs build vs hybrid and practical vendor category fit by size and budget.</p>
-        <form data-tool="vendorFit">
-          <label for="vendorCompany">Company size</label>
-          <input id="vendorCompany" name="companySize" type="text" required />
-          <label for="vendorBudget">Monthly AI budget (EUR)</label>
-          <input id="vendorBudget" name="budget" type="number" min="0" required />
-          <button class="btn btn-primary" type="submit">Generate</button>
-        </form>
-        <div class="result-wrap">
-          <div class="result-head"><h3>Generated Output</h3><button class="btn copy-btn" type="button" data-copy-target="result-vendorFit">Copy Result</button></div>
-          <pre id="result-vendorFit" class="result-box">Submit inputs to generate output.</pre>
-        </div>
-      </article>
-
-      <article class="tool-card">
-        <h2>Transformation Friction Scanner</h2>
-        <p class="tool-desc">Scores organizational blockers across alignment, data readiness, and adoption resistance.</p>
-        <form data-tool="frictionScanner">
-          <label for="frictionAlignment">Leadership alignment (1-5)</label>
-          <input id="frictionAlignment" name="alignment" type="number" min="1" max="5" required />
-          <label for="frictionAdoption">Change resistance (1-5)</label>
-          <input id="frictionAdoption" name="resistance" type="number" min="1" max="5" required />
-          <button class="btn btn-primary" type="submit">Generate</button>
-        </form>
-        <div class="result-wrap">
-          <div class="result-head"><h3>Generated Output</h3><button class="btn copy-btn" type="button" data-copy-target="result-frictionScanner">Copy Result</button></div>
-          <pre id="result-frictionScanner" class="result-box">Submit inputs to generate output.</pre>
-        </div>
-      </article>
-
-      <article class="tool-card">
-        <h2>Value Leakage Finder</h2>
-        <p class="tool-desc">Highlights where value gets lost in the customer journey and where AI can recover it.</p>
-        <form data-tool="valueLeakage">
-          <label for="leakJourney">Customer journey steps</label>
-          <textarea id="leakJourney" name="journey" required></textarea>
-          <label for="leakValue">Average deal value (EUR)</label>
-          <input id="leakValue" name="dealValue" type="number" min="1" required />
-          <button class="btn btn-primary" type="submit">Generate</button>
-        </form>
-        <div class="result-wrap">
-          <div class="result-head"><h3>Generated Output</h3><button class="btn copy-btn" type="button" data-copy-target="result-valueLeakage">Copy Result</button></div>
-          <pre id="result-valueLeakage" class="result-box">Submit inputs to generate output.</pre>
-        </div>
-      </article>
-
-      <article class="tool-card">
-        <h2>AI Trust Label Generator</h2>
-        <p class="tool-desc">Creates a publishable transparency statement on responsible AI usage for clients and visitors.</p>
-        <form data-tool="trustLabel">
-          <label for="trustBusiness">Business name</label>
-          <input id="trustBusiness" name="business" type="text" required />
-          <label for="trustUse">Primary AI usage</label>
-          <input id="trustUse" name="usage" type="text" required />
-          <button class="btn btn-primary" type="submit">Generate</button>
-        </form>
-        <div class="result-wrap">
-          <div class="result-head"><h3>Generated Output</h3><button class="btn copy-btn" type="button" data-copy-target="result-trustLabel">Copy Result</button></div>
-          <pre id="result-trustLabel" class="result-box">Submit inputs to generate output.</pre>
-        </div>
-      </article>
-
-      <article class="tool-card">
-        <h2>Meeting Drift Analyzer</h2>
-        <p class="tool-desc">Checks if meeting discussions and action items are drifting away from strategy commitments.</p>
-        <form data-tool="meetingDrift">
-          <label for="driftGoal">Stated strategic goal</label>
-          <input id="driftGoal" name="goal" type="text" required />
-          <label for="driftNotes">Meeting notes</label>
-          <textarea id="driftNotes" name="notes" required></textarea>
-          <button class="btn btn-primary" type="submit">Generate</button>
-        </form>
-        <div class="result-wrap">
-          <div class="result-head"><h3>Generated Output</h3><button class="btn copy-btn" type="button" data-copy-target="result-meetingDrift">Copy Result</button></div>
-          <pre id="result-meetingDrift" class="result-box">Submit inputs to generate output.</pre>
-        </div>
-      </article>
-
-      <article class="tool-card">
-        <h2>One-Person AI Office Architect</h2>
-        <p class="tool-desc">Designs a solo-founder “AI office” with role-based assistants and a weekly operating plan.</p>
-        <form data-tool="officeArchitect">
-          <label for="officeType">Business type</label>
-          <input id="officeType" name="businessType" type="text" required />
-          <label for="officeGoal">Primary growth objective</label>
-          <input id="officeGoal" name="goal" type="text" required />
-          <button class="btn btn-primary" type="submit">Generate</button>
-        </form>
-        <div class="result-wrap">
-          <div class="result-head"><h3>Generated Output</h3><button class="btn copy-btn" type="button" data-copy-target="result-officeArchitect">Copy Result</button></div>
-          <pre id="result-officeArchitect" class="result-box">Submit inputs to generate output.</pre>
-        </div>
-      </article>
+    <section class="mt-32">
+      <h2>Canonical tools</h2>
+      <ul class="hub-roadmap">
+        <li><a href="/ai/tools/website-audit.html">AI Website Audit</a></li>
+        <li><a href="/ai/tools/seo-brief.html">AI SEO Brief Generator</a></li>
+        <li><a href="/ai/tools/ad-copy-studio.html">AI Ad Copy Studio</a></li>
+        <li><a href="/ai/tools/readiness-twin.html">AI Readiness Twin</a></li>
+        <li><a href="/ai/tools/decision-risk.html">AI Decision Risk Simulator</a></li>
+        <li><a href="/ai/tools/trust-label.html">AI Trust Label Generator</a></li>
+      </ul>
     </section>
   </main>
-
-  <script src="/assets/js/tools.js"></script>
+  <footer class="site-footer" data-site-footer role="contentinfo"></footer>
   <script src="/assets/js/site.js"></script>
 </body>
 </html>

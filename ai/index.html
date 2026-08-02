@@ -4,32 +4,24 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Panos Khan AI Platform | Project Phoenix</title>
-  <meta name="description" content="Explore Panos Khan's AI Platform. Free consultant-grade AI tools for strategy, digital transformation, SEO content briefings, and automated risk analysis." />
+  <meta name="description" content="Explore Panos Khan AI: workspace tools, prompt library, workflows, and documentation for strategy, SEO, and responsible AI." />
   <link rel="canonical" href="https://panoskhan.github.io/ai/" />
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Panos Khan AI Platform | Project Phoenix" />
-  <meta property="og:description" content="Discover premium client-side AI tools designed to baseline readiness, automate SEO briefings, analyze decision risks, and drive digital growth." />
+  <meta property="og:description" content="Consultant-grade client-side AI tools, prompts, and docs in one product hub." />
   <meta property="og:url" content="https://panoskhan.github.io/ai/" />
   <meta property="og:site_name" content="Panos Khan" />
   <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Panos Khan AI Platform | Project Phoenix" />
-  <meta name="twitter:description" content="Premium, developer-level client-side AI tools for business strategy, seo briefings, and decision risk analysis." />
+  <meta name="twitter:description" content="Premium client-side AI tools for strategy, SEO briefings, and decision risk analysis." />
   <meta name="twitter:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
-
-  <!-- Preload key CSS -->
   <link rel="preload" href="/assets/css/main.css" as="style" />
   <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
   <link rel="stylesheet" href="/assets/css/main.css" />
   <link rel="stylesheet" href="/assets/css/ai-platform.css" />
-
-  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -39,24 +31,20 @@
         "@id": "https://panoskhan.github.io/#website",
         "url": "https://panoskhan.github.io/",
         "name": "Panos Khan",
-        "publisher": {
-          "@type": "Person",
-          "name": "Panos Khan",
-          "url": "https://panoskhan.github.io/"
-        }
+        "publisher": {"@type": "Person", "name": "Panos Khan", "url": "https://panoskhan.github.io/"}
       },
       {
         "@type": "WebPage",
         "@id": "https://panoskhan.github.io/ai/#webpage",
         "url": "https://panoskhan.github.io/ai/",
         "name": "Panos Khan AI Platform | Project Phoenix",
-        "description": "Explore Panos Khan's AI Platform. Free consultant-grade AI tools for strategy, digital transformation, SEO content briefings, and automated risk analysis.",
-        "isPartOf": { "@id": "https://panoskhan.github.io/#website" },
+        "description": "Explore Panos Khan AI: workspace tools, prompt library, workflows, and documentation.",
+        "isPartOf": {"@id": "https://panoskhan.github.io/#website"},
         "breadcrumb": {
           "@type": "BreadcrumbList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://panoskhan.github.io/" },
-            { "@type": "ListItem", "position": 2, "name": "AI Platform", "item": "https://panoskhan.github.io/ai/" }
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://panoskhan.github.io/"},
+            {"@type": "ListItem", "position": 2, "name": "AI Platform", "item": "https://panoskhan.github.io/ai/"}
           ]
         }
       }
@@ -65,53 +53,42 @@
   </script>
 </head>
 <body>
-  <!-- Header Markup will be wrapped dynamically if needed, but since this is index.html, we can write it statically to match exactly -->
-  <header class="site-header" role="banner">
-    <div class="nav-inner">
-      <a href="/" class="brand" aria-label="Panos Khan — Home">Panos <span>Khan</span></a>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="/#about">About</a>
-        <a href="/#transformation">Services</a>
-        <a href="/ai/">AI Platform</a>
-        <a href="/projects.html">Projects</a>
-        <a href="/research.html">Research</a>
-        <a href="/tools.html">Tools</a>
-        <a href="/contact.html" class="nav-cta">Consultation</a>
-      </nav>
-      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navDrawer">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+  <header class="site-header" role="banner" data-site-nav></header>
 
-  <div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
-    <div class="nav-drawer-header">
-      <span class="brand">Panos <span>Khan</span></span>
-      <button class="nav-drawer-close" id="navClose" aria-label="Close navigation menu">×</button>
-    </div>
-    <nav class="nav-drawer-links">
-      <a href="/#about">About</a>
-      <a href="/#transformation">Services</a>
-      <a href="/ai/">AI Platform</a>
-      <a href="/projects.html">Projects</a>
-      <a href="/research.html">Research</a>
-      <a href="/tools.html">Tools</a>
-      <a href="/contact.html">Consultation</a>
-    </nav>
-  </div>
-  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
-
-  <!-- Main Content -->
+  <main>
   <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span>/</span><span aria-current="page">AI Platform</span>
+    </nav>
     <section class="ai-hub-hero">
-      <span class="kicker">Project Phoenix Phase 2</span>
-      <h1 class="gradient-text">Panos Khan AI Platform</h1>
-      <p>High-fidelity, consultant-grade AI tools and frameworks engineered to baseline readiness, model decision risk, and automate strategic digital growth plans.</p>
+      <span class="kicker">Product A · Project Phoenix</span>
+      <h1 class="gradient-text">Panos Khan AI</h1>
+      <p>High-fidelity, consultant-grade AI tools and frameworks engineered to baseline readiness, model decision risk, and automate strategic digital growth plans — privacy-minded and client-side by default.</p>
+      <p style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn btn-primary btn-sm" href="#workspace">AI Workspace</a>
+        <a class="btn btn-sm" href="#prompt-library">Prompt Library</a>
+        <a class="btn btn-sm" href="#documentation">Documentation</a>
+        <a class="btn btn-sm" href="/capabilities/">Capability Explorer</a>
+      </p>
     </section>
 
-    <!-- Search and Filters Section -->
-    <section class="ai-hub-controls">
-      <div class="ai-search-wrapper">
+    <nav class="product-subnav" aria-label="AI product sections">
+      <a href="#workspace" aria-current="page">Workspace</a>
+      <a href="#tools">Tools</a>
+      <a href="#prompt-library">Prompt Library</a>
+      <a href="#documentation">Documentation</a>
+      <a href="#agents">Agents (future)</a>
+      <a href="/capabilities/">Capabilities</a>
+      <a href="/downloads/">Downloads</a>
+    </nav>
+
+    <section id="workspace" class="section-sm">
+      <h2>AI Workspace</h2>
+      <p class="muted">Launch curated tools below. Favorites and recent-tool memory use local browser storage only — a lightweight hook for a future signed-in Workspace.</p>
+    </section>
+
+    <section id="tools" class="ai-hub-controls" aria-label="Tool filters">
+      <div class="ai-search-wrapper capability-search-wrap">
         <span class="ai-search-icon" aria-hidden="true">🔍</span>
         <input type="search" id="aiSearchInput" class="ai-search-input" placeholder="Search tools by title, keyword, or capability..." aria-label="Search AI tools" />
       </div>
@@ -123,69 +100,66 @@
       </div>
     </section>
 
-    <!-- Featured Tools Title -->
-    <h2 id="toolsSectionTitle" style="font-size: 1.6rem; margin-bottom: 24px; color: var(--text);">Core Systems Grid</h2>
+    <h2 id="toolsSectionTitle" style="font-size: 1.6rem; margin-bottom: 24px; color: var(--text);">Curated AI tools</h2>
+    <div class="ai-hub-grid" id="aiToolsGrid"></div>
 
-    <!-- Tools Grid -->
-    <div class="ai-hub-grid" id="aiToolsGrid">
-      <!-- Injected Dynamically by JavaScript -->
-    </div>
+    <section id="prompt-library" class="section">
+      <h2>Prompt Library</h2>
+      <p class="muted">A small set of excellent prompts — quality over quantity.</p>
+      <div class="content-grid" style="margin-top:18px">
+        <article class="card">
+          <span class="card-tag">Strategy</span>
+          <h3>Pilot scoping prompt</h3>
+          <p class="muted">“Given industry {X} and operational pain {Y}, propose one 30-day AI pilot with owner, KPI, data risks, and stop conditions.”</p>
+          <p><a href="/ai/tools/readiness-twin.html">Pair with Readiness Twin →</a></p>
+        </article>
+        <article class="card">
+          <span class="card-tag">SEO</span>
+          <h3>Brief expansion prompt</h3>
+          <p class="muted">“Turn this keyword and audience into title options, H2 outline, FAQs, and schema suggestions without keyword stuffing.”</p>
+          <p><a href="/ai/tools/seo-brief.html">Pair with SEO Brief →</a></p>
+        </article>
+        <article class="card">
+          <span class="card-tag">Governance</span>
+          <h3>Risk review prompt</h3>
+          <p class="muted">“Review this AI use-case for legal, bias, security, adoption, and brand risks. List human-in-the-loop gates.”</p>
+          <p><a href="/ai/tools/decision-risk.html">Pair with Decision Risk →</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="documentation" class="section">
+      <h2>AI Documentation</h2>
+      <div class="grid grid-2" style="margin-top:18px">
+        <article class="card">
+          <h3>How tools work</h3>
+          <p class="muted">Tools use deterministic client-side logic from your inputs. They do not scrape live sites or send form data to a Panos Khan server.</p>
+        </article>
+        <article class="card">
+          <h3>Privacy defaults</h3>
+          <p class="muted">No privileged installs. No account required. Optional recent-tool ids may be stored in localStorage for a future Workspace sync design.</p>
+        </article>
+        <article class="card">
+          <h3>Limits</h3>
+          <p class="muted">Outputs are decision aids, not legal, medical, or security certifications. Validate before production use.</p>
+        </article>
+        <article class="card">
+          <h3>Related products</h3>
+          <p class="muted"><a href="/research/">Research frameworks</a> · <a href="/downloads/">Checklists</a> · <a href="/capabilities/">Capability map</a> · <a href="/open-source/">Open Source</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="agents" class="section-sm">
+      <div class="future-note">
+        <strong>AI Agents (future):</strong> multi-step agents are intentionally deferred until the core tool catalog, docs, and capability map are mature. This stub reserves the product slot without shipping unfinished automation.
+      </div>
+    </section>
   </div>
+  </main>
 
-  <!-- Footer -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <span class="brand">Panos <span>Khan</span></span>
-          <p>AI &amp; Digital Transformation Consultant based in Athens, Greece. Building the future of business through intelligent technology and growth-focused strategy.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Platform Navigation</h4>
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/#about">About</a></li>
-            <li><a href="/#transformation">Services</a></li>
-            <li><a href="/ai/">AI Platform</a></li>
-            <li><a href="/tools.html">Legacy Tools Lab</a></li>
-            <li><a href="/quality-dashboard.html">Quality Dashboard</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Featured Tools</h4>
-          <ul>
-            <li><a href="/ai/tools/website-audit.html">AI Website Audit</a></li>
-            <li><a href="/ai/tools/readiness-twin.html">AI Readiness Twin</a></li>
-            <li><a href="/ai/tools/seo-brief.html">AI SEO Brief</a></li>
-            <li><a href="/ai/tools/ad-copy-studio.html">AI Ad Copy Studio</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Connect</h4>
-          <ul>
-            <li><a href="/contact.html">Contact</a></li>
-            <li><a href="https://www.linkedin.com/in/panos-khan-pk" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a href="https://medium.com/@panoskhan40" target="_blank" rel="noopener">Medium</a></li>
-            <li><a href="/ai/">AI Platform</a></li>
-            <li><a href="/credentials.html">Credentials</a></li>
-          </ul>
-        </div>
-      </div>
+  <footer class="site-footer" role="contentinfo" data-site-footer></footer>
 
-      <div class="footer-bottom">
-        <p>© <span id="year">2026</span> Panos Khan — AI &amp; Digital Transformation Consultant. All rights reserved.</p>
-        <div class="footer-social">
-          <a href="https://www.linkedin.com/in/panos-khan-pk" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-          <a href="https://medium.com/@panoskhan40" target="_blank" rel="noopener" aria-label="Medium">M</a>
-          <a href="https://orcid.org/0009-0002-9718-4637" target="_blank" rel="noopener" aria-label="ORCID">ID</a>
-          <a href="https://contactout.com/panos-khan-43927" target="_blank" rel="noopener" aria-label="ContactOut">CO</a>
-          <a href="/tools/website-audit.html" aria-label="AI Tools">🛠️</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
   <script src="/assets/js/ai-platform.js"></script>
   <script src="/assets/js/site.js"></script>
   <script>
@@ -193,66 +167,45 @@
       const searchInput = document.getElementById('aiSearchInput');
       const categoryButtons = document.querySelectorAll('.ai-category-pill');
       const toolsGrid = document.getElementById('aiToolsGrid');
-      
       let currentCategory = 'all';
       let currentQuery = '';
-
-      // Set footer year
-      document.getElementById('year').textContent = new Date().getFullYear();
-
-      // Load tools from the platform registry
       const tools = Object.values(AIPlatform.registry);
 
       function renderTools() {
-        // Filter tools
         const filtered = tools.filter(tool => {
           const matchesCategory = currentCategory === 'all' || tool.category === currentCategory;
-          const matchesQuery = !currentQuery || 
+          const matchesQuery = !currentQuery ||
             tool.name.toLowerCase().includes(currentQuery) ||
             tool.description.toLowerCase().includes(currentQuery) ||
             tool.category.toLowerCase().includes(currentQuery);
           return matchesCategory && matchesQuery;
         });
-
-        // Sort: featured first, then name alphabetical
         filtered.sort((a, b) => {
           if (a.featured && !b.featured) return -1;
           if (!a.featured && b.featured) return 1;
           return a.name.localeCompare(b.name);
         });
-
-        if (filtered.length === 0) {
-          toolsGrid.innerHTML = `
-            <div class="ai-no-results">
-              <span style="font-size: 2.5rem; display: block; margin-bottom: 12px;">🔍</span>
-              No active AI systems match your search query or category filter.
-            </div>
-          `;
+        if (!filtered.length) {
+          toolsGrid.innerHTML = '<div class="ai-no-results"><span style="font-size:2.5rem;display:block;margin-bottom:12px;">🔍</span>No active AI systems match your search query or category filter.</div>';
           return;
         }
-
         toolsGrid.innerHTML = filtered.map(tool => `
-          <a href="${tool.url}" class="ai-hub-card ${tool.featured ? 'featured-hub-card' : ''}">
+          <a href="${tool.url}" class="ai-hub-card ${tool.featured ? 'featured-hub-card' : ''}" data-tool-id="${tool.id}">
             <div class="ai-hub-card-header">
               <span class="ai-hub-card-icon">${tool.icon}</span>
               <span class="ai-hub-card-tag">${tool.category}</span>
             </div>
             <h3>${tool.name}</h3>
             <p>${tool.description}</p>
-            <div class="ai-hub-card-footer">
-              Initialize System <span>→</span>
-            </div>
+            <div class="ai-hub-card-footer">Initialize System <span>→</span></div>
           </a>
         `).join('');
       }
 
-      // Hook up search input
       searchInput.addEventListener('input', (e) => {
         currentQuery = e.target.value.toLowerCase().trim();
         renderTools();
       });
-
-      // Hook up category filter pills
       categoryButtons.forEach(btn => {
         btn.addEventListener('click', () => {
           categoryButtons.forEach(b => b.classList.remove('active'));
@@ -261,8 +214,6 @@
           renderTools();
         });
       });
-
-      // Initial render
       renderTools();
     });
   </script>

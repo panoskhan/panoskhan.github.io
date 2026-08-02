@@ -146,94 +146,11 @@ const AIPlatform = (function() {
 
   // ── 2. Common Layout Markup Blocks ───────────────────────
   const navigationMarkup = `
-    <header class="site-header" role="banner">
-      <div class="nav-inner">
-        <a href="/" class="brand" aria-label="Panos Khan — Home">Panos <span>Khan</span></a>
-        <nav class="nav-links" aria-label="Main navigation">
-          <a href="/#about">About</a>
-          <a href="/#transformation">Services</a>
-          <a href="/ai/">AI Platform</a>
-          <a href="/projects.html">Projects</a>
-          <a href="/research.html">Research</a>
-          <a href="/tools.html">Tools</a>
-          <a href="/contact.html" class="nav-cta">Consultation</a>
-        </nav>
-        <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navDrawer">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </header>
-
-    <div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
-      <div class="nav-drawer-header">
-        <span class="brand">Panos <span>Khan</span></span>
-        <button class="nav-drawer-close" id="navClose" aria-label="Close navigation menu">×</button>
-      </div>
-      <nav class="nav-drawer-links">
-        <a href="/#about">About</a>
-        <a href="/#transformation">Services</a>
-        <a href="/ai/">AI Platform</a>
-        <a href="/projects.html">Projects</a>
-        <a href="/research.html">Research</a>
-        <a href="/tools.html">Tools</a>
-        <a href="/contact.html">Consultation</a>
-      </nav>
-    </div>
-    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+    <header class="site-header" data-site-nav role="banner"></header>
   `;
 
   const footerMarkup = `
-    <footer class="site-footer" role="contentinfo">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <span class="brand">Panos <span>Khan</span></span>
-            <p>AI &amp; Digital Transformation Consultant based in Athens, Greece. Building the future of business through intelligent technology and growth-focused strategy.</p>
-          </div>
-          <div class="footer-col">
-            <h4>Platform Navigation</h4>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/#about">About</a></li>
-              <li><a href="/#transformation">Services</a></li>
-              <li><a href="/ai/">AI Platform</a></li>
-              <li><a href="/tools.html">Legacy Tools Lab</a></li>
-              <li><a href="/quality-dashboard.html">Quality Dashboard</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4>Featured Tools</h4>
-            <ul>
-              <li><a href="/ai/tools/website-audit.html">AI Website Audit</a></li>
-              <li><a href="/ai/tools/readiness-twin.html">AI Readiness Twin</a></li>
-              <li><a href="/ai/tools/seo-brief.html">AI SEO Brief</a></li>
-              <li><a href="/ai/tools/ad-copy-studio.html">AI Ad Copy Studio</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4>Connect</h4>
-            <ul>
-              <li><a href="/contact.html">Contact</a></li>
-              <li><a href="https://www.linkedin.com/in/panos-khan-pk" target="_blank" rel="noopener">LinkedIn</a></li>
-              <li><a href="https://medium.com/@panoskhan40" target="_blank" rel="noopener">Medium</a></li>
-              <li><a href="/ai/">AI Platform</a></li>
-              <li><a href="/credentials.html">Credentials</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>© <span id="year">2026</span> Panos Khan — AI &amp; Digital Transformation Consultant. All rights reserved.</p>
-          <div class="footer-social">
-            <a href="https://www.linkedin.com/in/panos-khan-pk" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-            <a href="https://medium.com/@panoskhan40" target="_blank" rel="noopener" aria-label="Medium">M</a>
-            <a href="https://orcid.org/0009-0002-9718-4637" target="_blank" rel="noopener" aria-label="ORCID">ID</a>
-            <a href="https://contactout.com/panos-khan-43927" target="_blank" rel="noopener" aria-label="ContactOut">CO</a>
-            <a href="/tools/website-audit.html" aria-label="AI Tools">🛠️</a>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <footer class="site-footer" data-site-footer role="contentinfo"></footer>
   `;
 
   // ── 3. Page Building Orchestration ──────────────────────
@@ -374,15 +291,30 @@ const AIPlatform = (function() {
       ${footerMarkup}
     `;
 
-    // Clear current body and append the newly structured layout
-    document.body.innerHTML = '';
+    // Replace body contents while preserving attributes like data-tool-id
+    while (document.body.firstChild) document.body.removeChild(document.body.firstChild);
     document.body.appendChild(pageWrapper);
-    if (window.PhoenixSite) {
+
+    const mountShellAndSearch = () => {
+      if (!window.PhoenixSite) return false;
+      window.PhoenixSite.mountShell();
       window.PhoenixSite.mountGlobalSearch();
-    } else {
-      const searchScript = document.createElement('script');
-      searchScript.src = '/assets/js/site.js';
-      document.body.appendChild(searchScript);
+      window.PhoenixSite.trackRecent(toolId);
+      return true;
+    };
+
+    if (!mountShellAndSearch()) {
+      const existing = document.querySelector('script[src="/assets/js/site.js"]');
+      if (existing) {
+        existing.addEventListener('load', mountShellAndSearch);
+        // If the script already executed, try on next tick.
+        setTimeout(mountShellAndSearch, 0);
+      } else {
+        const searchScript = document.createElement('script');
+        searchScript.src = '/assets/js/site.js';
+        searchScript.onload = mountShellAndSearch;
+        document.body.appendChild(searchScript);
+      }
     }
 
     // Automatically inject a beautiful, glassmorphic, floating "Made by Panos Khan" badge

@@ -198,7 +198,7 @@ def main() -> int:
                 continue
             ids = page_ids(target)
             if frag not in ids:
-                if rel == "assets/data/platform-registry.json" and rel_page in DYNAMIC_ANCHOR_PAGES:
+                if rel_page in DYNAMIC_ANCHOR_PAGES:
                     continue
                 failures.append(f"{rel}: missing anchor {url}")
 

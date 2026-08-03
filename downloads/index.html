@@ -43,7 +43,7 @@
     <nav class="breadcrumbs" aria-label="Breadcrumb">
       <a href="/">Home</a><span>/</span><span aria-current="page">Panos Khan Downloads</span>
     </nav>
-    <header class="section-header" style="text-align:left;max-width:760px;margin-left:0">
+    <header class="section-header section-header--start">
       <p class="kicker">Product E</p>
       <h1>Panos Khan Downloads</h1>
       <p class="lead">Transparent, documented, safe-to-use assets. No elevated installers. Start with a few excellent checklists and samples.</p>
@@ -51,10 +51,25 @@
     
     <nav class="product-subnav" aria-label="Download Center sections">
       <a href="#catalog">Catalog</a>
+      <a href="#categories">Categories</a>
       <a href="#safety">Safety policy</a>
       <a href="#roadmap">Roadmap</a>
+      <a href="/docs/">Docs</a>
+      <a href="/labs/">Labs</a>
       <a href="/capabilities/">Capabilities</a>
     </nav>
+    <section id="categories" class="mb-32">
+      <h2>Categories</h2>
+      <p class="muted">Everything is categorized for scale. The catalog below is also represented in <code>/assets/data/downloads.json</code> so future filters and pagination can stay data-driven.</p>
+      <div class="filter-bar" aria-label="Download categories">
+        <span class="btn btn-sm">Checklist</span>
+        <span class="btn btn-sm">Template</span>
+        <span class="btn btn-sm">Browser tool</span>
+        <span class="btn btn-sm">Documentation</span>
+        <span class="btn btn-sm">Script</span>
+        <span class="btn btn-sm">Example</span>
+      </div>
+    </section>
     <section id="safety" class="safety-box mb-32">
       <h2>Safety policy</h2>
       <p><strong>Allowed:</strong> browser-based utilities, PDF/HTML checklists, templates, documentation, sample projects, clearly sourced scripts, and open-source utilities.</p>
@@ -62,29 +77,29 @@
     </section>
     <section id="catalog" class="mb-32">
       <h2>Catalog</h2>
-      <div class="content-grid" style="margin-top:18px">
-        <article class="card" id="ai-readiness-checklist">
+      <div class="content-grid mt-16">
+        <article class="card download-card" id="ai-readiness-checklist">
           <span class="card-tag">Checklist · HTML</span>
           <h3>AI readiness checklist</h3>
           <p class="muted">A concise pilot-selection and oversight checklist aligned with the AI Readiness Twin.</p>
           <dl class="content-meta"><div><dt>Updated</dt><dd>2026-08-02</dd></div><div><dt>License</dt><dd>Personal / internal use</dd></div></dl>
           <p><a class="btn btn-primary btn-sm" href="/assets/downloads/ai-readiness-checklist.html">Open asset</a> · <a href="/capabilities/#ai-workflows">Capability</a></p>
         </article>
-        <article class="card" id="seo-audit-checklist">
+        <article class="card download-card" id="seo-audit-checklist">
           <span class="card-tag">Checklist · HTML</span>
           <h3>SEO audit checklist</h3>
           <p class="muted">Metadata, structure, and technical checks that pair with the AI Website Audit tool.</p>
           <dl class="content-meta"><div><dt>Updated</dt><dd>2026-08-02</dd></div><div><dt>License</dt><dd>Personal / internal use</dd></div></dl>
           <p><a class="btn btn-primary btn-sm" href="/assets/downloads/seo-audit-checklist.html">Open asset</a> · <a href="/capabilities/#website-audits">Capability</a></p>
         </article>
-        <article class="card" id="backup-before-repair">
+        <article class="card download-card" id="backup-before-repair">
           <span class="card-tag">Checklist · HTML</span>
           <h3>Backup-before-repair checklist</h3>
           <p class="muted">Data-preservation steps before laptop or phone repair work.</p>
           <dl class="content-meta"><div><dt>Updated</dt><dd>2026-08-02</dd></div><div><dt>License</dt><dd>Personal / internal use</dd></div></dl>
           <p><a class="btn btn-primary btn-sm" href="/assets/downloads/backup-before-repair-checklist.html">Open asset</a> · <a href="/capabilities/#backup-guidance">Capability</a></p>
         </article>
-        <article class="card" id="sample-static-starter">
+        <article class="card download-card" id="sample-static-starter">
           <span class="card-tag">Sample · HTML</span>
           <h3>Sample static page starter</h3>
           <p class="muted">A minimal semantic HTML starter demonstrating ecosystem page structure for GitHub Pages.</p>
@@ -102,6 +117,10 @@
       </ul>
     </section>
 
+  <section class="related-products mb-32" aria-labelledby="dl-related">
+      <h2 id="dl-related">Related products</h2>
+      <div class="related-products-grid" data-related-products="docs,ai,device,open-source,labs"></div>
+    </section>
   </main>
   <footer class="site-footer" role="contentinfo" data-site-footer></footer>
   <script src="/assets/js/site.js"></script>

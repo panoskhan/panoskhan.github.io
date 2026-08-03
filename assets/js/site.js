@@ -1,23 +1,32 @@
 (function () {
   "use strict";
 
-  const PRODUCTS = [
+  const PRIMARY_NAV = [
     { id: "ai", label: "AI", href: "/ai/" },
     { id: "device", label: "Device", href: "/device/" },
     { id: "research", label: "Research", href: "/research/" },
     { id: "capabilities", label: "Explore", href: "/capabilities/" },
     { id: "downloads", label: "Downloads", href: "/downloads/" },
-    { id: "open-source", label: "Open Source", href: "/open-source/" },
+    { id: "docs", label: "Docs", href: "/docs/" },
     { id: "projects", label: "Projects", href: "/projects/" }
   ];
 
-  const searchIndex = [
+  const DRAWER_EXTRA = [
+    { id: "labs", label: "Labs", href: "/labs/" },
+    { id: "open-source", label: "Open Source", href: "/open-source/" },
+    { id: "services", label: "Services", href: "/services.html" },
+    { id: "credentials", label: "Credentials", href: "/credentials.html" },
+    { id: "contact", label: "Consultation", href: "/contact.html", cta: true }
+  ];
+
+  const FALLBACK_SEARCH = [
     { title: "Panos Khan AI", type: "Product", url: "/ai/", description: "AI workspace, tools, prompts, and documentation." },
     { title: "Device Service", type: "Product", url: "/device/", description: "Repair, diagnostics, and support guidance." },
-    { title: "Research", type: "Product", url: "/research/", description: "Frameworks for AI, SEO, and digital transformation." },
-    { title: "Capability Explorer", type: "Platform", url: "/capabilities/", description: "Browse platform capabilities across AI, SEO, Device, Developer, and Business." },
+    { title: "Docs", type: "Product", url: "/docs/", description: "Architecture, guides, tutorials, and release notes." },
+    { title: "Labs", type: "Product", url: "/labs/", description: "Experiments, prototypes, and future concepts." },
     { title: "Downloads", type: "Product", url: "/downloads/", description: "Safe checklists, templates, and browser utilities." },
-    { title: "Open Source", type: "Product", url: "/open-source/", description: "Repos, samples, and transparent utilities." },
+    { title: "Research", type: "Product", url: "/research/", description: "Frameworks for AI, SEO, and digital transformation." },
+    { title: "Capability Explorer", type: "Platform", url: "/capabilities/", description: "Browse platform capabilities across products." },
     { title: "Projects", type: "Projects", url: "/projects/", description: "Selected product and web-engineering work." },
     { title: "Services", type: "Consulting", url: "/services.html", description: "AI strategy, web engineering, SEO, and growth services." },
     { title: "AI Website Audit", type: "Tool", url: "/ai/tools/website-audit.html", description: "Audit readiness, speed, SEO, and conversion fundamentals." },
@@ -26,9 +35,11 @@
     { title: "AI Readiness Twin", type: "Tool", url: "/ai/tools/readiness-twin.html", description: "Map quick wins and transformation priorities." },
     { title: "AI Decision Risk Simulator", type: "Tool", url: "/ai/tools/decision-risk.html", description: "Assess legal, bias, security, adoption, and brand risk." },
     { title: "AI Trust Label Generator", type: "Tool", url: "/ai/tools/trust-label.html", description: "Create a responsible-AI transparency statement." },
-    { title: "AI Readiness Framework", type: "Research", url: "/research/#ai-readiness-framework", description: "A practical framework for choosing and governing AI pilots." },
-    { title: "Project Phoenix", type: "Project", url: "/projects/#project-phoenix", description: "The architecture behind the Panos Khan digital ecosystem." }
+    { title: "Architecture Overview", type: "Documentation", url: "/docs/architecture/", description: "System design and scalability principles." }
   ];
+
+  let searchIndex = FALLBACK_SEARCH.slice();
+  let productsCatalog = null;
 
   function currentPath() {
     const path = window.location.pathname || "/";
@@ -44,15 +55,13 @@
 
   function navLink(item) {
     const active = isActive(item.href);
-    return `<a href="${item.href}"${active ? ' aria-current="page"' : ""}>${item.label}</a>`;
+    const cls = item.cta ? ' class="nav-cta"' : "";
+    return `<a href="${item.href}"${cls}${active ? ' aria-current="page"' : ""}>${item.label}</a>`;
   }
 
   function headerHTML() {
-    const links = PRODUCTS.map(navLink).join("");
-    const drawerLinks = PRODUCTS.map(navLink).join("") +
-      `<a href="/services.html">Services</a>` +
-      `<a href="/credentials.html">Credentials</a>` +
-      `<a href="/contact.html" class="nav-cta">Consultation</a>`;
+    const links = PRIMARY_NAV.map(navLink).join("");
+    const drawerLinks = PRIMARY_NAV.concat(DRAWER_EXTRA).map(navLink).join("");
 
     return `
       <div class="nav-inner">
@@ -86,33 +95,35 @@
         <div class="footer-grid">
           <div class="footer-brand">
             <span class="brand">Panos <span>Khan</span></span>
-            <p>Technology ecosystem for AI tools, device guidance, research, open source, and safe downloads — plus consulting when you need a partner.</p>
+            <p>Technology ecosystem for AI tools, device guidance, research, documentation, labs, open source, and safe downloads — plus consulting when you need a partner.</p>
           </div>
           <div class="footer-col">
             <h4>Products</h4>
             <ul>
               <li><a href="/ai/">AI Platform</a></li>
               <li><a href="/device/">Device Service</a></li>
-              <li><a href="/research/">Research</a></li>
-              <li><a href="/capabilities/">Capability Explorer</a></li>
               <li><a href="/downloads/">Downloads</a></li>
-              <li><a href="/open-source/">Open Source</a></li>
+              <li><a href="/docs/">Docs</a></li>
+              <li><a href="/labs/">Labs</a></li>
+              <li><a href="/research/">Research</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>Resources</h4>
             <ul>
+              <li><a href="/capabilities/">Capability Explorer</a></li>
               <li><a href="/projects/">Projects</a></li>
+              <li><a href="/open-source/">Open Source</a></li>
+              <li><a href="/docs/architecture/">Architecture</a></li>
               <li><a href="/services.html">Services</a></li>
-              <li><a href="/ai/#documentation">AI Docs</a></li>
               <li><a href="/quality-dashboard.html">Quality Dashboard</a></li>
-              <li><a href="/credentials.html">Credentials</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>Connect</h4>
             <ul>
               <li><a href="/contact.html">Contact</a></li>
+              <li><a href="/credentials.html">Credentials</a></li>
               <li><a href="https://www.linkedin.com/in/panos-khan-pk" target="_blank" rel="noopener">LinkedIn</a></li>
               <li><a href="https://medium.com/@panoskhan40" target="_blank" rel="noopener">Medium</a></li>
               <li><a href="https://github.com/panoskhan/panoskhan.github.io" target="_blank" rel="noopener">GitHub</a></li>
@@ -187,15 +198,16 @@
     if (!results) return;
     const normalized = query.trim().toLowerCase();
     const matches = normalized
-      ? searchIndex.filter((item) =>
-          `${item.title} ${item.type} ${item.description}`.toLowerCase().includes(normalized)
-        )
+      ? searchIndex.filter((item) => {
+          const haystack = `${item.title} ${item.type} ${item.description} ${(item.keywords || []).join(" ")}`.toLowerCase();
+          return haystack.includes(normalized);
+        })
       : searchIndex.slice(0, 8);
     results.innerHTML = matches.length
       ? matches.map((item) =>
           `<li><a href="${item.url}"><span>${item.title}</span><small>${item.type} · ${item.description}</small></a></li>`
         ).join("")
-      : "<li class=\"search-empty\">No matching products, tools, or research.</li>";
+      : "<li class=\"search-empty\">No matching products, tools, docs, or downloads.</li>";
   }
 
   function mountGlobalSearch() {
@@ -208,8 +220,8 @@
           <h2 id="globalSearchTitle">Search Panos Khan</h2>
           <button type="button" class="global-search-close" aria-label="Close search">×</button>
         </div>
-        <label class="sr-only" for="globalSearchInput">Search products, tools, and research</label>
-        <input id="globalSearchInput" type="search" autocomplete="off" placeholder="Search products, tools, and research…" />
+        <label class="sr-only" for="globalSearchInput">Search products, tools, docs, and downloads</label>
+        <input id="globalSearchInput" type="search" autocomplete="off" placeholder="Search products, tools, docs, and downloads…" />
         <ul id="globalSearchResults" class="global-search-results"></ul>
       </dialog>`;
     document.body.appendChild(shell);
@@ -248,17 +260,80 @@
     }
   }
 
+  function productById(id) {
+    if (!productsCatalog || !Array.isArray(productsCatalog.products)) return null;
+    return productsCatalog.products.find((item) => item.id === id) || null;
+  }
+
+  function renderRelatedProducts() {
+    document.querySelectorAll("[data-related-products]").forEach((node) => {
+      const ids = (node.getAttribute("data-related-products") || "")
+        .split(",")
+        .map((value) => value.trim())
+        .filter(Boolean);
+      const cards = ids.map((id) => {
+        const product = productById(id);
+        if (product) {
+          return `<a class="card related-product-card" href="${product.path}">
+            <span class="card-tag">${product.category || "Product"}</span>
+            <h3>${product.name}</h3>
+            <p class="muted">${product.description}</p>
+            <span class="ecosystem-meta">Open ${product.shortName || product.name} →</span>
+          </a>`;
+        }
+        const fallback = PRIMARY_NAV.concat(DRAWER_EXTRA).find((item) => item.id === id);
+        if (!fallback) return "";
+        return `<a class="card related-product-card" href="${fallback.href}">
+          <span class="card-tag">Product</span>
+          <h3>${fallback.label}</h3>
+          <p class="muted">Open this ecosystem surface.</p>
+          <span class="ecosystem-meta">Open →</span>
+        </a>`;
+      }).filter(Boolean);
+      node.innerHTML = cards.join("") || "<p class=\"muted\">Related products will appear here.</p>";
+    });
+  }
+
+  async function loadJSON(url) {
+    try {
+      const response = await fetch(url, { credentials: "same-origin" });
+      if (!response.ok) return null;
+      return await response.json();
+    } catch (_) {
+      return null;
+    }
+  }
+
+  async function loadRegistries() {
+    const [searchData, productData] = await Promise.all([
+      loadJSON("/assets/data/search-index.json"),
+      loadJSON("/assets/data/products.json")
+    ]);
+
+    if (searchData && Array.isArray(searchData.items) && searchData.items.length) {
+      searchIndex = searchData.items;
+    }
+    if (productData && Array.isArray(productData.products)) {
+      productsCatalog = productData;
+    }
+    renderRelatedProducts();
+  }
+
   window.PhoenixSite = {
-    products: PRODUCTS,
-    searchIndex,
+    products: PRIMARY_NAV,
+    get searchIndex() { return searchIndex; },
+    get productsCatalog() { return productsCatalog; },
     mountShell,
     mountGlobalSearch,
-    trackRecent
+    trackRecent,
+    renderRelatedProducts
   };
 
   function boot() {
     mountShell();
     mountGlobalSearch();
+    renderRelatedProducts();
+    loadRegistries();
     const toolId = document.body && document.body.dataset.toolId;
     if (toolId) trackRecent(toolId);
   }

@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panos Khan Docs | Architecture, Guides &amp; Release Notes</title>
+  <meta name="description" content="Professional documentation for the Panos Khan ecosystem: architecture, tutorials, developer guides, user guides, and release notes." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://panoskhan.github.io/docs/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Panos Khan Docs | Architecture, Guides &amp; Release Notes" />
+  <meta property="og:description" content="Architecture, tutorials, developer guides, user guides, and release notes for the Panos Khan platform." />
+  <meta property="og:url" content="https://panoskhan.github.io/docs/" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Panos Khan Docs | Architecture, Guides &amp; Release Notes" />
+  <meta name="twitter:description" content="Architecture, tutorials, developer guides, user guides, and release notes for the Panos Khan platform." />
+  <meta name="twitter:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://panoskhan.github.io/docs/#webpage",
+        "url": "https://panoskhan.github.io/docs/",
+        "name": "Panos Khan Docs",
+        "description": "Professional documentation for the Panos Khan ecosystem.",
+        "isPartOf": { "@type": "WebSite", "name": "Panos Khan", "url": "https://panoskhan.github.io/" },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://panoskhan.github.io/" },
+            { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://panoskhan.github.io/docs/" }
+          ]
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" role="banner" data-site-nav></header>
+  <main class="container section">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Docs</span>
+    </nav>
+
+    <header class="section-header section-header--start">
+      <p class="kicker">Product · Documentation</p>
+      <h1>Panos Khan Docs</h1>
+      <p class="lead">The documentation hub for the digital ecosystem. Architecture decisions, how-to guides, and release notes live here so every product can grow without reinventing structure.</p>
+    </header>
+
+    <nav class="product-subnav" aria-label="Docs sections">
+      <a href="#architecture">Architecture</a>
+      <a href="#guides">Guides</a>
+      <a href="#tutorials">Tutorials</a>
+      <a href="#release-notes">Release notes</a>
+      <a href="#search">Search</a>
+      <a href="/labs/">Labs</a>
+      <a href="/ai/#documentation">AI docs</a>
+    </nav>
+
+    <div class="docs-layout">
+      <aside class="docs-sidebar" aria-label="Documentation navigation">
+        <h2 class="docs-sidebar-title">Browse</h2>
+        <ul class="docs-nav">
+          <li><a href="#architecture">Architecture</a></li>
+          <li><a href="/docs/architecture/">Architecture overview</a></li>
+          <li><a href="#guides">Guides</a></li>
+          <li><a href="/docs/guides/components.html">Component library</a></li>
+          <li><a href="/docs/guides/product-hub-template.html">Product hub template</a></li>
+          <li><a href="#tutorials">Tutorials</a></li>
+          <li><a href="#release-notes">Release notes</a></li>
+          <li><a href="/ai/#documentation">AI product docs</a></li>
+          <li><a href="/device/#safety-policy">Device safety policy</a></li>
+        </ul>
+      </aside>
+
+      <div class="docs-content">
+        <section id="architecture" class="mb-32">
+          <h2>Architecture</h2>
+          <p class="muted">How the static platform is organized for long-term scale on GitHub Pages.</p>
+          <div class="content-grid mt-16">
+            <article class="card">
+              <span class="card-tag">Core</span>
+              <h3>System overview</h3>
+              <p class="muted">Products, shared design system, data registries, and the rule: extend, never redesign the homepage.</p>
+              <p><a href="/docs/architecture/">Read architecture overview →</a></p>
+            </article>
+            <article class="card">
+              <span class="card-tag">Data</span>
+              <h3>Product &amp; search registries</h3>
+              <p class="muted"><code>products.json</code>, <code>search-index.json</code>, <code>downloads.json</code>, and <code>capabilities.json</code> keep catalogs data-driven.</p>
+              <p><a href="/assets/data/products.json">View products.json →</a></p>
+            </article>
+            <article class="card">
+              <span class="card-tag">Future</span>
+              <h3>Scalability path</h3>
+              <p class="muted">Designed for 100+ tools, articles, projects, and downloads without restructuring the root IA.</p>
+              <p><a href="/docs/architecture/#scalability">Scalability notes →</a></p>
+            </article>
+          </div>
+        </section>
+
+        <section id="guides" class="mb-32">
+          <h2>Developer &amp; product guides</h2>
+          <div class="content-grid mt-16">
+            <article class="card">
+              <h3>Component library</h3>
+              <p class="muted">Header, footer, cards, FAQ, alerts, docs layout, download cards, and other reusable patterns.</p>
+              <p><a href="/docs/guides/components.html">Open guide →</a></p>
+            </article>
+            <article class="card">
+              <h3>Product hub template</h3>
+              <p class="muted">Checklist for adding a new product folder with SEO, accessibility, and related-product links.</p>
+              <p><a href="/docs/guides/product-hub-template.html">Open guide →</a></p>
+            </article>
+            <article class="card">
+              <h3>HTML templates</h3>
+              <p class="muted">Copy-ready skeletons under <code>/templates/</code> for hubs, docs pages, and tools.</p>
+              <p><a href="/templates/">Browse templates →</a></p>
+            </article>
+          </div>
+        </section>
+
+        <section id="tutorials" class="mb-32">
+          <h2>Tutorials</h2>
+          <div class="content-grid mt-16">
+            <article class="card">
+              <span class="status-pill status-live">Live</span>
+              <h3>Use global search</h3>
+              <p class="muted">Press <kbd>Ctrl</kbd>+<kbd>K</kbd> (or <kbd>⌘</kbd>+<kbd>K</kbd>) anywhere to search products, tools, docs, and downloads client-side.</p>
+            </article>
+            <article class="card">
+              <span class="status-pill status-live">Live</span>
+              <h3>Run local preview</h3>
+              <p class="muted"><code>python3 -m http.server 8000</code> then open <code>http://localhost:8000</code>.</p>
+            </article>
+            <article class="card">
+              <span class="status-pill status-planned">Next</span>
+              <h3>Publish a new download</h3>
+              <p class="muted">Add the asset, register it in <code>downloads.json</code>, and surface it on the Downloads hub.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="release-notes" class="mb-32">
+          <h2>Release notes</h2>
+          <article class="card">
+            <dl class="content-meta">
+              <div><dt>Version</dt><dd>Atlas Phase 2 · Ecosystem Architecture</dd></div>
+              <div><dt>Date</dt><dd>2026-08-03</dd></div>
+            </dl>
+            <ul class="hub-roadmap">
+              <li><strong>Added:</strong> Docs hub, Labs hub, product/search/download registries</li>
+              <li><strong>Extended:</strong> Device Service coverage and AI FAQ / changelog / examples</li>
+              <li><strong>Shared system:</strong> FAQ, alert, docs-layout, related-products, and section-header utilities</li>
+              <li><strong>Preserved:</strong> Existing pages, navigation destinations, and homepage visual identity</li>
+            </ul>
+          </article>
+        </section>
+
+        <section id="search" class="mb-32">
+          <h2>Search</h2>
+          <div class="alert alert-info">
+            <strong>Client-side only.</strong> Global search uses a static JSON index and works on GitHub Pages with no backend. Open it from the floating Search control or keyboard shortcut.
+          </div>
+        </section>
+
+        <section class="related-products" aria-labelledby="docs-related">
+          <h2 id="docs-related">Related products</h2>
+          <div class="related-products-grid" data-related-products="ai,device,labs,downloads,research"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer" role="contentinfo" data-site-footer></footer>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>

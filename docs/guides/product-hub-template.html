@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Hub Template | Panos Khan Docs</title>
+  <meta name="description" content="Guide for adding a new Panos Khan product hub with SEO, accessibility, registries, and shared components." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://panoskhan.github.io/docs/guides/product-hub-template.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Product Hub Template | Panos Khan Docs" />
+  <meta property="og:description" content="Checklist for adding a new product hub without redesigning the platform." />
+  <meta property="og:url" content="https://panoskhan.github.io/docs/guides/product-hub-template.html" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Product Hub Template | Panos Khan Docs" />
+  <meta name="twitter:description" content="Checklist for adding a new product hub without redesigning the platform." />
+  <meta name="twitter:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Product Hub Template",
+    "url": "https://panoskhan.github.io/docs/guides/product-hub-template.html",
+    "description": "Guide for adding a new Panos Khan product hub.",
+    "author": { "@type": "Person", "name": "Panos Khan" },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://panoskhan.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://panoskhan.github.io/docs/" },
+        { "@type": "ListItem", "position": 3, "name": "Product Hub Template", "item": "https://panoskhan.github.io/docs/guides/product-hub-template.html" }
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" role="banner" data-site-nav></header>
+  <main class="container section">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">/</span>
+      <a href="/docs/">Docs</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Product hub template</span>
+    </nav>
+
+    <header class="section-header section-header--start">
+      <p class="kicker">Docs · Guide</p>
+      <h1>Adding a product hub</h1>
+      <p class="lead">Use this checklist so new products feel native to the ecosystem without duplicating shell code or redesigning the homepage.</p>
+    </header>
+
+    <ol class="hub-roadmap">
+      <li><strong>Create folder:</strong> <code>/product-name/index.html</code> using <code>/templates/product-hub.html</code>.</li>
+      <li><strong>Register product:</strong> add an entry to <code>/assets/data/products.json</code>.</li>
+      <li><strong>Search:</strong> add catalog entries to <code>/assets/data/search-index.json</code>.</li>
+      <li><strong>Shell:</strong> include <code>data-site-nav</code>, <code>data-site-footer</code>, and <code>/assets/js/site.js</code>.</li>
+      <li><strong>SEO:</strong> title, description, canonical, Open Graph, Twitter Card, JSON-LD + breadcrumb schema.</li>
+      <li><strong>A11y:</strong> one <code>h1</code>, landmarks, focusable controls, meaningful link text.</li>
+      <li><strong>IA links:</strong> related products module, sitemap entry, validation list update.</li>
+      <li><strong>Quality:</strong> run <code>python3 scripts/validate_static.py</code> and spot-check keyboard navigation.</li>
+    </ol>
+
+    <section class="mt-32">
+      <h2>Documentation standard per product</h2>
+      <ul>
+        <li>Overview</li>
+        <li>Features</li>
+        <li>Examples</li>
+        <li>FAQ</li>
+        <li>Changelog / version</li>
+        <li>Related products, articles, and downloads</li>
+      </ul>
+    </section>
+
+    <section class="mt-32">
+      <h2>Validation</h2>
+      <div class="alert alert-info">
+        Critical pages are listed in <code>scripts/validate_static.py</code>. New public hubs must be added there and to <code>sitemap.xml</code>.
+      </div>
+    </section>
+
+    <p class="mt-32"><a class="btn btn-primary btn-sm" href="/templates/product-hub.html">Open HTML template</a> <a class="btn btn-sm" href="/docs/architecture/">Architecture overview</a></p>
+  </main>
+  <footer class="site-footer" role="contentinfo" data-site-footer></footer>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>

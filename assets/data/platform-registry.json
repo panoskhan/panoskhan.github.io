@@ -18,7 +18,18 @@
       "category",
       "product",
       "links",
-      "readingTime"
+      "readingTime",
+      "pillar",
+      "engine",
+      "reportType",
+      "inputType",
+      "outputType",
+      "supportedPlatforms",
+      "version",
+      "documentation",
+      "relatedTools",
+      "relatedGuides",
+      "legacyPaths"
     ]
   },
   "items": [
@@ -35,6 +46,9 @@
       "domain": "Platform",
       "category": "Product",
       "product": "intelligence",
+      "engine": "platform-intelligence-runtime",
+      "supportedPlatforms": ["browser"],
+      "version": "2.0.0",
       "links": {
         "primary": "/intelligence/",
         "capability": "/capabilities/"
@@ -43,23 +57,35 @@
     {
       "id": "tool-website-audit",
       "type": "tool",
-      "title": "AI Website Audit",
-      "summary": "Audit website readiness, trust signals, SEO structure, and conversion foundations.",
+      "title": "Website Health",
+      "summary": "Generate a shared Platform Intelligence report for messaging, discoverability, trust, and conversion readiness.",
       "status": "live",
       "featured": true,
       "updated": "2026-08-03",
-      "path": "/ai/tools/website-audit.html",
+      "path": "/intelligence/website-health/",
       "tags": [
-        "ai",
+        "website health",
         "seo",
         "audit",
-        "conversion"
+        "conversion",
+        "report"
       ],
       "domain": "SEO",
-      "category": "Growth",
-      "product": "ai",
+      "category": "Health",
+      "product": "intelligence",
+      "pillar": "website-health",
+      "engine": "health-engine",
+      "reportType": "health-report",
+      "inputType": "website-health-form",
+      "outputType": "canonical-health-report",
+      "supportedPlatforms": ["browser"],
+      "version": "2.0.0",
+      "documentation": "/docs/architecture/",
+      "relatedTools": ["tool-seo-brief"],
+      "relatedGuides": ["seo-architecture-ai-discovery", "seo-audit-checklist"],
+      "legacyPaths": ["/ai/tools/website-audit.html", "/tools/website-audit.html"],
       "links": {
-        "primary": "/ai/tools/website-audit.html",
+        "primary": "/intelligence/website-health/",
         "capability": "/capabilities/#website-audits",
         "related": "/downloads/#seo-audit-checklist"
       }
@@ -227,7 +253,7 @@
       "readingTime": "5 min",
       "links": {
         "primary": "/research/#seo-architecture-ai-discovery",
-        "tool": "/ai/tools/website-audit.html",
+        "tool": "/intelligence/website-health/",
         "capability": "/capabilities/#technical-seo"
       }
     },

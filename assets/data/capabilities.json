@@ -71,7 +71,7 @@
       "status": "live",
       "keywords": ["schema", "json-ld", "entities", "rich results", "crawlability"],
       "tools": [
-        { "id": "website-audit", "title": "AI Website Audit", "url": "/ai/tools/website-audit.html" },
+        { "id": "website-audit", "title": "Website Health", "url": "/intelligence/website-health/" },
         { "id": "seo-brief", "title": "AI SEO Brief Generator", "url": "/ai/tools/seo-brief.html" }
       ],
       "docs": [
@@ -92,7 +92,7 @@
       "status": "live",
       "keywords": ["technical seo", "core web vitals", "indexing", "metadata", "performance"],
       "tools": [
-        { "id": "website-audit", "title": "AI Website Audit", "url": "/ai/tools/website-audit.html" }
+        { "id": "website-audit", "title": "Website Health", "url": "/intelligence/website-health/" }
       ],
       "docs": [
         { "title": "SEO Architecture for AI Discovery", "url": "/research/#seo-architecture-ai-discovery" }
@@ -129,7 +129,7 @@
       "status": "live",
       "keywords": ["audit", "ux", "conversion", "messaging", "seo"],
       "tools": [
-        { "id": "website-audit", "title": "AI Website Audit", "url": "/ai/tools/website-audit.html" }
+        { "id": "website-audit", "title": "Website Health", "url": "/intelligence/website-health/" }
       ],
       "docs": [
         { "title": "SEO Architecture for AI Discovery", "url": "/research/#seo-architecture-ai-discovery" }
@@ -312,7 +312,7 @@
       "status": "live",
       "keywords": ["checklist", "pdf", "process", "ops"],
       "tools": [
-        { "id": "website-audit", "title": "AI Website Audit", "url": "/ai/tools/website-audit.html" }
+        { "id": "website-audit", "title": "Website Health", "url": "/intelligence/website-health/" }
       ],
       "docs": [],
       "downloads": [

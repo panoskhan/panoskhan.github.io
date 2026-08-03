@@ -15,7 +15,7 @@
     { "title": "Services", "type": "Consulting", "url": "/services.html", "description": "AI strategy, web engineering, SEO, and growth services.", "keywords": ["consulting", "services"] },
     { "title": "Credentials", "type": "Supporting", "url": "/credentials.html", "description": "Professional certifications and credentials.", "keywords": ["certificates", "credentials"] },
     { "title": "Contact", "type": "Supporting", "url": "/contact.html", "description": "Book a consultation or send an inquiry.", "keywords": ["contact", "consultation"] },
-    { "title": "AI Website Audit", "type": "Tool", "url": "/ai/tools/website-audit.html", "description": "Audit readiness, speed, SEO, and conversion fundamentals.", "keywords": ["audit", "seo", "website"] },
+    { "title": "Website Health", "type": "Tool", "url": "/intelligence/website-health/", "description": "Generate a shared Platform Intelligence report for messaging, discoverability, trust, and conversion.", "keywords": ["website health", "audit", "seo", "conversion", "report"] },
     { "title": "AI SEO Brief Generator", "type": "Tool", "url": "/ai/tools/seo-brief.html", "description": "Create a structured SEO content brief.", "keywords": ["seo", "brief", "content"] },
     { "title": "AI Ad Copy Studio", "type": "Tool", "url": "/ai/tools/ad-copy-studio.html", "description": "Generate structured ad-copy testing angles.", "keywords": ["ads", "copy", "marketing"] },
     { "title": "AI Readiness Twin", "type": "Tool", "url": "/ai/tools/readiness-twin.html", "description": "Map quick wins and transformation priorities.", "keywords": ["readiness", "transformation"] },

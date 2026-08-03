@@ -34,7 +34,7 @@
     { title: "Capability Explorer", type: "Platform", url: "/capabilities/", description: "Browse platform capabilities across products." },
     { title: "Projects", type: "Projects", url: "/projects/", description: "Selected product and web-engineering work." },
     { title: "Services", type: "Consulting", url: "/services.html", description: "AI strategy, web engineering, SEO, and growth services." },
-    { title: "AI Website Audit", type: "Tool", url: "/ai/tools/website-audit.html", description: "Audit readiness, speed, SEO, and conversion fundamentals." },
+    { title: "Website Health", type: "Tool", url: "/intelligence/website-health/", description: "Generate a shared Platform Intelligence report for messaging, discoverability, trust, and conversion." },
     { title: "AI SEO Brief Generator", type: "Tool", url: "/ai/tools/seo-brief.html", description: "Create a structured SEO content brief." },
     { title: "AI Ad Copy Studio", type: "Tool", url: "/ai/tools/ad-copy-studio.html", description: "Generate structured ad-copy testing angles." },
     { title: "AI Readiness Twin", type: "Tool", url: "/ai/tools/readiness-twin.html", description: "Map quick wins and transformation priorities." },

@@ -44,9 +44,9 @@
       "format": "HTML",
       "updated": "2026-08-02",
       "license": "Personal / internal use",
-      "description": "Metadata, structure, and technical checks that pair with the AI Website Audit tool.",
+      "description": "Metadata, structure, and technical checks that pair with the Website Health capability.",
       "url": "/assets/downloads/seo-audit-checklist.html",
-      "related": ["/ai/tools/website-audit.html", "/capabilities/#website-audits"]
+      "related": ["/intelligence/website-health/", "/capabilities/#website-audits"]
     },
     {
       "id": "backup-before-repair",

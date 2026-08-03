@@ -8,15 +8,15 @@ const AIPlatform = (function() {
   const toolsRegistry = {
     "website-audit": {
       id: "website-audit",
-      name: "AI Website Audit",
-      category: "Strategy",
-      description: "Audit any website for AI readiness, mobile speed, SEO structural alignment, and UX conversions.",
+      name: "Website Health",
+      category: "Health",
+      description: "Generate a shared Platform Intelligence report for messaging, discoverability, trust, and conversion readiness.",
       featured: true,
-      url: "/ai/tools/website-audit.html",
+      url: "/intelligence/website-health/",
       icon: "🌐",
       docs: {
-        overview: "The AI Website Audit Assistant conducts a comprehensive client-side review of any digital interface. It evaluates website messaging, structured schema, core technical alignment, and trust indicators to prepare the site for high conversion rates and crawlability by next-generation AI agents.",
-        how_it_works: "Input your business details, target URL, and primary digital growth objective. The tool applies standard B2B/B2C diagnostic heuristics and alignment parameters to generate a prioritized, consultant-grade optimization plan.",
+        overview: "Website Health is the Platform Intelligence capability for reviewing messaging, discoverability, trust, and conversion readiness through one shared report contract.",
+        how_it_works: "Input your business details, target URL, and primary digital growth objective. The shared runtime applies deterministic diagnostic heuristics and produces a canonical Platform Intelligence health report.",
         best_practices: "For high-fidelity recommendations, ensure that the target audience is described with specific attributes (e.g., 'Enterprise CTOs' rather than just 'business people') and specify concrete commercial objectives."
       },
       faqs: [
@@ -24,8 +24,8 @@ const AIPlatform = (function() {
         { q: "What is AI-agent crawlability?", a: "It refers to how easily LLM-based crawlers (like GPTBot, ClaudeBot, or Perplexity) can parse, index, and reference your site content when answering user prompts. Our audit highlights gaps such as missing schema or lack of AI agent directives." }
       ],
       changelog: [
-        { version: "v1.2.0", date: "2026-07-20", changes: ["Added explicit schema markup checks", "Enriched conversion optimization priority outputs"] },
-        { version: "v1.0.0", date: "2026-05-15", changes: ["Initial launch of the AI Website Audit Assistant"] }
+        { version: "v2.0.0", date: "2026-08-03", changes: ["Migrated to /intelligence/website-health/", "Moved output to the shared Platform Intelligence runtime"] },
+        { version: "v1.2.0", date: "2026-07-20", changes: ["Added explicit schema markup checks", "Enriched conversion optimization priority outputs"] }
       ],
       related: ["seo-brief", "readiness-twin"]
     },

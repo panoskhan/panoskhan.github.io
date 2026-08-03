@@ -59,6 +59,7 @@
           <li><a href="#folders">Folder structure</a></li>
           <li><a href="#design-system">Design system</a></li>
           <li><a href="#data">Data layer</a></li>
+          <li><a href="#runtime">Shared runtime</a></li>
           <li><a href="#seo-a11y">SEO &amp; accessibility</a></li>
           <li><a href="#performance">Performance</a></li>
           <li><a href="#scalability">Scalability</a></li>
@@ -70,7 +71,7 @@
         <header class="section-header section-header--start">
           <p class="kicker">Docs · Architecture</p>
           <h1>Architecture overview</h1>
-          <p class="lead">Phase 2 of Project Atlas extends the live site into a maintainable digital ecosystem. Existing pages stay online; new products plug into one design system and one navigation shell.</p>
+          <p class="lead">Platform Intelligence v2 turns the live site into a maintainable digital ecosystem with one shared runtime for health analysis, reporting, discovery, and recommendations.</p>
         </header>
 
         <section id="principles" class="mb-32">
@@ -78,9 +79,10 @@
           <ul class="hub-roadmap">
             <li><strong>Extend, do not redesign:</strong> homepage identity and completed work remain intact.</li>
             <li><strong>One ecosystem:</strong> every product reuses shell, tokens, cards, and SEO patterns.</li>
-            <li><strong>No duplicate sources of truth:</strong> registries and shared CSS/JS own cross-cutting concerns.</li>
+            <li><strong>No duplicate sources of truth:</strong> registry metadata and knowledge-graph relationships own cross-cutting concerns.</li>
             <li><strong>Static-first:</strong> GitHub Pages compatible, minimal JavaScript, progressive enhancement.</li>
             <li><strong>Safe by default:</strong> Device and Downloads content stays lawful guidance and transparent assets only.</li>
+            <li><strong>Shared engines first:</strong> health capabilities must plug into reusable runtime systems before introducing new logic.</li>
           </ul>
         </section>
 
@@ -122,7 +124,16 @@
             <li><code>/assets/data/search-index.json</code> — global client-side search corpus</li>
             <li><code>/assets/data/downloads.json</code> — download catalog + safety policy</li>
             <li><code>/assets/data/capabilities.json</code> — capability explorer catalog</li>
+            <li><code>/assets/data/platform-registry.json</code> — single metadata source of truth for Platform Intelligence capabilities</li>
+            <li><code>/assets/data/knowledge-graph.json</code> — relationship layer between registry items</li>
           </ul>
+        </section>
+
+        <section id="runtime" class="mb-32">
+          <h2>Shared runtime</h2>
+          <p>Platform Intelligence v2 standardizes five reusable engines: Health, Recommendation, Knowledge, Search, and Report. Website Health is the first live capability on this shared flow, and future Device Health, Project Health, and AI Workflow Health capabilities must reuse the same contract.</p>
+          <p><strong>Canonical flow:</strong> data collection → Health Engine → Recommendation Engine → Report Engine → shared report.</p>
+          <p><strong>Migration rules:</strong> legacy URLs stay valid through redirects, canonical health paths live under <code>/intelligence/</code>, and duplicated report rendering is removed as pillars migrate.</p>
         </section>
 
         <section id="seo-a11y" class="mb-32">
@@ -137,7 +148,7 @@
 
         <section id="scalability" class="mb-32">
           <h2>Scalability</h2>
-          <p>New tools become files under a product folder plus registry entries. New articles attach to Research or Docs. Downloads append to <code>downloads.json</code>. Search grows through the JSON index instead of hard-coding every page script.</p>
+          <p>New capabilities become canonical paths under <code>/intelligence/</code> plus registry entries, knowledge-graph relationships, and shared engine integration. Search grows through the JSON index instead of hard-coding every page script.</p>
         </section>
 
         <section id="roadmap" class="mb-32">

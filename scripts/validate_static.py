@@ -20,6 +20,7 @@ PAGES = (
     "downloads/index.html",
     "platform/index.html",
     "intelligence/index.html",
+    "intelligence/website-health/index.html",
     "open-source/index.html",
     "docs/index.html",
     "docs/architecture/index.html",
@@ -211,6 +212,11 @@ def main() -> int:
         "assets/js/capabilities.js",
         "assets/js/tools.js",
         "assets/js/platform.js",
+        "assets/js/search-engine.js",
+        "assets/js/knowledge-engine.js",
+        "assets/js/recommendation-engine.js",
+        "assets/js/health-engine.js",
+        "assets/js/report-engine.js",
     ):
         target = ROOT / rel
         if not target.is_file():

@@ -105,11 +105,11 @@
     <section id="pillars" class="mb-32">
       <h2 class="intelligence-question">What would you like to improve today?</h2>
       <div class="pillar-grid">
-        <a href="/ai/tools/website-audit.html" class="pillar-card">
+        <a href="/intelligence/website-health/" class="pillar-card">
           <span class="pillar-icon" aria-hidden="true">🌐</span>
           <h3>Website Health</h3>
           <p>Audit SEO, accessibility, performance, metadata, structured data, and conversion fundamentals. Get a professional health report for any website.</p>
-          <span class="pillar-cta">Run Website Audit →</span>
+          <span class="pillar-cta">Open Website Health →</span>
         </a>
         <a href="/device/" class="pillar-card">
           <span class="pillar-icon" aria-hidden="true">💻</span>
@@ -166,11 +166,11 @@
       <div class="grid grid-2 mt-16">
         <article class="card">
           <h3>Consistent Structure</h3>
-          <p class="muted">Every report includes: summary, overall score, category breakdown, strengths, issues by severity, recommended actions with priority and estimated effort, related resources, and export options.</p>
+          <p class="muted">Every report includes the canonical Platform Intelligence contract: Health Score, Executive Summary, Critical Issues, Warnings, Passed Checks, Estimated Time to Improve, Recommended Action Plan, Learning Resources, Related Tools, Download, Share, and History.</p>
         </article>
         <article class="card">
-          <h3>Plugin Architecture</h3>
-          <p class="muted">Tools register in the platform registry. Each tool feeds its results into the Report Engine — adding a new health check requires only a registry entry and a scoring function.</p>
+          <h3>Shared Runtime</h3>
+          <p class="muted">Health, Recommendation, Knowledge, Search, and Report Engines now define the runtime boundary. New health capabilities must plug into these shared systems instead of shipping custom report logic.</p>
         </article>
         <article class="card">
           <h3>Panos Khan Verified</h3>
@@ -259,11 +259,11 @@
         </details>
         <details class="faq-item">
           <summary>How do I add a new health check tool?</summary>
-          <p>Register the tool in <code>platform-registry.json</code>, create a tool page following the <a href="/templates/tool-page.html">tool template</a>, and connect it to the Report Engine. See <a href="/docs/guides/product-hub-template.html">the product hub guide</a> for full instructions.</p>
+          <p>Register the capability in <code>platform-registry.json</code>, add its relationships to <code>knowledge-graph.json</code>, connect it to the shared engines, and keep the canonical path under <code>/intelligence/</code>. See <a href="/docs/guides/product-hub-template.html">the product hub guide</a> for full instructions.</p>
         </details>
         <details class="faq-item">
           <summary>Which health pillars are live?</summary>
-          <p>Website Health links to the live <a href="/ai/tools/website-audit.html">Website Audit</a> tool. Device Health links to the live <a href="/device/">Device Service</a>. Project Health and AI Workflow Health are planned for future milestones.</p>
+          <p>Website Health is now live at <a href="/intelligence/website-health/">/intelligence/website-health/</a>. Device Health links to the live <a href="/device/">Device Service</a>. Project Health and AI Workflow Health are planned for future milestones.</p>
         </details>
       </div>
     </section>
@@ -271,9 +271,9 @@
     <section id="changelog" class="mb-32">
       <h2>Changelog</h2>
       <ul class="hub-roadmap">
-        <li><strong>v1.0.0 — 2026-08-03:</strong> Platform Intelligence hub launch with four health pillars, Report Engine preview, Panos Khan Verified badge, and knowledge graph foundation.</li>
+        <li><strong>v2.0.0 — 2026-08-03:</strong> Website Health migrated under Platform Intelligence with shared Health, Recommendation, Knowledge, Search, and Report Engines.</li>
       </ul>
-      <p class="muted mt-16">Version: <strong>1.0.0</strong></p>
+      <p class="muted mt-16">Version: <strong>2.0.0</strong></p>
     </section>
 
     <section class="related-products" aria-labelledby="intelligence-related">

@@ -1,0 +1,470 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-08-03",
+  "schema": {
+    "required": [
+      "id",
+      "type",
+      "title",
+      "summary",
+      "status",
+      "updated",
+      "path",
+      "tags",
+      "featured"
+    ],
+    "optional": [
+      "domain",
+      "category",
+      "product",
+      "links",
+      "readingTime"
+    ]
+  },
+  "items": [
+    {
+      "id": "tool-website-audit",
+      "type": "tool",
+      "title": "AI Website Audit",
+      "summary": "Audit website readiness, trust signals, SEO structure, and conversion foundations.",
+      "status": "live",
+      "featured": true,
+      "updated": "2026-08-03",
+      "path": "/ai/tools/website-audit.html",
+      "tags": [
+        "ai",
+        "seo",
+        "audit",
+        "conversion"
+      ],
+      "domain": "SEO",
+      "category": "Growth",
+      "product": "ai",
+      "links": {
+        "primary": "/ai/tools/website-audit.html",
+        "capability": "/capabilities/#website-audits",
+        "related": "/downloads/#seo-audit-checklist"
+      }
+    },
+    {
+      "id": "tool-seo-brief",
+      "type": "tool",
+      "title": "AI SEO Brief Generator",
+      "summary": "Generate intent-aligned content briefs with titles, headings, and FAQ structure.",
+      "status": "live",
+      "featured": true,
+      "updated": "2026-08-03",
+      "path": "/ai/tools/seo-brief.html",
+      "tags": [
+        "ai",
+        "seo",
+        "content",
+        "brief"
+      ],
+      "domain": "SEO",
+      "category": "Growth",
+      "product": "ai",
+      "links": {
+        "primary": "/ai/tools/seo-brief.html",
+        "capability": "/capabilities/#metadata",
+        "related": "/research/#seo-architecture-ai-discovery"
+      }
+    },
+    {
+      "id": "tool-ad-copy-studio",
+      "type": "tool",
+      "title": "AI Ad Copy Studio",
+      "summary": "Create structured ad copy variants for testing paid media messaging.",
+      "status": "live",
+      "featured": false,
+      "updated": "2026-08-03",
+      "path": "/ai/tools/ad-copy-studio.html",
+      "tags": [
+        "ai",
+        "ads",
+        "copywriting",
+        "growth"
+      ],
+      "domain": "Business",
+      "category": "Growth",
+      "product": "ai",
+      "links": {
+        "primary": "/ai/tools/ad-copy-studio.html",
+        "capability": "/capabilities/#templates"
+      }
+    },
+    {
+      "id": "tool-readiness-twin",
+      "type": "tool",
+      "title": "AI Readiness Twin",
+      "summary": "Map 30-day quick wins and 12-month transformation priorities.",
+      "status": "live",
+      "featured": true,
+      "updated": "2026-08-03",
+      "path": "/ai/tools/readiness-twin.html",
+      "tags": [
+        "ai",
+        "strategy",
+        "roadmap",
+        "operations"
+      ],
+      "domain": "AI",
+      "category": "Strategy",
+      "product": "ai",
+      "links": {
+        "primary": "/ai/tools/readiness-twin.html",
+        "capability": "/capabilities/#ai-workflows",
+        "related": "/downloads/#ai-readiness-checklist"
+      }
+    },
+    {
+      "id": "tool-decision-risk",
+      "type": "tool",
+      "title": "AI Decision Risk Simulator",
+      "summary": "Assess legal, bias, security, adoption, and brand-risk dimensions.",
+      "status": "live",
+      "featured": false,
+      "updated": "2026-08-03",
+      "path": "/ai/tools/decision-risk.html",
+      "tags": [
+        "ai",
+        "risk",
+        "governance",
+        "compliance"
+      ],
+      "domain": "AI",
+      "category": "Risk",
+      "product": "ai",
+      "links": {
+        "primary": "/ai/tools/decision-risk.html",
+        "capability": "/capabilities/#knowledge-management"
+      }
+    },
+    {
+      "id": "tool-trust-label",
+      "type": "tool",
+      "title": "AI Trust Label Generator",
+      "summary": "Generate a transparency statement for responsible AI usage.",
+      "status": "live",
+      "featured": false,
+      "updated": "2026-08-03",
+      "path": "/ai/tools/trust-label.html",
+      "tags": [
+        "ai",
+        "trust",
+        "governance",
+        "policy"
+      ],
+      "domain": "AI",
+      "category": "Risk",
+      "product": "ai",
+      "links": {
+        "primary": "/ai/tools/trust-label.html",
+        "capability": "/capabilities/#knowledge-management"
+      }
+    },
+    {
+      "id": "ai-readiness-framework",
+      "type": "research",
+      "title": "AI Readiness Framework",
+      "summary": "Select high-value pilots, define oversight, and measure adoption.",
+      "status": "live",
+      "featured": true,
+      "updated": "2026-08-03",
+      "path": "/research/#ai-readiness-framework",
+      "tags": [
+        "ai",
+        "framework",
+        "operations",
+        "governance"
+      ],
+      "domain": "AI",
+      "category": "Framework",
+      "product": "research",
+      "readingTime": "6 min",
+      "links": {
+        "primary": "/research/#ai-readiness-framework",
+        "tool": "/ai/tools/readiness-twin.html",
+        "capability": "/capabilities/#ai-workflows"
+      }
+    },
+    {
+      "id": "seo-architecture-ai-discovery",
+      "type": "research",
+      "title": "SEO Architecture for AI Discovery",
+      "summary": "Technical and semantic foundations for modern discoverability.",
+      "status": "live",
+      "featured": true,
+      "updated": "2026-08-03",
+      "path": "/research/#seo-architecture-ai-discovery",
+      "tags": [
+        "seo",
+        "architecture",
+        "metadata",
+        "crawlability"
+      ],
+      "domain": "SEO",
+      "category": "Architecture",
+      "product": "research",
+      "readingTime": "5 min",
+      "links": {
+        "primary": "/research/#seo-architecture-ai-discovery",
+        "tool": "/ai/tools/website-audit.html",
+        "capability": "/capabilities/#technical-seo"
+      }
+    },
+    {
+      "id": "responsible-ai-decision-gates",
+      "type": "research",
+      "title": "Responsible AI Decision Gates",
+      "summary": "Risk review model for data sensitivity, fairness, and brand impact.",
+      "status": "live",
+      "featured": false,
+      "updated": "2026-08-03",
+      "path": "/research/#responsible-ai-decision-gates",
+      "tags": [
+        "ai",
+        "risk",
+        "governance",
+        "decision"
+      ],
+      "domain": "AI",
+      "category": "Governance",
+      "product": "research",
+      "readingTime": "4 min",
+      "links": {
+        "primary": "/research/#responsible-ai-decision-gates",
+        "tool": "/ai/tools/decision-risk.html",
+        "capability": "/capabilities/#knowledge-management"
+      }
+    },
+    {
+      "id": "ai-readiness-checklist",
+      "type": "download",
+      "title": "AI Readiness Checklist",
+      "summary": "Pilot-selection and oversight checklist aligned with readiness workflows.",
+      "status": "live",
+      "featured": true,
+      "updated": "2026-08-03",
+      "path": "/downloads/#ai-readiness-checklist",
+      "tags": [
+        "checklist",
+        "ai",
+        "operations"
+      ],
+      "domain": "Business",
+      "category": "Checklist",
+      "product": "downloads",
+      "links": {
+        "primary": "/assets/downloads/ai-readiness-checklist.html",
+        "capability": "/capabilities/#ai-workflows"
+      }
+    },
+    {
+      "id": "seo-audit-checklist",
+      "type": "download",
+      "title": "SEO Audit Checklist",
+      "summary": "Metadata and technical verification checklist for high-quality audits.",
+      "status": "live",
+      "featured": true,
+      "updated": "2026-08-03",
+      "path": "/downloads/#seo-audit-checklist",
+      "tags": [
+        "checklist",
+        "seo",
+        "audit"
+      ],
+      "domain": "SEO",
+      "category": "Checklist",
+      "product": "downloads",
+      "links": {
+        "primary": "/assets/downloads/seo-audit-checklist.html",
+        "capability": "/capabilities/#website-audits"
+      }
+    },
+    {
+      "id": "backup-before-repair",
+      "type": "download",
+      "title": "Backup-before-repair Checklist",
+      "summary": "Data-preservation steps before phone or laptop diagnostics and repair.",
+      "status": "live",
+      "featured": false,
+      "updated": "2026-08-03",
+      "path": "/downloads/#backup-before-repair",
+      "tags": [
+        "checklist",
+        "device",
+        "backup",
+        "safety"
+      ],
+      "domain": "Device",
+      "category": "Checklist",
+      "product": "downloads",
+      "links": {
+        "primary": "/assets/downloads/backup-before-repair-checklist.html",
+        "capability": "/capabilities/#backup-guidance"
+      }
+    },
+    {
+      "id": "sample-static-starter",
+      "type": "download",
+      "title": "Sample Static Page Starter",
+      "summary": "Semantic HTML starter showing platform-aligned page structure.",
+      "status": "live",
+      "featured": false,
+      "updated": "2026-08-03",
+      "path": "/downloads/#sample-static-starter",
+      "tags": [
+        "template",
+        "developer",
+        "html"
+      ],
+      "domain": "Developer",
+      "category": "Example",
+      "product": "downloads",
+      "links": {
+        "primary": "/assets/downloads/sample-static-starter.html",
+        "docs": "/docs/guides/product-hub-template.html"
+      }
+    },
+    {
+      "id": "project-phoenix",
+      "type": "project",
+      "title": "Project Phoenix",
+      "summary": "GitHub Pages ecosystem platform connecting products, tools, docs, and capabilities.",
+      "status": "live",
+      "featured": true,
+      "updated": "2026-08-03",
+      "path": "/projects/#project-phoenix",
+      "tags": [
+        "platform",
+        "open-source",
+        "architecture",
+        "github-pages"
+      ],
+      "domain": "Developer",
+      "category": "Platform",
+      "product": "projects",
+      "links": {
+        "primary": "/projects/#project-phoenix",
+        "docs": "/docs/architecture/",
+        "related": "/open-source/"
+      }
+    },
+    {
+      "id": "project-client-side-seo-tooling",
+      "type": "project",
+      "title": "Client-side SEO Tooling",
+      "summary": "Deterministic toolset for audits, briefs, and campaign assets without server processing.",
+      "status": "live",
+      "featured": false,
+      "updated": "2026-08-03",
+      "path": "/projects/#client-side-seo-tooling",
+      "tags": [
+        "seo",
+        "tooling",
+        "privacy",
+        "javascript"
+      ],
+      "domain": "SEO",
+      "category": "Tooling",
+      "product": "projects",
+      "links": {
+        "primary": "/projects/#client-side-seo-tooling",
+        "tool": "/ai/tools/seo-brief.html",
+        "capability": "/capabilities/#website-audits"
+      }
+    },
+    {
+      "id": "service-ai-ready-architecture",
+      "type": "service",
+      "title": "AI-ready Website Architecture",
+      "summary": "Design semantic, entity-aware, and high-performance site architecture.",
+      "status": "live",
+      "featured": true,
+      "updated": "2026-08-03",
+      "path": "/services.html#service-ai-ready-architecture",
+      "tags": [
+        "service",
+        "ai",
+        "seo",
+        "architecture"
+      ],
+      "domain": "Business",
+      "category": "Consulting",
+      "product": "services",
+      "links": {
+        "primary": "/contact.html",
+        "related": "/docs/architecture/"
+      }
+    },
+    {
+      "id": "service-web-engineering",
+      "type": "service",
+      "title": "Web Engineering & Development",
+      "summary": "Build responsive, maintainable platforms with quality and performance gates.",
+      "status": "live",
+      "featured": true,
+      "updated": "2026-08-03",
+      "path": "/services.html#service-web-engineering",
+      "tags": [
+        "service",
+        "development",
+        "performance"
+      ],
+      "domain": "Developer",
+      "category": "Consulting",
+      "product": "services",
+      "links": {
+        "primary": "/contact.html",
+        "related": "/projects/"
+      }
+    },
+    {
+      "id": "service-performance-marketing",
+      "type": "service",
+      "title": "Performance Marketing Systems",
+      "summary": "Design testable paid media and CRO systems tied to measurable outcomes.",
+      "status": "live",
+      "featured": false,
+      "updated": "2026-08-03",
+      "path": "/services.html#service-performance-marketing",
+      "tags": [
+        "service",
+        "ads",
+        "cro",
+        "analytics"
+      ],
+      "domain": "Business",
+      "category": "Consulting",
+      "product": "services",
+      "links": {
+        "primary": "/contact.html",
+        "tool": "/ai/tools/ad-copy-studio.html"
+      }
+    },
+    {
+      "id": "service-ai-strategy-consulting",
+      "type": "service",
+      "title": "AI Strategy Consulting",
+      "summary": "Assess readiness, map use cases, and guide phased implementation.",
+      "status": "live",
+      "featured": true,
+      "updated": "2026-08-03",
+      "path": "/services.html#service-ai-strategy-consulting",
+      "tags": [
+        "service",
+        "ai",
+        "strategy",
+        "transformation"
+      ],
+      "domain": "AI",
+      "category": "Consulting",
+      "product": "services",
+      "links": {
+        "primary": "/contact.html",
+        "tool": "/ai/tools/readiness-twin.html"
+      }
+    }
+  ]
+}

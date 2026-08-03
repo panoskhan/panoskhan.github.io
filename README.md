@@ -17,6 +17,7 @@ Official site for the **Panos Khan** product ecosystem: AI tools, Device Service
 | Open Source | `/open-source/` | Live |
 | Capability Explorer | `/capabilities/` | Live |
 | Projects | `/projects/` | Live |
+| Platform Dashboard | `/platform/` | Live |
 
 Consulting, credentials, and contact remain first-class supporting surfaces.
 
@@ -24,7 +25,7 @@ Consulting, credentials, and contact remain first-class supporting surfaces.
 
 - HTML5 / CSS3 design system (`assets/css/main.css`)
 - Progressive JavaScript (`assets/js/site.js`, `ai-platform.js`, `capabilities.js`)
-- Static JSON registries (`assets/data/*.json`)
+- Static JSON registries (`assets/data/*.json`, including unified `platform-registry.json`)
 - GitHub Pages (no build step required)
 
 ## Architecture

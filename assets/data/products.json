@@ -7,10 +7,53 @@
     "tagline": "Technology ecosystem for AI, device guidance, research, open source, and safe downloads."
   },
   "navigation": {
-    "primary": ["ai", "device", "research", "capabilities", "downloads", "open-source", "projects"],
-    "secondary": ["docs", "labs", "services", "credentials", "contact"]
+    "primary": [
+      "platform",
+      "ai",
+      "research",
+      "downloads",
+      "projects",
+      "services",
+      "workspace"
+    ],
+    "secondary": [
+      "device",
+      "capabilities",
+      "docs",
+      "labs",
+      "open-source",
+      "credentials",
+      "contact"
+    ]
   },
   "products": [
+    {
+      "id": "platform",
+      "name": "Panos Khan Platform",
+      "shortName": "Dashboard",
+      "path": "/platform/",
+      "status": "live",
+      "version": "1.0.0",
+      "category": "platform",
+      "navLabel": "Dashboard",
+      "description": "Workspace shell for global search, favorites, recent activity, and product discovery.",
+      "features": [
+        "Dashboard",
+        "Global Search",
+        "Workspace",
+        "Favorites",
+        "Recently Used",
+        "Settings (future)"
+      ],
+      "related": [
+        "ai",
+        "research",
+        "downloads",
+        "projects",
+        "services",
+        "capabilities"
+      ]
+    },
     {
       "id": "ai",
       "name": "Panos Khan AI",
@@ -21,8 +64,22 @@
       "category": "product",
       "navLabel": "AI",
       "description": "Professional AI workspace with client-side tools, prompt library, examples, FAQ, and documentation.",
-      "features": ["AI Hub", "Workspace", "Tools", "Prompt Library", "Examples", "FAQ", "Changelog", "Documentation"],
-      "related": ["docs", "research", "downloads", "labs"]
+      "features": [
+        "AI Hub",
+        "Workspace",
+        "Tools",
+        "Prompt Library",
+        "Examples",
+        "FAQ",
+        "Changelog",
+        "Documentation"
+      ],
+      "related": [
+        "docs",
+        "research",
+        "downloads",
+        "labs"
+      ]
     },
     {
       "id": "device",
@@ -34,8 +91,27 @@
       "category": "product",
       "navLabel": "Device",
       "description": "Lawful diagnostics, maintenance, optimization, and repair guidance for Windows, macOS, Android, iPhone, laptops, desktops, and networks.",
-      "features": ["Windows", "macOS", "Android", "iPhone", "Laptop", "Desktop", "Network", "Backup", "Diagnostics", "Driver Center", "Repair Intake", "Warranty Lookup", "Maintenance", "Optimization"],
-      "related": ["downloads", "docs", "capabilities"]
+      "features": [
+        "Windows",
+        "macOS",
+        "Android",
+        "iPhone",
+        "Laptop",
+        "Desktop",
+        "Network",
+        "Backup",
+        "Diagnostics",
+        "Driver Center",
+        "Repair Intake",
+        "Warranty Lookup",
+        "Maintenance",
+        "Optimization"
+      ],
+      "related": [
+        "downloads",
+        "docs",
+        "capabilities"
+      ]
     },
     {
       "id": "downloads",
@@ -47,8 +123,20 @@
       "category": "product",
       "navLabel": "Downloads",
       "description": "Categorized free downloads: checklists, templates, browser tools, documentation samples, and scripts.",
-      "features": ["Checklists", "Templates", "Browser tools", "PDFs", "Scripts", "Examples"],
-      "related": ["docs", "open-source", "ai", "device"]
+      "features": [
+        "Checklists",
+        "Templates",
+        "Browser tools",
+        "PDFs",
+        "Scripts",
+        "Examples"
+      ],
+      "related": [
+        "docs",
+        "open-source",
+        "ai",
+        "device"
+      ]
     },
     {
       "id": "labs",
@@ -60,8 +148,18 @@
       "category": "product",
       "navLabel": "Labs",
       "description": "Innovation area for experiments, prototype tools, open-source betas, and future concepts.",
-      "features": ["Experiments", "Prototypes", "Open Source betas", "Future concepts"],
-      "related": ["ai", "open-source", "docs", "projects"]
+      "features": [
+        "Experiments",
+        "Prototypes",
+        "Open Source betas",
+        "Future concepts"
+      ],
+      "related": [
+        "ai",
+        "open-source",
+        "docs",
+        "projects"
+      ]
     },
     {
       "id": "docs",
@@ -73,8 +171,21 @@
       "category": "product",
       "navLabel": "Docs",
       "description": "Professional documentation hub for architecture, tutorials, developer guides, user guides, and release notes.",
-      "features": ["Architecture", "Tutorials", "Developer Guides", "User Guides", "Release Notes", "Changelog"],
-      "related": ["ai", "device", "downloads", "labs", "research"]
+      "features": [
+        "Architecture",
+        "Tutorials",
+        "Developer Guides",
+        "User Guides",
+        "Release Notes",
+        "Changelog"
+      ],
+      "related": [
+        "ai",
+        "device",
+        "downloads",
+        "labs",
+        "research"
+      ]
     },
     {
       "id": "research",
@@ -86,8 +197,16 @@
       "category": "product",
       "navLabel": "Research",
       "description": "Practical frameworks for AI readiness, SEO architecture, and responsible decision-making.",
-      "features": ["Frameworks", "Governance", "SEO research"],
-      "related": ["ai", "docs", "capabilities"]
+      "features": [
+        "Frameworks",
+        "Governance",
+        "SEO research"
+      ],
+      "related": [
+        "ai",
+        "docs",
+        "capabilities"
+      ]
     },
     {
       "id": "open-source",
@@ -99,8 +218,17 @@
       "category": "product",
       "navLabel": "Open Source",
       "description": "Public building blocks, samples, and transparent utilities from Project Phoenix.",
-      "features": ["Repos", "Samples", "Utilities"],
-      "related": ["labs", "downloads", "projects", "docs"]
+      "features": [
+        "Repos",
+        "Samples",
+        "Utilities"
+      ],
+      "related": [
+        "labs",
+        "downloads",
+        "projects",
+        "docs"
+      ]
     },
     {
       "id": "capabilities",
@@ -112,8 +240,17 @@
       "category": "platform",
       "navLabel": "Explore",
       "description": "Cross-product capability map linking tools, docs, downloads, and projects.",
-      "features": ["Search", "Domain filters", "Resource links"],
-      "related": ["ai", "device", "docs", "downloads"]
+      "features": [
+        "Search",
+        "Domain filters",
+        "Resource links"
+      ],
+      "related": [
+        "ai",
+        "device",
+        "docs",
+        "downloads"
+      ]
     },
     {
       "id": "projects",
@@ -125,8 +262,15 @@
       "category": "portfolio",
       "navLabel": "Projects",
       "description": "Selected product and web-engineering work with architecture notes.",
-      "features": ["Case studies", "Architecture notes"],
-      "related": ["open-source", "labs", "ai"]
+      "features": [
+        "Case studies",
+        "Architecture notes"
+      ],
+      "related": [
+        "open-source",
+        "labs",
+        "ai"
+      ]
     },
     {
       "id": "services",
@@ -138,8 +282,17 @@
       "category": "consulting",
       "navLabel": "Services",
       "description": "AI strategy, web engineering, SEO architecture, and growth consulting.",
-      "features": ["Strategy", "Engineering", "SEO", "Growth"],
-      "related": ["ai", "contact", "credentials"]
+      "features": [
+        "Strategy",
+        "Engineering",
+        "SEO",
+        "Growth"
+      ],
+      "related": [
+        "ai",
+        "contact",
+        "credentials"
+      ]
     },
     {
       "id": "credentials",
@@ -151,8 +304,13 @@
       "category": "supporting",
       "navLabel": "Credentials",
       "description": "Certifications and professional credentials.",
-      "features": ["Certificates"],
-      "related": ["services", "contact"]
+      "features": [
+        "Certificates"
+      ],
+      "related": [
+        "services",
+        "contact"
+      ]
     },
     {
       "id": "contact",
@@ -164,15 +322,66 @@
       "category": "supporting",
       "navLabel": "Consultation",
       "description": "Book a consultation or send a project inquiry.",
-      "features": ["Consultation"],
-      "related": ["services"]
+      "features": [
+        "Consultation"
+      ],
+      "related": [
+        "services"
+      ]
+    },
+    {
+      "id": "workspace",
+      "name": "Workspace",
+      "shortName": "Workspace",
+      "path": "/platform/#workspace",
+      "status": "live",
+      "version": "1.0.0",
+      "category": "platform",
+      "navLabel": "Workspace",
+      "description": "Browser-saved favorites, recent activity, and personalized dashboard preferences.",
+      "features": [
+        "Favorites",
+        "Recently used",
+        "Preferences"
+      ],
+      "related": [
+        "platform",
+        "ai",
+        "downloads",
+        "projects"
+      ]
     }
   ],
   "future": [
-    { "id": "academy", "name": "Academy", "path": "/academy/", "status": "planned" },
-    { "id": "community", "name": "Community", "path": "/community/", "status": "planned" },
-    { "id": "console", "name": "Console", "path": "/console/", "status": "planned" },
-    { "id": "api", "name": "API", "path": "/api/", "status": "planned" },
-    { "id": "cloud", "name": "Cloud", "path": "/cloud/", "status": "planned" }
+    {
+      "id": "academy",
+      "name": "Academy",
+      "path": "/academy/",
+      "status": "planned"
+    },
+    {
+      "id": "community",
+      "name": "Community",
+      "path": "/community/",
+      "status": "planned"
+    },
+    {
+      "id": "console",
+      "name": "Console",
+      "path": "/console/",
+      "status": "planned"
+    },
+    {
+      "id": "api",
+      "name": "API",
+      "path": "/api/",
+      "status": "planned"
+    },
+    {
+      "id": "cloud",
+      "name": "Cloud",
+      "path": "/cloud/",
+      "status": "planned"
+    }
   ]
 }

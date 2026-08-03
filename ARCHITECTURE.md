@@ -121,3 +121,17 @@ python3 -m http.server 8000
 ```
 
 Every change should answer yes to: clean, maintainable, documented, architecture-aligned, and improving the project.
+
+
+## Platform v5 migration notes
+
+- `/platform/` is now the primary app-style entry (Dashboard, Workspace, Search).
+- `assets/data/platform-registry.json` is the unified registry for tools, research, downloads, projects, and services.
+- Catalog pages (`/downloads/`, `/research/`, `/projects/`, `/services.html`) are rendered client-side from the unified registry through `assets/js/platform.js`.
+- Workspace state (favorites, recent activity, preferences) is browser-local only to remain GitHub Pages compatible.
+
+## Governance updates
+
+1. New catalog content must be added to `assets/data/platform-registry.json`.
+2. Product pages should consume existing components and runtime renderers instead of hardcoded catalog cards.
+3. Any new platform surface must update architecture docs and sitemap/validation checks in the same change.

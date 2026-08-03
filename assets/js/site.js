@@ -2,24 +2,28 @@
   "use strict";
 
   const PRIMARY_NAV = [
+    { id: "platform", label: "Dashboard", href: "/platform/" },
     { id: "ai", label: "AI", href: "/ai/" },
-    { id: "device", label: "Device", href: "/device/" },
     { id: "research", label: "Research", href: "/research/" },
-    { id: "capabilities", label: "Explore", href: "/capabilities/" },
     { id: "downloads", label: "Downloads", href: "/downloads/" },
-    { id: "docs", label: "Docs", href: "/docs/" },
-    { id: "projects", label: "Projects", href: "/projects/" }
+    { id: "projects", label: "Projects", href: "/projects/" },
+    { id: "services", label: "Services", href: "/services.html" },
+    { id: "workspace", label: "Workspace", href: "/platform/#workspace" }
   ];
 
   const DRAWER_EXTRA = [
+    { id: "device", label: "Device", href: "/device/" },
+    { id: "capabilities", label: "Explore", href: "/capabilities/" },
+    { id: "docs", label: "Docs", href: "/docs/" },
     { id: "labs", label: "Labs", href: "/labs/" },
     { id: "open-source", label: "Open Source", href: "/open-source/" },
-    { id: "services", label: "Services", href: "/services.html" },
+    { id: "settings", label: "Settings (future)", href: "/platform/#settings" },
     { id: "credentials", label: "Credentials", href: "/credentials.html" },
     { id: "contact", label: "Consultation", href: "/contact.html", cta: true }
   ];
 
   const FALLBACK_SEARCH = [
+    { title: "Platform Dashboard", type: "Platform", url: "/platform/", description: "Workspace dashboard for global discovery and saved activity." },
     { title: "Panos Khan AI", type: "Product", url: "/ai/", description: "AI workspace, tools, prompts, and documentation." },
     { title: "Device Service", type: "Product", url: "/device/", description: "Repair, diagnostics, and support guidance." },
     { title: "Docs", type: "Product", url: "/docs/", description: "Architecture, guides, tutorials, and release notes." },
@@ -248,16 +252,29 @@
     });
   }
 
-  function trackRecent(toolId) {
-    if (!toolId || !window.localStorage) return;
+  function trackRecent(itemId) {
+    if (!itemId || !window.localStorage) return;
     try {
-      const key = "pk_recent_tools";
+      const key = "pk_workspace_recent";
       const existing = JSON.parse(localStorage.getItem(key) || "[]");
-      const next = [toolId].concat(existing.filter((id) => id !== toolId)).slice(0, 12);
+      const next = [itemId].concat(existing.filter((id) => id !== itemId)).slice(0, 20);
       localStorage.setItem(key, JSON.stringify(next));
     } catch (_) {
       /* ignore quota / private mode */
     }
+  }
+
+  function mapPlatformItemsToSearch(items) {
+    if (!Array.isArray(items)) return [];
+    return items
+      .filter((item) => item && item.title && item.path)
+      .map((item) => ({
+        title: item.title,
+        type: (item.type || "Item").replace(/^./, (ch) => ch.toUpperCase()),
+        url: item.links && item.links.primary ? item.links.primary : item.path,
+        description: item.summary || `${item.type || "item"} from platform registry`,
+        keywords: Array.isArray(item.tags) ? item.tags : []
+      }));
   }
 
   function productById(id) {
@@ -305,13 +322,24 @@
   }
 
   async function loadRegistries() {
-    const [searchData, productData] = await Promise.all([
+    const [searchData, productData, platformData] = await Promise.all([
       loadJSON("/assets/data/search-index.json"),
-      loadJSON("/assets/data/products.json")
+      loadJSON("/assets/data/products.json"),
+      loadJSON("/assets/data/platform-registry.json")
     ]);
 
-    if (searchData && Array.isArray(searchData.items) && searchData.items.length) {
-      searchIndex = searchData.items;
+    const staticSearch = searchData && Array.isArray(searchData.items) ? searchData.items : [];
+    const platformSearch = platformData && Array.isArray(platformData.items)
+      ? mapPlatformItemsToSearch(platformData.items)
+      : [];
+
+    if (staticSearch.length || platformSearch.length) {
+      const dedupe = new Map();
+      staticSearch.concat(platformSearch).forEach((item) => {
+        if (!item || !item.url || dedupe.has(item.url)) return;
+        dedupe.set(item.url, item);
+      });
+      searchIndex = Array.from(dedupe.values());
     }
     if (productData && Array.isArray(productData.products)) {
       productsCatalog = productData;

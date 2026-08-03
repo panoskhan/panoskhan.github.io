@@ -7,38 +7,18 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
 
-  <meta name="description" content="Selected AI, automation, SEO, and web-engineering projects by Panos Khan." />
+  <meta name="description" content="Selected projects rendered from the unified platform registry with links to architecture, tools, and capabilities." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://panoskhan.github.io/projects/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Projects | Panos Khan" />
-  <meta property="og:description" content="Selected AI, automation, SEO, and web-engineering projects by Panos Khan." />
+  <meta property="og:description" content="Filterable project catalog across platform and tooling initiatives." />
   <meta property="og:url" content="https://panoskhan.github.io/projects/" />
   <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Projects | Panos Khan" />
-  <meta name="twitter:description" content="Selected AI, automation, SEO, and web-engineering projects by Panos Khan." />
+
   <link rel="preload" href="/assets/css/main.css" as="style" />
   <link rel="stylesheet" href="/assets/css/main.css" />
-  
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "@id": "https://panoskhan.github.io/projects/#page",
-    "name": "Projects | Panos Khan",
-    "url": "https://panoskhan.github.io/projects/",
-    "description": "Selected AI, automation, SEO, and web-engineering projects by Panos Khan.",
-    "isPartOf": {"@type": "WebSite", "name": "Panos Khan", "url": "https://panoskhan.github.io/"},
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://panoskhan.github.io/"},
-        {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://panoskhan.github.io/projects/"}
-      ]
-    }
-  }
-  </script>
 </head>
 <body>
   <header class="site-header" role="banner" data-site-nav></header>
@@ -49,41 +29,32 @@
     <header class="section-header section-header--start">
       <p class="kicker">Selected Work</p>
       <h1>Projects</h1>
-      <p class="lead">Each project documents purpose, architecture, stack, lessons, and connected products.</p>
+      <p class="lead">Architecture-led case studies linked to tools, capabilities, and related product surfaces.</p>
     </header>
-    
+
     <nav class="product-subnav" aria-label="Project links">
-      <a href="#project-phoenix">Project Phoenix</a>
-      <a href="#client-side-seo-tooling">SEO tooling</a>
+      <a href="/platform/">Dashboard</a>
+      <a href="#catalog">Catalog</a>
       <a href="/open-source/">Open Source</a>
       <a href="/capabilities/">Capabilities</a>
     </nav>
-    <section class="content-grid" aria-label="Projects">
-      <article id="project-phoenix" class="card">
-        <p class="card-tag">Platform · Open Source</p>
-        <h2>Project Phoenix</h2>
-        <p>A GitHub Pages-based digital ecosystem connecting AI tools, research, project documentation, capabilities, downloads, and accessible web experiences.</p>
-        <h3>Architecture</h3>
-        <p>Static HTML, shared design system, progressive JavaScript, schema-first publishing, product hubs.</p>
-        <h3>Tech stack</h3>
-        <p>HTML5, CSS3, JavaScript, GitHub Pages.</p>
-        <h3>Lessons learned</h3>
-        <p>Shared patterns and quality gates make content expansion faster without sacrificing consistency.</p>
-        <p><a href="/ai/">Explore the AI Platform →</a> · <a href="/open-source/">Open Source hub →</a></p>
-      </article>
-      <article id="client-side-seo-tooling" class="card">
-        <p class="card-tag purple">Tooling · SEO</p>
-        <h2>Client-side SEO Tooling</h2>
-        <p>A set of deterministic generators that turn strategy inputs into usable audits, briefs, and campaign assets without sending visitor input to a server.</p>
-        <h3>Challenges</h3>
-        <p>Keeping outputs useful while preserving privacy, performance, and a clear explanation of each tool’s limits.</p>
-        <p><a href="/ai/">Explore AI tools →</a> · <a href="/capabilities/#website-audits">Capability: Website audits →</a></p>
-      </article>
-    </section>
 
+    <section id="catalog" data-platform-catalog data-type="project" data-grid-id="projectCatalogGrid" data-search-id="projectCatalogSearch" data-filters-id="projectCatalogFilters" data-count-id="projectCatalogCount" data-empty-id="projectCatalogEmpty">
+      <div class="catalog-head">
+        <h2>Project catalog</h2>
+        <p id="projectCatalogCount" class="muted">0 items</p>
+      </div>
+      <div class="ai-search-wrapper capability-search-wrap">
+        <span class="ai-search-icon" aria-hidden="true">🔍</span>
+        <input id="projectCatalogSearch" type="search" class="ai-search-input" placeholder="Search projects by title, tags, or domain..." aria-label="Search projects" />
+      </div>
+      <div id="projectCatalogFilters" class="filter-bar mt-16" aria-label="Project domains"></div>
+      <div id="projectCatalogGrid" class="content-grid mt-16" aria-live="polite"></div>
+      <p id="projectCatalogEmpty" class="muted mt-16" hidden>No matching projects found.</p>
+    </section>
   </main>
   <footer class="site-footer" role="contentinfo" data-site-footer></footer>
   <script src="/assets/js/site.js"></script>
-  
+  <script src="/assets/js/platform.js"></script>
 </body>
 </html>

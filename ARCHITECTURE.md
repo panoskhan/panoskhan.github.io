@@ -1,29 +1,34 @@
-# PROJECT ATLAS — Phase 2 Architecture
+# Platform Intelligence v2 Architecture Specification
 
-**Status:** Active  
+**Status:** Approved direction, shared-runtime implementation in progress  
 **Updated:** 2026-08-03  
-**Goal:** Extend the live Panos Khan site into a scalable digital ecosystem without redesigning or removing completed work.
+**Mission:** Transform Platform Intelligence into the core runtime powering every Digital Health capability across the Panos Khan ecosystem.
 
 ## Architecture summary
 
-The platform is a **static, product-oriented ecosystem** on GitHub Pages:
+The platform is a **static, product-oriented ecosystem** on GitHub Pages, with Platform Intelligence acting as the parent runtime for all health domains:
 
 - One shared design system (`assets/css/main.css`)
 - One progressive shell (`assets/js/site.js` header, footer, search)
+- Shared engines for health analysis, reporting, recommendations, discovery, and relationships
 - Product hubs as first-class folders (`/ai/`, `/intelligence/`, `/device/`, `/downloads/`, `/docs/`, `/labs/`, …)
 - Data registries for catalogs that will grow past hand-maintained page scripts
-- Knowledge graph connecting research, tools, downloads, projects, and services
-- Documentation and templates that encode "how we extend," not one-off page clones
+- Documentation and templates that encode how the platform extends without one-off clones
 
-**Non-goals for this phase:** homepage redesign, auth/cloud, removing pages, shipping unfinished AI agents.
+## Non-goals
+
+- Backend/auth work in v2
+- AI-first feature expansion without clear user value
+- Redesigning unrelated site surfaces
+- Breaking existing URLs
 
 ## Product map
 
 | Surface | Path | Role |
 |---------|------|------|
 | Home & consulting | `/`, `/services.html`, `/contact.html`, `/credentials.html` | Brand + commercial entry |
-| Platform Intelligence | `/intelligence/` | Flagship health checks: website, device, project, AI workflow |
-| AI | `/ai/` | Tools, prompts, examples, FAQ, changelog |
+| Platform Intelligence | `/intelligence/` | Parent runtime for website, device, project, and AI workflow health |
+| AI | `/ai/` | AI tools, prompts, examples, FAQ, changelog |
 | Device Service | `/device/` | Lawful diagnostics/maintenance guidance |
 | Downloads | `/downloads/` | Categorized safe assets |
 | Docs | `/docs/` | Architecture, guides, release notes |
@@ -49,40 +54,72 @@ Canonical Device Service URL remains **`/device/`** (product name in UI: Device 
 
 ## Platform Intelligence
 
-The flagship product connecting four health pillars:
+The flagship product connects four health pillars:
 
 | Pillar | Path | Status |
 |--------|------|--------|
-| Website Health | `/ai/tools/website-audit.html` | Live |
+| Website Health | `/intelligence/website-health/` | Live |
 | Device Health | `/device/` | Live |
 | Project Health | `/intelligence/#project-health` | Planned |
 | AI Workflow Health | `/intelligence/#ai-workflow-health` | Planned |
 
-### Report Engine
+### Shared runtime
 
-Every health check produces a consistent report via the Report Engine template (`/templates/report-page.html`):
+Platform Intelligence v2 standardizes five reusable engines:
 
-- Summary and overall score (0–100)
-- Category breakdown with star ratings
-- Strengths and issues by severity (critical/warning/info)
-- Prioritized recommendations with estimated effort
-- Resources and related tools
-- Export and share options
+1. **Health Engine** — evaluates pillar-specific input through one shared interface  
+2. **Report Engine** — renders the canonical health report contract  
+3. **Recommendation Engine** — prioritizes action plans and time-to-improve estimates  
+4. **Knowledge Engine** — resolves relationships through the knowledge graph  
+5. **Search Engine** — powers discovery from registry and search-index metadata
+
+Every future tool must flow through the shared runtime:
+
+**data collection → Health Engine → Recommendation Engine → Report Engine → shared report**
+
+### Canonical Health Report
+
+Every health check produces the same report contract through `assets/js/report-engine.js`:
+
+- Health Score
+- Executive Summary
+- Critical Issues
+- Warnings
+- Passed Checks
+- Estimated Time to Improve
+- Recommended Action Plan
+- Learning Resources
+- Related Tools
+- Download Report
+- Share Report
+- History
 - **Panos Khan Verified** badge when score ≥ 90
 
-### Plugin Architecture
+No tool should introduce a separate report layout.
 
-Tools register in `platform-registry.json` with a standard schema. Each tool feeds results into the Report Engine — adding a new health check requires only a registry entry and a scoring function.
+### Registry and relationship boundaries
 
-### Knowledge Graph
+`assets/data/platform-registry.json` is the single metadata source of truth for navigation, search, recommendations, and discovery.
 
-`assets/data/knowledge-graph.json` connects all platform content:
+`assets/data/knowledge-graph.json` is responsible only for relationships between registry items.
 
-- **Nodes**: tools, research, downloads, projects, services, products, articles
-- **Edges**: informed-by, pairs-with, part-of, supports, produces, contains, connected-to
-- Every page can look up related content across the entire platform
+### Migration rules
 
-## Shared components (created / standardized)
+1. Legacy paths remain valid through redirects  
+2. New canonical health paths live under `/intelligence/`  
+3. Duplicated report rendering must be removed as each pillar migrates  
+4. New health capabilities must register in the metadata registry and the knowledge graph
+
+### Shared primitive milestone
+
+The next milestone builds shared primitives only. Supported pillars:
+
+- Website Health
+- Device Health
+- Project Health
+- AI Workflow Health
+
+## Shared components
 
 | Component | Implementation |
 |---------------------------|
@@ -109,8 +146,8 @@ Guide: [/docs/guides/components.html](/docs/guides/components.html)
 - `assets/data/search-index.json` — client-side search corpus
 - `assets/data/downloads.json` — download catalog + safety policy
 - `assets/data/capabilities.json` — capability explorer
-- `assets/data/platform-registry.json` — unified registry for tools, research, downloads, projects, services
-- `assets/data/knowledge-graph.json` — cross-product knowledge graph (nodes + edges)
+- `assets/data/platform-registry.json` — unified registry for products, tools, research, downloads, projects, and services
+- `assets/data/knowledge-graph.json` — relationship graph between registry items
 
 ## SEO improvements
 
@@ -144,15 +181,13 @@ Designed so the platform can hold 100+ tools, articles, projects, and downloads 
 3. Reusing templates under `/templates/`  
 4. Avoiding per-page navigation forks  
 
-Roadmap after this PR:
+Roadmap after this milestone:
 
-- **v4.0** Platform Intelligence hub + Report Engine ✅
-- **v4.5** Website Health tools depth + Device Health interactive trees
-- **v5.0** Project Health + AI Workflow Health tools
-- **v5.5** Knowledge Center (research, tutorials, case studies)
-- **v6.0** Labs + Open Source content + Downloads expansion
-- **v7.0** Design system evolution (glass panels, light mode)
-- **v8.0** Workspace concept + optional cloud/auth
+- **v2.0** Shared runtime foundations + Website Health migration ✅
+- **v2.5** Device Health primitives on the same engine
+- **v3.0** Project Health + AI Workflow Health on the same report contract
+- **v3.5** Knowledge Center (research, tutorials, case studies)
+- **v4.0** Workspace history and optional browser-local report tracking
 
 ## Quality gates
 
@@ -163,11 +198,10 @@ python3 -m http.server 8000
 
 Every change should answer yes to: clean, maintainable, documented, architecture-aligned, and improving the project.
 
+## Platform runtime notes
 
-## Platform v5 migration notes
-
-- `/platform/` is now the primary app-style entry (Dashboard, Workspace, Search).
-- `assets/data/platform-registry.json` is the unified registry for tools, research, downloads, projects, and services.
+- `/platform/` remains the primary app-style entry (Dashboard, Workspace, Search).
+- `assets/data/platform-registry.json` defines pillar, engine, report, input/output, and documentation metadata for health capabilities.
 - Catalog pages (`/downloads/`, `/research/`, `/projects/`, `/services.html`) are rendered client-side from the unified registry through `assets/js/platform.js`.
 - Workspace state (favorites, recent activity, preferences) is browser-local only to remain GitHub Pages compatible.
 
@@ -176,5 +210,6 @@ Every change should answer yes to: clean, maintainable, documented, architecture
 1. New catalog content must be added to `assets/data/platform-registry.json`.
 2. Product pages should consume existing components and runtime renderers instead of hardcoded catalog cards.
 3. Any new platform surface must update architecture docs and sitemap/validation checks in the same change.
-4. New health check tools must follow the report template (`/templates/report-page.html`) and register in the knowledge graph.
+4. New health check tools must follow the report contract and register in the knowledge graph.
 5. Every tool with a score output must integrate with the Panos Khan Verified badge system (threshold: 90/100).
+6. Use shared engines before creating new page-specific logic.

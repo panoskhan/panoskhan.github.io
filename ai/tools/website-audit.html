@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Website Audit | Panos Khan AI Platform</title>
+  <title>Website Health | Platform Intelligence | Panos Khan</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
 
-  <meta name="description" content="Audit any website for AI readiness, mobile speed, SEO structural alignment, and UX conversions." />
-  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/website-audit.html" />
+  <meta name="description" content="Redirecting to the canonical Website Health capability at /intelligence/website-health/." />
+  <meta name="robots" content="noindex,follow" />
+  <link rel="canonical" href="https://panoskhan.github.io/intelligence/website-health/" />
+  <meta http-equiv="refresh" content="0; url=/intelligence/website-health/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="AI Website Audit | Panos Khan AI Platform" />
-  <meta property="og:description" content="Audit any website for AI readiness, mobile speed, SEO structural alignment, and UX conversions." />
-  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/website-audit.html" />
+  <meta property="og:title" content="Website Health | Platform Intelligence | Panos Khan" />
+  <meta property="og:description" content="Redirecting to the canonical Website Health capability at /intelligence/website-health/." />
+  <meta property="og:url" content="https://panoskhan.github.io/intelligence/website-health/" />
   <meta property="og:site_name" content="Panos Khan" />
   <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
   <meta property="og:image:width" content="1200" />
@@ -27,10 +29,10 @@
     "@graph": [
       {
         "@type": "WebApplication",
-        "@id": "https://panoskhan.github.io/ai/tools/website-audit.html#webapp",
-        "name": "AI Website Audit",
-        "description": "Audit any website for AI readiness, mobile speed, SEO structural alignment, and UX conversions.",
-        "url": "https://panoskhan.github.io/ai/tools/website-audit.html",
+        "@id": "https://panoskhan.github.io/intelligence/website-health/#webapp",
+        "name": "Website Health",
+        "description": "Shared Platform Intelligence capability for website health scoring and reporting.",
+        "url": "https://panoskhan.github.io/intelligence/website-health/",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "All"
       }
@@ -40,140 +42,14 @@
 
   <!-- Preload and Stylesheets -->
   <link rel="preload" href="/assets/css/main.css" as="style" />
-  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
   <link rel="stylesheet" href="/assets/css/main.css" />
-  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+  <script>location.replace('/intelligence/website-health/');</script>
 </head>
-<body data-tool-id="website-audit">
-  <div id="ai-tool-content">
-    <form id="auditForm">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-        <div class="ai-form-group">
-          <label for="businessName">Business name</label>
-          <input id="businessName" name="businessName" type="text" required placeholder="e.g. Acme SaaS" />
-        </div>
-        <div class="ai-form-group">
-          <label for="websiteUrl">Website URL</label>
-          <input id="websiteUrl" name="websiteUrl" type="url" placeholder="https://example.com" required />
-        </div>
-        <div class="ai-form-group">
-          <label for="industry">Industry</label>
-          <input id="industry" name="industry" type="text" required placeholder="e.g. Cybersecurity, Fintech" />
-        </div>
-        <div class="ai-form-group">
-          <label for="audience">Target audience</label>
-          <input id="audience" name="audience" type="text" required placeholder="e.g. IT Managers, CFOs" />
-        </div>
-      </div>
-      <div class="ai-form-group">
-        <label for="goals">Goals</label>
-        <textarea id="goals" name="goals" placeholder="Example: increase qualified leads, improve conversion rate, rank for service keywords" required></textarea>
-      </div>
-      <div style="margin-top: 12px;">
-        <button class="ai-btn ai-btn-primary" type="submit">Generate Audit Report</button>
-      </div>
-    </form>
-  </div>
-
-  <script src="/assets/js/site.js"></script>
-  <script src="/assets/js/ai-platform.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const form = document.getElementById('auditForm');
-      if (!form) return;
-
-      function normalizeDomain(url) {
-        try {
-          const parsed = new URL(url);
-          return parsed.hostname.replace(/^www\./, '');
-        } catch {
-          return url.replace(/^https?:\/\//, '').replace(/\/.*/, '');
-        }
-      }
-
-      function buildAudit(data) {
-        const goalText = data.goals.toLowerCase();
-        const primaryGoal = goalText.includes('lead') ? 'lead generation' : goalText.includes('sale') ? 'sales conversion' : goalText.includes('rank') ? 'organic visibility' : 'website performance';
-        const domain = normalizeDomain(data.websiteUrl);
-
-        const positioning = [
-          `Clarify the first-screen message so ${data.audience} immediately understands why ${data.businessName} is the right ${data.industry} partner.`,
-          `Use one core value proposition tied to your main goal (${primaryGoal}) and support it with a measurable proof point.`,
-          `Align headlines, service labels, and CTA wording so the same promise is repeated consistently across homepage and key service pages.`
-        ];
-
-        const seo = [
-          `Build one optimized page per high-intent service topic in the ${data.industry} space, with internal links from the homepage.`,
-          `Strengthen on-page relevance for ${domain} by matching title tags, H1s, and intro copy to commercial-intent phrases your audience actually searches.`,
-          `Add structured data (Organization, Service, FAQ) to improve rich-result visibility and trust in search snippets.`
-        ];
-
-        const uxTrust = [
-          `Move trust assets (testimonials, credentials, case outcomes) above the fold to reduce early drop-off for new visitors.`,
-          `Simplify navigation labels and keep the top menu focused on core paths: Services, Proof, Contact/Book.`,
-          `Audit mobile readability: font scale, spacing, and button contrast should support fast scanning and confidence.`
-        ];
-
-        const conversion = [
-          `Use one primary CTA per page (for example: "Book a Consultation") and one secondary CTA for lower-intent users.`,
-          `Reduce form friction by limiting required fields and adding a response-time expectation near the submit button.`,
-          `Create page-specific CTAs tied to user intent (audit, quote, strategy call) to improve lead qualification.`
-        ];
-
-        const priorities = [
-          `Priority 1 (Week 1): Rewrite hero message + CTA around ${primaryGoal} for ${data.audience}.`,
-          `Priority 2 (Week 1-2): Add/refresh trust evidence block with concrete outcomes and client-context examples.`,
-          `Priority 3 (Week 2): Publish one SEO-focused service page with schema and internal linking.`,
-          `Priority 4 (Week 3): Optimize lead form and add conversion tracking for core CTA clicks/submissions.`,
-          `Priority 5 (Week 4): Review analytics and refine messaging based on top landing pages and user behavior.`
-        ];
-
-        return { positioning, seo, uxTrust, conversion, priorities };
-      }
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const data = {
-          businessName: AIPlatform.safeText(form.businessName.value),
-          websiteUrl: AIPlatform.safeText(form.websiteUrl.value),
-          industry: AIPlatform.safeText(form.industry.value),
-          audience: AIPlatform.safeText(form.audience.value),
-          goals: AIPlatform.safeText(form.goals.value)
-        };
-
-        const report = buildAudit(data);
-        const domain = normalizeDomain(data.websiteUrl);
-
-        const outputData = {
-          title: `AI Website Audit for ${data.businessName} (${domain})`,
-          sections: [
-            {
-              title: "1. Positioning & Messaging Review",
-              content: report.positioning.map(item => `* ${item}`).join('\n')
-            },
-            {
-              title: "2. SEO & Crawlability Opportunities",
-              content: report.seo.map(item => `* ${item}`).join('\n')
-            },
-            {
-              title: "3. UX & Trust Signals Suggestions",
-              content: report.uxTrust.map(item => `* ${item}`).join('\n')
-            },
-            {
-              title: "4. Conversion Architecture Improvements",
-              content: report.conversion.map(item => `* ${item}`).join('\n')
-            },
-            {
-              title: "5. 30-Day Critical Action Priorities",
-              content: report.priorities.map(item => `* **${item.split(':')[0]}**: ${item.split(':').slice(1).join(':').trim()}`).join('\n')
-            }
-          ]
-        };
-
-        AIPlatform.showFormattedOutput(outputData);
-      });
-    });
-  </script>
-  
+<body>
+  <main class="container section">
+    <h1>Website Health | Platform Intelligence | Panos Khan</h1>
+    <p class="lead">This legacy Website Audit URL now redirects to the canonical Platform Intelligence Website Health capability.</p>
+    <p><a class="btn btn-primary" href="/intelligence/website-health/">Continue to /intelligence/website-health/</a></p>
+  </main>
 </body>
 </html>

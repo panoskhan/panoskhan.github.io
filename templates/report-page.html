@@ -64,14 +64,16 @@
     ║  this layout to ensure consistency across the platform.    ║
     ║                                                            ║
     ║  Report sections:                                          ║
-    ║  1. Summary & Overall Score                                ║
-    ║  2. Category Breakdown (star ratings)                      ║
-    ║  3. Strengths                                              ║
-    ║  4. Issues (by severity)                                   ║
-    ║  5. Recommendations (prioritized)                          ║
-    ║  6. Resources & Related Tools                              ║
-    ║  7. Export & Share                                          ║
-    ║  8. Panos Khan Verified badge (score >= 90)                ║
+    ║  1. Health Score                                           ║
+    ║  2. Executive Summary                                      ║
+    ║  3. Critical Issues                                        ║
+    ║  4. Warnings                                               ║
+    ║  5. Passed Checks                                          ║
+    ║  6. Estimated Time to Improve                              ║
+    ║  7. Recommended Action Plan                                ║
+    ║  8. Learning Resources + Related Tools                     ║
+    ║  9. Download, Share, History                               ║
+    ║ 10. Panos Khan Verified badge (score >= 90)                ║
     ╚══════════════════════════════════════════════════════════════╝
   -->
   <style>
@@ -120,9 +122,9 @@
         <div><span class="certified-badge">Panos Khan Verified · 94/100</span></div>
       </div>
 
-      <!-- Category Breakdown -->
+      <!-- Health Score -->
       <div class="report-section">
-        <h2>Category Breakdown</h2>
+        <h2>Health Score</h2>
         <div class="report-dimensions">
           <div class="report-dim">
             <p class="report-dim-label">Category A</p>
@@ -143,33 +145,45 @@
         </div>
       </div>
 
-      <!-- Strengths -->
+      <!-- Executive Summary -->
       <div class="report-section">
-        <h2>Strengths</h2>
-        <div class="report-strength"><strong>Strength title.</strong> Explanation of what was done well.</div>
-        <div class="report-strength"><strong>Strength title.</strong> Explanation of what was done well.</div>
+        <h2>Executive Summary</h2>
+        <div class="report-strength"><strong>Summary point.</strong> Explain the current overall condition and what it means.</div>
       </div>
 
-      <!-- Issues -->
+      <!-- Critical Issues -->
       <div class="report-section">
-        <h2>Issues</h2>
+        <h2>Critical Issues</h2>
         <div class="report-issue" data-severity="critical">
           <p class="report-severity">Critical</p>
           <p><strong>Issue title.</strong> Description of the issue and its impact.</p>
         </div>
+      </div>
+
+      <!-- Warnings -->
+      <div class="report-section">
+        <h2>Warnings</h2>
         <div class="report-issue" data-severity="warning">
           <p class="report-severity">Warning</p>
           <p><strong>Issue title.</strong> Description of the issue and its impact.</p>
         </div>
-        <div class="report-issue" data-severity="info">
-          <p class="report-severity">Info</p>
-          <p><strong>Issue title.</strong> Description and suggestion.</p>
-        </div>
       </div>
 
-      <!-- Recommendations -->
+      <!-- Passed Checks -->
       <div class="report-section">
-        <h2>Recommendations</h2>
+        <h2>Passed Checks</h2>
+        <div class="report-strength"><strong>Passed check.</strong> Note what already meets the baseline.</div>
+      </div>
+
+      <!-- Estimated Time -->
+      <div class="report-section">
+        <h2>Estimated Time to Improve</h2>
+        <p>2–4 weeks</p>
+      </div>
+
+      <!-- Action Plan -->
+      <div class="report-section">
+        <h2>Recommended Action Plan</h2>
         <div class="report-recommendation">
           <span class="report-recommendation-priority">Priority 1</span>
           <p><strong>Action title.</strong> Clear, specific instruction for what to do.</p>
@@ -184,7 +198,7 @@
 
       <!-- Resources -->
       <div class="report-section">
-        <h2>Resources &amp; Related Tools</h2>
+        <h2>Learning Resources &amp; Related Tools</h2>
         <div class="content-grid">
           <article class="card">
             <h3>Related Tool</h3>
@@ -199,10 +213,22 @@
 
       <!-- Export Actions -->
       <div class="report-section">
-        <h2>Export &amp; Share</h2>
+        <h2>Download Report</h2>
         <div class="report-actions">
-          <button type="button" class="btn btn-primary btn-sm" disabled>Download PDF (coming soon)</button>
-          <button type="button" class="btn btn-sm" disabled>Share Report (coming soon)</button>
+          <button type="button" class="btn btn-primary btn-sm" disabled>Download Report</button>
+        </div>
+      </div>
+
+      <div class="report-section">
+        <h2>Share Report</h2>
+        <div class="report-actions">
+          <button type="button" class="btn btn-sm" disabled>Share Report</button>
+        </div>
+      </div>
+
+      <div class="report-section">
+        <h2>History</h2>
+        <div class="report-actions">
           <a href="/intelligence/" class="btn btn-sm">← Back to Platform Intelligence</a>
         </div>
       </div>

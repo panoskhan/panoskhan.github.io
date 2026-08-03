@@ -2,7 +2,7 @@
 
 Official site for the **Panos Khan** product ecosystem: AI tools, Device Service guidance, Research, Open Source, Downloads, Docs, Labs, and consulting.
 
-**Phase:** Atlas Phase 2 — Digital Ecosystem Architecture
+**Phase:** Platform Intelligence v2 — Shared Runtime Architecture
 
 ## Products
 
@@ -24,13 +24,13 @@ Consulting, credentials, and contact remain first-class supporting surfaces.
 ## Stack
 
 - HTML5 / CSS3 design system (`assets/css/main.css`)
-- Progressive JavaScript (`assets/js/site.js`, `ai-platform.js`, `capabilities.js`)
-- Static JSON registries (`assets/data/*.json`, including unified `platform-registry.json`)
+- Progressive JavaScript (`assets/js/site.js`, `platform.js`, `health-engine.js`, `report-engine.js`)
+- Static JSON registries (`assets/data/*.json`, with `platform-registry.json` as metadata source of truth and `knowledge-graph.json` for relationships)
 - GitHub Pages (no build step required)
 
 ## Architecture
 
-- [ARCHITECTURE.md](./ARCHITECTURE.md) — system design, scalability, SEO/a11y/perf notes
+- [ARCHITECTURE.md](./ARCHITECTURE.md) — Platform Intelligence v2 spec, runtime boundaries, migration rules, SEO/a11y/perf notes
 - [Project Phoenix Charter](./docs/PROJECT_CHARTER.md) — mission, releases, and product quality standards
 - [Docs hub](https://panoskhan.github.io/docs/) — guides and release notes
 - [Component catalog](./assets/components/README.md) — reusable UI patterns
@@ -55,7 +55,8 @@ python3 scripts/validate_static.py
 
 - Extend the platform; do not redesign the homepage or remove completed work
 - Product-driven IA with one shared brand/design system
-- Registries over duplicated catalogs
+- Shared engines before one-off logic
+- Registries over duplicated catalogs; knowledge graph over hardcoded relationships
 - Curated excellence over thin page volume
 - Safe-by-default downloads and lawful device guidance only
 - Client-side tools by default; Workspace auth is future-only

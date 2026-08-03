@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Website Health | Platform Intelligence | Panos Khan</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Generate a shared Platform Intelligence Website Health report for messaging, discoverability, trust, and conversion readiness." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://panoskhan.github.io/intelligence/website-health/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Website Health | Platform Intelligence | Panos Khan" />
+  <meta property="og:description" content="Shared Platform Intelligence runtime for Website Health scoring, recommendations, and reporting." />
+  <meta property="og:url" content="https://panoskhan.github.io/intelligence/website-health/" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Website Health | Platform Intelligence | Panos Khan" />
+  <meta name="twitter:description" content="Generate a browser-first Website Health report through shared Health, Recommendation, Knowledge, Search, and Report Engines." />
+  <meta name="twitter:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://panoskhan.github.io/#website",
+        "url": "https://panoskhan.github.io/",
+        "name": "Panos Khan"
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/intelligence/website-health/#webapp",
+        "url": "https://panoskhan.github.io/intelligence/website-health/",
+        "name": "Website Health",
+        "description": "Shared Platform Intelligence runtime for Website Health scoring, recommendations, and reporting.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "isPartOf": { "@id": "https://panoskhan.github.io/#website" }
+      }
+    ]
+  }
+  </script>
+  <style>
+    .health-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+    .health-card { padding: 1.5rem; border-radius: 1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
+    .engine-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+    .engine-list li { list-style: none; margin: 0; padding: 0.85rem 1rem; border-radius: 0.75rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); }
+    .health-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .health-form-group { display: grid; gap: 0.4rem; margin-bottom: 1rem; }
+    .health-form-group input, .health-form-group textarea { width: 100%; padding: 0.9rem 1rem; border-radius: 0.8rem; border: 1px solid rgba(255,255,255,0.12); background: rgba(7,11,20,0.75); color: inherit; }
+    .health-form-group textarea { min-height: 120px; resize: vertical; }
+    .runtime-flow { margin-top: 1rem; padding: 1rem; border-radius: 0.8rem; background: rgba(0,229,255,0.06); border: 1px solid rgba(0,229,255,0.14); }
+    .report-shell[hidden] { display: none; }
+    .report-shell { margin-top: 1.5rem; }
+    .report-container { max-width: none; }
+    .report-header { text-align: center; padding: 1rem 0 2rem; }
+    .report-score-circle { display: inline-flex; align-items: center; justify-content: center; width: 120px; height: 120px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.15); font-size: 2.5rem; font-weight: 700; margin: 1rem 0; }
+    .report-score-circle small { font-size: 1rem; opacity: 0.5; font-weight: 400; }
+    .report-section { margin-bottom: 2rem; }
+    .report-section h3 { font-size: 1.2rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .report-dimensions { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+    .report-dim { padding: 1rem; background: rgba(255,255,255,0.04); border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.06); }
+    .report-dim-label { font-size: 0.8rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.04em; }
+    .report-dim-stars { color: #f5a623; font-size: 1.1rem; margin: 0.25rem 0; }
+    .report-list { margin: 0; padding-left: 1.2rem; }
+    .report-list li { margin-bottom: 0.5rem; }
+    .report-list--success li::marker { color: #81c784; }
+    .report-recommendation { padding: 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 0.75rem; margin-bottom: 0.75rem; }
+    .report-recommendation-priority { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 0.25rem; background: rgba(255,255,255,0.08); display: inline-block; margin-bottom: 0.5rem; }
+    .report-effort { font-size: 0.85rem; opacity: 0.65; margin-top: 0.25rem; }
+    .report-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .certified-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 2rem; background: rgba(76,175,80,0.12); border: 1px solid rgba(76,175,80,0.3); font-size: 0.85rem; font-weight: 600; color: #81c784; }
+    .certified-badge::before { content: "✓"; display: inline-flex; align-items: center; justify-content: center; width: 1.25rem; height: 1.25rem; border-radius: 50%; background: rgba(76,175,80,0.25); font-size: 0.7rem; }
+    @media (max-width: 960px) {
+      .health-layout, .health-form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" role="banner" data-site-nav></header>
+  <main class="container section">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">/</span>
+      <a href="/intelligence/">Platform Intelligence</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Website Health</span>
+    </nav>
+
+    <header class="section-header section-header--start">
+      <p class="kicker">Platform Intelligence v2 · Live Capability</p>
+      <h1>Website Health</h1>
+      <p class="lead">Website Health is the first canonical Platform Intelligence capability running through the shared Health, Recommendation, Knowledge, Search, and Report Engines.</p>
+    </header>
+
+    <div class="health-layout">
+      <section class="health-card">
+        <h2>Generate a shared health report</h2>
+        <p class="muted">The report is produced client-side through one canonical pipeline: data collection → Health Engine → Recommendation Engine → Report Engine.</p>
+        <form id="websiteHealthForm">
+          <div class="health-form-grid">
+            <div class="health-form-group">
+              <label for="businessName">Business name</label>
+              <input id="businessName" name="businessName" type="text" required placeholder="e.g. Acme SaaS" />
+            </div>
+            <div class="health-form-group">
+              <label for="websiteUrl">Website URL</label>
+              <input id="websiteUrl" name="websiteUrl" type="url" required placeholder="https://example.com" />
+            </div>
+            <div class="health-form-group">
+              <label for="industry">Industry</label>
+              <input id="industry" name="industry" type="text" required placeholder="e.g. Cybersecurity, Fintech" />
+            </div>
+            <div class="health-form-group">
+              <label for="audience">Target audience</label>
+              <input id="audience" name="audience" type="text" required placeholder="e.g. IT Managers, CFOs" />
+            </div>
+          </div>
+          <div class="health-form-group">
+            <label for="goals">Goals</label>
+            <textarea id="goals" name="goals" required placeholder="Example: improve organic discovery, strengthen trust, and increase qualified consultation requests."></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Generate Website Health Report</button>
+        </form>
+
+        <div class="runtime-flow">
+          <strong>Shared runtime contract</strong>
+          <ul class="engine-list">
+            <li>Health Engine</li>
+            <li>Recommendation Engine</li>
+            <li>Knowledge Engine</li>
+            <li>Search Engine</li>
+            <li>Report Engine</li>
+          </ul>
+        </div>
+      </section>
+
+      <aside class="health-card">
+        <h2>Canonical report contract</h2>
+        <p class="muted">Every Platform Intelligence report now follows the same structure and presentation model.</p>
+        <ul class="hub-roadmap">
+          <li>Health Score</li>
+          <li>Executive Summary</li>
+          <li>Critical Issues</li>
+          <li>Warnings</li>
+          <li>Passed Checks</li>
+          <li>Estimated Time to Improve</li>
+          <li>Recommended Action Plan</li>
+          <li>Learning Resources</li>
+          <li>Related Tools</li>
+          <li>Download Report</li>
+          <li>Share Report</li>
+          <li>History</li>
+        </ul>
+        <p class="muted">Legacy Website Audit URLs remain valid through redirects to preserve bookmarks and search equity.</p>
+      </aside>
+    </div>
+
+    <section id="websiteHealthReport" class="health-card report-shell" hidden aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo" data-site-footer></footer>
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/search-engine.js"></script>
+  <script src="/assets/js/knowledge-engine.js"></script>
+  <script src="/assets/js/recommendation-engine.js"></script>
+  <script src="/assets/js/health-engine.js"></script>
+  <script src="/assets/js/report-engine.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("websiteHealthForm");
+      const mount = document.getElementById("websiteHealthReport");
+      if (!form || !mount) return;
+
+      Promise.allSettled([
+        window.PlatformSearchEngine && window.PlatformSearchEngine.load ? window.PlatformSearchEngine.load() : Promise.resolve([]),
+        window.PlatformKnowledgeEngine && window.PlatformKnowledgeEngine.loadGraph ? window.PlatformKnowledgeEngine.loadGraph() : Promise.resolve(null)
+      ]);
+
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const input = {
+          businessName: form.businessName.value,
+          websiteUrl: form.websiteUrl.value,
+          industry: form.industry.value,
+          audience: form.audience.value,
+          goals: form.goals.value
+        };
+
+        const baseReport = window.PlatformHealthEngine.evaluate("website-health", input);
+        const plan = window.PlatformRecommendationEngine.buildPlan(baseReport);
+        const related = await window.PlatformKnowledgeEngine.getRelated("tool-website-audit", { limit: 6 });
+
+        const learningResources = related.filter(function (item) {
+          return item.type !== "tool";
+        });
+        const relatedTools = related.filter(function (item) {
+          return item.type === "tool";
+        });
+
+        const report = Object.assign({}, baseReport, {
+          estimatedTimeToImprove: plan.estimatedTimeToImprove,
+          recommendedActionPlan: plan.items,
+          learningResources,
+          relatedTools
+        });
+
+        mount.hidden = false;
+        window.PlatformReportEngine.render(mount, report);
+        mount.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  </script>
+</body>
+</html>

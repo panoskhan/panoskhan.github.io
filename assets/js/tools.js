@@ -207,8 +207,10 @@
     form.addEventListener("submit", function(event){
       event.preventDefault();
       const toolId = form.getAttribute("data-tool");
-      const output = generators[toolId](new FormData(form)) || "No output generated.";
+      const generator = generators[toolId];
+      const output = generator ? generator(new FormData(form)) : "No output generated.";
       const resultEl = document.getElementById("result-" + toolId);
+      if (!resultEl) return;
       resultEl.textContent = output;
       resultEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
     });

@@ -159,7 +159,11 @@ const AIPlatform = (function() {
     if (toolId && toolsRegistry[toolId]) {
       wrapToolPage(toolId);
     }
-    setupMobileNav();
+    // site.js owns nav binding via PhoenixSite.mountShell / bindNav.
+    // Only fall back when the shared shell is unavailable.
+    if (!window.PhoenixSite) {
+      setupMobileNav();
+    }
   }
 
   function wrapToolPage(toolId) {

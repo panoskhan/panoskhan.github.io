@@ -4,6 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Device Service | Panos Khan</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
   <meta name="description" content="Panos Khan Device Service: lawful diagnostics, maintenance, optimization, and repair guidance for Windows, macOS, Android, iPhone, laptops, desktops, and networks." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://panoskhan.github.io/device/" />
@@ -72,17 +75,17 @@
       <h2>Platforms &amp; form factors</h2>
       <div class="content-grid mt-16">
         <article class="card service-card" id="windows">
-          <span class="card-tag">Windows</span>
+          <span id="windows-diagnostics" class="card-tag">Windows</span>
           <h3>Windows support</h3>
           <p class="muted">Startup health, storage pressure, update state, and safe recovery options using built-in OS tools.</p>
         </article>
         <article class="card service-card" id="macos">
-          <span class="card-tag">macOS</span>
+          <span id="macos-diagnostics" class="card-tag">macOS</span>
           <h3>macOS support</h3>
           <p class="muted">Storage, startup, and account recovery basics without privilege-escalating utilities.</p>
         </article>
         <article class="card service-card" id="android">
-          <span class="card-tag">Android</span>
+          <span id="mobile-repair" class="card-tag">Android</span>
           <h3>Android guidance</h3>
           <p class="muted">Backup-first decision paths for software vs hardware symptoms and when to seek service.</p>
         </article>
@@ -152,7 +155,7 @@
     </section>
 
     <section id="driver-center" class="mb-32">
-      <h2>Driver center</h2>
+      <h2 id="safe-drivers">Driver center</h2>
       <article class="card">
         <p class="muted">Prefer Windows Update, macOS Software Update, and OEM portals. Avoid bundled driver packs and unknown executables. A detailed source matrix is on the roadmap.</p>
       </article>

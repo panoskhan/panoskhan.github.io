@@ -4,6 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Panos Khan | AI &amp; Digital Transformation Consultant</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
   <meta name="description" content="Official website of Panos Khan — AI &amp; Digital Transformation Consultant, Web Developer, and Growth Strategist based in Greece. Book a consultation or explore AI tools." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://panoskhan.github.io/" />
@@ -134,7 +137,7 @@
         <a href="/projects/">Projects</a>
         <a href="#contact" class="nav-cta">Consultation</a>
       </nav>
-      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navDrawer">
+      <button class="nav-hamburger" id="navHamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navDrawer">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -145,7 +148,7 @@
     <div class="nav-drawer-overlay" id="navOverlay"></div>
     <div class="nav-drawer-panel">
       <div class="nav-drawer-close">
-        <button id="navClose" aria-label="Close navigation menu">✕</button>
+        <button id="navClose" type="button" aria-label="Close navigation menu">✕</button>
       </div>
       <nav class="nav-drawer-links" aria-label="Mobile navigation">
         <a href="#about">About</a>
@@ -205,7 +208,7 @@
               <div class="stat-label">Google Certifications</div>
             </div>
             <div class="stat-item">
-              <div class="stat-num">10</div>
+              <div class="stat-num">6</div>
               <div class="stat-label">AI Tools Built</div>
             </div>
             <div class="stat-item">
@@ -571,12 +574,12 @@
           <div class="tool-status" data-lang="en">Live</div>
           <div class="tool-status" data-lang="el">Ενεργό</div>
           <h3>Panos Khan AI Tools Lab</h3>
-          <p class="muted" data-lang="en">Explore 10+ practical business AI tools for readiness assessment, process design, risk simulation, AI trust analysis, and transformation planning.</p>
-          <p class="muted" data-lang="el">Ανακαλύψτε 10+ πρακτικά AI εργαλεία για readiness, process design, risk simulation, trust και transformation planning.</p>
+          <p class="muted" data-lang="en">Explore 6 live client-side AI tools for readiness assessment, SEO briefs, ad copy, risk simulation, trust labels, and website audits.</p>
+          <p class="muted" data-lang="el">Ανακαλύψτε 6 live client-side AI εργαλεία για readiness, SEO briefs, ad copy, risk simulation, trust labels και website audits.</p>
           <div class="mt-16" style="display:flex;gap:8px;flex-wrap:wrap">
             <a class="btn btn-primary btn-sm" href="/ai/" data-lang="en">Open AI Platform</a>
             <a class="btn btn-primary btn-sm" href="/ai/" data-lang="el">AI Πλατφόρμα</a>
-            <span class="tag purple">10+ Tools</span>
+            <span class="tag purple">6 Live Tools</span>
           </div>
         </article>
       </div>
@@ -591,8 +594,8 @@
         <p class="kicker" data-lang="el">Πλήρης Συλλογή</p>
         <h2 id="tools-heading" data-lang="en">Panos Khan Tools</h2>
         <h2 data-lang="el">Panos Khan Tools</h2>
-        <p data-lang="en">The AI Tools Lab houses 10+ interactive tools designed for AI adoption, business transformation, and strategic planning.</p>
-        <p data-lang="el">Το AI Tools Lab περιέχει 10+ διαδραστικά εργαλεία για AI adoption, επιχειρηματικό μετασχηματισμό και στρατηγικό σχεδιασμό.</p>
+        <p data-lang="en">The AI Platform houses 6 interactive client-side tools designed for AI adoption, SEO, growth, and responsible decision-making.</p>
+        <p data-lang="el">Η AI Platform περιέχει 6 διαδραστικά client-side εργαλεία για AI adoption, SEO, growth και responsible decision-making.</p>
         <div class="cta-band-btns">
           <a class="btn btn-primary btn-lg" href="/ai/" data-lang="en">Explore AI Platform</a>
           <a class="btn btn-primary btn-lg" href="/ai/" data-lang="el">AI Πλατφόρμα</a>
@@ -642,11 +645,11 @@
             <span class="card-tag">AI Platform</span>
           </div>
           <h3>Panos Khan AI Tools Lab</h3>
-          <p class="muted" data-lang="en">A suite of 10+ interactive AI tools for business transformation planning, risk simulation, AI readiness assessment, and process design.</p>
-          <p class="muted" data-lang="el">Μια σειρά από 10+ διαδραστικά AI εργαλεία για transformation planning, risk simulation και AI readiness.</p>
+          <p class="muted" data-lang="en">A suite of 6 interactive AI tools for business transformation planning, risk simulation, AI readiness assessment, and process design.</p>
+          <p class="muted" data-lang="el">Μια σειρά από 6 διαδραστικά AI εργαλεία για transformation planning, risk simulation και AI readiness.</p>
           <div class="project-tags">
             <span class="tag cyan">AI</span>
-            <span class="tag purple">10+ Tools</span>
+            <span class="tag purple">6 Live Tools</span>
             <span class="tag">Interactive</span>
           </div>
           <div class="mt-16">
@@ -1153,36 +1156,7 @@
     btnEL.addEventListener('click', () => setLang('el'));
     setLang(localStorage.getItem('pk_lang') || 'en');
 
-    // ── Mobile Navigation ────────────────────────────
-    const hamburger = document.getElementById('navHamburger');
-    const drawer    = document.getElementById('navDrawer');
-    const overlay   = document.getElementById('navOverlay');
-    const closeBtn  = document.getElementById('navClose');
-
-    function openDrawer() {
-      drawer.classList.add('open');
-      hamburger.classList.add('open');
-      hamburger.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeDrawer() {
-      drawer.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
-    hamburger.addEventListener('click', openDrawer);
-    closeBtn.addEventListener('click', closeDrawer);
-    overlay.addEventListener('click', closeDrawer);
-
-    drawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeDrawer);
-    });
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeDrawer();
-    });
+    // Mobile navigation is bound by /assets/js/site.js (single toggle handler).
 
     // ── Scroll Reveal ────────────────────────────────
     const reveals = document.querySelectorAll('.reveal');

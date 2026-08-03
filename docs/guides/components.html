@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Component Library | Panos Khan Docs</title>
+  <meta name="description" content="Reusable component patterns for the Panos Khan design system: navigation, cards, FAQ, alerts, docs layout, and more." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://panoskhan.github.io/docs/guides/components.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Component Library | Panos Khan Docs" />
+  <meta property="og:description" content="Reusable UI patterns for the Panos Khan digital ecosystem." />
+  <meta property="og:url" content="https://panoskhan.github.io/docs/guides/components.html" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Component Library | Panos Khan Docs" />
+  <meta name="twitter:description" content="Reusable UI patterns for the Panos Khan digital ecosystem." />
+  <meta name="twitter:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Component Library",
+    "url": "https://panoskhan.github.io/docs/guides/components.html",
+    "description": "Reusable component patterns for the Panos Khan design system.",
+    "author": { "@type": "Person", "name": "Panos Khan" },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://panoskhan.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://panoskhan.github.io/docs/" },
+        { "@type": "ListItem", "position": 3, "name": "Component Library", "item": "https://panoskhan.github.io/docs/guides/components.html" }
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" role="banner" data-site-nav></header>
+  <main class="container section">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">/</span>
+      <a href="/docs/">Docs</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Components</span>
+    </nav>
+
+    <header class="section-header section-header--start">
+      <p class="kicker">Docs · Guide</p>
+      <h1>Component library</h1>
+      <p class="lead">Reusable patterns implemented with semantic HTML and the shared design system. Prefer these classes over new one-off styles.</p>
+    </header>
+
+    <nav class="product-subnav" aria-label="Component groups">
+      <a href="#shell">Shell</a>
+      <a href="#content">Content</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#docs-ui">Docs UI</a>
+      <a href="#catalog">Catalog cards</a>
+    </nav>
+
+    <section id="shell" class="mb-32">
+      <h2>Shell</h2>
+      <div class="content-grid mt-16">
+        <article class="card"><h3>Header / Footer</h3><p class="muted">Mount with <code>data-site-nav</code> and <code>data-site-footer</code>. Implemented once in <code>site.js</code>.</p></article>
+        <article class="card"><h3>Breadcrumbs</h3><p class="muted"><code>.breadcrumbs</code> with current page <code>aria-current="page"</code>.</p></article>
+        <article class="card"><h3>Global search</h3><p class="muted">Progressive dialog from <code>site.js</code>; corpus in <code>search-index.json</code>.</p></article>
+        <article class="card"><h3>Product subnav</h3><p class="muted"><code>.product-subnav</code> for in-product section links.</p></article>
+      </div>
+    </section>
+
+    <section id="content" class="mb-32">
+      <h2>Content</h2>
+      <div class="content-grid mt-16">
+        <article class="card"><h3>Hero / section header</h3><p class="muted"><code>.section-header</code> and <code>.section-header--start</code> for left-aligned product heroes.</p></article>
+        <article class="card"><h3>Cards</h3><p class="muted"><code>.card</code>, <code>.card-tag</code>, ecosystem and capability variants.</p></article>
+        <article class="card"><h3>Buttons</h3><p class="muted"><code>.btn</code>, <code>.btn-primary</code>, <code>.btn-ghost</code>, size modifiers.</p></article>
+        <article class="card"><h3>Related products</h3><p class="muted"><code>data-related-products="ai,docs"</code> renders registry-backed links.</p></article>
+      </div>
+    </section>
+
+    <section id="feedback" class="mb-32">
+      <h2>Feedback</h2>
+      <div class="alert alert-info mb-16"><strong>Info alert</strong> — use for neutral guidance.</div>
+      <div class="alert alert-success mb-16"><strong>Success alert</strong> — confirmations and safe policies.</div>
+      <div class="alert alert-warning mb-16"><strong>Warning alert</strong> — limits, experimental status, caution.</div>
+      <div class="faq mt-24">
+        <details class="faq-item">
+          <summary>How should FAQ items be marked up?</summary>
+          <p>Use <code>.faq</code> with <code>details.faq-item</code> so content works without JavaScript and remains keyboard accessible.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do components require a framework?</summary>
+          <p>No. They are plain HTML + CSS with optional progressive JS enhancement.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="docs-ui" class="mb-32">
+      <h2>Docs UI</h2>
+      <p class="muted"><code>.docs-layout</code>, <code>.docs-sidebar</code>, <code>.docs-nav</code>, <code>.docs-content</code>, and <code>.code-block</code> support long-form documentation.</p>
+    </section>
+
+    <section id="catalog" class="mb-32">
+      <h2>Catalog cards</h2>
+      <div class="content-grid mt-16">
+        <article class="card download-card">
+          <span class="card-tag">Download card</span>
+          <h3>Checklist example</h3>
+          <p class="muted">Use for Downloads catalog entries with format, license, and CTA.</p>
+        </article>
+        <article class="card tool-card">
+          <span class="card-tag">Tool card</span>
+          <h3>Prototype example</h3>
+          <p class="muted">Use for Labs prototypes and AI tool summaries.</p>
+        </article>
+        <article class="card service-card">
+          <span class="card-tag">Service card</span>
+          <h3>Device guidance</h3>
+          <p class="muted">Use for Device Service categories and intake paths.</p>
+        </article>
+      </div>
+    </section>
+
+    <p><a class="btn btn-sm" href="/docs/">Back to Docs</a> <a class="btn btn-sm" href="/assets/components/README.md">Component notes (markdown)</a></p>
+  </main>
+  <footer class="site-footer" role="contentinfo" data-site-footer></footer>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>

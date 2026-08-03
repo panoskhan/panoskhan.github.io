@@ -1,0 +1,41 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://panoskhan.github.io/#website",
+      "url": "https://panoskhan.github.io/",
+      "name": "Panos Khan",
+      "publisher": {
+        "@type": "Person",
+        "name": "Panos Khan",
+        "url": "https://panoskhan.github.io/"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://panoskhan.github.io/example/#webpage",
+      "url": "https://panoskhan.github.io/example/",
+      "name": "Example Page",
+      "description": "Example JSON-LD pattern for ecosystem pages.",
+      "isPartOf": { "@id": "https://panoskhan.github.io/#website" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://panoskhan.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Example",
+            "item": "https://panoskhan.github.io/example/"
+          }
+        ]
+      }
+    }
+  ]
+}

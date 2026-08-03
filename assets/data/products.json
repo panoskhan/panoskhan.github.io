@@ -1,0 +1,178 @@
+{
+  "version": "2.0.0",
+  "updated": "2026-08-03",
+  "brand": {
+    "name": "Panos Khan",
+    "url": "https://panoskhan.github.io/",
+    "tagline": "Technology ecosystem for AI, device guidance, research, open source, and safe downloads."
+  },
+  "navigation": {
+    "primary": ["ai", "device", "research", "capabilities", "downloads", "open-source", "projects"],
+    "secondary": ["docs", "labs", "services", "credentials", "contact"]
+  },
+  "products": [
+    {
+      "id": "ai",
+      "name": "Panos Khan AI",
+      "shortName": "AI",
+      "path": "/ai/",
+      "status": "live",
+      "version": "3.2.0",
+      "category": "product",
+      "navLabel": "AI",
+      "description": "Professional AI workspace with client-side tools, prompt library, examples, FAQ, and documentation.",
+      "features": ["AI Hub", "Workspace", "Tools", "Prompt Library", "Examples", "FAQ", "Changelog", "Documentation"],
+      "related": ["docs", "research", "downloads", "labs"]
+    },
+    {
+      "id": "device",
+      "name": "Panos Khan Device Service",
+      "shortName": "Device",
+      "path": "/device/",
+      "status": "live",
+      "version": "2.1.0",
+      "category": "product",
+      "navLabel": "Device",
+      "description": "Lawful diagnostics, maintenance, optimization, and repair guidance for Windows, macOS, Android, iPhone, laptops, desktops, and networks.",
+      "features": ["Windows", "macOS", "Android", "iPhone", "Laptop", "Desktop", "Network", "Backup", "Diagnostics", "Driver Center", "Repair Intake", "Warranty Lookup", "Maintenance", "Optimization"],
+      "related": ["downloads", "docs", "capabilities"]
+    },
+    {
+      "id": "downloads",
+      "name": "Panos Khan Downloads",
+      "shortName": "Downloads",
+      "path": "/downloads/",
+      "status": "live",
+      "version": "1.8.0",
+      "category": "product",
+      "navLabel": "Downloads",
+      "description": "Categorized free downloads: checklists, templates, browser tools, documentation samples, and scripts.",
+      "features": ["Checklists", "Templates", "Browser tools", "PDFs", "Scripts", "Examples"],
+      "related": ["docs", "open-source", "ai", "device"]
+    },
+    {
+      "id": "labs",
+      "name": "Panos Khan Labs",
+      "shortName": "Labs",
+      "path": "/labs/",
+      "status": "live",
+      "version": "1.0.0",
+      "category": "product",
+      "navLabel": "Labs",
+      "description": "Innovation area for experiments, prototype tools, open-source betas, and future concepts.",
+      "features": ["Experiments", "Prototypes", "Open Source betas", "Future concepts"],
+      "related": ["ai", "open-source", "docs", "projects"]
+    },
+    {
+      "id": "docs",
+      "name": "Panos Khan Docs",
+      "shortName": "Docs",
+      "path": "/docs/",
+      "status": "live",
+      "version": "1.0.0",
+      "category": "product",
+      "navLabel": "Docs",
+      "description": "Professional documentation hub for architecture, tutorials, developer guides, user guides, and release notes.",
+      "features": ["Architecture", "Tutorials", "Developer Guides", "User Guides", "Release Notes", "Changelog"],
+      "related": ["ai", "device", "downloads", "labs", "research"]
+    },
+    {
+      "id": "research",
+      "name": "Panos Khan Research",
+      "shortName": "Research",
+      "path": "/research/",
+      "status": "live",
+      "version": "1.4.0",
+      "category": "product",
+      "navLabel": "Research",
+      "description": "Practical frameworks for AI readiness, SEO architecture, and responsible decision-making.",
+      "features": ["Frameworks", "Governance", "SEO research"],
+      "related": ["ai", "docs", "capabilities"]
+    },
+    {
+      "id": "open-source",
+      "name": "Panos Khan Open Source",
+      "shortName": "Open Source",
+      "path": "/open-source/",
+      "status": "live",
+      "version": "1.3.0",
+      "category": "product",
+      "navLabel": "Open Source",
+      "description": "Public building blocks, samples, and transparent utilities from Project Phoenix.",
+      "features": ["Repos", "Samples", "Utilities"],
+      "related": ["labs", "downloads", "projects", "docs"]
+    },
+    {
+      "id": "capabilities",
+      "name": "Capability Explorer",
+      "shortName": "Explore",
+      "path": "/capabilities/",
+      "status": "live",
+      "version": "1.1.0",
+      "category": "platform",
+      "navLabel": "Explore",
+      "description": "Cross-product capability map linking tools, docs, downloads, and projects.",
+      "features": ["Search", "Domain filters", "Resource links"],
+      "related": ["ai", "device", "docs", "downloads"]
+    },
+    {
+      "id": "projects",
+      "name": "Projects",
+      "shortName": "Projects",
+      "path": "/projects/",
+      "status": "live",
+      "version": "1.2.0",
+      "category": "portfolio",
+      "navLabel": "Projects",
+      "description": "Selected product and web-engineering work with architecture notes.",
+      "features": ["Case studies", "Architecture notes"],
+      "related": ["open-source", "labs", "ai"]
+    },
+    {
+      "id": "services",
+      "name": "Consulting Services",
+      "shortName": "Services",
+      "path": "/services.html",
+      "status": "live",
+      "version": "1.0.0",
+      "category": "consulting",
+      "navLabel": "Services",
+      "description": "AI strategy, web engineering, SEO architecture, and growth consulting.",
+      "features": ["Strategy", "Engineering", "SEO", "Growth"],
+      "related": ["ai", "contact", "credentials"]
+    },
+    {
+      "id": "credentials",
+      "name": "Credentials",
+      "shortName": "Credentials",
+      "path": "/credentials.html",
+      "status": "live",
+      "version": "1.0.0",
+      "category": "supporting",
+      "navLabel": "Credentials",
+      "description": "Certifications and professional credentials.",
+      "features": ["Certificates"],
+      "related": ["services", "contact"]
+    },
+    {
+      "id": "contact",
+      "name": "Contact",
+      "shortName": "Contact",
+      "path": "/contact.html",
+      "status": "live",
+      "version": "1.0.0",
+      "category": "supporting",
+      "navLabel": "Consultation",
+      "description": "Book a consultation or send a project inquiry.",
+      "features": ["Consultation"],
+      "related": ["services"]
+    }
+  ],
+  "future": [
+    { "id": "academy", "name": "Academy", "path": "/academy/", "status": "planned" },
+    { "id": "community", "name": "Community", "path": "/community/", "status": "planned" },
+    { "id": "console", "name": "Console", "path": "/console/", "status": "planned" },
+    { "id": "api", "name": "API", "path": "/api/", "status": "planned" },
+    { "id": "cloud", "name": "Cloud", "path": "/cloud/", "status": "planned" }
+  ]
+}

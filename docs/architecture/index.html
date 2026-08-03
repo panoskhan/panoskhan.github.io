@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Architecture Overview | Panos Khan Docs</title>
+  <meta name="description" content="Architecture overview for the Panos Khan digital ecosystem: products, folders, design system, SEO, accessibility, and scalability." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://panoskhan.github.io/docs/architecture/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Architecture Overview | Panos Khan Docs" />
+  <meta property="og:description" content="System design for a scalable static digital ecosystem on GitHub Pages." />
+  <meta property="og:url" content="https://panoskhan.github.io/docs/architecture/" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Architecture Overview | Panos Khan Docs" />
+  <meta name="twitter:description" content="System design for a scalable static digital ecosystem on GitHub Pages." />
+  <meta name="twitter:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Architecture Overview",
+    "description": "Architecture overview for the Panos Khan digital ecosystem.",
+    "url": "https://panoskhan.github.io/docs/architecture/",
+    "author": { "@type": "Person", "name": "Panos Khan", "url": "https://panoskhan.github.io/" },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://panoskhan.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://panoskhan.github.io/docs/" },
+        { "@type": "ListItem", "position": 3, "name": "Architecture", "item": "https://panoskhan.github.io/docs/architecture/" }
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" role="banner" data-site-nav></header>
+  <main class="container section">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">/</span>
+      <a href="/docs/">Docs</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Architecture</span>
+    </nav>
+
+    <div class="docs-layout">
+      <aside class="docs-sidebar" aria-label="On this page">
+        <h2 class="docs-sidebar-title">On this page</h2>
+        <ul class="docs-nav">
+          <li><a href="#principles">Principles</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#folders">Folder structure</a></li>
+          <li><a href="#design-system">Design system</a></li>
+          <li><a href="#data">Data layer</a></li>
+          <li><a href="#seo-a11y">SEO &amp; accessibility</a></li>
+          <li><a href="#performance">Performance</a></li>
+          <li><a href="#scalability">Scalability</a></li>
+          <li><a href="#roadmap">Roadmap</a></li>
+        </ul>
+      </aside>
+
+      <article class="docs-content">
+        <header class="section-header section-header--start">
+          <p class="kicker">Docs · Architecture</p>
+          <h1>Architecture overview</h1>
+          <p class="lead">Phase 2 of Project Atlas extends the live site into a maintainable digital ecosystem. Existing pages stay online; new products plug into one design system and one navigation shell.</p>
+        </header>
+
+        <section id="principles" class="mb-32">
+          <h2>Principles</h2>
+          <ul class="hub-roadmap">
+            <li><strong>Extend, do not redesign:</strong> homepage identity and completed work remain intact.</li>
+            <li><strong>One ecosystem:</strong> every product reuses shell, tokens, cards, and SEO patterns.</li>
+            <li><strong>No duplicate sources of truth:</strong> registries and shared CSS/JS own cross-cutting concerns.</li>
+            <li><strong>Static-first:</strong> GitHub Pages compatible, minimal JavaScript, progressive enhancement.</li>
+            <li><strong>Safe by default:</strong> Device and Downloads content stays lawful guidance and transparent assets only.</li>
+          </ul>
+        </section>
+
+        <section id="products" class="mb-32">
+          <h2>Product architecture</h2>
+          <div class="content-grid mt-16">
+            <article class="card"><h3>Core site</h3><p class="muted">Home, About, Services, Research, Projects, Blog, Credentials, Contact.</p></article>
+            <article class="card"><h3>Products</h3><p class="muted">AI, Device Service, Downloads, Labs, Docs — plus Research, Open Source, Capabilities, Projects.</p></article>
+            <article class="card"><h3>Future slots</h3><p class="muted">Academy, Community, Console, API, Cloud — reserved, not shipped.</p></article>
+          </div>
+        </section>
+
+        <section id="folders" class="mb-32">
+          <h2>Folder structure</h2>
+          <pre class="code-block" tabindex="0"><code>/assets
+  /css /js /images /icons /data /downloads /components
+/ai /device /downloads /research /projects /docs /labs
+/open-source /capabilities
+/templates /schema
+/scripts</code></pre>
+          <p class="muted mt-16">Canonical Device Service path remains <code>/device/</code> to preserve live links. Product name in UI is “Device Service”.</p>
+        </section>
+
+        <section id="design-system" class="mb-32">
+          <h2>Design system</h2>
+          <p>Tokens and components live in <code>assets/css/main.css</code>. Product-specific polish (AI tools) may add a thin layer such as <code>ai-platform.css</code> without forking the brand.</p>
+          <ul>
+            <li>Glass cards, premium typography, consistent spacing</li>
+            <li>Accessible contrast on the dark theme</li>
+            <li>Minimal motion; reduced-noise interactions</li>
+            <li>Future light mode can flip CSS custom properties without markup rewrites</li>
+          </ul>
+        </section>
+
+        <section id="data" class="mb-32">
+          <h2>Data layer</h2>
+          <ul>
+            <li><code>/assets/data/products.json</code> — product registry and nav roles</li>
+            <li><code>/assets/data/search-index.json</code> — global client-side search corpus</li>
+            <li><code>/assets/data/downloads.json</code> — download catalog + safety policy</li>
+            <li><code>/assets/data/capabilities.json</code> — capability explorer catalog</li>
+          </ul>
+        </section>
+
+        <section id="seo-a11y" class="mb-32">
+          <h2>SEO &amp; accessibility</h2>
+          <p>Every public page targets title, description, canonical, Open Graph, Twitter Card, JSON-LD (including breadcrumbs), semantic landmarks, keyboard access, visible focus, and WCAG AA contrast.</p>
+        </section>
+
+        <section id="performance" class="mb-32">
+          <h2>Performance</h2>
+          <p>No SPA framework. Shared CSS/JS are cacheable. Images use explicit dimensions where present. Search and shell mount progressively. Target: Lighthouse 95+ on content pages with lean assets.</p>
+        </section>
+
+        <section id="scalability" class="mb-32">
+          <h2>Scalability</h2>
+          <p>New tools become files under a product folder plus registry entries. New articles attach to Research or Docs. Downloads append to <code>downloads.json</code>. Search grows through the JSON index instead of hard-coding every page script.</p>
+        </section>
+
+        <section id="roadmap" class="mb-32">
+          <h2>Roadmap after this foundation</h2>
+          <ul class="hub-roadmap">
+            <li><strong>v4.0</strong> — AI Platform depth (agents reserved until catalog/docs mature)</li>
+            <li><strong>v4.5</strong> — Device Service interactive decision trees</li>
+            <li><strong>v5.0</strong> — Downloads hub filters and printable assets</li>
+            <li><strong>v6.0</strong> — Workspace dashboard concept</li>
+            <li><strong>v7.0</strong> — Optional cloud/auth only if leaving pure static hosting</li>
+          </ul>
+        </section>
+
+        <p><a class="btn btn-primary btn-sm" href="/docs/">Back to Docs</a> <a class="btn btn-sm" href="/docs/guides/components.html">Component library</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="site-footer" role="contentinfo" data-site-footer></footer>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>

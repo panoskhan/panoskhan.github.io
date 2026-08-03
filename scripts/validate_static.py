@@ -18,6 +18,12 @@ PAGES = (
     "device/index.html",
     "downloads/index.html",
     "open-source/index.html",
+    "docs/index.html",
+    "docs/architecture/index.html",
+    "docs/guides/components.html",
+    "docs/guides/product-hub-template.html",
+    "labs/index.html",
+    "templates/index.html",
     "ai/index.html",
     "ai/tools/website-audit.html",
     "ai/tools/seo-brief.html",
@@ -74,6 +80,22 @@ def main() -> int:
     ):
         if tool not in data:
             failures.append(f"capabilities.json: missing live tool id {tool}")
+
+
+    # Phase 2 registries must exist and stay non-empty
+    for rel in (
+        "assets/data/products.json",
+        "assets/data/search-index.json",
+        "assets/data/downloads.json",
+        "assets/data/capabilities.json",
+    ):
+        target = ROOT / rel
+        if not target.is_file() or target.stat().st_size < 20:
+            failures.append(f"{rel}: missing or empty registry")
+
+    for page in ("docs/index.html", "labs/index.html", "index.html"):
+        if not contains(page, r"/docs/"):
+            failures.append(f"{page}: missing docs link")
 
     if failures:
         print("\n".join(f"FAIL: {failure}" for failure in failures))

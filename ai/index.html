@@ -64,7 +64,7 @@
       <span class="kicker">Product A · Project Phoenix</span>
       <h1 class="gradient-text">Panos Khan AI</h1>
       <p>High-fidelity, consultant-grade AI tools and frameworks engineered to baseline readiness, model decision risk, and automate strategic digital growth plans — privacy-minded and client-side by default.</p>
-      <p style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+      <p class="hero-ctas mt-16">
         <a class="btn btn-primary btn-sm" href="#workspace">AI Workspace</a>
         <a class="btn btn-sm" href="#prompt-library">Prompt Library</a>
         <a class="btn btn-sm" href="#documentation">Documentation</a>
@@ -76,8 +76,13 @@
       <a href="#workspace" aria-current="page">Workspace</a>
       <a href="#tools">Tools</a>
       <a href="#prompt-library">Prompt Library</a>
+      <a href="#examples">Examples</a>
       <a href="#documentation">Documentation</a>
+      <a href="#faq">FAQ</a>
+      <a href="#changelog">Changelog</a>
       <a href="#agents">Agents (future)</a>
+      <a href="/docs/">Docs</a>
+      <a href="/labs/">Labs</a>
       <a href="/capabilities/">Capabilities</a>
       <a href="/downloads/">Downloads</a>
     </nav>
@@ -100,13 +105,13 @@
       </div>
     </section>
 
-    <h2 id="toolsSectionTitle" style="font-size: 1.6rem; margin-bottom: 24px; color: var(--text);">Curated AI tools</h2>
+    <h2 id="toolsSectionTitle" class="mb-24">Curated AI tools</h2>
     <div class="ai-hub-grid" id="aiToolsGrid"></div>
 
     <section id="prompt-library" class="section">
       <h2>Prompt Library</h2>
       <p class="muted">A small set of excellent prompts — quality over quantity.</p>
-      <div class="content-grid" style="margin-top:18px">
+      <div class="content-grid mt-16">
         <article class="card">
           <span class="card-tag">Strategy</span>
           <h3>Pilot scoping prompt</h3>
@@ -130,7 +135,7 @@
 
     <section id="documentation" class="section">
       <h2>AI Documentation</h2>
-      <div class="grid grid-2" style="margin-top:18px">
+      <div class="grid grid-2 mt-16">
         <article class="card">
           <h3>How tools work</h3>
           <p class="muted">Tools use deterministic client-side logic from your inputs. They do not scrape live sites or send form data to a Panos Khan server.</p>
@@ -145,15 +150,77 @@
         </article>
         <article class="card">
           <h3>Related products</h3>
-          <p class="muted"><a href="/research/">Research frameworks</a> · <a href="/downloads/">Checklists</a> · <a href="/capabilities/">Capability map</a> · <a href="/open-source/">Open Source</a></p>
+          <p class="muted"><a href="/research/">Research frameworks</a> · <a href="/downloads/">Checklists</a> · <a href="/docs/">Docs hub</a> · <a href="/labs/">Labs</a> · <a href="/capabilities/">Capability map</a> · <a href="/open-source/">Open Source</a></p>
         </article>
       </div>
+    </section>
+
+
+    <section id="examples" class="section">
+      <h2>Examples</h2>
+      <p class="muted">Representative workflows that pair tools with research and downloads.</p>
+      <div class="content-grid mt-16">
+        <article class="card">
+          <span class="card-tag">Strategy</span>
+          <h3>30-day pilot outline</h3>
+          <p class="muted">Run Readiness Twin, capture risks in Decision Risk, then export the AI readiness checklist for stakeholders.</p>
+          <p><a href="/ai/tools/readiness-twin.html">Open Readiness Twin →</a></p>
+        </article>
+        <article class="card">
+          <span class="card-tag">Growth</span>
+          <h3>Content brief sprint</h3>
+          <p class="muted">Generate an SEO brief, validate technical gaps with Website Audit, and keep the SEO checklist beside the draft.</p>
+          <p><a href="/ai/tools/seo-brief.html">Open SEO Brief →</a></p>
+        </article>
+        <article class="card">
+          <span class="card-tag">Governance</span>
+          <h3>Trust statement pack</h3>
+          <p class="muted">Use Trust Label plus Decision Risk outputs to document human oversight before an AI pilot launches.</p>
+          <p><a href="/ai/tools/trust-label.html">Open Trust Label →</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Do these tools call external AI APIs with my inputs?</summary>
+          <p>Current tools use deterministic client-side logic from your inputs. They do not scrape live sites or send form data to a Panos Khan server.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I use the outputs in client work?</summary>
+          <p>Yes as decision aids. Validate recommendations before production use. Outputs are not legal, medical, or security certifications.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Where is long-form documentation?</summary>
+          <p>Product-level notes live on this hub. Cross-product architecture and templates live in <a href="/docs/">Panos Khan Docs</a>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What about multi-step AI agents?</summary>
+          <p>Agents are intentionally deferred until the core catalog, docs, and capability map are mature. See the Agents section below.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="changelog" class="section">
+      <h2>Changelog</h2>
+      <ul class="hub-roadmap">
+        <li><strong>v3.2.0 — 2026-08-03:</strong> Added Examples, FAQ, Changelog; linked Docs and Labs; tightened documentation cross-links.</li>
+        <li><strong>v3.1.0 — 2026-08-02:</strong> Ecosystem hub integration with Capability Explorer and shared shell.</li>
+        <li><strong>v3.0.0:</strong> Project Phoenix AI platform launch with six core client-side tools.</li>
+      </ul>
+      <p class="muted mt-16">Version: <strong>3.2.0</strong></p>
     </section>
 
     <section id="agents" class="section-sm">
       <div class="future-note">
         <strong>AI Agents (future):</strong> multi-step agents are intentionally deferred until the core tool catalog, docs, and capability map are mature. This stub reserves the product slot without shipping unfinished automation.
       </div>
+    </section>
+    <section class="related-products section-sm" aria-labelledby="ai-related">
+      <h2 id="ai-related">Related products</h2>
+      <div class="related-products-grid" data-related-products="docs,research,downloads,labs,capabilities"></div>
     </section>
   </div>
   </main>

@@ -1,0 +1,74 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-08-03",
+  "policy": {
+    "allowed": [
+      "Browser-based utilities",
+      "HTML/PDF checklists and templates",
+      "Documentation samples",
+      "Clearly sourced scripts",
+      "Open-source sample projects"
+    ],
+    "notAllowed": [
+      "Privilege-escalating installers",
+      "Opaque binaries",
+      "Tools that weaken device security",
+      "Activation lock bypass material",
+      "Identifier spoofing or unauthorized access aids"
+    ]
+  },
+  "categories": [
+    "Checklist",
+    "Template",
+    "Browser tool",
+    "Documentation",
+    "Script",
+    "Example"
+  ],
+  "items": [
+    {
+      "id": "ai-readiness-checklist",
+      "title": "AI readiness checklist",
+      "category": "Checklist",
+      "format": "HTML",
+      "updated": "2026-08-02",
+      "license": "Personal / internal use",
+      "description": "A concise pilot-selection and oversight checklist aligned with the AI Readiness Twin.",
+      "url": "/assets/downloads/ai-readiness-checklist.html",
+      "related": ["/ai/", "/capabilities/#ai-workflows"]
+    },
+    {
+      "id": "seo-audit-checklist",
+      "title": "SEO audit checklist",
+      "category": "Checklist",
+      "format": "HTML",
+      "updated": "2026-08-02",
+      "license": "Personal / internal use",
+      "description": "Metadata, structure, and technical checks that pair with the AI Website Audit tool.",
+      "url": "/assets/downloads/seo-audit-checklist.html",
+      "related": ["/ai/tools/website-audit.html", "/capabilities/#website-audits"]
+    },
+    {
+      "id": "backup-before-repair",
+      "title": "Backup-before-repair checklist",
+      "category": "Checklist",
+      "format": "HTML",
+      "updated": "2026-08-02",
+      "license": "Personal / internal use",
+      "description": "Data-preservation steps before laptop or phone repair work.",
+      "url": "/assets/downloads/backup-before-repair-checklist.html",
+      "related": ["/device/", "/capabilities/#backup-guidance"]
+    },
+    {
+      "id": "sample-static-starter",
+      "title": "Sample static page starter",
+      "category": "Example",
+      "format": "HTML",
+      "updated": "2026-08-02",
+      "license": "MIT-style sample",
+      "description": "A minimal semantic HTML starter demonstrating ecosystem page structure for GitHub Pages.",
+      "url": "/assets/downloads/sample-static-starter.html",
+      "related": ["/open-source/", "/docs/guides/product-hub-template.html"]
+    }
+  ]
+}

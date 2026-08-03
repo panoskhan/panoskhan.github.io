@@ -1,0 +1,367 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-08-03",
+  "products": [
+    {
+      "id": "ai",
+      "name": "Panos Khan AI",
+      "slug": "ai",
+      "path": "/ai/",
+      "status": "active",
+      "category": "product",
+      "version": "3.2",
+      "title": "Panos Khan AI Platform | Project Phoenix",
+      "description": "High-fidelity, consultant-grade AI tools and frameworks engineered to baseline readiness, model decision risk, and automate strategic digital growth plans.",
+      "shortDescription": "Professional AI workspace with tools, prompts, and frameworks.",
+      "color": "#00e5ff",
+      "icon": "⚡",
+      "features": [
+        "AI Workspace",
+        "Tool Suite",
+        "Prompt Library",
+        "Documentation",
+        "Future Agents"
+      ],
+      "tools": [
+        {
+          "id": "website-audit",
+          "name": "Website Audit",
+          "path": "/ai/tools/website-audit.html",
+          "description": "Audit readiness, speed, SEO, and conversion fundamentals"
+        },
+        {
+          "id": "seo-brief",
+          "name": "SEO Brief Generator",
+          "path": "/ai/tools/seo-brief.html",
+          "description": "Create a structured SEO content brief"
+        },
+        {
+          "id": "ad-copy-studio",
+          "name": "Ad Copy Studio",
+          "path": "/ai/tools/ad-copy-studio.html",
+          "description": "Generate structured ad-copy testing angles"
+        },
+        {
+          "id": "readiness-twin",
+          "name": "Readiness Twin",
+          "path": "/ai/tools/readiness-twin.html",
+          "description": "Map quick wins and transformation priorities"
+        },
+        {
+          "id": "decision-risk",
+          "name": "Decision Risk Simulator",
+          "path": "/ai/tools/decision-risk.html",
+          "description": "Assess legal, bias, security, adoption, and brand risk"
+        },
+        {
+          "id": "trust-label",
+          "name": "Trust Label Generator",
+          "path": "/ai/tools/trust-label.html",
+          "description": "Create a responsible-AI transparency statement"
+        }
+      ],
+      "relatedResearch": [
+        {
+          "title": "AI Readiness Framework",
+          "url": "/research/#ai-readiness-framework"
+        }
+      ]
+    },
+    {
+      "id": "device",
+      "name": "Panos Khan Device Service",
+      "slug": "device",
+      "path": "/device/",
+      "status": "active",
+      "category": "product",
+      "version": "2.1",
+      "title": "Device Service | Repair, Diagnostics & Support",
+      "description": "Professional digital repair and support center. Diagnostics, maintenance, and guidance for Windows, macOS, Android, iPhone, and network devices.",
+      "shortDescription": "Professional device repair and maintenance guidance.",
+      "color": "#7c3aed",
+      "icon": "🔧",
+      "features": [
+        "Windows Support",
+        "macOS Support",
+        "Android Support",
+        "iPhone Support",
+        "Network Diagnostics",
+        "Backup Guidance",
+        "Driver Management",
+        "Repair Intake",
+        "Warranty Lookup",
+        "Maintenance Guides"
+      ],
+      "categories": [
+        "Windows",
+        "macOS",
+        "Android",
+        "iPhone",
+        "Laptop",
+        "Desktop",
+        "Network",
+        "Backup",
+        "Diagnostics"
+      ]
+    },
+    {
+      "id": "downloads",
+      "name": "Panos Khan Downloads",
+      "slug": "downloads",
+      "path": "/downloads/",
+      "status": "active",
+      "category": "product",
+      "version": "1.8",
+      "title": "Downloads | Free Tools, Templates & Resources",
+      "description": "Free, curated downloads including browser tools, templates, checklists, PDFs, documentation, scripts, and examples.",
+      "shortDescription": "Free tools, templates, and resources.",
+      "color": "#00e5ff",
+      "icon": "📥",
+      "features": [
+        "Browser Tools",
+        "Templates",
+        "Checklists",
+        "PDFs",
+        "Scripts",
+        "Documentation",
+        "Resources"
+      ],
+      "downloads": [
+        {
+          "id": "ai-readiness-checklist",
+          "name": "AI Readiness Checklist",
+          "type": "checklist",
+          "path": "/assets/downloads/ai-readiness-checklist.html"
+        },
+        {
+          "id": "seo-audit-checklist",
+          "name": "SEO Audit Checklist",
+          "type": "checklist",
+          "path": "/assets/downloads/seo-audit-checklist.html"
+        },
+        {
+          "id": "backup-checklist",
+          "name": "Backup Before Repair Checklist",
+          "type": "checklist",
+          "path": "/assets/downloads/backup-before-repair-checklist.html"
+        },
+        {
+          "id": "static-starter",
+          "name": "Static Site Starter",
+          "type": "template",
+          "path": "/assets/downloads/sample-static-starter.html"
+        }
+      ]
+    },
+    {
+      "id": "research",
+      "name": "Panos Khan Research",
+      "slug": "research",
+      "path": "/research/",
+      "status": "active",
+      "category": "product",
+      "version": "2.3",
+      "title": "Research | Frameworks & Digital Strategy",
+      "description": "Frameworks, case studies, and research on AI, SEO, and digital transformation.",
+      "shortDescription": "Frameworks and research for digital strategy.",
+      "color": "#00e5ff",
+      "icon": "📊",
+      "features": [
+        "AI Readiness Framework",
+        "SEO Architecture",
+        "Digital Transformation Case Studies",
+        "White Papers",
+        "Industry Insights"
+      ],
+      "sections": [
+        "AI Frameworks",
+        "SEO Strategy",
+        "Digital Transformation",
+        "Case Studies"
+      ]
+    },
+    {
+      "id": "open-source",
+      "name": "Panos Khan Open Source",
+      "slug": "open-source",
+      "path": "/open-source/",
+      "status": "active",
+      "category": "product",
+      "version": "1.5",
+      "title": "Open Source | Transparent Tools & Projects",
+      "description": "Open-source repositories, examples, and transparent utilities built by Panos Khan.",
+      "shortDescription": "Open-source projects and transparent tools.",
+      "color": "#7c3aed",
+      "icon": "🔓",
+      "features": [
+        "GitHub Repositories",
+        "Code Examples",
+        "Transparent Utilities",
+        "Developer Resources"
+      ]
+    },
+    {
+      "id": "projects",
+      "name": "Projects",
+      "slug": "projects",
+      "path": "/projects/",
+      "status": "active",
+      "category": "product",
+      "version": "2.0",
+      "title": "Projects | Selected Work & Portfolio",
+      "description": "Selected product launches, web engineering work, and case studies.",
+      "shortDescription": "Portfolio and case studies.",
+      "color": "#00e5ff",
+      "icon": "🎯",
+      "features": [
+        "Product Launches",
+        "Web Engineering",
+        "Case Studies",
+        "Architecture Work"
+      ],
+      "projects": [
+        {
+          "id": "project-phoenix",
+          "name": "Project Phoenix",
+          "description": "The architecture behind the Panos Khan digital ecosystem",
+          "url": "/projects/#project-phoenix"
+        }
+      ]
+    },
+    {
+      "id": "capabilities",
+      "name": "Capability Explorer",
+      "slug": "capabilities",
+      "path": "/capabilities/",
+      "status": "active",
+      "category": "platform",
+      "version": "1.2",
+      "title": "Capability Explorer | Browse Platform Capabilities",
+      "description": "Browse capabilities across AI, SEO, device service, developer tools, and business solutions.",
+      "shortDescription": "Cross-product capability browser.",
+      "color": "#00e5ff",
+      "icon": "🧭",
+      "features": [
+        "Searchable Catalog",
+        "Cross-Product Discovery",
+        "Capability Filtering",
+        "Related Content"
+      ]
+    }
+  ],
+  "futureProducts": [
+    {
+      "id": "docs",
+      "name": "Panos Khan Docs",
+      "slug": "docs",
+      "path": "/docs/",
+      "status": "planned",
+      "category": "product",
+      "roadmapPhase": "v4.0",
+      "description": "Consolidated documentation hub for all products and APIs",
+      "plannedFeatures": [
+        "Architecture Guides",
+        "Tutorials",
+        "API Reference",
+        "Release Notes",
+        "FAQ Database"
+      ]
+    },
+    {
+      "id": "labs",
+      "name": "Panos Khan Labs",
+      "slug": "labs",
+      "path": "/labs/",
+      "status": "planned",
+      "category": "product",
+      "roadmapPhase": "v4.5",
+      "description": "Innovation area for beta tools, experiments, and prototypes",
+      "plannedFeatures": [
+        "Experimental Tools",
+        "Beta Projects",
+        "Open Source Hosting",
+        "Innovation Sandbox"
+      ]
+    },
+    {
+      "id": "academy",
+      "name": "Panos Khan Academy",
+      "slug": "academy",
+      "path": "/academy/",
+      "status": "planned",
+      "category": "product",
+      "roadmapPhase": "v5.0",
+      "description": "Learning resources and certification paths",
+      "plannedFeatures": [
+        "Courses",
+        "Certifications",
+        "Learning Paths",
+        "Community Contributed Content"
+      ]
+    },
+    {
+      "id": "community",
+      "name": "Panos Khan Community",
+      "slug": "community",
+      "path": "/community/",
+      "status": "planned",
+      "category": "product",
+      "roadmapPhase": "v6.0",
+      "description": "Forums, discussions, and user-generated content",
+      "plannedFeatures": [
+        "Discussion Forums",
+        "User Q&A",
+        "Community Contributions",
+        "Moderation Tools"
+      ]
+    },
+    {
+      "id": "console",
+      "name": "Panos Khan Console",
+      "slug": "console",
+      "path": "/console/",
+      "status": "planned",
+      "category": "platform",
+      "roadmapPhase": "v6.0",
+      "description": "Unified workspace dashboard (requires authentication)",
+      "plannedFeatures": [
+        "User Dashboard",
+        "Personalized Recommendations",
+        "Unified Search",
+        "Saved Preferences",
+        "Activity Timeline"
+      ]
+    },
+    {
+      "id": "cloud",
+      "name": "Panos Khan Cloud",
+      "slug": "cloud",
+      "path": "/cloud/",
+      "status": "planned",
+      "category": "platform",
+      "roadmapPhase": "v7.0",
+      "description": "Cloud sync, user accounts, and APIs (optional, beyond GitHub Pages)",
+      "plannedFeatures": [
+        "User Accounts",
+        "Cloud Sync",
+        "REST API",
+        "Webhooks",
+        "Third-party Integrations"
+      ]
+    }
+  ],
+  "categories": {
+    "product": "Standalone product offering with dedicated team and roadmap",
+    "platform": "Cross-cutting platform or explorer spanning multiple products",
+    "tool": "Single-purpose utility within a product",
+    "guide": "Documentation or educational content",
+    "research": "Analysis, frameworks, or case studies"
+  },
+  "statuses": {
+    "active": "Live and available to users",
+    "beta": "Available but under active development",
+    "planned": "Roadmap item, not yet launched",
+    "archived": "No longer maintained",
+    "deprecated": "Replaced by newer version"
+  }
+}

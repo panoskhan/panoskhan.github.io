@@ -10,11 +10,11 @@
     "primary": [
       "platform",
       "ai",
+      "intelligence",
       "research",
       "downloads",
       "projects",
-      "services",
-      "workspace"
+      "services"
     ],
     "secondary": [
       "device",
@@ -22,6 +22,7 @@
       "docs",
       "labs",
       "open-source",
+      "workspace",
       "credentials",
       "contact"
     ]
@@ -51,6 +52,32 @@
         "downloads",
         "projects",
         "services",
+        "capabilities"
+      ]
+    },
+    {
+      "id": "intelligence",
+      "name": "Platform Intelligence",
+      "shortName": "Intelligence",
+      "path": "/intelligence/",
+      "status": "live",
+      "version": "1.0.0",
+      "category": "product",
+      "navLabel": "Intelligence",
+      "description": "Health checks, diagnostics, and professional reports for websites, devices, projects, and AI workflows.",
+      "features": [
+        "Website Health",
+        "Device Health",
+        "Project Health",
+        "AI Workflow Health",
+        "Report Engine",
+        "Panos Khan Verified"
+      ],
+      "related": [
+        "ai",
+        "device",
+        "docs",
+        "downloads",
         "capabilities"
       ]
     },

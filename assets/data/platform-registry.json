@@ -23,6 +23,24 @@
   },
   "items": [
     {
+      "id": "hub-platform-intelligence",
+      "type": "product",
+      "title": "Platform Intelligence",
+      "summary": "Health checks, diagnostics, and professional reports for websites, devices, projects, and AI workflows.",
+      "status": "live",
+      "featured": true,
+      "updated": "2026-08-03",
+      "path": "/intelligence/",
+      "tags": ["intelligence", "health", "audit", "report", "diagnostics"],
+      "domain": "Platform",
+      "category": "Product",
+      "product": "intelligence",
+      "links": {
+        "primary": "/intelligence/",
+        "capability": "/capabilities/"
+      }
+    },
+    {
       "id": "tool-website-audit",
       "type": "tool",
       "title": "AI Website Audit",

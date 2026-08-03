@@ -4,11 +4,11 @@
   const PRIMARY_NAV = [
     { id: "platform", label: "Dashboard", href: "/platform/" },
     { id: "ai", label: "AI", href: "/ai/" },
+    { id: "intelligence", label: "Intelligence", href: "/intelligence/" },
     { id: "research", label: "Research", href: "/research/" },
     { id: "downloads", label: "Downloads", href: "/downloads/" },
     { id: "projects", label: "Projects", href: "/projects/" },
-    { id: "services", label: "Services", href: "/services.html" },
-    { id: "workspace", label: "Workspace", href: "/platform/#workspace" }
+    { id: "services", label: "Services", href: "/services.html" }
   ];
 
   const DRAWER_EXTRA = [
@@ -17,13 +17,14 @@
     { id: "docs", label: "Docs", href: "/docs/" },
     { id: "labs", label: "Labs", href: "/labs/" },
     { id: "open-source", label: "Open Source", href: "/open-source/" },
-    { id: "settings", label: "Settings (future)", href: "/platform/#settings" },
+    { id: "workspace", label: "Workspace", href: "/platform/#workspace" },
     { id: "credentials", label: "Credentials", href: "/credentials.html" },
     { id: "contact", label: "Consultation", href: "/contact.html", cta: true }
   ];
 
   const FALLBACK_SEARCH = [
     { title: "Platform Dashboard", type: "Platform", url: "/platform/", description: "Workspace dashboard for global discovery and saved activity." },
+    { title: "Platform Intelligence", type: "Product", url: "/intelligence/", description: "Health checks, diagnostics, and reports for websites, devices, projects, and AI workflows." },
     { title: "Panos Khan AI", type: "Product", url: "/ai/", description: "AI workspace, tools, prompts, and documentation." },
     { title: "Device Service", type: "Product", url: "/device/", description: "Repair, diagnostics, and support guidance." },
     { title: "Docs", type: "Product", url: "/docs/", description: "Architecture, guides, tutorials, and release notes." },
@@ -105,6 +106,7 @@
             <h4>Products</h4>
             <ul>
               <li><a href="/ai/">AI Platform</a></li>
+              <li><a href="/intelligence/">Platform Intelligence</a></li>
               <li><a href="/device/">Device Service</a></li>
               <li><a href="/downloads/">Downloads</a></li>
               <li><a href="/docs/">Docs</a></li>

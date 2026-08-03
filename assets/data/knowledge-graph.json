@@ -1,0 +1,218 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-08-03",
+  "description": "Cross-product knowledge graph connecting research, projects, tools, downloads, and services. Every page can look up related content across the entire platform.",
+  "nodes": [
+    {
+      "id": "tool-website-audit",
+      "type": "tool",
+      "title": "AI Website Audit",
+      "path": "/ai/tools/website-audit.html",
+      "product": "ai",
+      "pillar": "website-health"
+    },
+    {
+      "id": "tool-seo-brief",
+      "type": "tool",
+      "title": "AI SEO Brief Generator",
+      "path": "/ai/tools/seo-brief.html",
+      "product": "ai",
+      "pillar": "website-health"
+    },
+    {
+      "id": "tool-ad-copy-studio",
+      "type": "tool",
+      "title": "AI Ad Copy Studio",
+      "path": "/ai/tools/ad-copy-studio.html",
+      "product": "ai"
+    },
+    {
+      "id": "tool-readiness-twin",
+      "type": "tool",
+      "title": "AI Readiness Twin",
+      "path": "/ai/tools/readiness-twin.html",
+      "product": "ai",
+      "pillar": "ai-workflow-health"
+    },
+    {
+      "id": "tool-decision-risk",
+      "type": "tool",
+      "title": "AI Decision Risk Simulator",
+      "path": "/ai/tools/decision-risk.html",
+      "product": "ai",
+      "pillar": "ai-workflow-health"
+    },
+    {
+      "id": "tool-trust-label",
+      "type": "tool",
+      "title": "AI Trust Label Generator",
+      "path": "/ai/tools/trust-label.html",
+      "product": "ai",
+      "pillar": "ai-workflow-health"
+    },
+    {
+      "id": "research-ai-readiness",
+      "type": "research",
+      "title": "AI Readiness Framework",
+      "path": "/research/#ai-readiness-framework",
+      "product": "research"
+    },
+    {
+      "id": "research-seo-architecture",
+      "type": "research",
+      "title": "SEO Architecture for AI Discovery",
+      "path": "/research/#seo-architecture-ai-discovery",
+      "product": "research"
+    },
+    {
+      "id": "research-responsible-ai",
+      "type": "research",
+      "title": "Responsible AI Decision Gates",
+      "path": "/research/#responsible-ai-decision-gates",
+      "product": "research"
+    },
+    {
+      "id": "download-ai-checklist",
+      "type": "download",
+      "title": "AI Readiness Checklist",
+      "path": "/downloads/#ai-readiness-checklist",
+      "product": "downloads"
+    },
+    {
+      "id": "download-seo-checklist",
+      "type": "download",
+      "title": "SEO Audit Checklist",
+      "path": "/downloads/#seo-audit-checklist",
+      "product": "downloads",
+      "pillar": "website-health"
+    },
+    {
+      "id": "download-backup-checklist",
+      "type": "download",
+      "title": "Backup-before-repair Checklist",
+      "path": "/downloads/#backup-before-repair",
+      "product": "downloads",
+      "pillar": "device-health"
+    },
+    {
+      "id": "download-static-starter",
+      "type": "download",
+      "title": "Sample Static Page Starter",
+      "path": "/downloads/#sample-static-starter",
+      "product": "downloads"
+    },
+    {
+      "id": "project-phoenix",
+      "type": "project",
+      "title": "Project Phoenix",
+      "path": "/projects/#project-phoenix",
+      "product": "projects"
+    },
+    {
+      "id": "project-seo-tooling",
+      "type": "project",
+      "title": "Client-side SEO Tooling",
+      "path": "/projects/#client-side-seo-tooling",
+      "product": "projects",
+      "pillar": "website-health"
+    },
+    {
+      "id": "service-ai-architecture",
+      "type": "service",
+      "title": "AI-ready Website Architecture",
+      "path": "/services.html#service-ai-ready-architecture",
+      "product": "services"
+    },
+    {
+      "id": "service-web-engineering",
+      "type": "service",
+      "title": "Web Engineering & Development",
+      "path": "/services.html#service-web-engineering",
+      "product": "services"
+    },
+    {
+      "id": "service-performance-marketing",
+      "type": "service",
+      "title": "Performance Marketing Systems",
+      "path": "/services.html#service-performance-marketing",
+      "product": "services"
+    },
+    {
+      "id": "service-ai-strategy",
+      "type": "service",
+      "title": "AI Strategy Consulting",
+      "path": "/services.html#service-ai-strategy-consulting",
+      "product": "services"
+    },
+    {
+      "id": "hub-intelligence",
+      "type": "product",
+      "title": "Platform Intelligence",
+      "path": "/intelligence/",
+      "product": "intelligence"
+    },
+    {
+      "id": "hub-ai",
+      "type": "product",
+      "title": "Panos Khan AI",
+      "path": "/ai/",
+      "product": "ai"
+    },
+    {
+      "id": "hub-device",
+      "type": "product",
+      "title": "Device Service",
+      "path": "/device/",
+      "product": "device",
+      "pillar": "device-health"
+    },
+    {
+      "id": "hub-docs",
+      "type": "product",
+      "title": "Panos Khan Docs",
+      "path": "/docs/",
+      "product": "docs"
+    },
+    {
+      "id": "docs-architecture",
+      "type": "article",
+      "title": "Architecture Overview",
+      "path": "/docs/architecture/",
+      "product": "docs"
+    },
+    {
+      "id": "docs-components",
+      "type": "article",
+      "title": "Component Library",
+      "path": "/docs/guides/components.html",
+      "product": "docs"
+    }
+  ],
+  "edges": [
+    { "from": "tool-website-audit", "to": "research-seo-architecture", "relation": "informed-by" },
+    { "from": "tool-website-audit", "to": "download-seo-checklist", "relation": "pairs-with" },
+    { "from": "tool-website-audit", "to": "project-seo-tooling", "relation": "part-of" },
+    { "from": "tool-website-audit", "to": "service-ai-architecture", "relation": "supports" },
+    { "from": "tool-seo-brief", "to": "research-seo-architecture", "relation": "informed-by" },
+    { "from": "tool-seo-brief", "to": "download-seo-checklist", "relation": "pairs-with" },
+    { "from": "tool-readiness-twin", "to": "research-ai-readiness", "relation": "informed-by" },
+    { "from": "tool-readiness-twin", "to": "download-ai-checklist", "relation": "pairs-with" },
+    { "from": "tool-readiness-twin", "to": "service-ai-strategy", "relation": "supports" },
+    { "from": "tool-decision-risk", "to": "research-responsible-ai", "relation": "informed-by" },
+    { "from": "tool-decision-risk", "to": "tool-trust-label", "relation": "pairs-with" },
+    { "from": "tool-trust-label", "to": "research-responsible-ai", "relation": "informed-by" },
+    { "from": "tool-ad-copy-studio", "to": "service-performance-marketing", "relation": "supports" },
+    { "from": "research-ai-readiness", "to": "download-ai-checklist", "relation": "produces" },
+    { "from": "research-seo-architecture", "to": "download-seo-checklist", "relation": "produces" },
+    { "from": "research-responsible-ai", "to": "tool-decision-risk", "relation": "informs" },
+    { "from": "download-backup-checklist", "to": "hub-device", "relation": "part-of" },
+    { "from": "project-phoenix", "to": "docs-architecture", "relation": "documented-by" },
+    { "from": "project-phoenix", "to": "hub-intelligence", "relation": "includes" },
+    { "from": "hub-intelligence", "to": "tool-website-audit", "relation": "contains" },
+    { "from": "hub-intelligence", "to": "hub-device", "relation": "contains" },
+    { "from": "hub-intelligence", "to": "hub-ai", "relation": "connected-to" },
+    { "from": "hub-ai", "to": "hub-intelligence", "relation": "connected-to" },
+    { "from": "service-web-engineering", "to": "project-phoenix", "relation": "demonstrated-by" },
+    { "from": "service-ai-strategy", "to": "research-ai-readiness", "relation": "informed-by" }
+  ]
+}

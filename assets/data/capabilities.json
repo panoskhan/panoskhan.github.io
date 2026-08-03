@@ -150,7 +150,7 @@
       "keywords": ["windows", "pc", "diagnostics", "troubleshoot", "support"],
       "tools": [],
       "docs": [
-        { "title": "Windows diagnostics flow", "url": "/device/#windows-diagnostics" }
+        { "title": "Windows diagnostics flow", "url": "/device/#windows" }
       ],
       "downloads": [
         { "title": "Backup-before-repair checklist", "url": "/downloads/#backup-before-repair" }
@@ -166,7 +166,7 @@
       "keywords": ["macos", "mac", "apple", "diagnostics", "support"],
       "tools": [],
       "docs": [
-        { "title": "macOS diagnostics flow", "url": "/device/#macos-diagnostics" }
+        { "title": "macOS diagnostics flow", "url": "/device/#macos" }
       ],
       "downloads": [
         { "title": "Backup-before-repair checklist", "url": "/downloads/#backup-before-repair" }
@@ -182,7 +182,7 @@
       "keywords": ["android", "phone", "mobile", "repair", "support"],
       "tools": [],
       "docs": [
-        { "title": "Mobile repair guidance", "url": "/device/#mobile-repair" }
+        { "title": "Mobile repair guidance", "url": "/device/#android" }
       ],
       "downloads": [
         { "title": "Backup-before-repair checklist", "url": "/downloads/#backup-before-repair" }
@@ -198,7 +198,7 @@
       "keywords": ["iphone", "ios", "apple", "mobile", "repair"],
       "tools": [],
       "docs": [
-        { "title": "Mobile repair guidance", "url": "/device/#mobile-repair" }
+        { "title": "Mobile repair guidance", "url": "/device/#iphone" }
       ],
       "downloads": [
         { "title": "Backup-before-repair checklist", "url": "/downloads/#backup-before-repair" }
@@ -214,7 +214,7 @@
       "keywords": ["drivers", "hardware", "windows", "safety", "updates"],
       "tools": [],
       "docs": [
-        { "title": "Safe driver sources", "url": "/device/#safe-drivers" }
+        { "title": "Safe driver sources", "url": "/device/#driver-center" }
       ],
       "downloads": [],
       "projects": []

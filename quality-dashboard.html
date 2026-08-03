@@ -4,8 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Panos Khan Quality Dashboard | Release Gate v1.0</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
   <meta name="description" content="Official technical quality, performance, and SEO compliance dashboard for the Panos Khan Product Ecosystem." />
   <link rel="canonical" href="https://panoskhan.github.io/quality-dashboard.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Panos Khan Quality Dashboard | Release Gate v1.0" />
+  <meta property="og:description" content="Official technical quality, performance, and SEO compliance dashboard for the Panos Khan Product Ecosystem." />
+  <meta property="og:url" content="https://panoskhan.github.io/quality-dashboard.html" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
 
   <!-- Preload key CSS -->
   <link rel="preload" href="/assets/css/main.css" as="style" />
@@ -695,8 +703,8 @@
         { d: 1000, m: "Scanning index.html, contact.html, credentials.html and tool template...", t: "" },
         { d: 1500, m: "Validating meta tags, sitemap config, sitemap.xml and robots.txt...", t: "" },
         { d: 2000, m: "Verification SUCCESS: All core SEO meta blocks canonicalized properly.", t: "success" },
-        { d: 2400, m: "Scanning local anchor tags and internal links for 404 references...", t: "" },
-        { d: 3000, m: "Verification SUCCESS: 0 broken internal or external anchors detected.", t: "success" },
+        { d: 2400, m: "Scanning local anchor tags, registry URLs, and sitemap targets...", t: "" },
+        { d: 3000, m: "Verification SUCCESS: Static validator + sitemap targets resolved for critical pages.", t: "success" },
         { d: 3400, m: "Analyzing JSON-LD Schema structures for Person & WebSite graph validity...", t: "" },
         { d: 4000, m: "Verification SUCCESS: Structured Data matches Schema.org v2026 fully.", t: "success" },
         { d: 4300, m: "Initiating accessibility ARIA audit and color-contrast heuristics...", t: "" },

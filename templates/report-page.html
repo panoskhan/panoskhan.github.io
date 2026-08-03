@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Report Title | Platform Intelligence | Panos Khan</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Replace with a unique report description under 160 characters." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://panoskhan.github.io/intelligence/reports/report-name/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Report Title | Platform Intelligence | Panos Khan" />
+  <meta property="og:description" content="Replace with a unique report description under 160 characters." />
+  <meta property="og:url" content="https://panoskhan.github.io/intelligence/reports/report-name/" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Report Title | Platform Intelligence | Panos Khan" />
+  <meta name="twitter:description" content="Replace with a unique report description under 160 characters." />
+  <meta name="twitter:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://panoskhan.github.io/#website",
+        "url": "https://panoskhan.github.io/",
+        "name": "Panos Khan",
+        "publisher": {"@type": "Person", "name": "Panos Khan", "url": "https://panoskhan.github.io/"}
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/intelligence/reports/report-name/#webapp",
+        "url": "https://panoskhan.github.io/intelligence/reports/report-name/",
+        "name": "Report Title",
+        "description": "Replace with a unique report description.",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "isPartOf": {"@id": "https://panoskhan.github.io/#website"},
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://panoskhan.github.io/"},
+            {"@type": "ListItem", "position": 2, "name": "Platform Intelligence", "item": "https://panoskhan.github.io/intelligence/"},
+            {"@type": "ListItem", "position": 3, "name": "Report Title", "item": "https://panoskhan.github.io/intelligence/reports/report-name/"}
+          ]
+        }
+      }
+    ]
+  }
+  </script>
+  <!--
+    ╔══════════════════════════════════════════════════════════════╗
+    ║  REPORT PAGE TEMPLATE — Platform Intelligence              ║
+    ║                                                            ║
+    ║  This template defines the standard report structure.      ║
+    ║  Every health check tool should output results using       ║
+    ║  this layout to ensure consistency across the platform.    ║
+    ║                                                            ║
+    ║  Report sections:                                          ║
+    ║  1. Summary & Overall Score                                ║
+    ║  2. Category Breakdown (star ratings)                      ║
+    ║  3. Strengths                                              ║
+    ║  4. Issues (by severity)                                   ║
+    ║  5. Recommendations (prioritized)                          ║
+    ║  6. Resources & Related Tools                              ║
+    ║  7. Export & Share                                          ║
+    ║  8. Panos Khan Verified badge (score >= 90)                ║
+    ╚══════════════════════════════════════════════════════════════╝
+  -->
+  <style>
+    .report-container { max-width: 800px; margin: 0 auto; }
+    .report-header { text-align: center; padding: 2rem 0; }
+    .report-score-circle { display: inline-flex; align-items: center; justify-content: center; width: 120px; height: 120px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.15); font-size: 2.5rem; font-weight: 700; margin: 1rem 0; }
+    .report-score-circle small { font-size: 1rem; opacity: 0.5; font-weight: 400; }
+    .report-section { margin-bottom: 2rem; }
+    .report-section h2 { font-size: 1.3rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .report-dimensions { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+    .report-dim { padding: 1rem; background: rgba(255,255,255,0.04); border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.06); }
+    .report-dim-label { font-size: 0.8rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.04em; }
+    .report-dim-stars { color: #f5a623; font-size: 1.1rem; margin-top: 0.25rem; }
+    .report-strength { padding: 0.75rem 1rem; background: rgba(76,175,80,0.08); border-left: 3px solid rgba(76,175,80,0.4); border-radius: 0 0.5rem 0.5rem 0; margin-bottom: 0.5rem; }
+    .report-issue { padding: 0.75rem 1rem; border-left: 3px solid; border-radius: 0 0.5rem 0.5rem 0; margin-bottom: 0.5rem; }
+    .report-issue[data-severity="critical"] { background: rgba(244,67,54,0.08); border-color: rgba(244,67,54,0.5); }
+    .report-issue[data-severity="warning"] { background: rgba(255,152,0,0.08); border-color: rgba(255,152,0,0.5); }
+    .report-issue[data-severity="info"] { background: rgba(33,150,243,0.08); border-color: rgba(33,150,243,0.5); }
+    .report-severity { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.8; }
+    .report-recommendation { padding: 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 0.75rem; margin-bottom: 0.75rem; }
+    .report-recommendation-priority { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 0.25rem; background: rgba(255,255,255,0.08); display: inline-block; margin-bottom: 0.5rem; }
+    .report-effort { font-size: 0.85rem; opacity: 0.6; margin-top: 0.25rem; }
+    .report-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .certified-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 2rem; background: rgba(76,175,80,0.12); border: 1px solid rgba(76,175,80,0.3); font-size: 0.85rem; font-weight: 600; color: #81c784; margin-top: 0.5rem; }
+    .certified-badge::before { content: "✓"; display: inline-flex; align-items: center; justify-content: center; width: 1.25rem; height: 1.25rem; border-radius: 50%; background: rgba(76,175,80,0.25); font-size: 0.7rem; }
+  </style>
+</head>
+<body data-tool-id="report-name">
+  <header class="site-header" role="banner" data-site-nav></header>
+
+  <main class="container section">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">/</span>
+      <a href="/intelligence/">Platform Intelligence</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Report Title</span>
+    </nav>
+
+    <div class="report-container">
+      <!-- Report Header -->
+      <div class="report-header">
+        <p class="kicker">Health Report</p>
+        <h1>Report Title</h1>
+        <p class="muted">Generated <time datetime="2026-08-03">August 3, 2026</time></p>
+        <div class="report-score-circle" aria-label="Overall score: 94 out of 100">94<small>/100</small></div>
+        <!-- Show badge when score >= 90 -->
+        <div><span class="certified-badge">Panos Khan Verified · 94/100</span></div>
+      </div>
+
+      <!-- Category Breakdown -->
+      <div class="report-section">
+        <h2>Category Breakdown</h2>
+        <div class="report-dimensions">
+          <div class="report-dim">
+            <p class="report-dim-label">Category A</p>
+            <p class="report-dim-stars" aria-label="5 out of 5 stars">★★★★★</p>
+          </div>
+          <div class="report-dim">
+            <p class="report-dim-label">Category B</p>
+            <p class="report-dim-stars" aria-label="4 out of 5 stars">★★★★☆</p>
+          </div>
+          <div class="report-dim">
+            <p class="report-dim-label">Category C</p>
+            <p class="report-dim-stars" aria-label="5 out of 5 stars">★★★★★</p>
+          </div>
+          <div class="report-dim">
+            <p class="report-dim-label">Category D</p>
+            <p class="report-dim-stars" aria-label="4 out of 5 stars">★★★★☆</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Strengths -->
+      <div class="report-section">
+        <h2>Strengths</h2>
+        <div class="report-strength"><strong>Strength title.</strong> Explanation of what was done well.</div>
+        <div class="report-strength"><strong>Strength title.</strong> Explanation of what was done well.</div>
+      </div>
+
+      <!-- Issues -->
+      <div class="report-section">
+        <h2>Issues</h2>
+        <div class="report-issue" data-severity="critical">
+          <p class="report-severity">Critical</p>
+          <p><strong>Issue title.</strong> Description of the issue and its impact.</p>
+        </div>
+        <div class="report-issue" data-severity="warning">
+          <p class="report-severity">Warning</p>
+          <p><strong>Issue title.</strong> Description of the issue and its impact.</p>
+        </div>
+        <div class="report-issue" data-severity="info">
+          <p class="report-severity">Info</p>
+          <p><strong>Issue title.</strong> Description and suggestion.</p>
+        </div>
+      </div>
+
+      <!-- Recommendations -->
+      <div class="report-section">
+        <h2>Recommendations</h2>
+        <div class="report-recommendation">
+          <span class="report-recommendation-priority">Priority 1</span>
+          <p><strong>Action title.</strong> Clear, specific instruction for what to do.</p>
+          <p class="report-effort">Estimated effort: 30 minutes</p>
+        </div>
+        <div class="report-recommendation">
+          <span class="report-recommendation-priority">Priority 2</span>
+          <p><strong>Action title.</strong> Clear, specific instruction for what to do.</p>
+          <p class="report-effort">Estimated effort: 1–2 hours</p>
+        </div>
+      </div>
+
+      <!-- Resources -->
+      <div class="report-section">
+        <h2>Resources &amp; Related Tools</h2>
+        <div class="content-grid">
+          <article class="card">
+            <h3>Related Tool</h3>
+            <p class="muted">Description of how this tool connects to the report findings.</p>
+          </article>
+          <article class="card">
+            <h3>Related Guide</h3>
+            <p class="muted">Documentation or checklist that supports the recommendations.</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- Export Actions -->
+      <div class="report-section">
+        <h2>Export &amp; Share</h2>
+        <div class="report-actions">
+          <button type="button" class="btn btn-primary btn-sm" disabled>Download PDF (coming soon)</button>
+          <button type="button" class="btn btn-sm" disabled>Share Report (coming soon)</button>
+          <a href="/intelligence/" class="btn btn-sm">← Back to Platform Intelligence</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo" data-site-footer></footer>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>

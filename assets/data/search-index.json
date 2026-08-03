@@ -3,6 +3,7 @@
   "updated": "2026-08-03",
   "items": [
     { "title": "Panos Khan AI", "type": "Product", "url": "/ai/", "description": "AI workspace, tools, prompts, examples, FAQ, and documentation.", "keywords": ["ai", "workspace", "tools", "prompts"] },
+    { "title": "Platform Intelligence", "type": "Product", "url": "/intelligence/", "description": "Health checks, diagnostics, and professional reports for websites, devices, projects, and AI workflows.", "keywords": ["intelligence", "health", "audit", "report", "diagnostics", "website health", "device health", "project health", "ai workflow"] },
     { "title": "Device Service", "type": "Product", "url": "/device/", "description": "Repair, diagnostics, maintenance, and lawful support guidance.", "keywords": ["device", "repair", "windows", "macos", "android", "iphone"] },
     { "title": "Downloads", "type": "Product", "url": "/downloads/", "description": "Safe checklists, templates, and browser utilities.", "keywords": ["downloads", "checklist", "template"] },
     { "title": "Panos Khan Docs", "type": "Product", "url": "/docs/", "description": "Architecture, tutorials, developer and user guides, release notes.", "keywords": ["docs", "documentation", "guides", "architecture"] },

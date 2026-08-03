@@ -19,6 +19,7 @@ PAGES = (
     "device/index.html",
     "downloads/index.html",
     "platform/index.html",
+    "intelligence/index.html",
     "open-source/index.html",
     "docs/index.html",
     "docs/architecture/index.html",
@@ -105,7 +106,7 @@ def main() -> int:
                 failures.append(f"{page}: missing {name}")
 
     # Ecosystem hubs should reference capability explorer or products
-    for page in ("index.html", "ai/index.html", "capabilities/index.html"):
+    for page in ("index.html", "ai/index.html", "capabilities/index.html", "intelligence/index.html"):
         if not contains(page, r"/capabilities/"):
             failures.append(f"{page}: missing capabilities link")
 
@@ -135,6 +136,7 @@ def main() -> int:
         "assets/data/downloads.json",
         "assets/data/capabilities.json",
         "assets/data/platform-registry.json",
+        "assets/data/knowledge-graph.json",
     ):
         target = ROOT / rel
         if not target.is_file() or target.stat().st_size < 20:

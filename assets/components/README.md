@@ -42,3 +42,15 @@ Phase 2 standardizes reusable UI patterns in `assets/css/main.css` and `assets/j
 4. Keep components framework-free for GitHub Pages.
 
 Human-readable examples: [/docs/guides/components.html](/docs/guides/components.html)
+
+
+## Platform layouts
+
+- **Platform shell** — `.platform-layout`, `.platform-sidebar`, `.platform-nav-list`
+- **Workspace widgets** — `.workspace-stats`, `.workspace-grid`, `.platform-list`
+- **Registry catalog header** — `.catalog-head`
+- **Favorite control** — `.favorite-toggle`
+
+## Registry-driven rule
+
+Catalog pages must render list content from `assets/data/platform-registry.json` via `assets/js/platform.js` instead of hardcoded repeated cards.

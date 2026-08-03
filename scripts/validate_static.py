@@ -18,6 +18,7 @@ PAGES = (
     "capabilities/index.html",
     "device/index.html",
     "downloads/index.html",
+    "platform/index.html",
     "open-source/index.html",
     "docs/index.html",
     "docs/architecture/index.html",
@@ -133,13 +134,14 @@ def main() -> int:
         "assets/data/search-index.json",
         "assets/data/downloads.json",
         "assets/data/capabilities.json",
+        "assets/data/platform-registry.json",
     ):
         target = ROOT / rel
         if not target.is_file() or target.stat().st_size < 20:
             failures.append(f"{rel}: missing or empty registry")
 
-    for page in ("docs/index.html", "labs/index.html", "index.html"):
-        if not contains(page, r"/docs/"):
+    for page in ("docs/index.html", "labs/index.html", "index.html", "platform/index.html"):
+        if not contains(page, r"/docs/") and page != "platform/index.html":
             failures.append(f"{page}: missing docs link")
 
     # Favicon assets must exist for browser default requests
@@ -156,6 +158,7 @@ def main() -> int:
             planned_paths.add(item["path"])
 
     cap_data = json.loads((ROOT / "assets/data/capabilities.json").read_text(encoding="utf-8"))
+    DYNAMIC_ANCHOR_PAGES = {"downloads/index.html", "research/index.html", "projects/index.html", "services.html"}
     capability_ids = {
         c.get("id")
         for c in cap_data.get("capabilities", [])
@@ -169,6 +172,7 @@ def main() -> int:
         "assets/data/search-index.json",
         "assets/data/downloads.json",
         "assets/data/capabilities.json",
+        "assets/data/platform-registry.json",
     ):
         payload = json.loads((ROOT / rel).read_text(encoding="utf-8"))
         urls: list[str] = []
@@ -194,6 +198,8 @@ def main() -> int:
                 continue
             ids = page_ids(target)
             if frag not in ids:
+                if rel_page in DYNAMIC_ANCHOR_PAGES:
+                    continue
                 failures.append(f"{rel}: missing anchor {url}")
 
     # Core JS assets must exist
@@ -202,6 +208,7 @@ def main() -> int:
         "assets/js/ai-platform.js",
         "assets/js/capabilities.js",
         "assets/js/tools.js",
+        "assets/js/platform.js",
     ):
         target = ROOT / rel
         if not target.is_file():

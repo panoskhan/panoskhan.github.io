@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Platform Dashboard | Panos Khan Workspace</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Panos Khan Platform dashboard: global search, workspace favorites, recent activity, and JSON-driven product catalogs." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://panoskhan.github.io/platform/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Platform Dashboard | Panos Khan Workspace" />
+  <meta property="og:description" content="Open the Panos Khan platform shell with dashboard widgets, global search, and workspace state." />
+  <meta property="og:url" content="https://panoskhan.github.io/platform/" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Platform Dashboard | Panos Khan Workspace" />
+  <meta name="twitter:description" content="Workspace-style dashboard for tools, research, downloads, projects, and services." />
+
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body>
+  <header class="site-header" role="banner" data-site-nav></header>
+
+  <main class="container section platform-shell">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span>/</span><span aria-current="page">Platform Dashboard</span>
+    </nav>
+
+    <header class="section-header section-header--start">
+      <p class="kicker">Panos Khan Platform</p>
+      <h1>Workspace Dashboard</h1>
+      <p class="lead">A desktop-style platform shell powered by one JSON registry and client-side state. Product URLs stay live, while discovery starts here.</p>
+    </header>
+
+    <div class="platform-layout">
+      <aside class="card platform-sidebar" aria-label="Platform navigation">
+        <h2>Workspace</h2>
+        <nav class="platform-nav-list">
+          <a href="/platform/" aria-current="page">Dashboard</a>
+          <a href="/ai/">AI</a>
+          <a href="/research/">Research</a>
+          <a href="/downloads/">Downloads</a>
+          <a href="/projects/">Projects</a>
+          <a href="/services.html">Services</a>
+          <a href="/docs/">Docs</a>
+          <a href="#workspace">Workspace</a>
+          <a href="#settings">Settings (future)</a>
+          <a href="#global-search">Search</a>
+        </nav>
+      </aside>
+
+      <section class="platform-main">
+        <section id="global-search" class="card mb-24" data-platform-dashboard
+          data-stats-id="platformStats"
+          data-featured-id="platformFeatured"
+          data-favorites-id="platformFavorites"
+          data-recent-id="platformRecent"
+          data-search-input-id="platformSearchInput"
+          data-search-results-id="platformSearchResults"
+          data-compact-toggle-id="workspaceCompactToggle"
+          data-featured-toggle-id="workspaceFeaturedToggle">
+          <h2>Global search</h2>
+          <p class="muted">Command-style discovery across tools, research, downloads, projects, and services from the unified registry.</p>
+          <label class="sr-only" for="platformSearchInput">Search platform catalog</label>
+          <input id="platformSearchInput" class="ai-search-input" type="search" placeholder="Search the full platform registry..." />
+          <div id="platformSearchResults" class="mt-16"></div>
+        </section>
+
+        <section id="dashboard" class="mb-24">
+          <h2>Dashboard widgets</h2>
+          <div id="platformStats" class="workspace-stats mt-16"></div>
+        </section>
+
+        <section id="workspace" class="workspace-grid mb-24" aria-label="Workspace widgets">
+          <article class="card">
+            <h3>Featured</h3>
+            <div id="platformFeatured"></div>
+          </article>
+          <article class="card">
+            <h3>Favorites</h3>
+            <div id="platformFavorites"></div>
+          </article>
+          <article class="card">
+            <h3>Recently used</h3>
+            <div id="platformRecent"></div>
+          </article>
+          <article id="settings" class="card">
+            <h3>Workspace settings</h3>
+            <label class="workspace-toggle"><input id="workspaceCompactToggle" type="checkbox" /> Compact card preference</label>
+            <label class="workspace-toggle"><input id="workspaceFeaturedToggle" type="checkbox" checked /> Featured-first sorting</label>
+            <p class="muted mt-12">Preferences are saved in your browser only.</p>
+          </article>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo" data-site-footer></footer>
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/platform.js"></script>
+</body>
+</html>

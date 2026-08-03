@@ -30,6 +30,7 @@ Consulting, credentials, and contact remain first-class supporting surfaces.
 ## Architecture
 
 - [ARCHITECTURE.md](./ARCHITECTURE.md) — system design, scalability, SEO/a11y/perf notes
+- [Project Phoenix Charter](./docs/PROJECT_CHARTER.md) — mission, releases, and product quality standards
 - [Docs hub](https://panoskhan.github.io/docs/) — guides and release notes
 - [Component catalog](./assets/components/README.md) — reusable UI patterns
 - [Templates](./templates/) — product hub / doc / tool starters

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meta Tag Generator | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Generate complete HTML meta tags for SEO, Open Graph, and Twitter Cards with live preview for stronger search visibility and social sharing." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/meta-tag-generator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Meta Tag Generator | Panos Khan AI Platform" />
+  <meta property="og:description" content="Generate complete HTML meta tags for SEO, Open Graph, and Twitter Cards with live preview for stronger search visibility and social sharing." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/meta-tag-generator.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/meta-tag-generator.html#webapp",
+        "name": "Meta Tag Generator",
+        "description": "Generate complete HTML meta tags for SEO, Open Graph, and Twitter Cards with live preview for stronger search visibility and social sharing.",
+        "url": "https://panoskhan.github.io/ai/tools/meta-tag-generator.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preload and Stylesheets -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="meta-tag-generator">
+  <div id="ai-tool-content">
+    <form id="metaTagForm">
+      <div class="ai-form-group">
+        <label for="pageTitle">Page Title</label>
+        <input id="pageTitle" name="pageTitle" type="text" required placeholder="e.g. Best Project Management Software for Agencies" />
+      </div>
+      <div class="ai-form-group">
+        <label for="pageDescription">Page Description</label>
+        <textarea id="pageDescription" name="pageDescription" rows="4" required placeholder="Summarize the page in 150-160 characters."></textarea>
+      </div>
+      <div class="ai-form-group">
+        <label for="pageUrl">Page URL</label>
+        <input id="pageUrl" name="pageUrl" type="url" required placeholder="https://example.com/page" />
+      </div>
+      <div class="ai-form-group">
+        <label for="pageType">Page Type</label>
+        <select id="pageType" name="pageType" required>
+          <option value="website">website</option>
+          <option value="article">article</option>
+          <option value="product">product</option>
+        </select>
+      </div>
+      <div class="ai-form-group">
+        <label for="authorName">Author Name</label>
+        <input id="authorName" name="authorName" type="text" placeholder="e.g. Panos Khan" />
+      </div>
+      <div class="ai-form-group">
+        <label for="keywords">Keywords</label>
+        <input id="keywords" name="keywords" type="text" placeholder="seo, meta tags, open graph" />
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Generate Meta Tags</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('metaTagForm');
+      if (!form) return;
+
+      const htmlEscape = (value) => value
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const pageTitle = AIPlatform.safeText(form.pageTitle.value);
+        const pageDescription = AIPlatform.safeText(form.pageDescription.value);
+        const pageUrl = AIPlatform.safeText(form.pageUrl.value);
+        const pageType = AIPlatform.safeText(form.pageType.value);
+        const authorName = AIPlatform.safeText(form.authorName.value);
+        const keywords = AIPlatform.safeText(form.keywords.value);
+        const siteName = 'Panos Khan';
+
+        const basicTags = [
+          `<title>${htmlEscape(pageTitle)}</title>`,
+          `<meta name="description" content="${htmlEscape(pageDescription)}" />`,
+          keywords ? `<meta name="keywords" content="${htmlEscape(keywords)}" />` : '',
+          authorName ? `<meta name="author" content="${htmlEscape(authorName)}" />` : '',
+          `<link rel="canonical" href="${htmlEscape(pageUrl)}" />`
+        ].filter(Boolean);
+
+        const openGraphTags = [
+          `<meta property="og:title" content="${htmlEscape(pageTitle)}" />`,
+          `<meta property="og:description" content="${htmlEscape(pageDescription)}" />`,
+          `<meta property="og:url" content="${htmlEscape(pageUrl)}" />`,
+          `<meta property="og:type" content="${htmlEscape(pageType)}" />`,
+          `<meta property="og:site_name" content="${htmlEscape(siteName)}" />`
+        ];
+
+        const twitterTags = [
+          '<meta name="twitter:card" content="summary_large_image" />',
+          `<meta name="twitter:title" content="${htmlEscape(pageTitle)}" />`,
+          `<meta name="twitter:description" content="${htmlEscape(pageDescription)}" />`
+        ];
+
+        const completeHead = ['<head>', ...basicTags, ...openGraphTags, ...twitterTags, '</head>'].join('\n');
+
+        const outputData = {
+          title: `Meta Tag Package for ${pageTitle}`,
+          sections: [
+            {
+              title: '1. Basic Meta Tags',
+              content: basicTags.join('\n')
+            },
+            {
+              title: '2. Open Graph Tags',
+              content: openGraphTags.join('\n')
+            },
+            {
+              title: '3. Twitter Card Tags',
+              content: twitterTags.join('\n')
+            },
+            {
+              title: '4. Complete HTML Head Block',
+              content: completeHead
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

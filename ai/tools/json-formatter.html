@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JSON Formatter & Beautifier | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Format, validate, and beautify JSON data with syntax highlighting and error detection for cleaner debugging and faster browser-based inspection now." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/json-formatter.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="JSON Formatter & Beautifier | Panos Khan AI Platform" />
+  <meta property="og:description" content="Format, validate, and beautify JSON data with syntax highlighting and error detection for cleaner debugging and faster browser-based inspection now." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/json-formatter.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/json-formatter.html#webapp",
+        "name": "JSON Formatter & Beautifier",
+        "description": "Format, validate, and beautify JSON data with syntax highlighting and error detection for cleaner debugging and faster browser-based inspection now.",
+        "url": "https://panoskhan.github.io/ai/tools/json-formatter.html",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="json-formatter">
+  <div id="ai-tool-content">
+    <form id="jsonFormatterForm">
+      <div class="ai-form-group">
+        <label for="jsonInput">JSON Input</label>
+        <textarea id="jsonInput" name="jsonInput" rows="16" required placeholder='Paste JSON here, e.g. {"name":"Panos","items":[1,2,3]}' style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;"></textarea>
+      </div>
+      <div class="ai-form-group">
+        <label for="indentSize">Indent Size</label>
+        <select id="indentSize" name="indentSize">
+          <option value="2">2 Spaces</option>
+          <option value="4">4 Spaces</option>
+          <option value="tab">Tab</option>
+        </select>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Format JSON</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('jsonFormatterForm');
+      if (!form) return;
+
+      function analyzeJson(value) {
+        const types = new Set();
+        let totalKeys = 0;
+        let maxDepth = 0;
+        let arraysCount = 0;
+
+        function walk(node, depth) {
+          maxDepth = Math.max(maxDepth, depth);
+          if (Array.isArray(node)) {
+            arraysCount += 1;
+            types.add('array');
+            node.forEach((item) => walk(item, depth + 1));
+            return;
+          }
+          if (node === null) {
+            types.add('null');
+            return;
+          }
+          const nodeType = typeof node;
+          types.add(nodeType);
+          if (nodeType === 'object') {
+            const keys = Object.keys(node);
+            totalKeys += keys.length;
+            keys.forEach((key) => walk(node[key], depth + 1));
+          }
+        }
+
+        walk(value, 1);
+        return { totalKeys, maxDepth, arraysCount, dataTypes: Array.from(types).sort() };
+      }
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const rawJson = form.elements.jsonInput.value;
+        const indentValue = form.elements.indentSize.value;
+        const indent = indentValue === 'tab' ? '\t' : Number(indentValue);
+        const safeTitle = AIPlatform.safeText('JSON Formatter & Beautifier');
+
+        try {
+          const parsed = JSON.parse(rawJson);
+          const formatted = JSON.stringify(parsed, null, indent);
+          const summary = analyzeJson(parsed);
+
+          const outputData = {
+            title: safeTitle,
+            sections: [
+              {
+                title: '1. Formatted JSON',
+                content: formatted
+              },
+              {
+                title: '2. Validation Result',
+                content: '✅ Valid JSON\n\nThe provided JSON was parsed successfully with no syntax errors detected.'
+              },
+              {
+                title: '3. Structure Summary',
+                content: [
+                  `Total keys: ${summary.totalKeys}`,
+                  `Maximum nesting depth: ${summary.maxDepth}`,
+                  `Arrays found: ${summary.arraysCount}`,
+                  `Data types found: ${summary.dataTypes.join(', ') || 'none'}`
+                ].join('\n')
+              }
+            ]
+          };
+
+          AIPlatform.showFormattedOutput(outputData);
+        } catch (error) {
+          const match = /position (\d+)/i.exec(error.message || '');
+          const position = match ? Number(match[1]) : null;
+          const snippetStart = position !== null ? Math.max(0, position - 25) : 0;
+          const snippetEnd = position !== null ? Math.min(rawJson.length, position + 25) : Math.min(rawJson.length, 50);
+          const contextSnippet = rawJson.slice(snippetStart, snippetEnd);
+
+          const outputData = {
+            title: safeTitle,
+            sections: [
+              {
+                title: '1. Formatted JSON',
+                content: 'Formatting unavailable because the JSON input is invalid.'
+              },
+              {
+                title: '2. Validation Result',
+                content: [
+                  '❌ Invalid JSON',
+                  error.message || 'Unknown parsing error.',
+                  position !== null ? `Error position: ${position}` : 'Error position: unavailable',
+                  contextSnippet ? `Context: ${contextSnippet}` : 'Context: unavailable'
+                ].join('\n\n')
+              },
+              {
+                title: '3. Structure Summary',
+                content: 'No structure summary is available until the JSON is valid.'
+              }
+            ]
+          };
+
+          AIPlatform.showFormattedOutput(outputData);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

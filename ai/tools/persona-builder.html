@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Persona Builder | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Create detailed user personas with demographics, behaviors, pain points, and journey mapping." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/persona-builder.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AI Persona Builder | Panos Khan AI Platform" />
+  <meta property="og:description" content="Create detailed user personas with demographics, behaviors, pain points, and journey mapping." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/persona-builder.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/persona-builder.html#webapp",
+        "name": "AI Persona Builder",
+        "description": "Create detailed user personas with demographics, behaviors, pain points, and journey mapping.",
+        "url": "https://panoskhan.github.io/ai/tools/persona-builder.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preload and Stylesheets -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="persona-builder">
+  <div id="ai-tool-content">
+    <form id="personaBuilderForm">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div class="ai-form-group">
+          <label for="productService">Product / Service</label>
+          <input id="productService" name="productService" type="text" required placeholder="e.g. Workflow automation platform" />
+        </div>
+        <div class="ai-form-group">
+          <label for="industry">Industry</label>
+          <input id="industry" name="industry" type="text" required placeholder="e.g. Healthcare" />
+        </div>
+        <div class="ai-form-group">
+          <label for="targetSegment">Target Segment</label>
+          <input id="targetSegment" name="targetSegment" type="text" required placeholder="e.g. Small Business Owners" />
+        </div>
+        <div class="ai-form-group">
+          <label for="ageRange">Age Range</label>
+          <select id="ageRange" name="ageRange" required>
+            <option value="18-24">18-24</option>
+            <option value="25-34">25-34</option>
+            <option value="35-44">35-44</option>
+            <option value="45-54">45-54</option>
+            <option value="55-64">55-64</option>
+            <option value="65+">65+</option>
+          </select>
+        </div>
+        <div class="ai-form-group">
+          <label for="primaryGoal">Primary Goal</label>
+          <input id="primaryGoal" name="primaryGoal" type="text" required placeholder="e.g. Save time on admin work" />
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Build Persona</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('personaBuilderForm');
+      if (!form) return;
+
+      function personaName(segment) {
+        const safeSegment = segment.trim() || 'Audience';
+        const first = safeSegment.charCodeAt(0) || 65;
+        const prefixes = ['Alex', 'Jordan', 'Taylor', 'Morgan', 'Casey', 'Riley', 'Avery', 'Cameron'];
+        const suffixes = ['Planner', 'Operator', 'Strategist', 'Builder', 'Leader', 'Coordinator', 'Advisor', 'Manager'];
+        return `${prefixes[first % prefixes.length]} ${suffixes[safeSegment.length % suffixes.length]}`;
+      }
+
+      function educationByAge(ageRange) {
+        const map = {
+          '18-24': 'Early career or university-level education',
+          '25-34': 'Undergraduate degree or practical specialist training',
+          '35-44': 'Degree plus substantial professional development',
+          '45-54': 'Established career expertise with ongoing executive learning',
+          '55-64': 'Senior professional experience with industry certifications',
+          '65+': 'Deep legacy expertise with long-term sector knowledge'
+        };
+        return map[ageRange] || 'Professional education and practical experience';
+      }
+
+      function incomeByIndustry(industry) {
+        const lower = industry.toLowerCase();
+        if (lower.includes('technology') || lower.includes('saas') || lower.includes('software')) return '$90k-$160k household or business-equivalent purchasing power';
+        if (lower.includes('health') || lower.includes('finance') || lower.includes('legal')) return '$80k-$150k with value placed on trust and expertise';
+        if (lower.includes('retail') || lower.includes('hospitality')) return '$50k-$95k with high sensitivity to ROI and cash flow';
+        if (lower.includes('manufacturing') || lower.includes('logistics')) return '$60k-$120k with emphasis on operational efficiency';
+        return '$60k-$110k with balanced focus on value, reliability, and results';
+      }
+
+      function buildPainPoints(industry, goal, productService) {
+        return [
+          `Current ${industry} workflows make it hard to achieve "${goal}" consistently.`,
+          `They worry that adopting ${productService} could disrupt teams unless the implementation is clearly guided.`,
+          `They need proof that time, budget, and stakeholder effort will produce measurable outcomes.`
+        ];
+      }
+
+      function buildGoals(goal, productService) {
+        return [
+          `Achieve the primary outcome: ${goal}.`,
+          `Adopt ${productService} in a way that feels low-risk and easy to justify internally.`,
+          'Improve efficiency or performance without adding unnecessary complexity.'
+        ];
+      }
+
+      function buildPsychographics(industry, segment) {
+        return {
+          values: [`Practical results in ${industry}`, 'Trustworthy expertise', 'Time efficiency', 'Low-friction decision making'],
+          interests: [`Industry trends affecting ${segment}`, 'Peer benchmarks', 'Tools that reduce manual work', 'Case studies and best practices'],
+          media: ['LinkedIn posts and newsletters', 'Targeted webinars', 'Peer recommendations', 'Search-driven research and comparison pages']
+        };
+      }
+
+      function buildBuyingBehavior(ageRange, industry) {
+        const researchStyle = ageRange === '18-24' || ageRange === '25-34' ? 'Independent digital research supported by peer reviews and product demos' : 'Structured evaluation with stakeholder input, references, and proof points';
+        return {
+          researchStyle,
+          decisionFactors: ['Ease of implementation', 'Credibility and trust', 'ROI clarity', `Fit for ${industry} workflows`],
+          preferredChannels: ['Email', 'LinkedIn', 'Webinars', 'Comparison pages', 'Short demos or consultations']
+        };
+      }
+
+      function buildJourney(productService, goal) {
+        return [
+          `Awareness: Notices a recurring problem tied to ${goal} and discovers educational content about ${productService}.`,
+          'Consideration: Compares options, reads proof points, and checks whether the solution fits budget and workflow realities.',
+          'Decision: Wants pricing clarity, onboarding confidence, and examples of successful implementation before committing.',
+          'Retention: Stays engaged when the provider shares results, proactive support, and next-step optimization guidance.'
+        ];
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const productService = AIPlatform.safeText(form.productService.value);
+        const industry = AIPlatform.safeText(form.industry.value);
+        const targetSegment = AIPlatform.safeText(form.targetSegment.value);
+        const ageRange = AIPlatform.safeText(form.ageRange.value);
+        const primaryGoal = AIPlatform.safeText(form.primaryGoal.value);
+
+        const name = personaName(targetSegment);
+        const psychographics = buildPsychographics(industry, targetSegment);
+        const painPoints = buildPainPoints(industry, primaryGoal, productService);
+        const goals = buildGoals(primaryGoal, productService);
+        const buyingBehavior = buildBuyingBehavior(ageRange, industry);
+        const journey = buildJourney(productService, primaryGoal);
+        const narrative = `${name} represents ${targetSegment.toLowerCase()} in ${industry}. Their day is shaped by balancing immediate operational demands with longer-term improvement goals. They actively look for practical tools that help them achieve ${primaryGoal.toLowerCase()} without creating extra complexity for their team.`;
+
+        const outputData = {
+          title: `AI Persona Builder: ${name}`,
+          sections: [
+            {
+              title: '1. Persona Overview',
+              content: `Name: ${name}\nSegment: ${targetSegment}\nIndustry: ${industry}\nPrimary Goal: ${primaryGoal}\nProduct / Service Fit: ${productService}\n\nDay in the Life:\n${narrative}`
+            },
+            {
+              title: '2. Demographics & Psychographics',
+              content: `Demographics:\n* Age Range: ${ageRange}\n* Education: ${educationByAge(ageRange)}\n* Income Bracket: ${incomeByIndustry(industry)}\n\nPsychographics:\n* Values: ${psychographics.values.join(', ')}\n* Interests: ${psychographics.interests.join(', ')}\n* Media Consumption: ${psychographics.media.join(', ')}`
+            },
+            {
+              title: '3. Pain Points & Goals',
+              content: `Pain Points:\n${painPoints.map(item => `* ${item}`).join('\n')}\n\nGoals:\n${goals.map(item => `* ${item}`).join('\n')}`
+            },
+            {
+              title: '4. Buying Behavior',
+              content: `Research Style: ${buyingBehavior.researchStyle}\nDecision Factors:\n${buyingBehavior.decisionFactors.map(item => `* ${item}`).join('\n')}\nPreferred Channels:\n${buyingBehavior.preferredChannels.map(item => `* ${item}`).join('\n')}`
+            },
+            {
+              title: '5. Customer Journey Map',
+              content: journey.map(item => `* ${item}`).join('\n')
+            },
+            {
+              title: '6. How to Use This Persona',
+              content: `Use this persona to shape messaging, landing pages, sales conversations, and onboarding flows for ${productService}. Focus on proof, ease of adoption, and the direct path to ${primaryGoal.toLowerCase()}. Mirror the persona's preferred channels and decision factors when planning campaigns or content.`
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

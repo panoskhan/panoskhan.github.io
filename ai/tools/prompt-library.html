@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Prompt Library | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Browse curated, ready-to-use AI prompts for content, coding, business, marketing, and analysis tasks." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/prompt-library.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AI Prompt Library | Panos Khan AI Platform" />
+  <meta property="og:description" content="Browse curated, ready-to-use AI prompts for content, coding, business, marketing, and analysis tasks." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/prompt-library.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/prompt-library.html#webapp",
+        "name": "AI Prompt Library",
+        "description": "Browse curated, ready-to-use AI prompts for content, coding, business, marketing, and analysis tasks.",
+        "url": "https://panoskhan.github.io/ai/tools/prompt-library.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preload and Stylesheets -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="prompt-library">
+  <div id="ai-tool-content">
+    <form id="promptLibraryForm">
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div class="ai-form-group">
+          <label for="category">Category</label>
+          <select id="category" name="category" required>
+            <option value="All">All</option>
+            <option value="Content Writing">Content Writing</option>
+            <option value="Code & Development">Code & Development</option>
+            <option value="Business Strategy">Business Strategy</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Data Analysis">Data Analysis</option>
+            <option value="Creative">Creative</option>
+          </select>
+        </div>
+        <div class="ai-form-group">
+          <label for="difficulty">Difficulty</label>
+          <select id="difficulty" name="difficulty" required>
+            <option value="All">All</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        </div>
+        <div class="ai-form-group">
+          <label for="keywords">Search Keywords</label>
+          <input id="keywords" name="keywords" type="text" placeholder="e.g. seo, sql, campaign" />
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Browse Prompt Library</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('promptLibraryForm');
+      if (!form) return;
+
+      const promptLibrary = [
+        { title: 'SEO Blog Post Outline', category: 'Content Writing', difficulty: 'Beginner', description: 'Create a search-friendly blog outline with reader intent in mind.', tags: ['seo', 'blog', 'outline'], prompt: 'You are an SEO content strategist. Create a blog post outline for [topic] targeting [audience]. Include H1, H2s, key questions to answer, internal linking ideas, and a meta description.' },
+        { title: 'Technical Documentation Writer', category: 'Content Writing', difficulty: 'Intermediate', description: 'Turn technical details into clear product or developer documentation.', tags: ['documentation', 'technical writing', 'docs'], prompt: 'Act as a technical documentation writer. Convert the following feature notes into structured documentation with overview, prerequisites, setup steps, troubleshooting, and FAQs: [notes].' },
+        { title: 'Code Review Assistant', category: 'Code & Development', difficulty: 'Intermediate', description: 'Review code for correctness, maintainability, and edge cases.', tags: ['code review', 'engineering', 'quality'], prompt: 'You are a senior engineer performing a code review. Review this code for bugs, performance risks, readability issues, and missing tests. Provide findings by severity and suggested fixes: [code].' },
+        { title: 'Bug Fix Analyzer', category: 'Code & Development', difficulty: 'Advanced', description: 'Diagnose root causes and propose a structured bug fix plan.', tags: ['bug fix', 'debugging', 'analysis'], prompt: 'Act as a debugging specialist. Analyze the bug report, identify likely root causes, propose diagnostic steps, and recommend a fix strategy with validation checks: [bug report].' },
+        { title: 'Business SWOT Analysis', category: 'Business Strategy', difficulty: 'Beginner', description: 'Generate a SWOT for a product, company, or initiative.', tags: ['swot', 'strategy', 'business'], prompt: 'You are a business analyst. Build a SWOT analysis for [company/product] in [market]. Include strengths, weaknesses, opportunities, threats, and strategic implications.' },
+        { title: 'Market Entry Strategy', category: 'Business Strategy', difficulty: 'Advanced', description: 'Plan market entry with segmentation, positioning, and execution steps.', tags: ['market entry', 'expansion', 'strategy'], prompt: 'Act as a go-to-market strategist. Create a market entry strategy for [product] entering [market]. Cover segmentation, differentiation, channel strategy, risks, and a 90-day execution roadmap.' },
+        { title: 'Social Media Calendar', category: 'Marketing', difficulty: 'Beginner', description: 'Build a simple social content schedule for campaigns and evergreen content.', tags: ['social media', 'calendar', 'content'], prompt: 'You are a social media manager. Create a 30-day content calendar for [brand] targeting [audience]. Include post themes, content formats, CTA ideas, and platform recommendations.' },
+        { title: 'Email Campaign Sequence', category: 'Marketing', difficulty: 'Intermediate', description: 'Write a multi-step email sequence for nurture or conversion.', tags: ['email', 'campaign', 'automation'], prompt: 'Act as an email marketer. Create a 5-email sequence for [offer] aimed at [audience]. Include subject lines, email goals, key messages, and CTAs for each email.' },
+        { title: 'Data Visualization Advisor', category: 'Data Analysis', difficulty: 'Intermediate', description: 'Recommend the right charts and narrative for data storytelling.', tags: ['data viz', 'charts', 'analytics'], prompt: 'You are a data visualization advisor. Recommend the best charts and presentation flow for this dataset and objective: [dataset description]. Explain why each choice fits the audience.' },
+        { title: 'Competitive Analysis Framework', category: 'Data Analysis', difficulty: 'Advanced', description: 'Compare competitors using a repeatable analysis structure.', tags: ['competitive analysis', 'research', 'benchmarking'], prompt: 'Act as a competitive intelligence analyst. Build a comparison framework for [company] versus [competitors]. Include positioning, pricing, messaging, strengths, gaps, and strategic recommendations.' },
+        { title: 'Creative Story Starter', category: 'Creative', difficulty: 'Beginner', description: 'Kickstart stories with a premise, tension, and character seed.', tags: ['storytelling', 'creative writing', 'fiction'], prompt: 'You are a creative writing coach. Generate three story starters for the theme [theme]. Each should include a protagonist, conflict, setting, and opening hook.' },
+        { title: 'Brand Voice Guide Generator', category: 'Creative', difficulty: 'Intermediate', description: 'Define a consistent tone and messaging style for a brand.', tags: ['brand voice', 'messaging', 'creative'], prompt: 'Act as a brand strategist. Create a brand voice guide for [brand]. Include tone attributes, do/don\'t language examples, messaging pillars, and sample copy snippets.' },
+        { title: 'Product Description Writer', category: 'Content Writing', difficulty: 'Beginner', description: 'Write product descriptions that balance features and benefits.', tags: ['product copy', 'ecommerce', 'descriptions'], prompt: 'You are an ecommerce copywriter. Write three product description variations for [product], highlighting benefits, differentiators, and a persuasive CTA.' },
+        { title: 'API Documentation Generator', category: 'Code & Development', difficulty: 'Intermediate', description: 'Turn endpoints and parameters into readable API docs.', tags: ['api', 'documentation', 'developer experience'], prompt: 'Act as an API documentation specialist. Create endpoint documentation for the following API details: [details]. Include request format, parameters, sample responses, errors, and usage notes.' },
+        { title: 'Risk Assessment Report', category: 'Business Strategy', difficulty: 'Intermediate', description: 'Identify operational or strategic risks with mitigation actions.', tags: ['risk', 'operations', 'governance'], prompt: 'You are a risk analyst. Produce a risk assessment report for [project/initiative]. Include top risks, likelihood, impact, mitigation actions, and monitoring indicators.' },
+        { title: 'A/B Test Hypothesis Generator', category: 'Marketing', difficulty: 'Advanced', description: 'Generate experiment ideas with rationale and success metrics.', tags: ['a/b testing', 'conversion', 'experiments'], prompt: 'Act as a CRO strategist. Generate 10 A/B test hypotheses for [page/campaign]. For each, include the tested element, rationale, expected outcome, and measurement plan.' },
+        { title: 'SQL Query Optimizer', category: 'Code & Development', difficulty: 'Advanced', description: 'Improve SQL performance with indexing and rewrite suggestions.', tags: ['sql', 'performance', 'database'], prompt: 'You are a database performance specialist. Review this SQL query and schema context, then suggest optimizations, indexing ideas, and an improved version: [query and context].' },
+        { title: 'Executive Summary Writer', category: 'Business Strategy', difficulty: 'Intermediate', description: 'Condense long reports into clear executive-level summaries.', tags: ['executive summary', 'business writing', 'reports'], prompt: 'Act as an executive communications specialist. Summarize this report for senior leadership. Highlight context, key findings, implications, and recommended next steps: [report text].' },
+        { title: 'Landing Page Copy', category: 'Marketing', difficulty: 'Intermediate', description: 'Draft conversion-focused landing page messaging.', tags: ['landing page', 'copywriting', 'conversion'], prompt: 'You are a landing page copywriter. Create hero copy, supporting sections, proof points, objection handling, and CTA copy for [offer] targeting [audience].' },
+        { title: 'User Persona Builder', category: 'Marketing', difficulty: 'Beginner', description: 'Define audience needs, motivations, and decision drivers.', tags: ['persona', 'audience research', 'marketing'], prompt: 'Act as a customer researcher. Build a user persona for [segment] interested in [product]. Include demographics, goals, frustrations, buying triggers, channels, and messaging recommendations.' },
+        { title: 'Content Refresh Planner', category: 'Content Writing', difficulty: 'Intermediate', description: 'Improve existing content with structure and SEO updates.', tags: ['content refresh', 'seo', 'optimization'], prompt: 'You are a content optimization specialist. Review this existing article and provide a refresh plan with updated headings, missing topics, SERP intent alignment, and CTA improvements: [article].' },
+        { title: 'Sales Objection Handler', category: 'Business Strategy', difficulty: 'Intermediate', description: 'Prepare answers for common sales objections with proof-backed responses.', tags: ['sales', 'objections', 'enablement'], prompt: 'Act as a sales enablement coach. List the most likely objections for [offer], explain what each objection means, and draft confident response frameworks with proof points.' }
+      ];
+
+      function normalizeCategory(value) {
+        return value === 'Content' ? 'Content Writing' : value === 'Code' ? 'Code & Development' : value === 'Business' ? 'Business Strategy' : value === 'Analysis' ? 'Data Analysis' : value;
+      }
+
+      function formatPromptItem(item, index) {
+        return `### ${index + 1}. ${item.title}\nCategory: ${item.category}\nDifficulty: ${item.difficulty}\nDescription: ${item.description}\nPrompt:\n${item.prompt}\nUsage Tips:\n* Replace bracketed placeholders with your real context.\n* Add success criteria and constraints before running.\n* Save strong outputs as reusable templates.`;
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const category = AIPlatform.safeText(form.category.value);
+        const difficulty = AIPlatform.safeText(form.difficulty.value);
+        const keywords = AIPlatform.safeText(form.keywords.value).toLowerCase().trim();
+
+        const matches = promptLibrary.filter((item) => {
+          const categoryMatch = category === 'All' || item.category === normalizeCategory(category);
+          const difficultyMatch = difficulty === 'All' || item.difficulty === difficulty;
+          const keywordMatch = !keywords || [item.title, item.description, item.tags.join(' ')].join(' ').toLowerCase().includes(keywords);
+          return categoryMatch && difficultyMatch && keywordMatch;
+        });
+
+        const outputData = {
+          title: 'AI Prompt Library Results',
+          sections: [
+            {
+              title: '1. Results Summary',
+              content: `${matches.length} prompts found for Category: ${category} | Difficulty: ${difficulty}${keywords ? ` | Keywords: ${keywords}` : ''}`
+            },
+            {
+              title: '2. Matching Prompts',
+              content: matches.length ? matches.map(formatPromptItem).join('\n\n') : 'No prompts matched your filters. Try selecting All or using broader keywords.'
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

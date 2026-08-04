@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Canonical Tag Checker | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Validate canonical tag implementation with best practices analysis and common issue detection to improve indexing consistency." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/canonical-checker.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Canonical Tag Checker | Panos Khan AI Platform" />
+  <meta property="og:description" content="Validate canonical tag implementation with best practices analysis and common issue detection to improve indexing consistency." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/canonical-checker.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/canonical-checker.html#webapp",
+        "name": "Canonical Tag Checker",
+        "description": "Validate canonical tag implementation with best practices analysis and common issue detection to improve indexing consistency.",
+        "url": "https://panoskhan.github.io/ai/tools/canonical-checker.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preload and Stylesheets -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="canonical-checker">
+  <div id="ai-tool-content">
+    <form id="canonicalForm">
+      <div class="ai-form-group">
+        <label for="pageUrl">Page URL</label>
+        <input id="pageUrl" name="pageUrl" type="url" required placeholder="https://example.com/page/" />
+      </div>
+      <div class="ai-form-group">
+        <label for="canonicalUrl">Canonical URL</label>
+        <input id="canonicalUrl" name="canonicalUrl" type="url" required placeholder="https://example.com/page/" />
+      </div>
+      <div class="ai-form-group">
+        <label for="isIndexed">Is this URL indexed?</label>
+        <select id="isIndexed" name="isIndexed" required>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Unknown">Unknown</option>
+        </select>
+      </div>
+      <div class="ai-form-group">
+        <label for="redirectChain">Is there a redirect chain?</label>
+        <select id="redirectChain" name="redirectChain" required>
+          <option value="No">No</option>
+          <option value="301">301</option>
+          <option value="302">302</option>
+          <option value="Multiple">Multiple</option>
+        </select>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Analyze Canonical</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('canonicalForm');
+      if (!form) return;
+
+      const normalize = (value) => value.replace(/\/$/, '');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const pageUrl = AIPlatform.safeText(form.pageUrl.value);
+        const canonicalUrl = AIPlatform.safeText(form.canonicalUrl.value);
+        const isIndexed = AIPlatform.safeText(form.isIndexed.value);
+        const redirectChain = AIPlatform.safeText(form.redirectChain.value);
+
+        const issues = [];
+        const recommendations = [];
+        let score = 100;
+
+        const page = new URL(pageUrl);
+        const canonical = new URL(canonicalUrl);
+        const normalizedPage = normalize(pageUrl);
+        const normalizedCanonical = normalize(canonicalUrl);
+
+        if (normalizedPage === normalizedCanonical) {
+          recommendations.push('Self-referencing canonical detected, which is the recommended default for canonical consistency.');
+        } else {
+          issues.push('Canonical URL does not self-reference the current page.');
+          recommendations.push('Use a self-referencing canonical unless this page intentionally consolidates to another equivalent URL.');
+          score -= 20;
+        }
+
+        if (page.hostname !== canonical.hostname) {
+          issues.push('Canonical points to a different domain.');
+          recommendations.push('Cross-domain canonicals should only be used when duplicate content is intentionally consolidated across owned properties.');
+          score -= 20;
+        }
+
+        if (page.protocol !== canonical.protocol) {
+          issues.push('HTTP and HTTPS protocols do not match.');
+          recommendations.push('Align the canonical protocol with the preferred live version, usually HTTPS.');
+          score -= 30;
+        }
+
+        if ((pageUrl.endsWith('/')) !== (canonicalUrl.endsWith('/'))) {
+          issues.push('Trailing slash usage is inconsistent between page and canonical URL.');
+          recommendations.push('Standardize trailing slash handling across internal links, canonicals, and redirects.');
+          score -= 10;
+        }
+
+        if (redirectChain === '301') {
+          issues.push('Canonical target requires a 301 redirect hop.');
+          recommendations.push('Point the canonical directly to the final destination URL to remove redirect reliance.');
+          score -= 10;
+        } else if (redirectChain === '302') {
+          issues.push('Canonical target relies on a temporary 302 redirect.');
+          recommendations.push('Avoid temporary redirects in canonical targets because they weaken canonical certainty.');
+          score -= 20;
+        } else if (redirectChain === 'Multiple') {
+          issues.push('Canonical target appears to go through multiple redirects.');
+          recommendations.push('Reduce redirect chains and point directly to the final canonical destination.');
+          score -= 25;
+        }
+
+        if (isIndexed === 'No') {
+          issues.push('The page is not indexed, which may signal conflicting canonical or crawl directives.');
+          recommendations.push('Inspect robots rules, noindex directives, and internal linking to confirm why the page is excluded.');
+          score -= 15;
+        } else if (isIndexed === 'Unknown') {
+          recommendations.push('Verify indexed status in Google Search Console to confirm the canonical is being respected.');
+        }
+
+        score = Math.max(0, score);
+        const analysis = [
+          `Canonical health score: ${score}/100`,
+          `Page URL: ${pageUrl}`,
+          `Canonical URL: ${canonicalUrl}`,
+          `Indexed status: ${isIndexed}`,
+          `Redirect chain: ${redirectChain}`
+        ].join('\n');
+
+        const issueSummary = issues.length ? issues.map((item) => `- ${item}`).join('\n') : 'No major canonical issues detected.';
+        const recommendationSummary = recommendations.length ? recommendations.map((item) => `- ${item}`).join('\n') : 'Canonical implementation follows core best practices.';
+        const code = `<link rel="canonical" href="${canonicalUrl}" />`;
+
+        const outputData = {
+          title: 'Canonical Tag Analysis',
+          sections: [
+            {
+              title: '1. Canonical Analysis',
+              content: analysis
+            },
+            {
+              title: '2. Issues Found',
+              content: issueSummary
+            },
+            {
+              title: '3. Recommendations',
+              content: recommendationSummary
+            },
+            {
+              title: '4. Correct Implementation Code',
+              content: code
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

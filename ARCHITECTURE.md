@@ -186,10 +186,11 @@ Designed so the platform can hold 100+ tools, articles, projects, and downloads 
 Roadmap after this milestone:
 
 - **v2.0** Shared runtime foundations + Website Health migration ✅
-- **v2.5** Device Health primitives on the same engine
-- **v3.0** Project Health + AI Workflow Health on the same report contract
-- **v3.5** Knowledge Center (research, tutorials, case studies)
-- **v4.0** Workspace history and optional browser-local report tracking
+- **v3.0** Knowledge Platform + AI Tools expansion (22 new tools) ✅
+- **v3.5** Downloads library expansion + Labs content
+- **v4.0** Device Health + Project Health + AI Workflow Health on the same engine
+- **v4.5** Knowledge Center (research, tutorials, case studies)
+- **v5.0** Panos Khan Console + Workspace history
 
 ## Quality gates
 

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JSON Validator | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Validate JSON syntax, inspect structure, detect duplicate keys, and surface detailed error guidance with line and column context." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/json-validator.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="JSON Validator | Panos Khan AI Platform" />
+  <meta property="og:description" content="Validate JSON syntax, inspect structure, detect duplicate keys, and surface detailed error guidance with line and column context." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/json-validator.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/json-validator.html#webapp",
+        "name": "JSON Validator",
+        "description": "Validate JSON syntax, inspect structure, detect duplicate keys, and surface detailed error guidance with line and column context.",
+        "url": "https://panoskhan.github.io/ai/tools/json-validator.html",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="json-validator">
+  <div id="ai-tool-content">
+    <form id="jsonValidatorForm">
+      <div class="ai-form-group">
+        <label for="jsonInput">JSON Input</label>
+        <textarea id="jsonInput" name="jsonInput" rows="14" required placeholder="Paste JSON here" style="min-height: 260px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;"></textarea>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Validate JSON</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('jsonValidatorForm');
+      if (!form) return;
+
+      const safe = (value) => AIPlatform.safeText(String(value || ''));
+      const escape = (value) => AIPlatform.escapeHtml(String(value || ''));
+      const computeLineColumn = (text, position) => {
+        const safePosition = Math.max(0, Math.min(position, text.length));
+        const before = text.slice(0, safePosition).split('\n');
+        return { line: before.length, column: before[before.length - 1].length + 1 };
+      };
+      const extractErrorPosition = (error, text) => {
+        const message = error && error.message ? error.message : '';
+        const match = message.match(/position\s(\d+)/i);
+        if (!match) return null;
+        return computeLineColumn(text, Number(match[1]));
+      };
+      const getProblemSnippet = (text, lineNumber) => {
+        const lines = text.split('\n');
+        const start = Math.max(0, lineNumber - 2);
+        const end = Math.min(lines.length, lineNumber + 1);
+        return lines.slice(start, end).map((line, index) => {
+          const actualLine = start + index + 1;
+          return `${actualLine}: ${escape(line)}`;
+        }).join('\n');
+      };
+      const analyzeStructure = (value) => {
+        const counts = { objects: 0, arrays: 0, strings: 0, numbers: 0, booleans: 0, nulls: 0, keys: 0, maxDepth: 0 };
+        const visit = (node, depth) => {
+          counts.maxDepth = Math.max(counts.maxDepth, depth);
+          if (node === null) {
+            counts.nulls += 1;
+            return;
+          }
+          if (Array.isArray(node)) {
+            counts.arrays += 1;
+            node.forEach((item) => visit(item, depth + 1));
+            return;
+          }
+          if (typeof node === 'object') {
+            counts.objects += 1;
+            Object.keys(node).forEach((key) => {
+              counts.keys += 1;
+              visit(node[key], depth + 1);
+            });
+            return;
+          }
+          if (typeof node === 'string') counts.strings += 1;
+          else if (typeof node === 'number') counts.numbers += 1;
+          else if (typeof node === 'boolean') counts.booleans += 1;
+        };
+        visit(value, 1);
+        return counts;
+      };
+      const findDuplicateKeys = (text) => {
+        const duplicates = [];
+        const stack = [];
+        let i = 0;
+        let inString = false;
+        let escaped = false;
+
+        while (i < text.length) {
+          const char = text[i];
+          if (inString) {
+            if (escaped) {
+              escaped = false;
+            } else if (char === '\\') {
+              escaped = true;
+            } else if (char === '"') {
+              inString = false;
+            }
+            i += 1;
+            continue;
+          }
+
+          if (char === '"') {
+            let j = i + 1;
+            let key = '';
+            let keyEscaped = false;
+            while (j < text.length) {
+              const keyChar = text[j];
+              if (keyEscaped) {
+                key += keyChar;
+                keyEscaped = false;
+              } else if (keyChar === '\\') {
+                key += keyChar;
+                keyEscaped = true;
+              } else if (keyChar === '"') {
+                break;
+              } else {
+                key += keyChar;
+              }
+              j += 1;
+            }
+
+            if (j < text.length) {
+              let k = j + 1;
+              while (k < text.length && /\s/.test(text[k])) k += 1;
+              if (text[k] === ':' && stack.length && stack[stack.length - 1].type === 'object') {
+                const context = stack[stack.length - 1];
+                const unescapedKey = key.replace(/\\"/g, '"');
+                if (context.keys.has(unescapedKey)) {
+                  const position = computeLineColumn(text, i);
+                  duplicates.push(`${unescapedKey} (line ${position.line}, column ${position.column})`);
+                } else {
+                  context.keys.add(unescapedKey);
+                }
+              }
+            }
+
+            inString = true;
+            i += 1;
+            continue;
+          }
+
+          if (char === '{') {
+            stack.push({ type: 'object', keys: new Set() });
+          } else if (char === '[') {
+            stack.push({ type: 'array' });
+          } else if (char === '}' || char === ']') {
+            stack.pop();
+          }
+          i += 1;
+        }
+
+        return duplicates;
+      };
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const rawJson = form.jsonInput.value;
+        let outputData;
+
+        try {
+          const parsed = JSON.parse(rawJson);
+          const counts = analyzeStructure(parsed);
+          const duplicates = findDuplicateKeys(rawJson);
+          const sizeBytes = new Blob([rawJson]).size;
+
+          outputData = {
+            title: 'JSON Validation Report',
+            sections: [
+              {
+                title: '1. Validation Result',
+                content: 'Valid ✓\nThe JSON input is syntactically correct and was parsed successfully.'
+              },
+              {
+                title: '2. Error Details',
+                content: duplicates.length
+                  ? `Duplicate keys detected (later values override earlier ones in most parsers):\n${duplicates.map((item) => `- ${safe(item)}`).join('\n')}`
+                  : 'No syntax errors found and no duplicate keys were detected in the raw input scan.'
+              },
+              {
+                title: '3. Structure Analysis',
+                content: `Total keys: ${counts.keys}\nMax nesting depth: ${counts.maxDepth}\nObjects: ${counts.objects}\nArrays: ${counts.arrays}\nStrings: ${counts.strings}\nNumbers: ${counts.numbers}\nBooleans: ${counts.booleans}\nNull values: ${counts.nulls}\nEstimated size: ${sizeBytes} bytes`
+              },
+              {
+                title: '4. Formatted JSON',
+                content: JSON.stringify(parsed, null, 2)
+              }
+            ]
+          };
+        } catch (error) {
+          const location = extractErrorPosition(error, rawJson);
+          const locationText = location ? `Line ${location.line}, column ${location.column}` : 'Exact line and column could not be determined from this runtime.';
+          const snippet = location ? getProblemSnippet(rawJson, location.line) : 'No local snippet available.';
+          outputData = {
+            title: 'JSON Validation Report',
+            sections: [
+              {
+                title: '1. Validation Result',
+                content: `Invalid ✗\n${safe(error && error.message ? error.message : 'Unknown JSON parsing error.')}`
+              },
+              {
+                title: '2. Error Details',
+                content: `Approximate location: ${safe(locationText)}\nSuggested fix: check commas, quotes, and trailing characters near the highlighted area.\n\nProblematic area:\n${snippet}`
+              },
+              {
+                title: '3. Structure Analysis',
+                content: 'Structure analysis is unavailable until the JSON is valid.'
+              },
+              {
+                title: '4. Formatted JSON',
+                content: 'Pretty-printed output is unavailable because the JSON could not be parsed.'
+              }
+            ]
+          };
+        }
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

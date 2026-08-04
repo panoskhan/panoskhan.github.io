@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UUID Generator | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Generate RFC 4122 compliant UUIDs (v4) instantly. Create single or bulk UUIDs for development, testing, and integration workflows daily." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/uuid-generator.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="UUID Generator | Panos Khan AI Platform" />
+  <meta property="og:description" content="Generate RFC 4122 compliant UUIDs (v4) instantly. Create single or bulk UUIDs for development, testing, and integration workflows daily." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/uuid-generator.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/uuid-generator.html#webapp",
+        "name": "UUID Generator",
+        "description": "Generate RFC 4122 compliant UUIDs (v4) instantly. Create single or bulk UUIDs for development, testing, and integration workflows daily.",
+        "url": "https://panoskhan.github.io/ai/tools/uuid-generator.html",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="uuid-generator">
+  <div id="ai-tool-content">
+    <form id="uuidForm">
+      <div class="ai-form-group">
+        <label for="quantity">Quantity</label>
+        <select id="quantity" name="quantity">
+          <option value="1">1</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </div>
+      <div class="ai-form-group">
+        <label for="format">Format</label>
+        <select id="format" name="format">
+          <option value="standard">Standard</option>
+          <option value="uppercase">Uppercase</option>
+          <option value="nodashes">No Dashes</option>
+          <option value="braces">Braces</option>
+        </select>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Generate UUIDs</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('uuidForm');
+      if (!form) return;
+
+      function fallbackUuid() {
+        var buf = new Uint8Array(16);
+        window.crypto.getRandomValues(buf);
+        buf[6] = (buf[6] & 0x0f) | 0x40;
+        buf[8] = (buf[8] & 0x3f) | 0x80;
+        var hex = Array.from(buf, function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+        return hex.slice(0,8) + '-' + hex.slice(8,12) + '-' + hex.slice(12,16) + '-' + hex.slice(16,20) + '-' + hex.slice(20);
+      }
+
+      function generateUuid() {
+        if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+          return window.crypto.randomUUID();
+        }
+        return fallbackUuid();
+      }
+
+      function applyFormat(uuid, format) {
+        if (format === 'uppercase') return uuid.toUpperCase();
+        if (format === 'nodashes') return uuid.replace(/-/g, '');
+        if (format === 'braces') return `{${uuid}}`;
+        return uuid;
+      }
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const quantity = Number(form.elements.quantity.value);
+        const format = form.elements.format.value;
+        const uuids = Array.from({ length: quantity }, () => applyFormat(generateUuid(), format));
+
+        const outputData = {
+          title: AIPlatform.safeText('UUID Generator'),
+          sections: [
+            {
+              title: '1. Generated UUIDs',
+              content: uuids.map((uuid, index) => `${index + 1}. ${uuid}`).join('\n')
+            },
+            {
+              title: '2. UUID Format',
+              content: 'These values are UUID v4 identifiers. Version 4 UUIDs use random data and follow the RFC 4122 layout with a fixed version nibble and variant bits.'
+            },
+            {
+              title: '3. Copy All',
+              content: uuids.join('\n')
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

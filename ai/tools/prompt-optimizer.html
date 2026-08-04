@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Prompt Optimizer | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Optimize AI prompts for clarity, specificity, and effectiveness with actionable improvement suggestions for better outputs." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/prompt-optimizer.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AI Prompt Optimizer | Panos Khan AI Platform" />
+  <meta property="og:description" content="Optimize AI prompts for clarity, specificity, and effectiveness with actionable improvement suggestions for better outputs." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/prompt-optimizer.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/prompt-optimizer.html#webapp",
+        "name": "AI Prompt Optimizer",
+        "description": "Optimize AI prompts for clarity, specificity, and effectiveness with actionable improvement suggestions.",
+        "url": "https://panoskhan.github.io/ai/tools/prompt-optimizer.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preload and Stylesheets -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="prompt-optimizer">
+  <div id="ai-tool-content">
+    <form id="promptOptimizerForm">
+      <div class="ai-form-group">
+        <label for="originalPrompt">Original Prompt</label>
+        <textarea id="originalPrompt" name="originalPrompt" required placeholder="Paste the prompt you want to improve"></textarea>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div class="ai-form-group">
+          <label for="targetModel">Target AI Model</label>
+          <select id="targetModel" name="targetModel" required>
+            <option value="GPT-4">GPT-4</option>
+            <option value="Claude">Claude</option>
+            <option value="Gemini">Gemini</option>
+            <option value="General">General</option>
+          </select>
+        </div>
+        <div class="ai-form-group">
+          <label for="useCase">Use Case</label>
+          <select id="useCase" name="useCase" required>
+            <option value="Content Writing">Content Writing</option>
+            <option value="Code Generation">Code Generation</option>
+            <option value="Analysis">Analysis</option>
+            <option value="Creative">Creative</option>
+            <option value="Business">Business</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Optimize Prompt</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('promptOptimizerForm');
+      if (!form) return;
+
+      function sentenceCase(value) {
+        return value ? value.charAt(0).toUpperCase() + value.slice(1) : value;
+      }
+
+      function getRole(useCase, targetModel) {
+        const roles = {
+          'Content Writing': 'You are an expert content strategist and editor',
+          'Code Generation': 'You are a senior software engineer and code reviewer',
+          'Analysis': 'You are a detail-oriented research and analysis specialist',
+          'Creative': 'You are a creative director focused on originality and clarity',
+          'Business': 'You are a strategic business consultant focused on practical recommendations'
+        };
+        const modelNote = targetModel === 'General' ? '' : ` working with ${targetModel}-style expectations`;
+        return `${roles[useCase] || 'You are an expert assistant'}${modelNote}.`;
+      }
+
+      function getFormatInstruction(useCase) {
+        const formats = {
+          'Content Writing': 'Format the response as a structured outline followed by final copy suggestions.',
+          'Code Generation': 'Format the response as a numbered solution plan, then provide the code, then list assumptions.',
+          'Analysis': 'Format the response as a concise summary, key findings list, and recommended next steps.',
+          'Creative': 'Format the response as clearly labeled ideas with a final recommended direction.',
+          'Business': 'Format the response as an executive summary, bullet recommendations, and measurable action items.'
+        };
+        return formats[useCase] || 'Format the response as a clear list with labeled sections.';
+      }
+
+      function getConstraints(useCase) {
+        const constraints = {
+          'Content Writing': 'Keep the response specific, avoid generic filler, and limit repetition.',
+          'Code Generation': 'Avoid unnecessary abstraction, explain trade-offs briefly, and must include edge cases.',
+          'Analysis': 'Do not make unsupported claims, use exact reasoning, and limit speculation.',
+          'Creative': 'Avoid clichés, keep ideas distinct, and must maintain a consistent tone.',
+          'Business': 'Do not use vague advice, keep recommendations actionable, and limit assumptions.'
+        };
+        return constraints[useCase] || 'Keep the response specific, actionable, and easy to scan.';
+      }
+
+      function analyzePrompt(prompt) {
+        const lower = prompt.toLowerCase();
+        const specificityWords = ['specific', 'exactly', 'example', 'examples', 'step-by-step', 'detailed', 'bullet', 'structured'];
+        const roleIndicators = ['you are', 'act as', 'behave as', 'serve as'];
+        const formatIndicators = ['format', 'list', 'table', 'json', 'bullet', 'markdown', 'sections'];
+        const constraintIndicators = ["don't", 'avoid', 'must', 'limit', 'only', 'without', 'at most'];
+        const hasNumbers = /\d/.test(prompt);
+        const hasSpecificity = specificityWords.some(word => lower.includes(word)) || hasNumbers;
+        const hasRole = roleIndicators.some(word => lower.includes(word));
+        const hasFormat = formatIndicators.some(word => lower.includes(word));
+        const hasConstraints = constraintIndicators.some(word => lower.includes(word));
+        const isShort = prompt.trim().length < 50;
+
+        let score = 20;
+        if (!isShort) score += 15;
+        if (hasSpecificity) score += 25;
+        if (hasRole) score += 15;
+        if (hasFormat) score += 15;
+        if (hasConstraints) score += 10;
+        if (prompt.trim().split(/\s+/).length >= 20) score += 10;
+        score = Math.max(0, Math.min(100, score));
+
+        const positives = [];
+        const missing = [];
+
+        if (!isShort) {
+          positives.push('The prompt includes enough context to work with.');
+        } else {
+          missing.push('Add more context because prompts under 50 characters often produce vague outputs.');
+        }
+        if (hasSpecificity) {
+          positives.push('It includes specificity signals such as numbers, examples, or explicit detail cues.');
+        } else {
+          missing.push('Add specificity with examples, exact requirements, or measurable targets.');
+        }
+        if (hasRole) {
+          positives.push('A role or perspective is assigned, which helps guide the model.');
+        } else {
+          missing.push('Assign a role like “You are…” or “Act as…” to improve consistency.');
+        }
+        if (hasFormat) {
+          positives.push('Output formatting instructions are present.');
+        } else {
+          missing.push('Specify the desired output format such as a list, table, JSON, or sections.');
+        }
+        if (hasConstraints) {
+          positives.push('The prompt includes constraints that narrow the response.');
+        } else {
+          missing.push('Add constraints such as what to avoid, what must be included, or response limits.');
+        }
+
+        return { score, positives, missing, isShort, hasRole, hasFormat, hasConstraints };
+      }
+
+      function buildOptimizedPrompt(prompt, targetModel, useCase, analysis) {
+        const parts = [];
+        if (!analysis.hasRole) parts.push(getRole(useCase, targetModel));
+        parts.push(prompt.trim());
+        if (!analysis.hasFormat) parts.push(getFormatInstruction(useCase));
+        if (!analysis.hasConstraints) parts.push(getConstraints(useCase));
+        parts.push('Be specific, use concrete examples where helpful, and make the result immediately usable.');
+        return parts.join('\n\n');
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const originalPrompt = AIPlatform.safeText(form.originalPrompt.value);
+        const targetModel = AIPlatform.safeText(form.targetModel.value);
+        const useCase = AIPlatform.safeText(form.useCase.value);
+        const analysis = analyzePrompt(originalPrompt);
+        const optimizedPrompt = buildOptimizedPrompt(originalPrompt, targetModel, useCase, analysis);
+
+        const tips = [
+          analysis.isShort ? 'Expand the brief with audience, objective, and context.' : 'Keep the prompt length purposeful and avoid unrelated details.',
+          'Include success criteria so the model knows what a strong answer looks like.',
+          `For ${sentenceCase(useCase)}, request a response structure before the content itself.`,
+          `Tailor wording for ${targetModel} by being explicit about output style and completeness.`
+        ];
+
+        const outputData = {
+          title: `AI Prompt Optimizer Report: ${useCase}`,
+          sections: [
+            {
+              title: '1. Prompt Score',
+              content: `${analysis.score}/100`
+            },
+            {
+              title: '2. Analysis',
+              content: `What's good:\n${analysis.positives.length ? analysis.positives.map(item => `* ${item}`).join('\n') : '* The current prompt needs more structure.'}\n\nWhat's missing:\n${analysis.missing.length ? analysis.missing.map(item => `* ${item}`).join('\n') : '* No critical gaps detected.'}`
+            },
+            {
+              title: '3. Optimized Prompt',
+              content: optimizedPrompt
+            },
+            {
+              title: '4. Improvement Tips',
+              content: tips.map(item => `* ${item}`).join('\n')
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

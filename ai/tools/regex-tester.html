@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Regex Tester | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Test regular expressions against sample text with match highlighting, capture groups, and flag support for faster debugging and validation." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/regex-tester.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Regex Tester | Panos Khan AI Platform" />
+  <meta property="og:description" content="Test regular expressions against sample text with match highlighting, capture groups, and flag support for faster debugging and validation." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/regex-tester.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/regex-tester.html#webapp",
+        "name": "Regex Tester",
+        "description": "Test regular expressions against sample text with match highlighting, capture groups, and flag support for faster debugging and validation.",
+        "url": "https://panoskhan.github.io/ai/tools/regex-tester.html",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="regex-tester">
+  <div id="ai-tool-content">
+    <form id="regexTesterForm">
+      <div class="ai-form-group">
+        <label for="regexPattern">Regex Pattern</label>
+        <input id="regexPattern" name="regexPattern" type="text" required placeholder="e.g. \d{3}-\d{4}" />
+      </div>
+      <div class="ai-form-group">
+        <label for="regexFlags">Flags</label>
+        <input id="regexFlags" name="regexFlags" type="text" placeholder="gi" value="g" />
+      </div>
+      <div class="ai-form-group">
+        <label for="testString">Test String</label>
+        <textarea id="testString" name="testString" rows="12" required placeholder="Paste or type the sample text you want to test." style="min-height: 220px;"></textarea>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Test Pattern</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('regexTesterForm');
+      if (!form) return;
+
+      const safe = (value) => AIPlatform.safeText(String(value || ''));
+      const preserve = (value) => AIPlatform.escapeHtml(String(value || ''));
+      const flagDetails = {
+        g: 'Global search across all matches.',
+        i: 'Case-insensitive matching.',
+        m: 'Multiline mode for ^ and $.',
+        s: 'Dot matches newline characters.',
+        u: 'Unicode-aware matching.',
+        y: 'Sticky matching from lastIndex.',
+        d: 'Include match indices when supported.',
+        v: 'Unicode sets mode when supported.'
+      };
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const patternValue = form.regexPattern.value;
+        const flagsValue = form.regexFlags.value.trim() || 'g';
+        const testStringValue = form.testString.value;
+        let outputData;
+
+        try {
+          const regex = new RegExp(patternValue, flagsValue);
+          const effectiveFlags = regex.flags.includes('g') ? regex.flags : `${regex.flags}g`;
+          const scanRegex = new RegExp(regex.source, effectiveFlags);
+          const matches = Array.from(testStringValue.matchAll(scanRegex));
+          const matchLines = [];
+          const captureLines = [];
+
+          if (matches.length) {
+            matches.forEach((match, index) => {
+              matchLines.push(`${index + 1}. Match at index ${match.index}: \`${preserve(match[0])}\``);
+              if (match.length > 1) {
+                const groups = match.slice(1).map((group, groupIndex) => `   - Group ${groupIndex + 1}: ${group === undefined ? 'undefined' : `\`${preserve(group)}\``}`);
+                captureLines.push(`Match ${index + 1}:`);
+                captureLines.push(...groups);
+              }
+            });
+          } else {
+            matchLines.push('No matches found in the provided test string.');
+          }
+
+          const uniqueFlags = Array.from(new Set(regex.flags.split('')));
+          const explainedFlags = uniqueFlags.length
+            ? uniqueFlags.map((flag) => `- ${flag}: ${flagDetails[flag] || 'Engine-specific behavior.'}`).join('\n')
+            : 'No flags enabled.';
+
+          const complexityHints = [];
+          if (/(\*|\+|\{\d+,?\d*\})/.test(patternValue)) complexityHints.push('Uses quantifiers that can broaden match scope.');
+          if (/\((?!\?:)/.test(patternValue)) complexityHints.push('Contains capture groups that return subgroup data.');
+          if (/(\|)/.test(patternValue)) complexityHints.push('Includes alternation, which can increase branch complexity.');
+          if (/(\^|\$)/.test(patternValue)) complexityHints.push('Uses anchors to target exact boundaries.');
+          if (!complexityHints.length) complexityHints.push('Pattern is structurally simple and should be easy to reason about.');
+
+          const commonPatterns = [
+            '* Email: `^[\\w.%+-]+@[\\w.-]+\\.[A-Za-z]{2,}$`',
+            '* Phone: `^(?:\\+?\\d{1,3}[ -]?)?(?:\\(?\\d{2,4}\\)?[ -]?)?\\d{3,4}[ -]?\\d{4}$`',
+            '* URL: `https?:\\/\\/(?:www\\.)?[\\w.-]+(?:\\/[\\w./?%&=-]*)?`',
+            '* Date (YYYY-MM-DD): `^\\d{4}-\\d{2}-\\d{2}$`'
+          ].join('\n');
+
+          outputData = {
+            title: AIPlatform.safeText(`Regex Test Results for ${patternValue || 'Pattern'}`),
+            sections: [
+              {
+                title: '1. Match Results',
+                content: `Pattern status: valid.\nTotal matches found: ${matches.length}\n\n${matchLines.join('\n')}`
+              },
+              {
+                title: '2. Capture Groups',
+                content: captureLines.length ? captureLines.join('\n') : 'No capture groups were returned for these matches.'
+              },
+              {
+                title: '3. Pattern Analysis',
+                content: `Applied flags: ${safe(regex.flags || '(none)')}\n${explainedFlags}\n\nComplexity notes:\n${complexityHints.map((item) => `- ${item}`).join('\n')}`
+              },
+              {
+                title: '4. Common Patterns Reference',
+                content: commonPatterns
+              }
+            ]
+          };
+        } catch (error) {
+          outputData = {
+            title: AIPlatform.safeText(`Regex Test Results for ${patternValue || 'Pattern'}`),
+            sections: [
+              {
+                title: '1. Match Results',
+                content: 'Pattern status: invalid.\nNo matches were processed because the expression could not be compiled.'
+              },
+              {
+                title: '2. Capture Groups',
+                content: 'Capture group analysis is unavailable until the pattern syntax is fixed.'
+              },
+              {
+                title: '3. Pattern Analysis',
+                content: `Syntax error: ${safe(error && error.message ? error.message : 'Unknown regular expression error.')}\nSuggestion: review unmatched brackets, unsupported flags, or escaped characters.`
+              },
+              {
+                title: '4. Common Patterns Reference',
+                content: [
+                  '* Email: `^[\\w.%+-]+@[\\w.-]+\\.[A-Za-z]{2,}$`',
+                  '* Phone: `^(?:\\+?\\d{1,3}[ -]?)?(?:\\(?\\d{2,4}\\)?[ -]?)?\\d{3,4}[ -]?\\d{4}$`',
+                  '* URL: `https?:\\/\\/(?:www\\.)?[\\w.-]+(?:\\/[\\w./?%&=-]*)?`',
+                  '* Date (YYYY-MM-DD): `^\\d{4}-\\d{2}-\\d{2}$`'
+                ].join('\n')
+              }
+            ]
+          };
+        }
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

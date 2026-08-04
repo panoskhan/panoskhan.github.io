@@ -1,94 +1,452 @@
 {
-  "version": "2.0.0",
-  "updated": "2026-08-03",
+  "version": "2.1.0",
+  "updated": "2026-08-04",
   "description": "Relationship graph for Platform Intelligence. Metadata lives in platform-registry.json; this file stores only identifiers and relationships.",
   "edges": [
-    { "from": "tool-website-audit", "to": "seo-architecture-ai-discovery", "relation": "informed-by" },
-    { "from": "tool-website-audit", "to": "seo-audit-checklist", "relation": "pairs-with" },
-    { "from": "tool-website-audit", "to": "project-client-side-seo-tooling", "relation": "part-of" },
-    { "from": "tool-website-audit", "to": "service-ai-ready-architecture", "relation": "supports" },
-    { "from": "tool-seo-brief", "to": "seo-architecture-ai-discovery", "relation": "informed-by" },
-    { "from": "tool-seo-brief", "to": "seo-audit-checklist", "relation": "pairs-with" },
-    { "from": "tool-readiness-twin", "to": "ai-readiness-framework", "relation": "informed-by" },
-    { "from": "tool-readiness-twin", "to": "ai-readiness-checklist", "relation": "pairs-with" },
-    { "from": "tool-readiness-twin", "to": "service-ai-strategy-consulting", "relation": "supports" },
-    { "from": "tool-decision-risk", "to": "responsible-ai-decision-gates", "relation": "informed-by" },
-    { "from": "tool-decision-risk", "to": "tool-trust-label", "relation": "pairs-with" },
-    { "from": "tool-trust-label", "to": "responsible-ai-decision-gates", "relation": "informed-by" },
-    { "from": "tool-ad-copy-studio", "to": "service-performance-marketing", "relation": "supports" },
-    { "from": "ai-readiness-framework", "to": "ai-readiness-checklist", "relation": "produces" },
-    { "from": "seo-architecture-ai-discovery", "to": "seo-audit-checklist", "relation": "produces" },
-    { "from": "responsible-ai-decision-gates", "to": "tool-decision-risk", "relation": "informs" },
-    { "from": "project-phoenix", "to": "hub-platform-intelligence", "relation": "includes" },
-    { "from": "hub-platform-intelligence", "to": "tool-website-audit", "relation": "contains" },
-    { "from": "hub-platform-intelligence", "to": "backup-before-repair", "relation": "contains" },
-    { "from": "service-web-engineering", "to": "project-phoenix", "relation": "demonstrated-by" },
-    { "from": "service-ai-strategy-consulting", "to": "ai-readiness-framework", "relation": "informed-by" },
-    { "from": "tool-meta-tag-generator", "to": "seo-architecture-ai-discovery", "relation": "informed-by" },
-    { "from": "tool-meta-tag-generator", "to": "tool-og-generator", "relation": "pairs-with" },
-    { "from": "tool-robots-txt-generator", "to": "seo-architecture-ai-discovery", "relation": "informed-by" },
-    { "from": "tool-robots-txt-generator", "to": "tool-sitemap-generator", "relation": "pairs-with" },
-    { "from": "tool-sitemap-generator", "to": "seo-architecture-ai-discovery", "relation": "informed-by" },
-    { "from": "tool-schema-generator", "to": "seo-architecture-ai-discovery", "relation": "informed-by" },
-    { "from": "tool-schema-generator", "to": "tool-meta-tag-generator", "relation": "pairs-with" },
-    { "from": "tool-og-generator", "to": "tool-meta-tag-generator", "relation": "pairs-with" },
-    { "from": "tool-canonical-checker", "to": "seo-architecture-ai-discovery", "relation": "informed-by" },
-    { "from": "tool-canonical-checker", "to": "seo-audit-checklist", "relation": "pairs-with" },
-    { "from": "tool-keyword-density", "to": "tool-seo-brief", "relation": "pairs-with" },
-    { "from": "tool-keyword-density", "to": "seo-architecture-ai-discovery", "relation": "informed-by" },
-    { "from": "tool-prompt-optimizer", "to": "tool-prompt-library", "relation": "pairs-with" },
-    { "from": "tool-prompt-library", "to": "tool-content-outline", "relation": "pairs-with" },
-    { "from": "tool-content-outline", "to": "tool-seo-brief", "relation": "pairs-with" },
-    { "from": "tool-persona-builder", "to": "tool-ad-copy-studio", "relation": "pairs-with" },
-    { "from": "tool-persona-builder", "to": "service-performance-marketing", "relation": "supports" },
-    { "from": "tool-json-formatter", "to": "tool-json-validator", "relation": "pairs-with" },
-    { "from": "tool-json-validator", "to": "tool-json-formatter", "relation": "pairs-with" },
-    { "from": "tool-jwt-decoder", "to": "tool-base64-tool", "relation": "pairs-with" },
-    { "from": "tool-regex-tester", "to": "project-phoenix", "relation": "part-of" },
-    { "from": "tool-css-minifier", "to": "tool-js-minifier", "relation": "pairs-with" },
-    { "from": "tool-js-minifier", "to": "tool-css-minifier", "relation": "pairs-with" }
+    {
+      "from": "tool-website-audit",
+      "to": "seo-architecture-ai-discovery",
+      "relation": "informed-by"
+    },
+    {
+      "from": "tool-website-audit",
+      "to": "seo-audit-checklist",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-website-audit",
+      "to": "project-client-side-seo-tooling",
+      "relation": "part-of"
+    },
+    {
+      "from": "tool-website-audit",
+      "to": "service-ai-ready-architecture",
+      "relation": "supports"
+    },
+    {
+      "from": "tool-seo-brief",
+      "to": "seo-architecture-ai-discovery",
+      "relation": "informed-by"
+    },
+    {
+      "from": "tool-seo-brief",
+      "to": "seo-audit-checklist",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-readiness-twin",
+      "to": "ai-readiness-framework",
+      "relation": "informed-by"
+    },
+    {
+      "from": "tool-readiness-twin",
+      "to": "ai-readiness-checklist",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-readiness-twin",
+      "to": "service-ai-strategy-consulting",
+      "relation": "supports"
+    },
+    {
+      "from": "tool-decision-risk",
+      "to": "responsible-ai-decision-gates",
+      "relation": "informed-by"
+    },
+    {
+      "from": "tool-decision-risk",
+      "to": "tool-trust-label",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-trust-label",
+      "to": "responsible-ai-decision-gates",
+      "relation": "informed-by"
+    },
+    {
+      "from": "tool-ad-copy-studio",
+      "to": "service-performance-marketing",
+      "relation": "supports"
+    },
+    {
+      "from": "ai-readiness-framework",
+      "to": "ai-readiness-checklist",
+      "relation": "produces"
+    },
+    {
+      "from": "seo-architecture-ai-discovery",
+      "to": "seo-audit-checklist",
+      "relation": "produces"
+    },
+    {
+      "from": "responsible-ai-decision-gates",
+      "to": "tool-decision-risk",
+      "relation": "informs"
+    },
+    {
+      "from": "project-phoenix",
+      "to": "hub-platform-intelligence",
+      "relation": "includes"
+    },
+    {
+      "from": "hub-platform-intelligence",
+      "to": "tool-website-audit",
+      "relation": "contains"
+    },
+    {
+      "from": "hub-platform-intelligence",
+      "to": "backup-before-repair",
+      "relation": "contains"
+    },
+    {
+      "from": "service-web-engineering",
+      "to": "project-phoenix",
+      "relation": "demonstrated-by"
+    },
+    {
+      "from": "service-ai-strategy-consulting",
+      "to": "ai-readiness-framework",
+      "relation": "informed-by"
+    },
+    {
+      "from": "tool-meta-tag-generator",
+      "to": "seo-architecture-ai-discovery",
+      "relation": "informed-by"
+    },
+    {
+      "from": "tool-meta-tag-generator",
+      "to": "tool-og-generator",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-robots-txt-generator",
+      "to": "seo-architecture-ai-discovery",
+      "relation": "informed-by"
+    },
+    {
+      "from": "tool-robots-txt-generator",
+      "to": "tool-sitemap-generator",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-sitemap-generator",
+      "to": "seo-architecture-ai-discovery",
+      "relation": "informed-by"
+    },
+    {
+      "from": "tool-schema-generator",
+      "to": "seo-architecture-ai-discovery",
+      "relation": "informed-by"
+    },
+    {
+      "from": "tool-schema-generator",
+      "to": "tool-meta-tag-generator",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-og-generator",
+      "to": "tool-meta-tag-generator",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-canonical-checker",
+      "to": "seo-architecture-ai-discovery",
+      "relation": "informed-by"
+    },
+    {
+      "from": "tool-canonical-checker",
+      "to": "seo-audit-checklist",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-keyword-density",
+      "to": "tool-seo-brief",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-keyword-density",
+      "to": "seo-architecture-ai-discovery",
+      "relation": "informed-by"
+    },
+    {
+      "from": "tool-prompt-optimizer",
+      "to": "tool-prompt-library",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-prompt-library",
+      "to": "tool-content-outline",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-content-outline",
+      "to": "tool-seo-brief",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-persona-builder",
+      "to": "tool-ad-copy-studio",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-persona-builder",
+      "to": "service-performance-marketing",
+      "relation": "supports"
+    },
+    {
+      "from": "tool-json-formatter",
+      "to": "tool-json-validator",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-json-validator",
+      "to": "tool-json-formatter",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-jwt-decoder",
+      "to": "tool-base64-tool",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-regex-tester",
+      "to": "project-phoenix",
+      "relation": "part-of"
+    },
+    {
+      "from": "tool-css-minifier",
+      "to": "tool-js-minifier",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "tool-js-minifier",
+      "to": "tool-css-minifier",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "hub-digital-health",
+      "to": "digital-health-website",
+      "relation": "contains"
+    },
+    {
+      "from": "hub-digital-health",
+      "to": "digital-health-device",
+      "relation": "contains"
+    },
+    {
+      "from": "hub-digital-health",
+      "to": "digital-health-project",
+      "relation": "contains"
+    },
+    {
+      "from": "hub-digital-health",
+      "to": "digital-health-ai-workflow",
+      "relation": "contains"
+    },
+    {
+      "from": "hub-digital-health",
+      "to": "hub-platform-intelligence",
+      "relation": "powered-by"
+    },
+    {
+      "from": "digital-health-website",
+      "to": "tool-website-audit",
+      "relation": "supersedes"
+    },
+    {
+      "from": "digital-health-website",
+      "to": "seo-architecture-ai-discovery",
+      "relation": "informed-by"
+    },
+    {
+      "from": "digital-health-website",
+      "to": "seo-audit-checklist",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "digital-health-website",
+      "to": "tool-seo-brief",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "digital-health-website",
+      "to": "tool-meta-tag-generator",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "digital-health-website",
+      "to": "tool-canonical-checker",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "digital-health-website",
+      "to": "tool-schema-generator",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "digital-health-device",
+      "to": "hub-digital-health",
+      "relation": "part-of"
+    },
+    {
+      "from": "digital-health-project",
+      "to": "hub-digital-health",
+      "relation": "part-of"
+    },
+    {
+      "from": "digital-health-ai-workflow",
+      "to": "hub-digital-health",
+      "relation": "part-of"
+    },
+    {
+      "from": "digital-health-ai-workflow",
+      "to": "tool-readiness-twin",
+      "relation": "pairs-with"
+    },
+    {
+      "from": "digital-health-ai-workflow",
+      "to": "tool-decision-risk",
+      "relation": "pairs-with"
+    }
   ],
   "nodes": [
-    { "id": "hub-platform-intelligence" },
-    { "id": "tool-website-audit" },
-    { "id": "tool-seo-brief" },
-    { "id": "tool-ad-copy-studio" },
-    { "id": "tool-readiness-twin" },
-    { "id": "tool-decision-risk" },
-    { "id": "tool-trust-label" },
-    { "id": "ai-readiness-framework" },
-    { "id": "seo-architecture-ai-discovery" },
-    { "id": "responsible-ai-decision-gates" },
-    { "id": "ai-readiness-checklist" },
-    { "id": "seo-audit-checklist" },
-    { "id": "backup-before-repair" },
-    { "id": "project-phoenix" },
-    { "id": "project-client-side-seo-tooling" },
-    { "id": "service-ai-ready-architecture" },
-    { "id": "service-web-engineering" },
-    { "id": "service-performance-marketing" },
-    { "id": "service-ai-strategy-consulting" },
-    { "id": "tool-meta-tag-generator" },
-    { "id": "tool-robots-txt-generator" },
-    { "id": "tool-sitemap-generator" },
-    { "id": "tool-schema-generator" },
-    { "id": "tool-og-generator" },
-    { "id": "tool-canonical-checker" },
-    { "id": "tool-keyword-density" },
-    { "id": "tool-prompt-optimizer" },
-    { "id": "tool-prompt-library" },
-    { "id": "tool-content-outline" },
-    { "id": "tool-persona-builder" },
-    { "id": "tool-json-formatter" },
-    { "id": "tool-base64-tool" },
-    { "id": "tool-uuid-generator" },
-    { "id": "tool-hash-generator" },
-    { "id": "tool-color-converter" },
-    { "id": "tool-css-minifier" },
-    { "id": "tool-js-minifier" },
-    { "id": "tool-regex-tester" },
-    { "id": "tool-http-status" },
-    { "id": "tool-jwt-decoder" },
-    { "id": "tool-json-validator" }
+    {
+      "id": "hub-platform-intelligence"
+    },
+    {
+      "id": "tool-website-audit"
+    },
+    {
+      "id": "tool-seo-brief"
+    },
+    {
+      "id": "tool-ad-copy-studio"
+    },
+    {
+      "id": "tool-readiness-twin"
+    },
+    {
+      "id": "tool-decision-risk"
+    },
+    {
+      "id": "tool-trust-label"
+    },
+    {
+      "id": "ai-readiness-framework"
+    },
+    {
+      "id": "seo-architecture-ai-discovery"
+    },
+    {
+      "id": "responsible-ai-decision-gates"
+    },
+    {
+      "id": "ai-readiness-checklist"
+    },
+    {
+      "id": "seo-audit-checklist"
+    },
+    {
+      "id": "backup-before-repair"
+    },
+    {
+      "id": "project-phoenix"
+    },
+    {
+      "id": "project-client-side-seo-tooling"
+    },
+    {
+      "id": "service-ai-ready-architecture"
+    },
+    {
+      "id": "service-web-engineering"
+    },
+    {
+      "id": "service-performance-marketing"
+    },
+    {
+      "id": "service-ai-strategy-consulting"
+    },
+    {
+      "id": "tool-meta-tag-generator"
+    },
+    {
+      "id": "tool-robots-txt-generator"
+    },
+    {
+      "id": "tool-sitemap-generator"
+    },
+    {
+      "id": "tool-schema-generator"
+    },
+    {
+      "id": "tool-og-generator"
+    },
+    {
+      "id": "tool-canonical-checker"
+    },
+    {
+      "id": "tool-keyword-density"
+    },
+    {
+      "id": "tool-prompt-optimizer"
+    },
+    {
+      "id": "tool-prompt-library"
+    },
+    {
+      "id": "tool-content-outline"
+    },
+    {
+      "id": "tool-persona-builder"
+    },
+    {
+      "id": "tool-json-formatter"
+    },
+    {
+      "id": "tool-base64-tool"
+    },
+    {
+      "id": "tool-uuid-generator"
+    },
+    {
+      "id": "tool-hash-generator"
+    },
+    {
+      "id": "tool-color-converter"
+    },
+    {
+      "id": "tool-css-minifier"
+    },
+    {
+      "id": "tool-js-minifier"
+    },
+    {
+      "id": "tool-regex-tester"
+    },
+    {
+      "id": "tool-http-status"
+    },
+    {
+      "id": "tool-jwt-decoder"
+    },
+    {
+      "id": "tool-json-validator"
+    },
+    {
+      "id": "hub-digital-health"
+    },
+    {
+      "id": "digital-health-website"
+    },
+    {
+      "id": "digital-health-device"
+    },
+    {
+      "id": "digital-health-project"
+    },
+    {
+      "id": "digital-health-ai-workflow"
+    }
   ]
 }

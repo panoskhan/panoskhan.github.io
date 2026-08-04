@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Website Health | Digital Health | Panos Khan</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Generate a Website Health report for your business. Score messaging, discoverability, trust, and conversion readiness — powered by Platform Intelligence." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://panoskhan.github.io/digital-health/website-health/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Website Health | Digital Health | Panos Khan" />
+  <meta property="og:description" content="Generate a Website Health report powered by the shared Platform Intelligence runtime — Health Engine, Recommendation Engine, Knowledge Engine, and Report Engine." />
+  <meta property="og:url" content="https://panoskhan.github.io/digital-health/website-health/" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Website Health | Digital Health | Panos Khan" />
+  <meta name="twitter:description" content="Generate a Website Health report powered by the shared Platform Intelligence runtime." />
+  <meta name="twitter:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://panoskhan.github.io/#website",
+        "url": "https://panoskhan.github.io/",
+        "name": "Panos Khan",
+        "publisher": {"@type": "Person", "name": "Panos Khan", "url": "https://panoskhan.github.io/"}
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/digital-health/website-health/#webapp",
+        "url": "https://panoskhan.github.io/digital-health/website-health/",
+        "name": "Website Health",
+        "description": "Generate a Website Health report powered by the shared Platform Intelligence runtime.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "isPartOf": {"@id": "https://panoskhan.github.io/#website"},
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://panoskhan.github.io/"},
+            {"@type": "ListItem", "position": 2, "name": "Digital Health", "item": "https://panoskhan.github.io/digital-health/"},
+            {"@type": "ListItem", "position": 3, "name": "Website Health", "item": "https://panoskhan.github.io/digital-health/website-health/"}
+          ]
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    .health-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+    .health-card { padding: 1.5rem; border-radius: 1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
+    .engine-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+    .engine-list li { list-style: none; margin: 0; padding: 0.85rem 1rem; border-radius: 0.75rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); }
+    .health-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .health-form-group { display: grid; gap: 0.4rem; margin-bottom: 1rem; }
+    .health-form-group input, .health-form-group textarea { width: 100%; padding: 0.9rem 1rem; border-radius: 0.8rem; border: 1px solid rgba(255,255,255,0.12); background: rgba(7,11,20,0.75); color: inherit; font-family: inherit; font-size: 1rem; }
+    .health-form-group input:focus, .health-form-group textarea:focus { outline: 2px solid var(--neon); outline-offset: 2px; }
+    .health-form-group textarea { min-height: 120px; resize: vertical; }
+    .runtime-flow { margin-top: 1.25rem; padding: 1rem; border-radius: 0.8rem; background: rgba(0,229,255,0.06); border: 1px solid rgba(0,229,255,0.14); }
+    .report-shell[hidden] { display: none; }
+    .report-shell { margin-top: 1.5rem; }
+    .report-container { max-width: none; }
+    .report-header { text-align: center; padding: 1rem 0 2rem; }
+    .report-score-circle { display: inline-flex; align-items: center; justify-content: center; width: 120px; height: 120px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.15); font-size: 2.5rem; font-weight: 700; margin: 1rem 0; }
+    .report-score-circle small { font-size: 1rem; opacity: 0.5; font-weight: 400; }
+    .report-section { margin-bottom: 2rem; }
+    .report-section h3 { font-size: 1.2rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .report-dimensions { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+    .report-dim { padding: 1rem; background: rgba(255,255,255,0.04); border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.06); }
+    .report-dim-label { font-size: 0.8rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.04em; }
+    .report-dim-stars { color: #f5a623; font-size: 1.1rem; margin: 0.25rem 0; }
+    .report-list { margin: 0; padding-left: 1.2rem; }
+    .report-list li { margin-bottom: 0.5rem; }
+    .report-list--success li::marker { color: #81c784; }
+    .report-recommendation { padding: 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 0.75rem; margin-bottom: 0.75rem; }
+    .report-recommendation-priority { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 0.25rem; background: rgba(255,255,255,0.08); display: inline-block; margin-bottom: 0.5rem; }
+    .report-effort { font-size: 0.85rem; opacity: 0.65; margin-top: 0.25rem; }
+    .report-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .certified-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 2rem; background: rgba(76,175,80,0.12); border: 1px solid rgba(76,175,80,0.3); font-size: 0.85rem; font-weight: 600; color: #81c784; }
+    .certified-badge::before { content: "✓"; display: inline-flex; align-items: center; justify-content: center; width: 1.25rem; height: 1.25rem; border-radius: 50%; background: rgba(76,175,80,0.25); font-size: 0.7rem; }
+    .wh-overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.25rem; }
+    .wh-overview-item { padding: 1rem 1.25rem; border-radius: 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+    .wh-overview-item strong { display: block; margin-bottom: 0.25rem; font-size: 0.95rem; }
+    .wh-overview-item p { font-size: 0.875rem; opacity: 0.65; margin: 0; }
+    @media (max-width: 960px) {
+      .health-layout, .health-form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" role="banner" data-site-nav></header>
+
+  <main class="container section">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">/</span>
+      <a href="/digital-health/">Digital Health</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Website Health</span>
+    </nav>
+
+    <nav class="product-subnav" aria-label="Website Health sections">
+      <a href="#audit">Audit</a>
+      <a href="#overview">Overview</a>
+      <a href="#recommendations">Recommendations</a>
+      <a href="#resources">Resources</a>
+      <a href="#docs">Docs</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <header class="section-header section-header--start">
+      <p class="kicker">Digital Health · Website Pillar · Live</p>
+      <h1>Website Health</h1>
+      <p class="lead">Generate a structured health report for any website. The report scores your site across messaging, discoverability, trust, and conversion readiness — then provides a prioritised action plan to improve.</p>
+    </header>
+
+    <!-- ── Audit ─────────────────────────────────────────── -->
+    <section id="audit" class="mb-32" aria-labelledby="audit-heading">
+      <div class="health-layout">
+        <div class="health-card">
+          <h2 id="audit-heading">Generate a Website Health report</h2>
+          <p class="muted">The report runs entirely in your browser through the shared Platform Intelligence runtime: data collection → Health Engine → Recommendation Engine → Report Engine.</p>
+          <form id="websiteHealthForm" novalidate>
+            <div class="health-form-grid">
+              <div class="health-form-group">
+                <label for="businessName">Business name</label>
+                <input id="businessName" name="businessName" type="text" required autocomplete="organization" placeholder="e.g. Acme SaaS" />
+              </div>
+              <div class="health-form-group">
+                <label for="websiteUrl">Website URL</label>
+                <input id="websiteUrl" name="websiteUrl" type="url" required autocomplete="url" placeholder="https://example.com" />
+              </div>
+              <div class="health-form-group">
+                <label for="industry">Industry</label>
+                <input id="industry" name="industry" type="text" required placeholder="e.g. Cybersecurity, Fintech" />
+              </div>
+              <div class="health-form-group">
+                <label for="audience">Target audience</label>
+                <input id="audience" name="audience" type="text" required placeholder="e.g. IT Managers, CFOs" />
+              </div>
+            </div>
+            <div class="health-form-group">
+              <label for="goals">Goals</label>
+              <textarea id="goals" name="goals" required placeholder="Example: improve organic discovery, strengthen trust, and increase qualified consultation requests."></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Generate Website Health Report</button>
+          </form>
+
+          <div class="runtime-flow">
+            <strong>Shared runtime</strong>
+            <ul class="engine-list" aria-label="Platform engines used">
+              <li>Health Engine</li>
+              <li>Recommendation Engine</li>
+              <li>Knowledge Engine</li>
+              <li>Search Engine</li>
+              <li>Report Engine</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside class="health-card" aria-labelledby="contract-heading">
+          <h2 id="contract-heading">Canonical report structure</h2>
+          <p class="muted">Every Digital Health report follows the same canonical structure — no custom layouts.</p>
+          <ul class="hub-roadmap">
+            <li>Health Score</li>
+            <li>Executive Summary</li>
+            <li>Critical Issues</li>
+            <li>Warnings</li>
+            <li>Passed Checks</li>
+            <li>Estimated Time to Improve</li>
+            <li>Recommended Action Plan</li>
+            <li>Related Resources</li>
+            <li>Related Tools</li>
+            <li>Download Report</li>
+            <li>Share Report</li>
+            <li>History <span class="muted">(placeholder)</span></li>
+          </ul>
+          <p class="muted" style="margin-top:1rem;">Legacy Website Audit URLs redirect here automatically to preserve bookmarks and search equity.</p>
+        </aside>
+      </div>
+
+      <section id="websiteHealthReport" class="health-card report-shell" hidden aria-live="polite" aria-label="Website Health report"></section>
+    </section>
+
+    <!-- ── Overview ──────────────────────────────────────── -->
+    <section id="overview" class="mb-32" aria-labelledby="overview-heading">
+      <h2 id="overview-heading">What Website Health checks</h2>
+      <p class="muted">Four dimensions are scored. Each maps to a measurable business outcome.</p>
+      <div class="wh-overview-grid">
+        <div class="wh-overview-item">
+          <strong>Messaging clarity</strong>
+          <p>Does your homepage communicate what you do, who it's for, and why it matters — in seconds?</p>
+        </div>
+        <div class="wh-overview-item">
+          <strong>Discoverability</strong>
+          <p>Can search engines and AI systems find, index, and understand your pages correctly?</p>
+        </div>
+        <div class="wh-overview-item">
+          <strong>Trust &amp; credibility</strong>
+          <p>Do visitors find the signals they need to trust your organisation before converting?</p>
+        </div>
+        <div class="wh-overview-item">
+          <strong>Conversion readiness</strong>
+          <p>Are your calls to action, forms, and conversion paths clear, accessible, and frictionless?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Recommendations ───────────────────────────────── -->
+    <section id="recommendations" class="mb-32" aria-labelledby="rec-heading">
+      <h2 id="rec-heading">How recommendations work</h2>
+      <div class="content-grid mt-16">
+        <article class="card">
+          <h3>Prioritised by impact</h3>
+          <p class="muted">Recommendations are ranked by the Recommendation Engine using effort, impact, and urgency — so you always know what to fix first.</p>
+        </article>
+        <article class="card">
+          <h3>Actionable, not generic</h3>
+          <p class="muted">Each recommendation links to the specific dimension it improves, with an estimated time to resolve and clear success criteria.</p>
+        </article>
+        <article class="card">
+          <h3>Backed by the Knowledge Graph</h3>
+          <p class="muted">The Knowledge Engine surfaces related guides, tools, and downloads that are relevant to your specific findings.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── Resources ─────────────────────────────────────── -->
+    <section id="resources" class="mb-32" aria-labelledby="resources-heading">
+      <h2 id="resources-heading">Related resources</h2>
+      <div class="content-grid mt-16">
+        <article class="card">
+          <span class="card-tag">Guide</span>
+          <h3><a href="/downloads/#seo-audit-checklist">SEO Audit Checklist</a></h3>
+          <p class="muted">A structured checklist for auditing on-page SEO, structured data, and crawlability.</p>
+        </article>
+        <article class="card">
+          <span class="card-tag">Tool</span>
+          <h3><a href="/ai/tools/seo-brief.html">AI SEO Brief Generator</a></h3>
+          <p class="muted">Generate intent-aligned content briefs with titles, headings, and FAQ structure.</p>
+        </article>
+        <article class="card">
+          <span class="card-tag">Tool</span>
+          <h3><a href="/ai/tools/meta-tag-generator.html">Meta Tag Generator</a></h3>
+          <p class="muted">Generate accurate title tags, meta descriptions, and Open Graph tags.</p>
+        </article>
+        <article class="card">
+          <span class="card-tag">Tool</span>
+          <h3><a href="/ai/tools/schema-generator.html">Schema Generator</a></h3>
+          <p class="muted">Create structured data markup for better search and AI engine understanding.</p>
+        </article>
+        <article class="card">
+          <span class="card-tag">Tool</span>
+          <h3><a href="/ai/tools/canonical-checker.html">Canonical Checker</a></h3>
+          <p class="muted">Verify canonical tag implementation to avoid duplicate content issues.</p>
+        </article>
+        <article class="card">
+          <span class="card-tag">Tool</span>
+          <h3><a href="/ai/tools/sitemap-generator.html">Sitemap Generator</a></h3>
+          <p class="muted">Generate a well-formed XML sitemap for search engine discovery.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── Docs ──────────────────────────────────────────── -->
+    <section id="docs" class="mb-32" aria-labelledby="docs-heading">
+      <h2 id="docs-heading">Documentation</h2>
+      <div class="content-grid mt-16">
+        <article class="card">
+          <span class="card-tag">Architecture</span>
+          <h3><a href="/docs/architecture/">Platform Architecture</a></h3>
+          <p class="muted">How the Health Engine, Report Engine, and shared runtime are designed to work together across all Digital Health pillars.</p>
+        </article>
+        <article class="card">
+          <span class="card-tag">Guide</span>
+          <h3><a href="/docs/guides/components.html">Component Guide</a></h3>
+          <p class="muted">Reference for all shared design system components used across Digital Health pages.</p>
+        </article>
+        <article class="card">
+          <span class="card-tag">Registry</span>
+          <h3><a href="/capabilities/">Platform Registry</a></h3>
+          <p class="muted">Browse all registered capabilities, engines, and tools in the Platform Intelligence ecosystem.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── FAQ ───────────────────────────────────────────── -->
+    <section id="faq" class="mb-32" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Frequently asked questions</h2>
+      <div class="faq mt-16">
+        <details class="faq-item">
+          <summary>Is this a live website scanner?</summary>
+          <p>No. Website Health is a structured self-assessment tool. You describe your website's context and the Health Engine evaluates the information you provide. No live crawling or network requests are made to your website.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How is the health score calculated?</summary>
+          <p>The Health Engine scores four dimensions — messaging clarity, discoverability, trust &amp; credibility, and conversion readiness — and combines them into an overall health score. Each dimension contributes equally to the final score.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Where is my data stored?</summary>
+          <p>All processing happens entirely in your browser. No data is sent to a server. Your input is used only to generate the report and is discarded when you close the page.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What happened to the Website Audit tool?</summary>
+          <p>Website Audit has been promoted and expanded into Website Health — the first full pillar of Digital Health. All legacy URLs at <code>/ai/tools/website-audit.html</code> and <code>/tools/website-audit.html</code> redirect here automatically. Your bookmarks and links continue to work.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I download or share the report?</summary>
+          <p>Yes. After generating a report, the Report Engine provides Download and Share actions. Use these to save the report or share a summary with your team.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How does Website Health relate to Platform Intelligence?</summary>
+          <p>Website Health is the first fully implemented pillar of Digital Health, which is the flagship product powered by Platform Intelligence. It reuses all shared engines — Health, Recommendation, Knowledge, Search, and Report — without duplicating any functionality.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo" data-site-footer></footer>
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/search-engine.js"></script>
+  <script src="/assets/js/knowledge-engine.js"></script>
+  <script src="/assets/js/recommendation-engine.js"></script>
+  <script src="/assets/js/health-engine.js"></script>
+  <script src="/assets/js/report-engine.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var form = document.getElementById("websiteHealthForm");
+      var mount = document.getElementById("websiteHealthReport");
+      if (!form || !mount) return;
+
+      Promise.allSettled([
+        window.PlatformSearchEngine && window.PlatformSearchEngine.load ? window.PlatformSearchEngine.load() : Promise.resolve([]),
+        window.PlatformKnowledgeEngine && window.PlatformKnowledgeEngine.loadGraph ? window.PlatformKnowledgeEngine.loadGraph() : Promise.resolve(null)
+      ]);
+
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        var submitBtn = form.querySelector("[type=submit]");
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Generating…";
+
+        try {
+          var input = {
+            businessName: form.businessName.value.trim(),
+            websiteUrl: form.websiteUrl.value.trim(),
+            industry: form.industry.value.trim(),
+            audience: form.audience.value.trim(),
+            goals: form.goals.value.trim()
+          };
+
+          var baseReport = window.PlatformHealthEngine.evaluate("website-health", input);
+          var plan = window.PlatformRecommendationEngine.buildPlan(baseReport);
+          var related = await window.PlatformKnowledgeEngine.getRelated("tool-website-audit", { limit: 6 });
+
+          var learningResources = related.filter(function (item) { return item.type !== "tool"; });
+          var relatedTools = related.filter(function (item) { return item.type === "tool"; });
+
+          var report = Object.assign({}, baseReport, {
+            estimatedTimeToImprove: plan.estimatedTimeToImprove,
+            recommendedActionPlan: plan.items,
+            learningResources: learningResources,
+            relatedTools: relatedTools
+          });
+
+          mount.hidden = false;
+          window.PlatformReportEngine.render(mount, report);
+          mount.scrollIntoView({ behavior: "smooth", block: "start" });
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Generate Website Health Report";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

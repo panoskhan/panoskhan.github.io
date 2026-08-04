@@ -4,6 +4,7 @@
   const PRIMARY_NAV = [
     { id: "platform", label: "Dashboard", href: "/platform/" },
     { id: "ai", label: "AI", href: "/ai/" },
+    { id: "digital-health", label: "Digital Health", href: "/digital-health/" },
     { id: "intelligence", label: "Intelligence", href: "/intelligence/" },
     { id: "research", label: "Research", href: "/research/" },
     { id: "downloads", label: "Downloads", href: "/downloads/" },
@@ -24,6 +25,11 @@
 
   const FALLBACK_SEARCH = [
     { title: "Platform Dashboard", type: "Platform", url: "/platform/", description: "Workspace dashboard for global discovery and saved activity." },
+    { title: "Digital Health", type: "Product", url: "/digital-health/", description: "Understand and improve the health of websites, devices, projects, and AI workflows." },
+    { title: "Website Health", type: "Tool", url: "/digital-health/website-health/", description: "Generate a health report for your website — scoring messaging, discoverability, trust, and conversion readiness." },
+    { title: "Device Health", type: "Coming Soon", url: "/digital-health/device-health/", description: "Diagnose and optimise the health of Windows, macOS, Android, and iOS devices." },
+    { title: "Project Health", type: "Coming Soon", url: "/digital-health/project-health/", description: "Evaluate the quality and delivery readiness of software projects." },
+    { title: "AI Workflow Health", type: "Coming Soon", url: "/digital-health/ai-workflow-health/", description: "Audit AI workflows for reliability, safety, and business alignment." },
     { title: "Platform Intelligence", type: "Product", url: "/intelligence/", description: "Health checks, diagnostics, and reports for websites, devices, projects, and AI workflows." },
     { title: "Panos Khan AI", type: "Product", url: "/ai/", description: "AI workspace, tools, prompts, and documentation." },
     { title: "Device Service", type: "Product", url: "/device/", description: "Repair, diagnostics, and support guidance." },
@@ -34,7 +40,6 @@
     { title: "Capability Explorer", type: "Platform", url: "/capabilities/", description: "Browse platform capabilities across products." },
     { title: "Projects", type: "Projects", url: "/projects/", description: "Selected product and web-engineering work." },
     { title: "Services", type: "Consulting", url: "/services.html", description: "AI strategy, web engineering, SEO, and growth services." },
-    { title: "Website Health", type: "Tool", url: "/intelligence/website-health/", description: "Generate a shared Platform Intelligence report for messaging, discoverability, trust, and conversion." },
     { title: "AI SEO Brief Generator", type: "Tool", url: "/ai/tools/seo-brief.html", description: "Create a structured SEO content brief." },
     { title: "AI Ad Copy Studio", type: "Tool", url: "/ai/tools/ad-copy-studio.html", description: "Generate structured ad-copy testing angles." },
     { title: "AI Readiness Twin", type: "Tool", url: "/ai/tools/readiness-twin.html", description: "Map quick wins and transformation priorities." },

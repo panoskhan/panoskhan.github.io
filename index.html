@@ -46,13 +46,22 @@
         "name": "Panos Khan",
         "url": "https://panoskhan.github.io/",
         "image": "https://panoskhan.github.io/assets/profile.jpg",
+        "mainEntityOfPage": "https://panoskhan.github.io/",
         "jobTitle": "AI & Digital Transformation Consultant",
         "description": "Web Developer, Sales & Marketing Specialist, and Digital Transformation Consultant based in Greece.",
+        "knowsAbout": [
+          "AI consulting",
+          "Digital transformation",
+          "Web development",
+          "SEO architecture",
+          "Performance marketing"
+        ],
         "nationality": { "@type": "Country", "name": "Greece" },
         "address": { "@type": "PostalAddress", "addressCountry": "GR", "addressLocality": "Athens" },
         "sameAs": [
           "https://www.linkedin.com/in/panos-khan-pk",
           "https://panoskhan.github.io/",
+          "https://panoskhan.github.io/tools/website-audit.html",
           "https://skillshop.credential.net/profile/panoskhan/wallet",
           "https://about.me/panoskhan",
           "https://medium.com/@panoskhan40",
@@ -69,12 +78,39 @@
         ]
       },
       {
+        "@type": "ConsultingService",
+        "@id": "https://panoskhan.github.io/#service",
+        "url": "https://panoskhan.github.io/",
+        "name": "Panos Khan Consulting",
+        "description": "Consulting service for AI strategy, digital transformation, web engineering, SEO architecture, and growth systems.",
+        "provider": { "@id": "https://panoskhan.github.io/#person" },
+        "areaServed": [
+          { "@type": "Country", "name": "Greece" },
+          { "@type": "Place", "name": "European Union" }
+        ],
+        "serviceType": [
+          "AI consulting",
+          "Digital transformation consulting",
+          "Web development",
+          "Performance marketing",
+          "SEO architecture"
+        ],
+        "availableChannel": {
+          "@type": "ServiceChannel",
+          "serviceUrl": "https://panoskhan.github.io/contact.html"
+        }
+      },
+      {
         "@type": "WebSite",
         "@id": "https://panoskhan.github.io/#website",
         "url": "https://panoskhan.github.io/",
         "name": "Panos Khan",
         "inLanguage": ["en", "el"],
         "publisher": { "@id": "https://panoskhan.github.io/#person" },
+        "about": [
+          { "@id": "https://panoskhan.github.io/#person" },
+          { "@id": "https://panoskhan.github.io/#service" }
+        ],
         "potentialAction": { "@type": "SearchAction", "target": "https://panoskhan.github.io/?s={search_term_string}", "query-input": "required name=search_term_string" }
       },
       {
@@ -84,21 +120,19 @@
         "name": "Panos Khan | AI & Digital Transformation Consultant",
         "description": "Official website of Panos Khan — AI & Digital Transformation Consultant, Web Developer, and Growth Strategist based in Greece.",
         "isPartOf": { "@id": "https://panoskhan.github.io/#website" },
-        "about": { "@id": "https://panoskhan.github.io/#person" },
+        "about": [
+          { "@id": "https://panoskhan.github.io/#person" },
+          { "@id": "https://panoskhan.github.io/#service" }
+        ],
+        "mainEntity": [
+          { "@id": "https://panoskhan.github.io/#person" },
+          { "@id": "https://panoskhan.github.io/#service" }
+        ],
         "inLanguage": ["en", "el"],
         "breadcrumb": {
           "@type": "BreadcrumbList",
           "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://panoskhan.github.io/" }]
         }
-      },
-      {
-        "@type": "ProfessionalService",
-        "@id": "https://panoskhan.github.io/#service",
-        "name": "Panos Khan Consulting",
-        "url": "https://panoskhan.github.io/",
-        "areaServed": ["GR", "EU"],
-        "founder": { "@id": "https://panoskhan.github.io/#person" },
-        "serviceType": ["AI consulting", "Digital transformation consulting", "Web development", "Performance marketing", "SEO architecture"]
       }
     ]
   }
@@ -948,6 +982,13 @@
           <div>
             <div class="link-card-label">AI &amp; SEO Tools</div>
             <div class="link-card-value">panoskhan.github.io/intelligence/website-health/</div>
+          </div>
+        </a>
+        <a href="https://panoskhan.github.io/tools/website-audit.html" target="_blank" rel="noopener" class="link-card reveal reveal-delay-2">
+          <span class="link-card-icon">🔎</span>
+          <div>
+            <div class="link-card-label">Website Audit Tool</div>
+            <div class="link-card-value">panoskhan.github.io/tools/website-audit.html</div>
           </div>
         </a>
         <a href="https://contactout.com/panos-khan-43927" target="_blank" rel="noopener" class="link-card reveal reveal-delay-2">

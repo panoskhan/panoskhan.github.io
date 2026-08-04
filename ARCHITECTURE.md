@@ -77,6 +77,8 @@ Every future tool must flow through the shared runtime:
 
 **data collection → Health Engine → Recommendation Engine → Report Engine → shared report**
 
+Tools register in `platform-registry.json` with a standard schema. Each tool feeds results into the Report Engine — adding a new health check requires only a registry entry and a scoring function.
+
 ### Canonical Health Report
 
 Every health check produces the same report contract through `assets/js/report-engine.js`:

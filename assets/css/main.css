@@ -40,7 +40,11 @@ body {
   color: var(--text);
   line-height: 1.65;
   overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+main { flex: 1 0 auto; }
 img, svg { max-width: 100%; display: block; }
 a { color: var(--neon); text-decoration: none; transition: color var(--t), text-shadow var(--t); }
 a:hover { text-shadow: 0 0 10px rgba(0,229,255,.4); }

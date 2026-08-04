@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Schema Markup Generator | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Generate JSON-LD structured data for Organization, Article, Product, FAQ, and LocalBusiness schema types with implementation guidance." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/schema-generator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Schema Markup Generator | Panos Khan AI Platform" />
+  <meta property="og:description" content="Generate JSON-LD structured data for Organization, Article, Product, FAQ, and LocalBusiness schema types with implementation guidance." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/schema-generator.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/schema-generator.html#webapp",
+        "name": "Schema Markup Generator",
+        "description": "Generate JSON-LD structured data for Organization, Article, Product, FAQ, and LocalBusiness schema types with implementation guidance.",
+        "url": "https://panoskhan.github.io/ai/tools/schema-generator.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preload and Stylesheets -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="schema-generator">
+  <div id="ai-tool-content">
+    <form id="schemaForm">
+      <div class="ai-form-group">
+        <label for="schemaType">Schema Type</label>
+        <select id="schemaType" name="schemaType" required>
+          <option value="Organization">Organization</option>
+          <option value="Article">Article</option>
+          <option value="Product">Product</option>
+          <option value="FAQPage">FAQPage</option>
+          <option value="LocalBusiness">LocalBusiness</option>
+        </select>
+      </div>
+      <div class="ai-form-group">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required placeholder="e.g. Panos Khan AI Platform" />
+      </div>
+      <div class="ai-form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="5" required placeholder="Describe the business, page, or offer."></textarea>
+      </div>
+      <div class="ai-form-group">
+        <label for="url">URL</label>
+        <input id="url" name="url" type="url" required placeholder="https://example.com/page" />
+      </div>
+      <div class="ai-form-group">
+        <label for="imageUrl">Image URL</label>
+        <input id="imageUrl" name="imageUrl" type="url" placeholder="https://example.com/image.jpg" />
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Generate Schema</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('schemaForm');
+      if (!form) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const schemaType = AIPlatform.safeText(form.schemaType.value);
+        const name = AIPlatform.safeText(form.name.value);
+        const description = AIPlatform.safeText(form.description.value);
+        const url = AIPlatform.safeText(form.url.value);
+        const imageUrl = AIPlatform.safeText(form.imageUrl.value);
+        const today = new Date().toISOString().split('T')[0];
+
+        let schemaObject = { '@context': 'https://schema.org', '@type': schemaType };
+        let explanation = '';
+
+        if (schemaType === 'Organization') {
+          schemaObject = {
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name,
+            url,
+            logo: imageUrl || '',
+            description
+          };
+          explanation = 'Organization schema helps search engines understand your brand entity, official site, and logo association.';
+        } else if (schemaType === 'Article') {
+          schemaObject = {
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: name,
+            description,
+            author: {
+              '@type': 'Person',
+              name
+            },
+            datePublished: today,
+            url
+          };
+          explanation = 'Article schema is used for blog posts, guides, and editorial content that can qualify for enhanced search presentation.';
+        } else if (schemaType === 'Product') {
+          schemaObject = {
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            name,
+            description,
+            url,
+            image: imageUrl || ''
+          };
+          explanation = 'Product schema gives search engines structured product details that support merchant and rich result features.';
+        } else if (schemaType === 'FAQPage') {
+          const sentences = description.split(/[.!?]+/).map((item) => item.trim()).filter(Boolean);
+          const answers = [0, 1, 2].map((index) => sentences[index] || description);
+          schemaObject = {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: answers.map((answer, index) => ({
+              '@type': 'Question',
+              name: `${name} FAQ ${index + 1}`,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: answer
+              }
+            }))
+          };
+          explanation = 'FAQPage schema is suited for clear question-and-answer content and can improve SERP visibility when implemented on genuine FAQs.';
+        } else {
+          schemaObject = {
+            '@context': 'https://schema.org',
+            '@type': 'LocalBusiness',
+            name,
+            description,
+            url,
+            image: imageUrl || '',
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: '123 Example Street',
+              addressLocality: 'City',
+              addressRegion: 'Region',
+              postalCode: '00000',
+              addressCountry: 'Country'
+            }
+          };
+          explanation = 'LocalBusiness schema supports local SEO by defining business details, address structure, and on-site identity signals.';
+        }
+
+        const implementation = [
+          '1. Copy the JSON-LD block into a <script type="application/ld+json"> tag.',
+          '2. Place it in the page head or near the end of the body.',
+          '3. Ensure the structured data matches visible page content.',
+          '4. Update placeholder values before publishing.'
+        ].join('\n');
+
+        const validation = [
+          'Validate the markup with Google Rich Results Test.',
+          'Check Schema.org requirements for the selected type.',
+          'Re-test after any major page content updates.'
+        ].join('\n');
+
+        const outputData = {
+          title: `${schemaType} Schema Markup`,
+          sections: [
+            {
+              title: '1. Generated JSON-LD',
+              content: JSON.stringify(schemaObject, null, 2)
+            },
+            {
+              title: '2. Schema Type Explanation',
+              content: explanation
+            },
+            {
+              title: '3. How to Implement',
+              content: implementation
+            },
+            {
+              title: '4. Validation',
+              content: validation
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

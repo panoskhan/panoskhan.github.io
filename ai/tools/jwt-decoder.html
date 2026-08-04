@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JWT Decoder | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Decode and inspect JSON Web Tokens to view header, payload, claims, and expiration details without verifying signatures." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/jwt-decoder.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="JWT Decoder | Panos Khan AI Platform" />
+  <meta property="og:description" content="Decode and inspect JSON Web Tokens to view header, payload, claims, and expiration details without verifying signatures." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/jwt-decoder.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/jwt-decoder.html#webapp",
+        "name": "JWT Decoder",
+        "description": "Decode and inspect JSON Web Tokens to view header, payload, claims, and expiration details without verifying signatures.",
+        "url": "https://panoskhan.github.io/ai/tools/jwt-decoder.html",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="jwt-decoder">
+  <div id="ai-tool-content">
+    <form id="jwtDecoderForm">
+      <div class="ai-form-group">
+        <label for="jwtToken">JWT Token</label>
+        <textarea id="jwtToken" name="jwtToken" rows="10" required placeholder="Paste your JWT token here (eyJhbG...)" style="min-height: 220px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;"></textarea>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Decode Token</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('jwtDecoderForm');
+      if (!form) return;
+
+      const safe = (value) => AIPlatform.safeText(String(value || ''));
+      const formatDateTime = (seconds) => {
+        if (!Number.isFinite(seconds)) return 'Not provided';
+        return new Date(seconds * 1000).toISOString();
+      };
+      const decodePart = (part) => {
+        let normalized = String(part).replace(/-/g, '+').replace(/_/g, '/');
+        const paddingNeeded = normalized.length % 4;
+        if (paddingNeeded) {
+          normalized += '='.repeat(4 - paddingNeeded);
+        }
+        const binary = atob(normalized);
+        const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
+        return new TextDecoder().decode(bytes);
+      };
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const token = form.jwtToken.value.trim();
+        let outputData;
+
+        try {
+          const parts = token.split('.');
+          if (parts.length !== 3) {
+            throw new Error('JWT tokens must contain exactly three dot-separated parts.');
+          }
+
+          const header = JSON.parse(decodePart(parts[0]));
+          const payload = JSON.parse(decodePart(parts[1]));
+          const standardClaims = ['iss', 'sub', 'aud', 'exp', 'nbf', 'iat', 'jti'];
+          const claimLines = standardClaims
+            .filter((claim) => Object.prototype.hasOwnProperty.call(payload, claim))
+            .map((claim) => `- ${claim}: ${safe(Array.isArray(payload[claim]) ? payload[claim].join(', ') : payload[claim])}`);
+          const nowSeconds = Date.now() / 1000;
+          const exp = Number(payload.exp);
+          const iat = Number(payload.iat);
+          const nbf = Number(payload.nbf);
+          let expirationSummary = 'No exp claim found.';
+
+          if (Number.isFinite(exp)) {
+            const delta = Math.round(exp - nowSeconds);
+            expirationSummary = delta >= 0
+              ? `Token expires in approximately ${delta} seconds (${formatDateTime(exp)}).`
+              : `Token expired approximately ${Math.abs(delta)} seconds ago (${formatDateTime(exp)}).`;
+          }
+
+          outputData = {
+            title: 'Decoded JWT Token',
+            sections: [
+              {
+                title: '1. Header',
+                content: JSON.stringify(header, null, 2)
+              },
+              {
+                title: '2. Payload',
+                content: JSON.stringify(payload, null, 2)
+              },
+              {
+                title: '3. Token Analysis',
+                content: `Algorithm: ${safe(header.alg || 'Not provided')}\nType: ${safe(header.typ || 'Not provided')}\nExpiration status: ${safe(expirationSummary)}\nIssued at: ${safe(formatDateTime(iat))}\nNot before: ${safe(formatDateTime(nbf))}\nToken size: ${token.length} characters\n\nStandard claims:\n${claimLines.length ? claimLines.join('\n') : 'No standard claims found.'}`
+              },
+              {
+                title: '4. Security Notes',
+                content: 'This tool only decodes the header and payload. It does not verify the signature or confirm token authenticity. Never share production JWTs publicly, and treat decoded claims as untrusted until the signature is validated server-side.'
+              }
+            ]
+          };
+        } catch (error) {
+          outputData = {
+            title: 'Decoded JWT Token',
+            sections: [
+              {
+                title: '1. Header',
+                content: 'Unable to decode the token header.'
+              },
+              {
+                title: '2. Payload',
+                content: 'Unable to decode the token payload.'
+              },
+              {
+                title: '3. Token Analysis',
+                content: `Error: ${safe(error && error.message ? error.message : 'Unknown JWT decoding error.')}\nEnsure the token uses standard JWT structure and valid URL-safe base64 encoding.`
+              },
+              {
+                title: '4. Security Notes',
+                content: 'This tool is decode-only and cannot verify signatures. If a token fails to decode, avoid using it until you obtain a valid replacement from the issuer.'
+              }
+            ]
+          };
+        }
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

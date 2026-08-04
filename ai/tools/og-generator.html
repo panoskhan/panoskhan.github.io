@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Open Graph Generator | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Generate Open Graph meta tags for Facebook, LinkedIn, and social media sharing with live preview and matching Twitter Card markup." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/og-generator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Open Graph Generator | Panos Khan AI Platform" />
+  <meta property="og:description" content="Generate Open Graph meta tags for Facebook, LinkedIn, and social media sharing with live preview and matching Twitter Card markup." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/og-generator.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/og-generator.html#webapp",
+        "name": "Open Graph Generator",
+        "description": "Generate Open Graph meta tags for Facebook, LinkedIn, and social media sharing with live preview and matching Twitter Card markup.",
+        "url": "https://panoskhan.github.io/ai/tools/og-generator.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preload and Stylesheets -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="og-generator">
+  <div id="ai-tool-content">
+    <form id="ogForm">
+      <div class="ai-form-group">
+        <label for="ogTitle">OG Title</label>
+        <input id="ogTitle" name="ogTitle" type="text" required placeholder="e.g. Open Graph Setup Guide" />
+      </div>
+      <div class="ai-form-group">
+        <label for="ogDescription">OG Description</label>
+        <textarea id="ogDescription" name="ogDescription" rows="4" required placeholder="Describe the page for social sharing."></textarea>
+      </div>
+      <div class="ai-form-group">
+        <label for="ogUrl">OG URL</label>
+        <input id="ogUrl" name="ogUrl" type="url" required placeholder="https://example.com/page" />
+      </div>
+      <div class="ai-form-group">
+        <label for="ogType">OG Type</label>
+        <select id="ogType" name="ogType" required>
+          <option value="website">website</option>
+          <option value="article">article</option>
+          <option value="product">product</option>
+          <option value="profile">profile</option>
+        </select>
+      </div>
+      <div class="ai-form-group">
+        <label for="ogImageUrl">OG Image URL</label>
+        <input id="ogImageUrl" name="ogImageUrl" type="url" required placeholder="https://example.com/social-image.jpg" />
+      </div>
+      <div class="ai-form-group">
+        <label for="siteName">Site Name</label>
+        <input id="siteName" name="siteName" type="text" required placeholder="e.g. Panos Khan" />
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Generate OG Tags</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('ogForm');
+      if (!form) return;
+
+      const htmlEscape = (value) => value
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const ogTitle = AIPlatform.safeText(form.ogTitle.value);
+        const ogDescription = AIPlatform.safeText(form.ogDescription.value);
+        const ogUrl = AIPlatform.safeText(form.ogUrl.value);
+        const ogType = AIPlatform.safeText(form.ogType.value);
+        const ogImageUrl = AIPlatform.safeText(form.ogImageUrl.value);
+        const siteName = AIPlatform.safeText(form.siteName.value);
+
+        const ogTags = [
+          `<meta property="og:title" content="${htmlEscape(ogTitle)}" />`,
+          `<meta property="og:description" content="${htmlEscape(ogDescription)}" />`,
+          `<meta property="og:url" content="${htmlEscape(ogUrl)}" />`,
+          `<meta property="og:type" content="${htmlEscape(ogType)}" />`,
+          `<meta property="og:image" content="${htmlEscape(ogImageUrl)}" />`,
+          `<meta property="og:site_name" content="${htmlEscape(siteName)}" />`
+        ];
+
+        const twitterTags = [
+          '<meta name="twitter:card" content="summary_large_image" />',
+          `<meta name="twitter:title" content="${htmlEscape(ogTitle)}" />`,
+          `<meta name="twitter:description" content="${htmlEscape(ogDescription)}" />`,
+          `<meta name="twitter:image" content="${htmlEscape(ogImageUrl)}" />`
+        ];
+
+        const preview = [
+          `[Preview Image] ${ogImageUrl}`,
+          `${siteName} · ${ogUrl}`,
+          `${ogTitle}`,
+          `${ogDescription}`
+        ].join('\n');
+
+        const completeCode = [...ogTags, ...twitterTags].join('\n');
+
+        const outputData = {
+          title: `Open Graph Package for ${ogTitle}`,
+          sections: [
+            {
+              title: '1. Open Graph Meta Tags',
+              content: ogTags.join('\n')
+            },
+            {
+              title: '2. Twitter Card Tags',
+              content: twitterTags.join('\n')
+            },
+            {
+              title: '3. Complete HTML Code',
+              content: completeCode
+            },
+            {
+              title: '4. Social Preview',
+              content: preview
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

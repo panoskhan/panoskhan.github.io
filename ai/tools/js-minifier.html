@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JavaScript Minifier | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Minify JavaScript code by removing whitespace and comments to reduce file size and streamline production-ready browser delivery today." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/js-minifier.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="JavaScript Minifier | Panos Khan AI Platform" />
+  <meta property="og:description" content="Minify JavaScript code by removing whitespace and comments to reduce file size and streamline production-ready browser delivery today." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/js-minifier.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/js-minifier.html#webapp",
+        "name": "JavaScript Minifier",
+        "description": "Minify JavaScript code by removing whitespace and comments to reduce file size and streamline production-ready browser delivery today.",
+        "url": "https://panoskhan.github.io/ai/tools/js-minifier.html",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="js-minifier">
+  <div id="ai-tool-content">
+    <form id="jsMinifierForm">
+      <div class="ai-form-group">
+        <label for="jsInput">JavaScript Input</label>
+        <textarea id="jsInput" name="jsInput" rows="16" required placeholder="Paste JavaScript here" style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;"></textarea>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Minify JavaScript</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('jsMinifierForm');
+      if (!form) return;
+
+      function stripSingleLineComments(input) {
+        const lines = input.split('\n');
+        return lines.map((line) => {
+          let quote = null;
+          for (let i = 0; i < line.length; i += 1) {
+            const current = line[i];
+            const next = line[i + 1];
+            const prev = line[i - 1];
+            if (quote) {
+              if (current === quote && prev !== '\\') quote = null;
+              continue;
+            }
+            if (current === '"' || current === "'" || current === '`') {
+              quote = current;
+              continue;
+            }
+            if (current === '/' && next === '/') {
+              const before = line.slice(0, i);
+              if (/:[\/]{0,1}$/.test(before)) continue;
+              return before.trimEnd();
+            }
+          }
+          return line;
+        }).join('\n');
+      }
+
+      function minifyJs(input) {
+        const withoutBlockComments = input.replace(/\/\*[\s\S]*?\*\//g, '');
+        const withoutLineComments = stripSingleLineComments(withoutBlockComments);
+        return withoutLineComments
+          .split('\n')
+          .map((line) => line.trim())
+          .filter(Boolean)
+          .join(' ')
+          .replace(/\s+/g, ' ')
+          .replace(/\s*([{}();,:+\-*/=<>\[\]])\s*/g, '$1')
+          .trim();
+      }
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const rawJs = form.elements.jsInput.value;
+        const minified = minifyJs(rawJs);
+        const originalBytes = new TextEncoder().encode(rawJs).length;
+        const minifiedBytes = new TextEncoder().encode(minified).length;
+        const savedBytes = Math.max(originalBytes - minifiedBytes, 0);
+        const savings = originalBytes === 0 ? '0.00' : ((savedBytes / originalBytes) * 100).toFixed(2);
+
+        AIPlatform.showFormattedOutput({
+          title: AIPlatform.safeText('JavaScript Minifier'),
+          sections: [
+            {
+              title: '1. Minified JavaScript',
+              content: minified
+            },
+            {
+              title: '2. Size Comparison',
+              content: [
+                `Original bytes: ${originalBytes}`,
+                `Minified bytes: ${minifiedBytes}`,
+                `Saved bytes: ${savedBytes}`,
+                `Savings: ${savings}%`
+              ].join('\n')
+            },
+            {
+              title: '3. Notes',
+              content: 'This lightweight minifier is suitable for quick browser-side compression checks. For production builds, use dedicated tooling such as esbuild, Terser, or SWC for syntax-aware minification and safer transforms.'
+            }
+          ]
+        });
+      });
+    });
+  </script>
+</body>
+</html>

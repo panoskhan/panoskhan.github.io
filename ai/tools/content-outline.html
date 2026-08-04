@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Content Outline Generator | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Generate structured content outlines with headings, subheadings, key points, and word count targets." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/content-outline.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AI Content Outline Generator | Panos Khan AI Platform" />
+  <meta property="og:description" content="Generate structured content outlines with headings, subheadings, key points, and word count targets." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/content-outline.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/content-outline.html#webapp",
+        "name": "AI Content Outline Generator",
+        "description": "Generate structured content outlines with headings, subheadings, key points, and word count targets.",
+        "url": "https://panoskhan.github.io/ai/tools/content-outline.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preload and Stylesheets -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="content-outline">
+  <div id="ai-tool-content">
+    <form id="contentOutlineForm">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div class="ai-form-group">
+          <label for="topic">Topic</label>
+          <input id="topic" name="topic" type="text" required placeholder="e.g. Zero-trust security for startups" />
+        </div>
+        <div class="ai-form-group">
+          <label for="contentType">Content Type</label>
+          <select id="contentType" name="contentType" required>
+            <option value="Blog Post">Blog Post</option>
+            <option value="White Paper">White Paper</option>
+            <option value="Tutorial">Tutorial</option>
+            <option value="Case Study">Case Study</option>
+            <option value="Landing Page">Landing Page</option>
+          </select>
+        </div>
+        <div class="ai-form-group">
+          <label for="targetAudience">Target Audience</label>
+          <input id="targetAudience" name="targetAudience" type="text" required placeholder="e.g. SaaS founders and CTOs" />
+        </div>
+        <div class="ai-form-group">
+          <label for="targetWordCount">Target Word Count</label>
+          <select id="targetWordCount" name="targetWordCount" required>
+            <option value="500">500</option>
+            <option value="1000">1000</option>
+            <option value="1500">1500</option>
+            <option value="2000">2000</option>
+            <option value="3000">3000</option>
+            <option value="5000">5000</option>
+          </select>
+        </div>
+        <div class="ai-form-group">
+          <label for="tone">Tone</label>
+          <select id="tone" name="tone" required>
+            <option value="Professional">Professional</option>
+            <option value="Casual">Casual</option>
+            <option value="Technical">Technical</option>
+            <option value="Persuasive">Persuasive</option>
+            <option value="Educational">Educational</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Generate Content Outline</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contentOutlineForm');
+      if (!form) return;
+
+      function words(percent, total) {
+        return Math.round(total * percent);
+      }
+
+      function buildStructure(topic, type, audience, totalWords) {
+        const outlines = {
+          'Blog Post': [
+            { title: `Introduction`, words: words(0.10, totalWords), points: [`Frame why ${topic} matters now.`, `Connect the topic to ${audience}.`] },
+            { title: `What ${topic} Means in Practice`, words: words(0.15, totalWords), points: ['Define the concept clearly.', 'Set expectations for the rest of the article.'] },
+            { title: `Core Challenge or Opportunity`, words: words(0.15, totalWords), points: [`Explain the main pain point for ${audience}.`, 'Use an example or scenario.'] },
+            { title: `Key Strategy 1`, words: words(0.15, totalWords), points: ['Introduce the first actionable approach.', 'Explain when to use it.'] },
+            { title: `Key Strategy 2`, words: words(0.15, totalWords), points: ['Present the second supporting tactic.', 'Compare it to alternatives.'] },
+            { title: `Key Strategy 3`, words: words(0.15, totalWords), points: ['Show how to implement the idea.', 'Include common mistakes to avoid.'] },
+            { title: `Conclusion`, words: words(0.10, totalWords), points: ['Summarize the main takeaways.', 'Reinforce the value of acting now.'] },
+            { title: `Call to Action`, words: words(0.05, totalWords), points: ['Invite the reader to take a next step.', 'Align CTA with the article goal.'] }
+          ],
+          'White Paper': [
+            { title: 'Executive Summary', words: words(0.10, totalWords), points: ['Summarize the business case.', 'Preview findings and recommendations.'] },
+            { title: 'Problem Statement', words: words(0.12, totalWords), points: [`Explain why ${topic} matters strategically.`, `Clarify stakes for ${audience}.`] },
+            { title: 'Analysis Section 1', words: words(0.14, totalWords), points: ['Present first major analysis area.', 'Use evidence or directional reasoning.'] },
+            { title: 'Analysis Section 2', words: words(0.14, totalWords), points: ['Examine alternative approaches.', 'Compare outcomes and trade-offs.'] },
+            { title: 'Analysis Section 3', words: words(0.14, totalWords), points: ['Explore implementation or market implications.', 'Highlight constraints or dependencies.'] },
+            { title: 'Methodology', words: words(0.10, totalWords), points: ['Explain how the analysis was conducted.', 'Define assumptions and scope.'] },
+            { title: 'Findings', words: words(0.12, totalWords), points: ['List the most important conclusions.', 'Translate findings into priorities.'] },
+            { title: 'Recommendations', words: words(0.10, totalWords), points: ['Present clear action steps.', 'Sequence short-term and long-term actions.'] },
+            { title: 'Conclusion', words: words(0.04, totalWords), points: ['Close with the strategic takeaway.', 'Reinforce urgency or opportunity.'] }
+          ],
+          'Tutorial': [
+            { title: 'Introduction', words: words(0.08, totalWords), points: ['State the goal of the tutorial.', `Explain why ${audience} should care.`] },
+            { title: 'Prerequisites', words: words(0.10, totalWords), points: ['List required tools, knowledge, or inputs.', 'Clarify setup before starting.'] },
+            { title: 'Step 1: Setup', words: words(0.12, totalWords), points: ['Start with the environment or initial action.', 'Show expected outcome.'] },
+            { title: 'Step 2: Core Action', words: words(0.12, totalWords), points: ['Walk through the first meaningful task.', 'Add warnings or caveats.'] },
+            { title: 'Step 3: Configuration', words: words(0.12, totalWords), points: ['Explain configuration decisions.', 'Provide an example.'] },
+            { title: 'Step 4: Validation', words: words(0.12, totalWords), points: ['Show how to confirm success.', 'List common validation checks.'] },
+            { title: 'Step 5: Optimization', words: words(0.12, totalWords), points: ['Suggest enhancements or best practices.', 'Explain when to iterate.'] },
+            { title: 'Troubleshooting', words: words(0.12, totalWords), points: ['Address likely failure points.', 'Map errors to fixes.'] },
+            { title: 'Next Steps', words: words(0.10, totalWords), points: ['Suggest what to build or learn next.', 'Point to adjacent advanced topics.'] }
+          ],
+          'Case Study': [
+            { title: 'Background', words: words(0.12, totalWords), points: ['Introduce the client, company, or context.', 'Explain the initial situation.'] },
+            { title: 'Challenge', words: words(0.16, totalWords), points: [`Describe the key issue related to ${topic}.`, 'Quantify or qualify the problem.'] },
+            { title: 'Solution', words: words(0.20, totalWords), points: ['Explain the strategy or intervention.', 'Clarify why this approach was chosen.'] },
+            { title: 'Implementation', words: words(0.18, totalWords), points: ['Describe execution steps.', 'Highlight coordination, tools, or milestones.'] },
+            { title: 'Results', words: words(0.20, totalWords), points: ['Share outcomes, wins, and metrics.', 'Tie results back to business value.'] },
+            { title: 'Key Takeaways', words: words(0.14, totalWords), points: ['Extract lessons the reader can apply.', 'End with strategic implications.'] }
+          ],
+          'Landing Page': [
+            { title: 'Hero Section', words: words(0.15, totalWords), points: [`State the main promise of ${topic}.`, 'Add a clear CTA and benefit-led subheadline.'] },
+            { title: 'Problem Section', words: words(0.15, totalWords), points: [`Surface the main pain point for ${audience}.`, 'Show the cost of inaction.'] },
+            { title: 'Solution Section', words: words(0.15, totalWords), points: ['Present the product or offer as the answer.', 'Explain the transformation.'] },
+            { title: 'Feature 1', words: words(0.10, totalWords), points: ['Describe a standout capability.', 'Translate it into a benefit.'] },
+            { title: 'Feature 2', words: words(0.10, totalWords), points: ['Highlight a second differentiator.', 'Support with proof or detail.'] },
+            { title: 'Feature 3', words: words(0.10, totalWords), points: ['Add a third buying reason.', 'Address an objection if possible.'] },
+            { title: 'Social Proof', words: words(0.10, totalWords), points: ['Include testimonials, logos, or results.', 'Build trust and credibility.'] },
+            { title: 'Final CTA', words: words(0.15, totalWords), points: ['Close with urgency and confidence.', 'Restate the CTA clearly.'] }
+          ]
+        };
+        return outlines[type] || [];
+      }
+
+      function buildSeoRecommendations(topic, type, audience) {
+        return [
+          `Use the primary keyword phrase "${topic}" in the title, introduction, and one major section heading.`,
+          `Include audience-aware supporting terms such as challenges, tools, and outcomes relevant to ${audience}.`,
+          `For ${type.toLowerCase()} content, add FAQ-style subtopics to capture long-tail search intent.`,
+          'Write a meta title and description that promise a concrete benefit and clear next step.'
+        ];
+      }
+
+      function buildWritingGuidelines(tone, audience, type) {
+        return [
+          `Maintain a ${tone.toLowerCase()} tone that still feels accessible to ${audience}.`,
+          `Use section openings that preview value before presenting details in this ${type.toLowerCase()}.`,
+          'Support major claims with examples, scenarios, or data where possible.',
+          'End each section with a transition or takeaway so the structure feels cohesive.'
+        ];
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const topic = AIPlatform.safeText(form.topic.value);
+        const contentType = AIPlatform.safeText(form.contentType.value);
+        const targetAudience = AIPlatform.safeText(form.targetAudience.value);
+        const targetWordCount = parseInt(AIPlatform.safeText(form.targetWordCount.value), 10);
+        const tone = AIPlatform.safeText(form.tone.value);
+
+        const structure = buildStructure(topic, contentType, targetAudience, targetWordCount);
+        const seoRecommendations = buildSeoRecommendations(topic, contentType, targetAudience);
+        const writingGuidelines = buildWritingGuidelines(tone, targetAudience, contentType);
+
+        const outputData = {
+          title: `AI Content Outline: ${topic}`,
+          sections: [
+            {
+              title: '1. Content Structure',
+              content: structure.map(section => `* ${section.title} — ${section.words} words`).join('\n')
+            },
+            {
+              title: '2. Detailed Outline',
+              content: structure.map((section, index) => `${index + 1}. ${section.title} (${section.words} words)\n${section.points.map(point => `   * ${point}`).join('\n')}`).join('\n\n')
+            },
+            {
+              title: '3. SEO Recommendations',
+              content: seoRecommendations.map(item => `* ${item}`).join('\n')
+            },
+            {
+              title: '4. Writing Guidelines',
+              content: writingGuidelines.map(item => `* ${item}`).join('\n')
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

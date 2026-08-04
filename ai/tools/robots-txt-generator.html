@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Robots.txt Generator | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Create a properly formatted robots.txt file with user-agent rules, disallow paths, and sitemap directives for cleaner search engine crawling." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/robots-txt-generator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Robots.txt Generator | Panos Khan AI Platform" />
+  <meta property="og:description" content="Create a properly formatted robots.txt file with user-agent rules, disallow paths, and sitemap directives for cleaner search engine crawling." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/robots-txt-generator.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/robots-txt-generator.html#webapp",
+        "name": "Robots.txt Generator",
+        "description": "Create a properly formatted robots.txt file with user-agent rules, disallow paths, and sitemap directives for cleaner search engine crawling.",
+        "url": "https://panoskhan.github.io/ai/tools/robots-txt-generator.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preload and Stylesheets -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="robots-txt-generator">
+  <div id="ai-tool-content">
+    <form id="robotsForm">
+      <div class="ai-form-group">
+        <label for="sitemapUrl">Sitemap URL</label>
+        <input id="sitemapUrl" name="sitemapUrl" type="url" required placeholder="https://example.com/sitemap.xml" />
+      </div>
+      <div class="ai-form-group">
+        <label for="disallowPaths">Disallow Paths</label>
+        <textarea id="disallowPaths" name="disallowPaths" rows="6" placeholder="/admin/&#10;/private/&#10;/tmp/"></textarea>
+      </div>
+      <div class="ai-form-group">
+        <label for="crawlDelay">Crawl Delay</label>
+        <select id="crawlDelay" name="crawlDelay">
+          <option value="">None</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="30">30</option>
+          <option value="60">60</option>
+        </select>
+      </div>
+      <div class="ai-form-group">
+        <label for="searchEngines">Allow Search Engines</label>
+        <select id="searchEngines" name="searchEngines" required>
+          <option value="All">All</option>
+          <option value="Google Only">Google Only</option>
+          <option value="Google+Bing">Google+Bing</option>
+          <option value="None">None</option>
+        </select>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Generate robots.txt</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('robotsForm');
+      if (!form) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const sitemapUrl = AIPlatform.safeText(form.sitemapUrl.value);
+        const disallowText = AIPlatform.safeText(form.disallowPaths.value);
+        const crawlDelay = AIPlatform.safeText(form.crawlDelay.value);
+        const searchEngines = AIPlatform.safeText(form.searchEngines.value);
+        const disallowPaths = disallowText.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+
+        const blocks = [];
+        const explanation = [];
+
+        if (searchEngines === 'All') {
+          blocks.push(['User-agent: *', ...disallowPaths.map((path) => `Disallow: ${path}`), 'Allow: /', crawlDelay ? `Crawl-delay: ${crawlDelay}` : ''].filter(Boolean).join('\n'));
+          explanation.push('All major crawlers are allowed to access your public content while respecting the listed disallow rules.');
+        } else if (searchEngines === 'Google Only') {
+          blocks.push(['User-agent: Googlebot', 'Allow: /', ...disallowPaths.map((path) => `Disallow: ${path}`), crawlDelay ? `Crawl-delay: ${crawlDelay}` : ''].filter(Boolean).join('\n'));
+          blocks.push('User-agent: *\nDisallow: /');
+          explanation.push('Googlebot can crawl permitted pages, while all other crawlers are blocked from the site.');
+        } else if (searchEngines === 'Google+Bing') {
+          blocks.push(['User-agent: Googlebot', 'Allow: /', ...disallowPaths.map((path) => `Disallow: ${path}`), crawlDelay ? `Crawl-delay: ${crawlDelay}` : ''].filter(Boolean).join('\n'));
+          blocks.push(['User-agent: Bingbot', 'Allow: /', ...disallowPaths.map((path) => `Disallow: ${path}`), crawlDelay ? `Crawl-delay: ${crawlDelay}` : ''].filter(Boolean).join('\n'));
+          blocks.push('User-agent: *\nDisallow: /');
+          explanation.push('Googlebot and Bingbot are permitted to crawl public pages, while all other bots are disallowed.');
+        } else {
+          blocks.push('User-agent: *\nDisallow: /');
+          explanation.push('All crawlers are blocked from indexing the site, which is typically used for staging or private environments.');
+        }
+
+        if (sitemapUrl) {
+          blocks.push(`Sitemap: ${sitemapUrl}`);
+          explanation.push('The sitemap directive helps allowed crawlers discover your canonical URLs faster.');
+        }
+        if (disallowPaths.length) {
+          explanation.push(`The file blocks ${disallowPaths.length} path${disallowPaths.length === 1 ? '' : 's'} from crawling to reduce duplicate or sensitive page discovery.`);
+        }
+        if (crawlDelay) {
+          explanation.push(`A crawl delay of ${crawlDelay} seconds asks compliant bots to slow their request rate.`);
+        }
+
+        const robotsTxt = blocks.join('\n\n');
+        const deploySteps = [
+          '1. Save the generated content as robots.txt.',
+          '2. Upload it to the root of your domain, such as https://example.com/robots.txt.',
+          '3. Test it in Google Search Console or Bing Webmaster Tools.',
+          '4. Re-submit your sitemap after deployment.'
+        ].join('\n');
+
+        const outputData = {
+          title: 'Generated robots.txt Configuration',
+          sections: [
+            {
+              title: '1. Generated robots.txt',
+              content: robotsTxt
+            },
+            {
+              title: '2. Explanation',
+              content: explanation.join(' ')
+            },
+            {
+              title: '3. How to Deploy',
+              content: deploySteps
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

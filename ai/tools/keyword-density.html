@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Keyword Density Analyzer | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Analyze keyword frequency and density in your content to optimize for search engines without over-optimization or weak topical relevance." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/keyword-density.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Keyword Density Analyzer | Panos Khan AI Platform" />
+  <meta property="og:description" content="Analyze keyword frequency and density in your content to optimize for search engines without over-optimization or weak topical relevance." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/keyword-density.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/keyword-density.html#webapp",
+        "name": "Keyword Density Analyzer",
+        "description": "Analyze keyword frequency and density in your content to optimize for search engines without over-optimization or weak topical relevance.",
+        "url": "https://panoskhan.github.io/ai/tools/keyword-density.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preload and Stylesheets -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="keyword-density">
+  <div id="ai-tool-content">
+    <form id="keywordDensityForm">
+      <div class="ai-form-group">
+        <label for="targetKeyword">Target Keyword</label>
+        <input id="targetKeyword" name="targetKeyword" type="text" required placeholder="e.g. technical seo audit" />
+      </div>
+      <div class="ai-form-group">
+        <label for="content">Content</label>
+        <textarea id="content" name="content" rows="12" required placeholder="Paste your content here for analysis."></textarea>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Analyze Density</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('keywordDensityForm');
+      if (!form) return;
+
+      const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const targetKeywordRaw = AIPlatform.safeText(form.targetKeyword.value);
+        const targetKeyword = targetKeywordRaw.toLowerCase();
+        const content = AIPlatform.safeText(form.content.value);
+        const normalizedContent = content.toLowerCase();
+        const words = normalizedContent.match(/\b[\w'-]+\b/g) || [];
+        const totalWords = words.length;
+        const keywordRegex = new RegExp(`\\b${escapeRegExp(targetKeyword)}\\b`, 'gi');
+        const keywordMatches = normalizedContent.match(keywordRegex) || [];
+        const keywordCount = keywordMatches.length;
+        const density = totalWords ? ((keywordCount / totalWords) * 100) : 0;
+        const densityLabel = density < 1 ? 'Low' : density > 3 ? 'High' : 'Optimal';
+
+        const firstHundredWords = words.slice(0, 100).join(' ');
+        const firstHundredMatches = firstHundredWords.match(keywordRegex) || [];
+        const paragraphs = content.split(/\n\s*\n/).map((item) => item.trim()).filter(Boolean);
+        const lastParagraph = (paragraphs[paragraphs.length - 1] || '').toLowerCase();
+        const keywordInLastParagraph = keywordRegex.test(lastParagraph);
+
+        const analysis = [
+          `Total word count: ${totalWords}`,
+          `Keyword occurrences: ${keywordCount}`,
+          `Keyword density: ${density.toFixed(2)}%`,
+          `Density status: ${densityLabel}`
+        ].join('\n');
+
+        const distribution = [
+          `Keyword mentions in first 100 words: ${firstHundredMatches.length}`,
+          `Keyword present in last paragraph: ${keywordInLastParagraph ? 'Yes' : 'No'}`,
+          `Paragraph count reviewed: ${paragraphs.length}`
+        ].join('\n');
+
+        const recommendations = [];
+        if (density < 1) {
+          recommendations.push('Increase keyword prominence in headings, introduction, and naturally within body copy.');
+        } else if (density > 3) {
+          recommendations.push('Reduce repetitive usage and replace some mentions with natural variations or related entities.');
+        } else {
+          recommendations.push('Density is in a healthy range; keep the phrasing natural and focus on topical depth.');
+        }
+        if (!firstHundredMatches.length) {
+          recommendations.push('Add the target keyword earlier in the content to strengthen topical clarity for readers and crawlers.');
+        }
+        if (!keywordInLastParagraph) {
+          recommendations.push('Consider reinforcing the topic in the closing paragraph if it fits naturally.');
+        }
+
+        const benchmarks = [
+          'Under 1%: often too weak unless the page targets many semantic variations.',
+          '1% to 2%: commonly effective for balanced optimization.',
+          '2% to 3%: acceptable when the content remains readable and intent-focused.',
+          'Above 3%: review for over-optimization and repetitive phrasing.'
+        ].join('\n');
+
+        const outputData = {
+          title: `Keyword Density Report for "${targetKeywordRaw}"`,
+          sections: [
+            {
+              title: '1. Density Analysis',
+              content: analysis
+            },
+            {
+              title: '2. Keyword Distribution',
+              content: distribution
+            },
+            {
+              title: '3. Optimization Recommendations',
+              content: recommendations.map((item) => `- ${item}`).join('\n')
+            },
+            {
+              title: '4. Industry Benchmarks',
+              content: benchmarks
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

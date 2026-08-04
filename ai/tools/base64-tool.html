@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Base64 Encoder & Decoder | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Encode text to Base64 or decode Base64 strings instantly in your browser with no server required for fast local text transformations today." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/base64-tool.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Base64 Encoder & Decoder | Panos Khan AI Platform" />
+  <meta property="og:description" content="Encode text to Base64 or decode Base64 strings instantly in your browser with no server required for fast local text transformations today." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/base64-tool.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/base64-tool.html#webapp",
+        "name": "Base64 Encoder & Decoder",
+        "description": "Encode text to Base64 or decode Base64 strings instantly in your browser with no server required for fast local text transformations today.",
+        "url": "https://panoskhan.github.io/ai/tools/base64-tool.html",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="base64-tool">
+  <div id="ai-tool-content">
+    <form id="base64Form">
+      <div class="ai-form-group">
+        <label for="inputText">Input Text</label>
+        <textarea id="inputText" name="inputText" rows="12" required placeholder="Enter text or Base64 content here"></textarea>
+      </div>
+      <div class="ai-form-group">
+        <label for="mode">Mode</label>
+        <select id="mode" name="mode">
+          <option value="encode">Encode</option>
+          <option value="decode">Decode</option>
+        </select>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Convert</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('base64Form');
+      if (!form) return;
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const rawInput = form.elements.inputText.value;
+        const mode = form.elements.mode.value;
+        const safeMode = AIPlatform.safeText(mode === 'encode' ? 'Base64 Encode' : 'Base64 Decode');
+
+        try {
+          let result = '';
+          if (mode === 'encode') {
+            result = btoa(unescape(encodeURIComponent(rawInput)));
+          } else {
+            const decoded = atob(rawInput.trim());
+            result = decodeURIComponent(escape(decoded));
+          }
+
+          const inputLength = rawInput.length;
+          const outputLength = result.length;
+          const ratio = inputLength === 0 ? '0.00' : (outputLength / inputLength).toFixed(2);
+
+          const outputData = {
+            title: safeMode,
+            sections: [
+              {
+                title: '1. Result',
+                content: result
+              },
+              {
+                title: '2. Statistics',
+                content: [
+                  `Input length: ${inputLength} characters`,
+                  `Output length: ${outputLength} characters`,
+                  `Size ratio: ${ratio}x`
+                ].join('\n')
+              },
+              {
+                title: '3. About Base64',
+                content: 'Base64 encodes binary-safe text using ASCII characters. It is useful for transport and embedding, but it is not encryption and should not be treated as secure storage.'
+              }
+            ]
+          };
+
+          AIPlatform.showFormattedOutput(outputData);
+        } catch (error) {
+          AIPlatform.showFormattedOutput({
+            title: safeMode,
+            sections: [
+              { title: '1. Result', content: 'Unable to process the provided input.' },
+              { title: '2. Statistics', content: `Input length: ${rawInput.length} characters` },
+              { title: '3. About Base64', content: `Error: ${error.message || 'Invalid Base64 input.'}` }
+            ]
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

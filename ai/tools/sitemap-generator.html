@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sitemap Generator | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Create a valid XML sitemap from a list of URLs with configurable priority and change frequency for easier crawling and indexing." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/sitemap-generator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sitemap Generator | Panos Khan AI Platform" />
+  <meta property="og:description" content="Create a valid XML sitemap from a list of URLs with configurable priority and change frequency for easier crawling and indexing." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/sitemap-generator.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/sitemap-generator.html#webapp",
+        "name": "Sitemap Generator",
+        "description": "Create a valid XML sitemap from a list of URLs with configurable priority and change frequency for easier crawling and indexing.",
+        "url": "https://panoskhan.github.io/ai/tools/sitemap-generator.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preload and Stylesheets -->
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="sitemap-generator">
+  <div id="ai-tool-content">
+    <form id="sitemapForm">
+      <div class="ai-form-group">
+        <label for="urls">URLs</label>
+        <textarea id="urls" name="urls" rows="8" required placeholder="https://example.com/&#10;https://example.com/about/"></textarea>
+      </div>
+      <div class="ai-form-group">
+        <label for="defaultPriority">Default Priority</label>
+        <select id="defaultPriority" name="defaultPriority" required>
+          <option value="0.5">0.5</option>
+          <option value="0.6">0.6</option>
+          <option value="0.7">0.7</option>
+          <option value="0.8">0.8</option>
+          <option value="0.9">0.9</option>
+          <option value="1.0">1.0</option>
+        </select>
+      </div>
+      <div class="ai-form-group">
+        <label for="changeFrequency">Change Frequency</label>
+        <select id="changeFrequency" name="changeFrequency" required>
+          <option value="always">always</option>
+          <option value="hourly">hourly</option>
+          <option value="daily">daily</option>
+          <option value="weekly">weekly</option>
+          <option value="monthly">monthly</option>
+          <option value="yearly">yearly</option>
+          <option value="never">never</option>
+        </select>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Generate Sitemap</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('sitemapForm');
+      if (!form) return;
+
+      const xmlEscape = (value) => value
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&apos;');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const urlsText = AIPlatform.safeText(form.urls.value);
+        const defaultPriority = AIPlatform.safeText(form.defaultPriority.value);
+        const changeFrequency = AIPlatform.safeText(form.changeFrequency.value);
+        const today = new Date().toISOString().split('T')[0];
+        const urls = urlsText.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+
+        const entries = urls.map((url) => [
+          '  <url>',
+          `    <loc>${xmlEscape(url)}</loc>`,
+          `    <lastmod>${today}</lastmod>`,
+          `    <changefreq>${changeFrequency}</changefreq>`,
+          `    <priority>${defaultPriority}</priority>`,
+          '  </url>'
+        ].join('\n'));
+
+        const sitemap = [
+          '<?xml version="1.0" encoding="UTF-8"?>',
+          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+          ...entries,
+          '</urlset>'
+        ].join('\n');
+
+        const summary = [
+          `Total URLs included: ${urls.length}`,
+          `Default priority applied: ${defaultPriority}`,
+          `Change frequency applied: ${changeFrequency}`,
+          `Last modified date used: ${today}`
+        ].join('\n');
+
+        const deploy = [
+          '1. Save the XML output as sitemap.xml.',
+          '2. Upload it to your domain root or preferred sitemap location.',
+          '3. Reference it inside robots.txt using a Sitemap directive.',
+          '4. Submit the sitemap URL in Google Search Console and Bing Webmaster Tools.'
+        ].join('\n');
+
+        const outputData = {
+          title: 'Generated XML Sitemap',
+          sections: [
+            {
+              title: '1. Generated XML Sitemap',
+              content: sitemap
+            },
+            {
+              title: '2. URL Count Summary',
+              content: summary
+            },
+            {
+              title: '3. How to Deploy',
+              content: deploy
+            }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

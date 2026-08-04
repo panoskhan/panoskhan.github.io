@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hash Generator | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Generate SHA-1, SHA-256, SHA-384, and SHA-512 hashes from text input using the Web Crypto API for fast browser-side verification tasks." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/hash-generator.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hash Generator | Panos Khan AI Platform" />
+  <meta property="og:description" content="Generate SHA-1, SHA-256, SHA-384, and SHA-512 hashes from text input using the Web Crypto API for fast browser-side verification tasks." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/hash-generator.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/hash-generator.html#webapp",
+        "name": "Hash Generator",
+        "description": "Generate SHA-1, SHA-256, SHA-384, and SHA-512 hashes from text input using the Web Crypto API for fast browser-side verification tasks.",
+        "url": "https://panoskhan.github.io/ai/tools/hash-generator.html",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="hash-generator">
+  <div id="ai-tool-content">
+    <form id="hashForm">
+      <div class="ai-form-group">
+        <label for="inputText">Input Text</label>
+        <textarea id="inputText" name="inputText" rows="12" required placeholder="Enter text to hash"></textarea>
+      </div>
+      <div class="ai-form-group">
+        <label for="algorithm">Algorithm</label>
+        <select id="algorithm" name="algorithm">
+          <option value="SHA-256">SHA-256</option>
+          <option value="SHA-384">SHA-384</option>
+          <option value="SHA-512">SHA-512</option>
+          <option value="SHA-1">SHA-1</option>
+        </select>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Generate Hash</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('hashForm');
+      if (!form) return;
+
+      function bufferToHex(buffer) {
+        return Array.from(new Uint8Array(buffer))
+          .map((byte) => byte.toString(16).padStart(2, '0'))
+          .join('');
+      }
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const rawInput = form.elements.inputText.value;
+        const algorithm = form.elements.algorithm.value;
+        const encoder = new TextEncoder();
+
+        try {
+          const digest = await window.crypto.subtle.digest(algorithm, encoder.encode(rawInput));
+          const hexHash = bufferToHex(digest);
+          const hashBits = hexHash.length * 4;
+
+          const outputData = {
+            title: AIPlatform.safeText('Hash Generator'),
+            sections: [
+              {
+                title: '1. Hash Result',
+                content: hexHash
+              },
+              {
+                title: '2. Hash Details',
+                content: [
+                  `Algorithm: ${algorithm}`,
+                  `Input length: ${rawInput.length} characters`,
+                  `Hash length: ${hashBits} bits`
+                ].join('\n')
+              },
+              {
+                title: '3. Security Notes',
+                content: 'SHA-256 and stronger algorithms are recommended for modern workflows. SHA-1 is considered deprecated for security-sensitive uses because of known collision weaknesses.'
+              }
+            ]
+          };
+
+          AIPlatform.showFormattedOutput(outputData);
+        } catch (error) {
+          AIPlatform.showFormattedOutput({
+            title: AIPlatform.safeText('Hash Generator'),
+            sections: [
+              { title: '1. Hash Result', content: 'Hash generation failed.' },
+              { title: '2. Hash Details', content: `Algorithm: ${algorithm}` },
+              { title: '3. Security Notes', content: error.message || 'This browser may not support the selected Web Crypto algorithm.' }
+            ]
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

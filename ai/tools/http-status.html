@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTTP Status Code Checker | Panos Khan AI Platform</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Look up HTTP status codes with descriptions, use cases, category filtering, and troubleshooting guidance for faster debugging." />
+  <link rel="canonical" href="https://panoskhan.github.io/ai/tools/http-status.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="HTTP Status Code Checker | Panos Khan AI Platform" />
+  <meta property="og:description" content="Look up HTTP status codes with descriptions, use cases, category filtering, and troubleshooting guidance for faster debugging." />
+  <meta property="og:url" content="https://panoskhan.github.io/ai/tools/http-status.html" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://panoskhan.github.io/ai/tools/http-status.html#webapp",
+        "name": "HTTP Status Code Checker",
+        "description": "Look up HTTP status codes with descriptions, use cases, category filtering, and troubleshooting guidance for faster debugging.",
+        "url": "https://panoskhan.github.io/ai/tools/http-status.html",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="preload" href="/assets/css/ai-platform.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/ai-platform.css" />
+</head>
+<body data-tool-id="http-status">
+  <div id="ai-tool-content">
+    <form id="httpStatusForm">
+      <div class="ai-form-group">
+        <label for="statusCode">Status Code</label>
+        <input id="statusCode" name="statusCode" type="text" required placeholder="e.g. 404 or 301" />
+      </div>
+      <div class="ai-form-group">
+        <label for="categoryFilter">Category Filter</label>
+        <select id="categoryFilter" name="categoryFilter">
+          <option value="all">All</option>
+          <option value="1xx">1xx Informational</option>
+          <option value="2xx">2xx Success</option>
+          <option value="3xx">3xx Redirection</option>
+          <option value="4xx">4xx Client Error</option>
+          <option value="5xx">5xx Server Error</option>
+        </select>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="ai-btn ai-btn-primary" type="submit">Check Status Code</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/ai-platform.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('httpStatusForm');
+      if (!form) return;
+
+      const safe = (value) => AIPlatform.safeText(String(value || ''));
+      const statusMap = {
+        100: { name: 'Continue', category: '1xx Informational', description: 'The initial part of the request was received and the client should continue.', causes: ['Large uploads using Expect headers.', 'Protocol negotiation before sending the body.'], action: ['Continue sending the request body.', 'Verify client and server support Expect: 100-continue.'], rfc: 'RFC 9110' },
+        101: { name: 'Switching Protocols', category: '1xx Informational', description: 'The server is switching protocols as requested by the client.', causes: ['WebSocket upgrades.', 'HTTP/2 or other protocol changes.'], action: ['Confirm Upgrade headers are correct.', 'Ensure both endpoints support the new protocol.'], rfc: 'RFC 9110' },
+        102: { name: 'Processing', category: '1xx Informational', description: 'The server has accepted the request and is still processing it.', causes: ['Long-running WebDAV operations.', 'Bulk remote file changes.'], action: ['Wait for final completion status.', 'Monitor timeout thresholds on the client.'], rfc: 'RFC 2518' },
+        103: { name: 'Early Hints', category: '1xx Informational', description: 'The server is sending preliminary headers before the final response.', causes: ['Resource preload optimization.', 'Speculative asset fetching.'], action: ['Use Link preload headers carefully.', 'Validate that the final response remains consistent.'], rfc: 'RFC 8297' },
+        200: { name: 'OK', category: '2xx Success', description: 'The request succeeded and the response contains the requested representation.', causes: ['Standard successful GET or POST requests.', 'Healthy API or page delivery.'], action: ['No troubleshooting needed unless response content is wrong.', 'Check payload correctness if business logic seems off.'], rfc: 'RFC 9110' },
+        201: { name: 'Created', category: '2xx Success', description: 'The request succeeded and created a new resource.', causes: ['Successful POST or PUT creation flows.', 'Database inserts completing correctly.'], action: ['Return a Location header when appropriate.', 'Confirm the new resource identifier is stored correctly.'], rfc: 'RFC 9110' },
+        202: { name: 'Accepted', category: '2xx Success', description: 'The request was accepted for processing but has not completed yet.', causes: ['Background jobs.', 'Async queue processing.'], action: ['Provide job tracking endpoints.', 'Inform clients that work is still pending.'], rfc: 'RFC 9110' },
+        203: { name: 'Non-Authoritative Information', category: '2xx Success', description: 'The response is successful but may have been modified by a transforming proxy.', causes: ['Proxy transformations.', 'Cached intermediaries altering headers or bodies.'], action: ['Inspect proxy behavior.', 'Review CDN or intermediary response rewriting.'], rfc: 'RFC 9110' },
+        204: { name: 'No Content', category: '2xx Success', description: 'The request succeeded and there is no content to return.', causes: ['Delete operations.', 'Update actions that do not need a response body.'], action: ['Ensure clients do not expect a body.', 'Use for idempotent update confirmations.'], rfc: 'RFC 9110' },
+        205: { name: 'Reset Content', category: '2xx Success', description: 'The request succeeded and the client should reset the document view.', causes: ['Form workflow resets.', 'Interactive editing experiences.'], action: ['Reset local UI state after success.', 'Avoid sending a response body.'], rfc: 'RFC 9110' },
+        206: { name: 'Partial Content', category: '2xx Success', description: 'The server is delivering only part of the resource due to a range header.', causes: ['Resumable downloads.', 'Media streaming.'], action: ['Validate Content-Range headers.', 'Confirm byte ranges and caching rules.'], rfc: 'RFC 9110' },
+        207: { name: 'Multi-Status', category: '2xx Success', description: 'The response contains separate status codes for multiple sub-requests.', causes: ['WebDAV batch operations.', 'Bulk resource actions with mixed outcomes.'], action: ['Inspect each sub-response body.', 'Handle partial success paths in the client.'], rfc: 'RFC 4918' },
+        208: { name: 'Already Reported', category: '2xx Success', description: 'Members of a DAV binding have already been enumerated in a prior response.', causes: ['WebDAV depth queries.', 'Duplicate binding references.'], action: ['Avoid duplicate processing of the same member.', 'Review DAV client handling.'], rfc: 'RFC 5842' },
+        300: { name: 'Multiple Choices', category: '3xx Redirection', description: 'The request has more than one possible response.', causes: ['Content negotiation variants.', 'Multiple representations.'], action: ['Present alternatives clearly.', 'Prefer a single canonical destination where possible.'], rfc: 'RFC 9110' },
+        301: { name: 'Moved Permanently', category: '3xx Redirection', description: 'The resource has permanently moved to a new URL.', causes: ['Canonical URL changes.', 'Domain or path migrations.'], action: ['Update internal links.', 'Ensure redirects point directly to the final destination.'], rfc: 'RFC 9110' },
+        302: { name: 'Found', category: '3xx Redirection', description: 'The resource is temporarily available at a different URL.', causes: ['Short-term routing rules.', 'Temporary campaign destinations.'], action: ['Use only for temporary moves.', 'Consider 307 when method preservation matters.'], rfc: 'RFC 9110' },
+        303: { name: 'See Other', category: '3xx Redirection', description: 'The client should retrieve the resource at another URL using GET.', causes: ['Post/Redirect/Get workflows.', 'Confirmation pages after form submission.'], action: ['Return a clear Location header.', 'Ensure clients can safely follow with GET.'], rfc: 'RFC 9110' },
+        304: { name: 'Not Modified', category: '3xx Redirection', description: 'The cached version is still valid, so no body is returned.', causes: ['ETag or If-Modified-Since validation.', 'Browser or CDN cache revalidation.'], action: ['Check cache headers.', 'Verify validators match the current resource state.'], rfc: 'RFC 9110' },
+        305: { name: 'Use Proxy', category: '3xx Redirection', description: 'The requested resource must be accessed through a proxy.', causes: ['Legacy proxy routing requirements.'], action: ['Avoid relying on this deprecated code.', 'Use modern proxy configuration instead.'], rfc: 'RFC 9110' },
+        307: { name: 'Temporary Redirect', category: '3xx Redirection', description: 'The resource is temporarily at another URL and the method must not change.', causes: ['Temporary maintenance reroutes.', 'Preserving POST semantics during short-term redirects.'], action: ['Ensure the Location header is correct.', 'Use 302 only when method changes are acceptable.'], rfc: 'RFC 9110' },
+        308: { name: 'Permanent Redirect', category: '3xx Redirection', description: 'The resource has permanently moved and the method must be preserved.', causes: ['Strict permanent API route migrations.', 'HTTPS enforcement with method retention.'], action: ['Update clients to the new URL.', 'Use when request method/body must stay intact.'], rfc: 'RFC 9110' },
+        400: { name: 'Bad Request', category: '4xx Client Error', description: 'The server cannot process the request because it is malformed.', causes: ['Invalid JSON.', 'Missing required parameters.', 'Corrupt headers.'], action: ['Validate request syntax.', 'Review server parsing errors and request payload shape.'], rfc: 'RFC 9110' },
+        401: { name: 'Unauthorized', category: '4xx Client Error', description: 'Authentication is required or has failed.', causes: ['Missing bearer token.', 'Expired session.', 'Invalid API key.'], action: ['Refresh or resend valid credentials.', 'Return a WWW-Authenticate header when relevant.'], rfc: 'RFC 9110' },
+        402: { name: 'Payment Required', category: '4xx Client Error', description: 'Reserved for future use and often repurposed for billing failures.', causes: ['Subscription checks.', 'Quota or billing enforcement.'], action: ['Explain billing state clearly in the response body.', 'Coordinate custom semantics with API consumers.'], rfc: 'RFC 9110' },
+        403: { name: 'Forbidden', category: '4xx Client Error', description: 'The server understood the request but refuses to authorize it.', causes: ['Insufficient role permissions.', 'IP blocks.', 'Feature access restrictions.'], action: ['Check authorization rules.', 'Ensure the authenticated user has the required scope.'], rfc: 'RFC 9110' },
+        404: { name: 'Not Found', category: '4xx Client Error', description: 'The server cannot find the requested resource.', causes: ['Broken links.', 'Deleted resources.', 'Incorrect route paths.'], action: ['Verify the path or identifier.', 'Inspect routing, deployment, and URL generation logic.'], rfc: 'RFC 9110' },
+        405: { name: 'Method Not Allowed', category: '4xx Client Error', description: 'The request method is known but not supported for this resource.', causes: ['Using POST on a read-only endpoint.', 'Missing route handler for a method.'], action: ['Inspect the Allow header.', 'Send requests with a supported HTTP method.'], rfc: 'RFC 9110' },
+        406: { name: 'Not Acceptable', category: '4xx Client Error', description: 'The server cannot provide a response matching the Accept headers.', causes: ['Unsupported content negotiation.', 'Too-restrictive client Accept headers.'], action: ['Broaden Accept headers.', 'Add support for the required representation.'], rfc: 'RFC 9110' },
+        407: { name: 'Proxy Authentication Required', category: '4xx Client Error', description: 'The client must authenticate with the proxy.', causes: ['Corporate proxy requirements.', 'Missing proxy credentials.'], action: ['Provide valid proxy auth headers.', 'Review proxy environment configuration.'], rfc: 'RFC 9110' },
+        408: { name: 'Request Timeout', category: '4xx Client Error', description: 'The server timed out waiting for the complete request.', causes: ['Slow uploads.', 'Network interruptions.', 'Idle connections.'], action: ['Retry safely when appropriate.', 'Tune client/server timeout settings.'], rfc: 'RFC 9110' },
+        409: { name: 'Conflict', category: '4xx Client Error', description: 'The request conflicts with the current state of the resource.', causes: ['Version mismatches.', 'Duplicate creations.', 'Edit collisions.'], action: ['Fetch the latest resource state.', 'Resolve concurrency conflicts before retrying.'], rfc: 'RFC 9110' },
+        410: { name: 'Gone', category: '4xx Client Error', description: 'The resource is no longer available and will not return.', causes: ['Intentional content removal.', 'Retired endpoints.'], action: ['Remove stale links.', 'Use 410 when permanent removal is intentional.'], rfc: 'RFC 9110' },
+        411: { name: 'Length Required', category: '4xx Client Error', description: 'The server refuses the request without a Content-Length header.', causes: ['Missing payload length.', 'Clients streaming incorrectly.'], action: ['Send a valid Content-Length header.', 'Review transfer encoding behavior.'], rfc: 'RFC 9110' },
+        412: { name: 'Precondition Failed', category: '4xx Client Error', description: 'One or more request preconditions were not satisfied.', causes: ['Failed If-Match check.', 'Outdated ETag or modification date.'], action: ['Fetch fresh metadata.', 'Retry with updated conditional headers.'], rfc: 'RFC 9110' },
+        413: { name: 'Payload Too Large', category: '4xx Client Error', description: 'The request body exceeds the server limit.', causes: ['Large file uploads.', 'Oversized JSON bodies.'], action: ['Reduce payload size.', 'Increase server limits when appropriate.'], rfc: 'RFC 9110' },
+        414: { name: 'URI Too Long', category: '4xx Client Error', description: 'The request target is longer than the server is willing to interpret.', causes: ['Long query strings.', 'Redirect loops appending parameters.'], action: ['Shorten the URL.', 'Move data into the request body if possible.'], rfc: 'RFC 9110' },
+        415: { name: 'Unsupported Media Type', category: '4xx Client Error', description: 'The server does not support the request payload format.', causes: ['Wrong Content-Type header.', 'Unexpected upload format.'], action: ['Send a supported media type.', 'Confirm server parsers and upload handlers.'], rfc: 'RFC 9110' },
+        416: { name: 'Range Not Satisfiable', category: '4xx Client Error', description: 'The requested range cannot be fulfilled for the resource.', causes: ['Invalid byte ranges.', 'File size changed since the last request.'], action: ['Recalculate ranges using the current resource size.', 'Retry without range requests when unsure.'], rfc: 'RFC 9110' },
+        417: { name: 'Expectation Failed', category: '4xx Client Error', description: 'The server cannot meet the requirements of the Expect header.', causes: ['Unsupported Expect values.', 'Misconfigured client libraries.'], action: ['Remove or correct the Expect header.', 'Check intermediary support for expectation handling.'], rfc: 'RFC 9110' },
+        418: { name: 'I am a Teapot', category: '4xx Client Error', description: 'An April Fools status code sometimes used for playful or custom handling.', causes: ['Non-standard test behavior.', 'Intentional custom responses.'], action: ['Treat as non-standard unless your API documents it.', 'Do not rely on it for production semantics.'], rfc: 'RFC 2324' },
+        421: { name: 'Misdirected Request', category: '4xx Client Error', description: 'The request was sent to a server unable to produce a response.', causes: ['HTTP/2 connection reuse across origins.', 'TLS/SNI routing mismatches.'], action: ['Reconnect using the correct authority.', 'Review reverse proxy and certificate configuration.'], rfc: 'RFC 9110' },
+        422: { name: 'Unprocessable Content', category: '4xx Client Error', description: 'The server understands the syntax but cannot process the contained instructions.', causes: ['Validation errors.', 'Semantically invalid request bodies.'], action: ['Return field-level validation details.', 'Correct domain-specific data errors before retrying.'], rfc: 'RFC 9110' },
+        423: { name: 'Locked', category: '4xx Client Error', description: 'The resource is locked and cannot be modified.', causes: ['WebDAV locks.', 'Concurrent editing guards.'], action: ['Release or wait for the lock.', 'Handle lock tokens correctly.'], rfc: 'RFC 4918' },
+        424: { name: 'Failed Dependency', category: '4xx Client Error', description: 'The request failed because a previous dependent request failed.', causes: ['Batch operations with prerequisite failures.', 'WebDAV chained commands.'], action: ['Fix the underlying failed dependency first.', 'Retry dependent operations after resolution.'], rfc: 'RFC 4918' },
+        425: { name: 'Too Early', category: '4xx Client Error', description: 'The server is unwilling to risk processing a request that might be replayed.', causes: ['0-RTT early data concerns.', 'Replay risk on non-idempotent requests.'], action: ['Retry without early data.', 'Restrict early data to safe request types.'], rfc: 'RFC 8470' },
+        426: { name: 'Upgrade Required', category: '4xx Client Error', description: 'The server refuses the request using the current protocol but might accept it after upgrade.', causes: ['Protocol version enforcement.', 'Deprecated transport versions.'], action: ['Inspect the Upgrade header.', 'Reconnect using the required protocol.'], rfc: 'RFC 9110' },
+        428: { name: 'Precondition Required', category: '4xx Client Error', description: 'The origin server requires the request to be conditional.', causes: ['Optimistic locking rules.', 'Write protection against lost updates.'], action: ['Send If-Match or similar headers.', 'Fetch the latest ETag before modifying resources.'], rfc: 'RFC 6585' },
+        429: { name: 'Too Many Requests', category: '4xx Client Error', description: 'The client has sent too many requests in a given amount of time.', causes: ['Rate limiting.', 'Burst traffic.', 'Missing request backoff.'], action: ['Respect Retry-After headers.', 'Implement exponential backoff or caching.'], rfc: 'RFC 6585' },
+        431: { name: 'Request Header Fields Too Large', category: '4xx Client Error', description: 'The server is unwilling to process the request because headers are too large.', causes: ['Oversized cookies.', 'Excessive custom headers.'], action: ['Trim cookies and header payload.', 'Review proxy header size limits.'], rfc: 'RFC 6585' },
+        451: { name: 'Unavailable For Legal Reasons', category: '4xx Client Error', description: 'The resource is unavailable due to legal restrictions.', causes: ['Court orders.', 'Regional compliance blocks.'], action: ['Document legal restriction context when possible.', 'Provide alternate access or support information if appropriate.'], rfc: 'RFC 7725' },
+        500: { name: 'Internal Server Error', category: '5xx Server Error', description: 'The server encountered an unexpected condition.', causes: ['Unhandled exceptions.', 'Broken dependencies.', 'Application misconfiguration.'], action: ['Inspect server logs and stack traces.', 'Add error handling and observability around the failing path.'], rfc: 'RFC 9110' },
+        501: { name: 'Not Implemented', category: '5xx Server Error', description: 'The server does not support the request functionality.', causes: ['Missing route implementation.', 'Unsupported HTTP methods or features.'], action: ['Implement the required capability.', 'Return clearer capability documentation to clients.'], rfc: 'RFC 9110' },
+        502: { name: 'Bad Gateway', category: '5xx Server Error', description: 'The server received an invalid response from an upstream server.', causes: ['Proxy or gateway issues.', 'Upstream crashes.', 'Malformed upstream responses.'], action: ['Check upstream health and networking.', 'Review gateway timeout and retry behavior.'], rfc: 'RFC 9110' },
+        503: { name: 'Service Unavailable', category: '5xx Server Error', description: 'The server is temporarily unable to handle the request.', causes: ['Maintenance windows.', 'Traffic spikes.', 'Resource exhaustion.'], action: ['Scale capacity or reduce load.', 'Use Retry-After when downtime is temporary.'], rfc: 'RFC 9110' },
+        504: { name: 'Gateway Timeout', category: '5xx Server Error', description: 'The server acting as a gateway did not receive a timely upstream response.', causes: ['Slow upstream dependencies.', 'Network latency.', 'Timeout misconfiguration.'], action: ['Inspect upstream performance.', 'Increase timeouts only after measuring root causes.'], rfc: 'RFC 9110' },
+        505: { name: 'HTTP Version Not Supported', category: '5xx Server Error', description: 'The server does not support the HTTP protocol version used in the request.', causes: ['Legacy clients.', 'Protocol negotiation failures.'], action: ['Upgrade the client or gateway.', 'Confirm supported protocol versions across the stack.'], rfc: 'RFC 9110' },
+        506: { name: 'Variant Also Negotiates', category: '5xx Server Error', description: 'Transparent content negotiation resulted in a circular reference.', causes: ['Misconfigured variant resources.', 'Negotiation loops.'], action: ['Review content negotiation configuration.', 'Simplify variant mapping rules.'], rfc: 'RFC 2295' },
+        507: { name: 'Insufficient Storage', category: '5xx Server Error', description: 'The server is unable to store the representation needed to complete the request.', causes: ['Disk exhaustion.', 'Quota limits.', 'Storage backend failures.'], action: ['Free or expand storage.', 'Inspect persistence backends and quotas.'], rfc: 'RFC 4918' },
+        508: { name: 'Loop Detected', category: '5xx Server Error', description: 'The server detected an infinite loop while processing the request.', causes: ['Recursive resource bindings.', 'Bad workflow recursion.'], action: ['Trace recursive logic.', 'Add loop detection or cycle guards.'], rfc: 'RFC 5842' },
+        510: { name: 'Not Extended', category: '5xx Server Error', description: 'Further extensions to the request are required for the server to fulfill it.', causes: ['Mandatory extension declarations missing.', 'Experimental protocol extensions.'], action: ['Review server extension requirements.', 'Add required request metadata or negotiate alternatives.'], rfc: 'RFC 2774' },
+        511: { name: 'Network Authentication Required', category: '5xx Server Error', description: 'The client needs to authenticate to gain network access.', causes: ['Captive portals.', 'Network access control gateways.'], action: ['Authenticate through the network portal.', 'Retry the request after network access is granted.'], rfc: 'RFC 6585' }
+      };
+
+      const categoryPrefixMap = { '1xx': '1', '2xx': '2', '3xx': '3', '4xx': '4', '5xx': '5' };
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const codeInput = form.statusCode.value.trim();
+        const categoryFilter = form.categoryFilter.value;
+        const code = Number(codeInput);
+        const selectedLabel = form.categoryFilter.options[form.categoryFilter.selectedIndex].text;
+        const requestedEntry = Number.isInteger(code) ? statusMap[code] : null;
+        const categoryEntries = categoryFilter === 'all'
+          ? Object.entries(statusMap)
+          : Object.entries(statusMap).filter(([statusCode]) => String(statusCode).startsWith(categoryPrefixMap[categoryFilter]));
+
+        let title;
+        let detailsContent;
+        let descriptionContent;
+        let causesContent;
+        let troubleshootingContent;
+        let relatedContent;
+
+        if (requestedEntry) {
+          const relatedCodes = Object.entries(statusMap)
+            .filter(([statusCode, entry]) => entry.category === requestedEntry.category && Number(statusCode) !== code)
+            .slice(0, 6)
+            .map(([statusCode, entry]) => `- ${statusCode} ${entry.name}`)
+            .join('\n') || 'No closely related status codes found.';
+
+          title = AIPlatform.safeText(`HTTP ${code} ${requestedEntry.name}`);
+          detailsContent = `Code: ${code}\nName: ${safe(requestedEntry.name)}\nCategory: ${safe(requestedEntry.category)}\nRFC reference: ${safe(requestedEntry.rfc)}`;
+          descriptionContent = `${safe(requestedEntry.description)}\n\nTypical use cases:\n- ${requestedEntry.description}`;
+          causesContent = requestedEntry.causes.map((item) => `- ${safe(item)}`).join('\n');
+          troubleshootingContent = requestedEntry.action.map((item) => `- ${safe(item)}`).join('\n');
+          relatedContent = relatedCodes;
+        } else {
+          const matchingByCategory = categoryEntries.map(([statusCode, entry]) => `- ${statusCode} ${safe(entry.name)} — ${safe(entry.description)}`).join('\n');
+          title = AIPlatform.safeText(categoryFilter === 'all' ? 'HTTP Status Code Reference' : `${selectedLabel} Reference`);
+          detailsContent = codeInput && !requestedEntry
+            ? `No exact match found for status code ${safe(codeInput)}.\nShowing ${safe(selectedLabel)} results instead.`
+            : `Showing ${safe(selectedLabel)} status codes.`;
+          descriptionContent = matchingByCategory || 'No status codes matched the current filter.';
+          causesContent = 'Select a specific status code to view common causes.';
+          troubleshootingContent = 'Select a specific status code to view tailored troubleshooting steps.';
+          relatedContent = Object.entries(statusMap).slice(0, 10).map(([statusCode, entry]) => `- ${statusCode} ${safe(entry.name)}`).join('\n');
+        }
+
+        const outputData = {
+          title,
+          sections: [
+            { title: '1. Status Code Details', content: detailsContent },
+            { title: '2. Description & Use Cases', content: descriptionContent },
+            { title: '3. Common Causes', content: causesContent },
+            { title: '4. Troubleshooting Steps', content: troubleshootingContent },
+            { title: '5. Related Status Codes', content: relatedContent }
+          ]
+        };
+
+        AIPlatform.showFormattedOutput(outputData);
+      });
+    });
+  </script>
+</body>
+</html>

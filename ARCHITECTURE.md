@@ -1,7 +1,7 @@
 # Platform Intelligence v2 Architecture Specification
 
-**Status:** Approved direction, shared-runtime implementation in progress  
-**Updated:** 2026-08-03  
+**Status:** Complete — Platform Intelligence v2 shipped  
+**Updated:** 2026-08-04  
 **Mission:** Transform Platform Intelligence into the core runtime powering every Digital Health capability across the Panos Khan ecosystem.
 
 ## Architecture summary
@@ -183,9 +183,9 @@ Designed so the platform can hold 100+ tools, articles, projects, and downloads 
 3. Reusing templates under `/templates/`  
 4. Avoiding per-page navigation forks  
 
-Roadmap after this milestone:
+Roadmap:
 
-- **v2.0** Shared runtime foundations + Website Health migration ✅
+- **v2.0** Shared runtime foundations + Website Health migration ✅ (complete — 2026-08-04)
 - **v3.0** Knowledge Platform + AI Tools expansion (22 new tools) ✅
 - **v3.5** Downloads library expansion + Labs content
 - **v4.0** Device Health + Project Health + AI Workflow Health on the same engine

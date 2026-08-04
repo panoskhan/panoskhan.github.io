@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "updated": "2026-08-03",
+  "version": "1.1.0",
+  "updated": "2026-08-04",
   "schema": {
     "required": [
       "id",
@@ -29,7 +29,9 @@
       "documentation",
       "relatedTools",
       "relatedGuides",
-      "legacyPaths"
+      "legacyPaths",
+      "digitalHealthPillar",
+      "engineCompatibility"
     ]
   },
   "items": [
@@ -42,16 +44,233 @@
       "featured": true,
       "updated": "2026-08-03",
       "path": "/intelligence/",
-      "tags": ["intelligence", "health", "audit", "report", "diagnostics"],
+      "tags": [
+        "intelligence",
+        "health",
+        "audit",
+        "report",
+        "diagnostics"
+      ],
       "domain": "Platform",
       "category": "Product",
       "product": "intelligence",
       "engine": "platform-intelligence-runtime",
-      "supportedPlatforms": ["browser"],
+      "supportedPlatforms": [
+        "browser"
+      ],
       "version": "2.0.0",
       "links": {
         "primary": "/intelligence/",
         "capability": "/capabilities/"
+      }
+    },
+    {
+      "id": "digital-health-ai-workflow",
+      "type": "product",
+      "title": "AI Workflow Health",
+      "summary": "Audit AI workflows for reliability, safety, performance, and alignment with business goals through structured health checks.",
+      "status": "coming-soon",
+      "featured": false,
+      "updated": "2026-08-04",
+      "path": "/digital-health/ai-workflow-health/",
+      "tags": [
+        "ai workflow health",
+        "ai audit",
+        "reliability",
+        "safety",
+        "digital health"
+      ],
+      "domain": "Digital Health",
+      "category": "Health",
+      "product": "digital-health",
+      "digitalHealthPillar": "ai-workflow-health",
+      "pillar": "ai-workflow-health",
+      "engine": "health-engine",
+      "engineCompatibility": [
+        "health-engine",
+        "recommendation-engine",
+        "report-engine"
+      ],
+      "reportType": "health-report",
+      "supportedPlatforms": [
+        "browser"
+      ],
+      "version": "0.0.0",
+      "documentation": "/docs/architecture/",
+      "links": {
+        "primary": "/digital-health/ai-workflow-health/"
+      }
+    },
+    {
+      "id": "digital-health-project",
+      "type": "product",
+      "title": "Project Health",
+      "summary": "Evaluate the quality, maintainability, and delivery readiness of software projects through structured health checks.",
+      "status": "coming-soon",
+      "featured": false,
+      "updated": "2026-08-04",
+      "path": "/digital-health/project-health/",
+      "tags": [
+        "project health",
+        "code quality",
+        "software",
+        "maintainability",
+        "digital health"
+      ],
+      "domain": "Digital Health",
+      "category": "Health",
+      "product": "digital-health",
+      "digitalHealthPillar": "project-health",
+      "pillar": "project-health",
+      "engine": "health-engine",
+      "engineCompatibility": [
+        "health-engine",
+        "recommendation-engine",
+        "report-engine"
+      ],
+      "reportType": "health-report",
+      "supportedPlatforms": [
+        "browser"
+      ],
+      "version": "0.0.0",
+      "documentation": "/docs/architecture/",
+      "links": {
+        "primary": "/digital-health/project-health/"
+      }
+    },
+    {
+      "id": "digital-health-device",
+      "type": "product",
+      "title": "Device Health",
+      "summary": "Diagnose and optimise the health of Windows, macOS, Android, and iOS devices through guided checks and structured health reports.",
+      "status": "coming-soon",
+      "featured": false,
+      "updated": "2026-08-04",
+      "path": "/digital-health/device-health/",
+      "tags": [
+        "device health",
+        "diagnostics",
+        "windows",
+        "macos",
+        "android",
+        "ios",
+        "digital health"
+      ],
+      "domain": "Digital Health",
+      "category": "Health",
+      "product": "digital-health",
+      "digitalHealthPillar": "device-health",
+      "pillar": "device-health",
+      "engine": "health-engine",
+      "engineCompatibility": [
+        "health-engine",
+        "recommendation-engine",
+        "report-engine"
+      ],
+      "reportType": "health-report",
+      "supportedPlatforms": [
+        "browser"
+      ],
+      "version": "0.0.0",
+      "documentation": "/docs/architecture/",
+      "links": {
+        "primary": "/digital-health/device-health/"
+      }
+    },
+    {
+      "id": "digital-health-website",
+      "type": "tool",
+      "title": "Website Health",
+      "summary": "Generate a structured health report for any website \u2014 scoring messaging, discoverability, trust, and conversion readiness with a prioritised action plan.",
+      "status": "live",
+      "featured": true,
+      "updated": "2026-08-04",
+      "path": "/digital-health/website-health/",
+      "tags": [
+        "website health",
+        "seo",
+        "audit",
+        "conversion",
+        "report",
+        "digital health"
+      ],
+      "domain": "Digital Health",
+      "category": "Health",
+      "product": "digital-health",
+      "digitalHealthPillar": "website-health",
+      "pillar": "website-health",
+      "engine": "health-engine",
+      "engineCompatibility": [
+        "health-engine",
+        "recommendation-engine",
+        "knowledge-engine",
+        "report-engine"
+      ],
+      "reportType": "health-report",
+      "inputType": "website-health-form",
+      "outputType": "canonical-health-report",
+      "supportedPlatforms": [
+        "browser"
+      ],
+      "version": "1.0.0",
+      "documentation": "/docs/architecture/",
+      "relatedTools": [
+        "tool-seo-brief",
+        "tool-meta-tag-generator",
+        "tool-schema-generator",
+        "tool-canonical-checker"
+      ],
+      "relatedGuides": [
+        "seo-architecture-ai-discovery",
+        "seo-audit-checklist"
+      ],
+      "legacyPaths": [
+        "/intelligence/website-health/",
+        "/ai/tools/website-audit.html",
+        "/tools/website-audit.html"
+      ],
+      "links": {
+        "primary": "/digital-health/website-health/",
+        "capability": "/capabilities/#website-audits",
+        "related": "/downloads/#seo-audit-checklist"
+      }
+    },
+    {
+      "id": "hub-digital-health",
+      "type": "product",
+      "title": "Digital Health",
+      "summary": "Understand and improve the health of websites, devices, software projects, and AI workflows through practical health checks and professional reports.",
+      "status": "live",
+      "featured": true,
+      "updated": "2026-08-04",
+      "path": "/digital-health/",
+      "tags": [
+        "digital health",
+        "health",
+        "website health",
+        "device health",
+        "project health",
+        "ai workflow health"
+      ],
+      "domain": "Digital Health",
+      "category": "Product",
+      "product": "digital-health",
+      "engine": "platform-intelligence-runtime",
+      "engineCompatibility": [
+        "health-engine",
+        "recommendation-engine",
+        "knowledge-engine",
+        "search-engine",
+        "report-engine"
+      ],
+      "supportedPlatforms": [
+        "browser"
+      ],
+      "version": "1.0.0",
+      "links": {
+        "primary": "/digital-health/",
+        "capability": "/capabilities/",
+        "intelligence": "/intelligence/"
       }
     },
     {
@@ -78,12 +297,22 @@
       "reportType": "health-report",
       "inputType": "website-health-form",
       "outputType": "canonical-health-report",
-      "supportedPlatforms": ["browser"],
+      "supportedPlatforms": [
+        "browser"
+      ],
       "version": "2.0.0",
       "documentation": "/docs/architecture/",
-      "relatedTools": ["tool-seo-brief"],
-      "relatedGuides": ["seo-architecture-ai-discovery", "seo-audit-checklist"],
-      "legacyPaths": ["/ai/tools/website-audit.html", "/tools/website-audit.html"],
+      "relatedTools": [
+        "tool-seo-brief"
+      ],
+      "relatedGuides": [
+        "seo-architecture-ai-discovery",
+        "seo-audit-checklist"
+      ],
+      "legacyPaths": [
+        "/ai/tools/website-audit.html",
+        "/tools/website-audit.html"
+      ],
       "links": {
         "primary": "/intelligence/website-health/",
         "capability": "/capabilities/#website-audits",
@@ -519,7 +748,13 @@
       "featured": true,
       "updated": "2026-08-04",
       "path": "/ai/tools/meta-tag-generator.html",
-      "tags": ["seo", "meta tags", "open graph", "twitter cards", "html"],
+      "tags": [
+        "seo",
+        "meta tags",
+        "open graph",
+        "twitter cards",
+        "html"
+      ],
       "domain": "SEO",
       "category": "SEO",
       "product": "ai"
@@ -533,7 +768,12 @@
       "featured": true,
       "updated": "2026-08-04",
       "path": "/ai/tools/robots-txt-generator.html",
-      "tags": ["seo", "robots.txt", "crawling", "indexing"],
+      "tags": [
+        "seo",
+        "robots.txt",
+        "crawling",
+        "indexing"
+      ],
       "domain": "SEO",
       "category": "SEO",
       "product": "ai"
@@ -547,7 +787,12 @@
       "featured": true,
       "updated": "2026-08-04",
       "path": "/ai/tools/sitemap-generator.html",
-      "tags": ["seo", "sitemap", "xml", "indexing"],
+      "tags": [
+        "seo",
+        "sitemap",
+        "xml",
+        "indexing"
+      ],
       "domain": "SEO",
       "category": "SEO",
       "product": "ai"
@@ -561,7 +806,12 @@
       "featured": true,
       "updated": "2026-08-04",
       "path": "/ai/tools/schema-generator.html",
-      "tags": ["seo", "schema", "json-ld", "structured data"],
+      "tags": [
+        "seo",
+        "schema",
+        "json-ld",
+        "structured data"
+      ],
       "domain": "SEO",
       "category": "SEO",
       "product": "ai"
@@ -575,7 +825,13 @@
       "featured": false,
       "updated": "2026-08-04",
       "path": "/ai/tools/og-generator.html",
-      "tags": ["seo", "open graph", "social media", "facebook", "linkedin"],
+      "tags": [
+        "seo",
+        "open graph",
+        "social media",
+        "facebook",
+        "linkedin"
+      ],
       "domain": "SEO",
       "category": "SEO",
       "product": "ai"
@@ -589,7 +845,12 @@
       "featured": false,
       "updated": "2026-08-04",
       "path": "/ai/tools/canonical-checker.html",
-      "tags": ["seo", "canonical", "duplicate content", "validation"],
+      "tags": [
+        "seo",
+        "canonical",
+        "duplicate content",
+        "validation"
+      ],
       "domain": "SEO",
       "category": "SEO",
       "product": "ai"
@@ -603,7 +864,12 @@
       "featured": false,
       "updated": "2026-08-04",
       "path": "/ai/tools/keyword-density.html",
-      "tags": ["seo", "keywords", "density", "content optimization"],
+      "tags": [
+        "seo",
+        "keywords",
+        "density",
+        "content optimization"
+      ],
       "domain": "SEO",
       "category": "SEO",
       "product": "ai"
@@ -617,7 +883,12 @@
       "featured": true,
       "updated": "2026-08-04",
       "path": "/ai/tools/prompt-optimizer.html",
-      "tags": ["ai", "prompt engineering", "optimization", "llm"],
+      "tags": [
+        "ai",
+        "prompt engineering",
+        "optimization",
+        "llm"
+      ],
       "domain": "AI",
       "category": "AI",
       "product": "ai"
@@ -631,7 +902,13 @@
       "featured": true,
       "updated": "2026-08-04",
       "path": "/ai/tools/prompt-library.html",
-      "tags": ["ai", "prompts", "library", "templates", "collection"],
+      "tags": [
+        "ai",
+        "prompts",
+        "library",
+        "templates",
+        "collection"
+      ],
       "domain": "AI",
       "category": "AI",
       "product": "ai"
@@ -645,7 +922,13 @@
       "featured": true,
       "updated": "2026-08-04",
       "path": "/ai/tools/content-outline.html",
-      "tags": ["ai", "content", "outline", "writing", "blog"],
+      "tags": [
+        "ai",
+        "content",
+        "outline",
+        "writing",
+        "blog"
+      ],
       "domain": "AI",
       "category": "AI",
       "product": "ai"
@@ -659,7 +942,12 @@
       "featured": false,
       "updated": "2026-08-04",
       "path": "/ai/tools/persona-builder.html",
-      "tags": ["ai", "persona", "user research", "marketing"],
+      "tags": [
+        "ai",
+        "persona",
+        "user research",
+        "marketing"
+      ],
       "domain": "AI",
       "category": "AI",
       "product": "ai"
@@ -673,7 +961,13 @@
       "featured": true,
       "updated": "2026-08-04",
       "path": "/ai/tools/json-formatter.html",
-      "tags": ["developer", "json", "formatter", "beautifier", "validator"],
+      "tags": [
+        "developer",
+        "json",
+        "formatter",
+        "beautifier",
+        "validator"
+      ],
       "domain": "Developer",
       "category": "Web",
       "product": "ai"
@@ -687,7 +981,13 @@
       "featured": false,
       "updated": "2026-08-04",
       "path": "/ai/tools/base64-tool.html",
-      "tags": ["developer", "base64", "encoder", "decoder", "converter"],
+      "tags": [
+        "developer",
+        "base64",
+        "encoder",
+        "decoder",
+        "converter"
+      ],
       "domain": "Developer",
       "category": "Web",
       "product": "ai"
@@ -701,7 +1001,13 @@
       "featured": false,
       "updated": "2026-08-04",
       "path": "/ai/tools/uuid-generator.html",
-      "tags": ["developer", "uuid", "guid", "generator", "random"],
+      "tags": [
+        "developer",
+        "uuid",
+        "guid",
+        "generator",
+        "random"
+      ],
       "domain": "Developer",
       "category": "Web",
       "product": "ai"
@@ -715,7 +1021,13 @@
       "featured": false,
       "updated": "2026-08-04",
       "path": "/ai/tools/hash-generator.html",
-      "tags": ["developer", "hash", "sha256", "sha512", "crypto"],
+      "tags": [
+        "developer",
+        "hash",
+        "sha256",
+        "sha512",
+        "crypto"
+      ],
       "domain": "Developer",
       "category": "Web",
       "product": "ai"
@@ -729,7 +1041,15 @@
       "featured": false,
       "updated": "2026-08-04",
       "path": "/ai/tools/color-converter.html",
-      "tags": ["developer", "color", "hex", "rgb", "hsl", "accessibility", "wcag"],
+      "tags": [
+        "developer",
+        "color",
+        "hex",
+        "rgb",
+        "hsl",
+        "accessibility",
+        "wcag"
+      ],
       "domain": "Developer",
       "category": "Web",
       "product": "ai"
@@ -743,7 +1063,13 @@
       "featured": false,
       "updated": "2026-08-04",
       "path": "/ai/tools/css-minifier.html",
-      "tags": ["developer", "css", "minifier", "optimization", "performance"],
+      "tags": [
+        "developer",
+        "css",
+        "minifier",
+        "optimization",
+        "performance"
+      ],
       "domain": "Developer",
       "category": "Web",
       "product": "ai"
@@ -757,7 +1083,13 @@
       "featured": false,
       "updated": "2026-08-04",
       "path": "/ai/tools/js-minifier.html",
-      "tags": ["developer", "javascript", "minifier", "optimization", "performance"],
+      "tags": [
+        "developer",
+        "javascript",
+        "minifier",
+        "optimization",
+        "performance"
+      ],
       "domain": "Developer",
       "category": "Web",
       "product": "ai"
@@ -771,7 +1103,13 @@
       "featured": true,
       "updated": "2026-08-04",
       "path": "/ai/tools/regex-tester.html",
-      "tags": ["developer", "regex", "regular expression", "tester", "pattern"],
+      "tags": [
+        "developer",
+        "regex",
+        "regular expression",
+        "tester",
+        "pattern"
+      ],
       "domain": "Developer",
       "category": "Developer",
       "product": "ai"
@@ -785,7 +1123,13 @@
       "featured": false,
       "updated": "2026-08-04",
       "path": "/ai/tools/http-status.html",
-      "tags": ["developer", "http", "status code", "api", "web"],
+      "tags": [
+        "developer",
+        "http",
+        "status code",
+        "api",
+        "web"
+      ],
       "domain": "Developer",
       "category": "Developer",
       "product": "ai"
@@ -799,7 +1143,13 @@
       "featured": false,
       "updated": "2026-08-04",
       "path": "/ai/tools/jwt-decoder.html",
-      "tags": ["developer", "jwt", "token", "decoder", "authentication"],
+      "tags": [
+        "developer",
+        "jwt",
+        "token",
+        "decoder",
+        "authentication"
+      ],
       "domain": "Developer",
       "category": "Developer",
       "product": "ai"
@@ -813,7 +1163,13 @@
       "featured": false,
       "updated": "2026-08-04",
       "path": "/ai/tools/json-validator.html",
-      "tags": ["developer", "json", "validator", "syntax", "linter"],
+      "tags": [
+        "developer",
+        "json",
+        "validator",
+        "syntax",
+        "linter"
+      ],
       "domain": "Developer",
       "category": "Developer",
       "product": "ai"

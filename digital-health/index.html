@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Digital Health | Panos Khan</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <meta name="description" content="Panos Khan Digital Health: understand and improve the health of your websites, devices, software projects, and AI workflows." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://panoskhan.github.io/digital-health/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Digital Health | Panos Khan" />
+  <meta property="og:description" content="Understand and improve the health of your websites, devices, software projects, and AI workflows." />
+  <meta property="og:url" content="https://panoskhan.github.io/digital-health/" />
+  <meta property="og:site_name" content="Panos Khan" />
+  <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Digital Health | Panos Khan" />
+  <meta name="twitter:description" content="Understand and improve the health of your websites, devices, software projects, and AI workflows." />
+  <meta name="twitter:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://panoskhan.github.io/#website",
+        "url": "https://panoskhan.github.io/",
+        "name": "Panos Khan",
+        "publisher": {"@type": "Person", "name": "Panos Khan", "url": "https://panoskhan.github.io/"}
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": "https://panoskhan.github.io/digital-health/#webpage",
+        "url": "https://panoskhan.github.io/digital-health/",
+        "name": "Digital Health | Panos Khan",
+        "description": "Understand and improve the health of your websites, devices, software projects, and AI workflows.",
+        "isPartOf": {"@id": "https://panoskhan.github.io/#website"},
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://panoskhan.github.io/"},
+            {"@type": "ListItem", "position": 2, "name": "Digital Health", "item": "https://panoskhan.github.io/digital-health/"}
+          ]
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    .dh-hero { text-align: center; padding: 3rem 0 2.5rem; }
+    .dh-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 0.75rem; }
+    .dh-question { font-size: 1.2rem; opacity: 0.8; margin-bottom: 2.5rem; }
+    .dh-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+    .dh-card { display: flex; flex-direction: column; padding: 2rem; border-radius: 1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); transition: transform 0.2s, border-color 0.2s; text-decoration: none; color: inherit; }
+    .dh-card:hover, .dh-card:focus-visible { transform: translateY(-4px); border-color: rgba(255,255,255,0.2); }
+    .dh-card--live { border-color: rgba(0,229,255,0.18); }
+    .dh-card--live:hover, .dh-card--live:focus-visible { border-color: rgba(0,229,255,0.4); }
+    .dh-icon { font-size: 2.5rem; margin-bottom: 1rem; line-height: 1; }
+    .dh-card h2 { margin: 0 0 0.5rem; font-size: 1.25rem; }
+    .dh-card p { flex: 1; opacity: 0.75; font-size: 0.95rem; margin: 0; }
+    .dh-card .dh-cta { margin-top: 1.25rem; font-weight: 600; font-size: 0.95rem; }
+    .dh-card--live .dh-cta { color: var(--neon); }
+    .dh-badge { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 0.3rem; margin-bottom: 0.75rem; }
+    .dh-badge--live { background: rgba(0,229,255,0.12); color: var(--neon); border: 1px solid rgba(0,229,255,0.2); }
+    .dh-badge--soon { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.45); border: 1px solid rgba(255,255,255,0.1); }
+    .dh-how { margin-top: 3rem; padding: 2rem; border-radius: 1rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); }
+    .dh-how h2 { margin-bottom: 1rem; font-size: 1.4rem; }
+    .dh-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-top: 1.25rem; }
+    .dh-step { padding: 1rem 1.25rem; border-radius: 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+    .dh-step-num { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.45; margin-bottom: 0.4rem; }
+    .dh-step p { font-size: 0.9rem; opacity: 0.75; margin: 0.25rem 0 0; }
+    .dh-powered { margin-top: 2.5rem; text-align: center; opacity: 0.5; font-size: 0.85rem; }
+    .dh-powered a { opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <header class="site-header" role="banner" data-site-nav></header>
+
+  <main class="container section">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Digital Health</span>
+    </nav>
+
+    <section class="dh-hero">
+      <p class="kicker">Flagship Product · Digital Health v1</p>
+      <h1 class="gradient-text">Digital Health</h1>
+      <p class="lead dh-question">Choose what you want to improve:</p>
+    </section>
+
+    <nav class="dh-grid" aria-label="Digital Health pillars">
+      <a class="dh-card dh-card--live" href="/digital-health/website-health/">
+        <div class="dh-icon" aria-hidden="true">🌐</div>
+        <span class="dh-badge dh-badge--live">Live</span>
+        <h2>Website Health</h2>
+        <p>Score your website across messaging, discoverability, trust, and conversion readiness. Get a full health report with prioritised recommendations.</p>
+        <span class="dh-cta" aria-hidden="true">Run a health check →</span>
+      </a>
+      <a class="dh-card" href="/digital-health/device-health/" aria-describedby="device-soon">
+        <div class="dh-icon" aria-hidden="true">💻</div>
+        <span class="dh-badge dh-badge--soon" id="device-soon">Coming Soon</span>
+        <h2>Device Health</h2>
+        <p>Diagnose and optimise the health of Windows, macOS, Android, and iOS devices with guided checks and structured reports.</p>
+        <span class="dh-cta" style="opacity:0.4" aria-hidden="true">Coming soon →</span>
+      </a>
+      <a class="dh-card" href="/digital-health/project-health/" aria-describedby="project-soon">
+        <div class="dh-icon" aria-hidden="true">📁</div>
+        <span class="dh-badge dh-badge--soon" id="project-soon">Coming Soon</span>
+        <h2>Project Health</h2>
+        <p>Evaluate the quality, maintainability, and delivery readiness of software projects through structured health checks.</p>
+        <span class="dh-cta" style="opacity:0.4" aria-hidden="true">Coming soon →</span>
+      </a>
+      <a class="dh-card" href="/digital-health/ai-workflow-health/" aria-describedby="ai-soon">
+        <div class="dh-icon" aria-hidden="true">🤖</div>
+        <span class="dh-badge dh-badge--soon" id="ai-soon">Coming Soon</span>
+        <h2>AI Workflow Health</h2>
+        <p>Audit AI workflows for reliability, safety, performance, and alignment with your business goals.</p>
+        <span class="dh-cta" style="opacity:0.4" aria-hidden="true">Coming soon →</span>
+      </a>
+    </nav>
+
+    <section class="dh-how" aria-labelledby="how-heading">
+      <h2 id="how-heading">How Digital Health works</h2>
+      <p class="muted">Every health check runs through the same shared platform runtime — no custom pipelines, no one-off tools.</p>
+      <div class="dh-steps">
+        <div class="dh-step">
+          <div class="dh-step-num">Step 1</div>
+          <strong>Describe your context</strong>
+          <p>Tell us about your website, device, project, or AI workflow and what you want to improve.</p>
+        </div>
+        <div class="dh-step">
+          <div class="dh-step-num">Step 2</div>
+          <strong>Health Engine evaluates</strong>
+          <p>The shared Health Engine scores dimensions, identifies issues, and surfaces patterns.</p>
+        </div>
+        <div class="dh-step">
+          <div class="dh-step-num">Step 3</div>
+          <strong>Report Engine renders</strong>
+          <p>A canonical health report is generated with your score, issues, and a prioritised action plan.</p>
+        </div>
+        <div class="dh-step">
+          <div class="dh-step-num">Step 4</div>
+          <strong>Act on recommendations</strong>
+          <p>Follow the recommended action plan and use the linked resources to make lasting improvements.</p>
+        </div>
+      </div>
+    </section>
+
+    <p class="dh-powered">Powered by <a href="/intelligence/">Platform Intelligence</a> · <a href="/docs/architecture/">Architecture docs</a> · <a href="/capabilities/">All capabilities</a></p>
+  </main>
+
+  <footer class="site-footer" role="contentinfo" data-site-footer></footer>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>

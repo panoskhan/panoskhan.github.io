@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://panoskhan.github.io/digital-health/</loc><lastmod>2026-08-04</lastmod><changefreq>weekly</changefreq><priority>0.97</priority></url>
+  <url><loc>https://panoskhan.github.io/digital-health/website-health/</loc><lastmod>2026-08-04</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://panoskhan.github.io/digital-health/device-health/</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://panoskhan.github.io/digital-health/project-health/</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://panoskhan.github.io/digital-health/ai-workflow-health/</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://panoskhan.github.io/platform/</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
-  <url><loc>https://panoskhan.github.io/</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://panoskhan.github.io/</loc><lastmod>2026-08-04</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://panoskhan.github.io/capabilities/</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://panoskhan.github.io/intelligence/</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://panoskhan.github.io/ai/</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
@@ -24,7 +29,7 @@
   <url><loc>https://panoskhan.github.io/quality-dashboard.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://panoskhan.github.io/research.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
   <url><loc>https://panoskhan.github.io/projects.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://panoskhan.github.io/intelligence/website-health/</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://panoskhan.github.io/intelligence/website-health/</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://panoskhan.github.io/ai/tools/seo-brief.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://panoskhan.github.io/ai/tools/ad-copy-studio.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://panoskhan.github.io/ai/tools/readiness-twin.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>

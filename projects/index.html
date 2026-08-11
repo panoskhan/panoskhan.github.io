@@ -6,7 +6,6 @@
   <title>Projects | Panos Khan</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
-
   <meta name="description" content="Selected projects rendered from the unified platform registry with links to architecture, tools, and capabilities." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://panoskhan.github.io/projects/" />
@@ -16,45 +15,34 @@
   <meta property="og:url" content="https://panoskhan.github.io/projects/" />
   <meta property="og:image" content="https://panoskhan.github.io/assets/og-preview.svg" />
   <meta name="twitter:card" content="summary_large_image" />
-
   <link rel="preload" href="/assets/css/main.css" as="style" />
   <link rel="stylesheet" href="/assets/css/main.css" />
 </head>
 <body>
   <header class="site-header" role="banner" data-site-nav></header>
   <main class="container section">
-    <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <a href="/">Home</a><span>/</span><span aria-current="page">Projects</span>
-    </nav>
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span aria-current="page">Projects</span></nav>
     <header class="section-header section-header--start">
-      <p class="kicker">Selected Work</p>
-      <h1>Projects</h1>
+      <p class="kicker">Selected Work</p><h1>Projects</h1>
       <p class="lead">Architecture-led case studies linked to tools, capabilities, and related product surfaces.</p>
     </header>
-
+    <section class="panel" style="margin:24px 0;padding:20px;border:1px solid currentColor;border-radius:16px">
+      <p class="kicker">New open-source project</p><h2><a href="/projects/entity-readiness-audit/">Entity Readiness Audit</a></h2>
+      <p>A lightweight browser tool for checking public technical signals such as canonical URLs, robots directives, Open Graph metadata, JSON-LD, identity links, and sitemap hints.</p>
+      <p><a href="/projects/entity-readiness-audit/">Open the audit tool →</a></p>
+    </section>
     <nav class="product-subnav" aria-label="Project links">
-      <a href="/platform/">Dashboard</a>
-      <a href="#catalog">Catalog</a>
-      <a href="/open-source/">Open Source</a>
-      <a href="/capabilities/">Capabilities</a>
+      <a href="/platform/">Dashboard</a><a href="#catalog">Catalog</a><a href="/open-source/">Open Source</a><a href="/capabilities/">Capabilities</a>
     </nav>
-
     <section id="catalog" data-platform-catalog data-type="project" data-grid-id="projectCatalogGrid" data-search-id="projectCatalogSearch" data-filters-id="projectCatalogFilters" data-count-id="projectCatalogCount" data-empty-id="projectCatalogEmpty">
-      <div class="catalog-head">
-        <h2>Project catalog</h2>
-        <p id="projectCatalogCount" class="muted">0 items</p>
-      </div>
-      <div class="ai-search-wrapper capability-search-wrap">
-        <span class="ai-search-icon" aria-hidden="true">🔍</span>
-        <input id="projectCatalogSearch" type="search" class="ai-search-input" placeholder="Search projects by title, tags, or domain..." aria-label="Search projects" />
-      </div>
+      <div class="catalog-head"><h2>Project catalog</h2><p id="projectCatalogCount" class="muted">0 items</p></div>
+      <div class="ai-search-wrapper capability-search-wrap"><span class="ai-search-icon" aria-hidden="true">🔍</span><input id="projectCatalogSearch" type="search" class="ai-search-input" placeholder="Search projects by title, tags, or domain..." aria-label="Search projects" /></div>
       <div id="projectCatalogFilters" class="filter-bar mt-16" aria-label="Project domains"></div>
       <div id="projectCatalogGrid" class="content-grid mt-16" aria-live="polite"></div>
       <p id="projectCatalogEmpty" class="muted mt-16" hidden>No matching projects found.</p>
     </section>
   </main>
   <footer class="site-footer" role="contentinfo" data-site-footer></footer>
-  <script src="/assets/js/site.js"></script>
-  <script src="/assets/js/platform.js"></script>
+  <script src="/assets/js/site.js"></script><script src="/assets/js/platform.js"></script>
 </body>
 </html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Open Entity Readiness Audit | Panos Khan</title>
+<meta name="description" content="A small open-source browser tool for checking public website signals such as canonical URLs, robots directives, Open Graph metadata, JSON-LD, sameAs links, and sitemaps.">
+<link rel="canonical" href="https://panoskhan.github.io/projects/entity-readiness-audit/">
+<link rel="stylesheet" href="/assets/css/main.css">
+<style>
+.audit{max-width:900px}.panel{border:1px solid currentColor;border-radius:16px;padding:20px;margin:20px 0}.row{display:flex;gap:10px;flex-wrap:wrap}.row input{flex:1;min-width:260px;padding:12px;border-radius:10px;border:1px solid currentColor;background:transparent}.row button{padding:12px 16px;border:1px solid currentColor;border-radius:10px;background:transparent;cursor:pointer}.checks{display:grid;gap:10px}.check{padding:12px;border:1px solid currentColor;border-radius:10px}.ok{font-weight:700}.muted{opacity:.75}.code{white-space:pre-wrap;overflow:auto}
+</style>
+</head>
+<body>
+<header class="site-header" role="banner" data-site-nav></header>
+<main class="container section audit">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/projects/">Projects</a><span>/</span><span>Entity Readiness Audit</span></nav>
+<p class="kicker">Open-source project</p><h1>Entity Readiness Audit</h1>
+<p class="lead">A lightweight, browser-based checklist for the public technical signals that help people and search systems understand a website.</p>
+<div class="panel"><h2>Audit a URL</h2><p class="muted">The demo below performs a client-side fetch where the target site permits it. No credentials are requested.</p><div class="row"><input id="url" type="url" value="https://panoskhan.github.io/" aria-label="URL to audit"><button id="run">Run audit</button></div><div id="status" class="muted" style="margin-top:12px"></div></div>
+<div class="panel"><h2>What it checks</h2><div id="checks" class="checks"><div class="check">Canonical URL</div><div class="check">Robots/indexing directives</div><div class="check">Open Graph metadata</div><div class="check">JSON-LD structured data</div><div class="check">sameAs identity links</div><div class="check">Sitemap discovery</div></div></div>
+<div class="panel"><h2>Why this project exists</h2><p>Entity visibility depends on consistent, verifiable information. This tool focuses on technical hygiene and transparency rather than promises of rankings, Knowledge Panels, or guaranteed indexing.</p><p>Created as an open-source experiment by <a href="/about/">Panos Khan</a>.</p><p><a href="https://github.com/panoskhan/panoskhan.github.io/tree/feat/3d-progressive-enhancement/projects/entity-readiness-audit">View the source on GitHub</a>.</p></div>
+</main><footer class="site-footer" role="contentinfo" data-site-footer></footer>
+<script src="/assets/js/site.js"></script><script>
+const $=id=>document.getElementById(id);const checks=$('checks');
+function card(name,ok,detail){const d=document.createElement('div');d.className='check';d.innerHTML='<span class="ok">'+(ok?'✓':'!')+' '+name+'</span><div class="muted">'+(detail||'')+'</div>';checks.appendChild(d)}
+$('run').onclick=async()=>{checks.innerHTML='';$('status').textContent='Fetching public page…';let raw=$('url').value.trim();try{const u=new URL(raw);if(!/^https?:$/.test(u.protocol))throw Error('Use http or https.');const r=await fetch(u.href,{redirect:'follow'});const text=await r.text();const doc=new DOMParser().parseFromString(text,'text/html');const canonical=doc.querySelector('link[rel="canonical"]');const robots=doc.querySelector('meta[name="robots"]');const og=doc.querySelector('meta[property="og:title"]');const ld=[...doc.querySelectorAll('script[type="application/ld+json"]')];const same=[...doc.querySelectorAll('a[rel="me"],a[href]')].filter(a=>/linkedin\.com|github\.com|orcid\.org|wikidata\.org/.test(a.href));card('HTTP fetch',r.ok,'Status '+r.status+' · '+u.href);card('Canonical URL',!!canonical,canonical?.href||'Not found');card('Robots metadata',!!robots,robots?.content||'Not found');card('Open Graph title',!!og,og?.content||'Not found');card('JSON-LD',ld.length>0,ld.length+' structured-data block(s) found');card('Identity links',same.length>0,same.length+' recognizable profile/project link(s) found');card('Sitemap hint',!!doc.querySelector('link[rel="sitemap"]')||u.origin+'/sitemap.xml',u.origin+'/sitemap.xml (hint; availability not tested)');$('status').textContent='Audit complete. Results are informational, not a ranking or indexing guarantee.'}catch(e){$('status').textContent='Could not audit this URL from the browser: '+e.message+'. Try a page that permits cross-origin access.';card('Audit request',false,e.message)}};
+</script></body></html>

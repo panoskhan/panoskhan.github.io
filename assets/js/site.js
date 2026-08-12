@@ -1,8 +1,6 @@
 (function () {
   "use strict";
 
-  // One navigation source for every page. Keep the desktop bar focused and
-  // expose the complete ecosystem in the mobile/overflow drawer.
   const PRIMARY_NAV = [
     { id: "about", label: "About", href: "/about/" },
     { id: "platform", label: "Dashboard", href: "/platform/" },
@@ -187,9 +185,14 @@
   }
 
   function mountShell() {
+    // Remove legacy language selector and any legacy drawer before rebuilding the shell.
+    document.querySelectorAll(".langbar").forEach((node) => node.remove());
+    document.querySelectorAll("body > .nav-drawer").forEach((node) => node.remove());
+
     // Replace both centralized placeholders and older hard-coded headers.
     document.querySelectorAll(".site-header").forEach((node) => {
       node.setAttribute("data-site-nav", "");
+      node.style.top = "0";
       node.innerHTML = headerHTML();
       bindNav(node);
     });

@@ -1,36 +1,37 @@
 (function () {
   "use strict";
 
+  // One navigation source for every page. Keep the desktop bar focused and
+  // expose the complete ecosystem in the mobile/overflow drawer.
   const PRIMARY_NAV = [
+    { id: "about", label: "About", href: "/about/" },
     { id: "platform", label: "Dashboard", href: "/platform/" },
     { id: "ai", label: "AI", href: "/ai/" },
-    { id: "digital-health", label: "Digital Health", href: "/digital-health/" },
+    { id: "device", label: "Device", href: "/device/" },
     { id: "intelligence", label: "Intelligence", href: "/intelligence/" },
     { id: "research", label: "Research", href: "/research/" },
     { id: "downloads", label: "Downloads", href: "/downloads/" },
     { id: "projects", label: "Projects", href: "/projects/" },
+    { id: "docs", label: "Docs", href: "/docs/" },
     { id: "services", label: "Services", href: "/services.html" }
   ];
 
   const DRAWER_EXTRA = [
-    { id: "device", label: "Device", href: "/device/" },
+    { id: "digital-health", label: "Digital Health", href: "/digital-health/" },
     { id: "capabilities", label: "Explore", href: "/capabilities/" },
-    { id: "docs", label: "Docs", href: "/docs/" },
     { id: "labs", label: "Labs", href: "/labs/" },
     { id: "open-source", label: "Open Source", href: "/open-source/" },
     { id: "workspace", label: "Workspace", href: "/platform/#workspace" },
     { id: "credentials", label: "Credentials", href: "/credentials.html" },
-    { id: "contact", label: "Consultation", href: "/contact.html", cta: true }
+    { id: "contact", label: "Contact", href: "/contact.html" }
   ];
 
   const FALLBACK_SEARCH = [
+    { title: "About Panos Khan", type: "Profile", url: "/about/", description: "Official professional profile and areas of focus." },
     { title: "Platform Dashboard", type: "Platform", url: "/platform/", description: "Workspace dashboard for global discovery and saved activity." },
     { title: "Digital Health", type: "Product", url: "/digital-health/", description: "Understand and improve the health of websites, devices, projects, and AI workflows." },
-    { title: "Website Health", type: "Tool", url: "/digital-health/website-health/", description: "Generate a health report for your website — scoring messaging, discoverability, trust, and conversion readiness." },
-    { title: "Device Health", type: "Coming Soon", url: "/digital-health/device-health/", description: "Diagnose and optimise the health of Windows, macOS, Android, and iOS devices." },
-    { title: "Project Health", type: "Coming Soon", url: "/digital-health/project-health/", description: "Evaluate the quality and delivery readiness of software projects." },
-    { title: "AI Workflow Health", type: "Coming Soon", url: "/digital-health/ai-workflow-health/", description: "Audit AI workflows for reliability, safety, and business alignment." },
-    { title: "Platform Intelligence", type: "Product", url: "/intelligence/", description: "Health checks, diagnostics, and reports for websites, devices, projects, and AI workflows." },
+    { title: "Website Health", type: "Tool", url: "/digital-health/website-health/", description: "Generate a health report for your website." },
+    { title: "Platform Intelligence", type: "Product", url: "/intelligence/", description: "Health checks, diagnostics, and reports." },
     { title: "Panos Khan AI", type: "Product", url: "/ai/", description: "AI workspace, tools, prompts, and documentation." },
     { title: "Device Service", type: "Product", url: "/device/", description: "Repair, diagnostics, and support guidance." },
     { title: "Docs", type: "Product", url: "/docs/", description: "Architecture, guides, tutorials, and release notes." },
@@ -40,11 +41,8 @@
     { title: "Capability Explorer", type: "Platform", url: "/capabilities/", description: "Browse platform capabilities across products." },
     { title: "Projects", type: "Projects", url: "/projects/", description: "Selected product and web-engineering work." },
     { title: "Services", type: "Consulting", url: "/services.html", description: "AI strategy, web engineering, SEO, and growth services." },
-    { title: "AI SEO Brief Generator", type: "Tool", url: "/ai/tools/seo-brief.html", description: "Create a structured SEO content brief." },
-    { title: "AI Ad Copy Studio", type: "Tool", url: "/ai/tools/ad-copy-studio.html", description: "Generate structured ad-copy testing angles." },
-    { title: "AI Readiness Twin", type: "Tool", url: "/ai/tools/readiness-twin.html", description: "Map quick wins and transformation priorities." },
-    { title: "AI Decision Risk Simulator", type: "Tool", url: "/ai/tools/decision-risk.html", description: "Assess legal, bias, security, adoption, and brand risk." },
-    { title: "AI Trust Label Generator", type: "Tool", url: "/ai/tools/trust-label.html", description: "Create a responsible-AI transparency statement." },
+    { title: "Credentials", type: "Profile", url: "/credentials.html", description: "Professional certifications and credential records." },
+    { title: "Open Source", type: "Product", url: "/open-source/", description: "Open-source projects and resources." },
     { title: "Architecture Overview", type: "Documentation", url: "/docs/architecture/", description: "System design and scalability principles." }
   ];
 
@@ -71,7 +69,10 @@
 
   function headerHTML() {
     const links = PRIMARY_NAV.map(navLink).join("");
-    const drawerLinks = PRIMARY_NAV.concat(DRAWER_EXTRA).map(navLink).join("");
+    const drawerLinks = PRIMARY_NAV.concat(DRAWER_EXTRA)
+      .filter((item, index, items) => items.findIndex((candidate) => candidate.id === item.id) === index)
+      .map(navLink)
+      .join("");
 
     return `
       <div class="nav-inner">
@@ -92,6 +93,7 @@
           </div>
           <nav class="nav-drawer-links" aria-label="Mobile navigation">
             ${drawerLinks}
+            <a href="/contact.html" class="nav-cta">Book Consultation</a>
           </nav>
         </div>
       </div>
@@ -113,6 +115,7 @@
               <li><a href="/ai/">AI Platform</a></li>
               <li><a href="/intelligence/">Platform Intelligence</a></li>
               <li><a href="/device/">Device Service</a></li>
+              <li><a href="/digital-health/">Digital Health</a></li>
               <li><a href="/downloads/">Downloads</a></li>
               <li><a href="/docs/">Docs</a></li>
               <li><a href="/labs/">Labs</a></li>
@@ -122,6 +125,7 @@
           <div class="footer-col">
             <h4>Resources</h4>
             <ul>
+              <li><a href="/about/">About</a></li>
               <li><a href="/capabilities/">Capability Explorer</a></li>
               <li><a href="/projects/">Projects</a></li>
               <li><a href="/open-source/">Open Source</a></li>
@@ -155,53 +159,47 @@
   }
 
   function bindNav(root) {
-    const hamburger = root.querySelector("#navHamburger") || document.getElementById("navHamburger");
-    const drawer = root.querySelector("#navDrawer") || document.getElementById("navDrawer");
-    const overlay = root.querySelector("#navOverlay") || document.getElementById("navOverlay");
-    const closeBtn = root.querySelector("#navClose") || document.getElementById("navClose");
+    const hamburger = root.querySelector("#navHamburger");
+    const drawer = root.querySelector("#navDrawer");
+    const overlay = root.querySelector("#navOverlay");
+    const closeBtn = root.querySelector("#navClose");
     if (!hamburger || !drawer || hamburger.dataset.navBound === "1") return;
     hamburger.dataset.navBound = "1";
 
-    const open = () => {
-      drawer.classList.add("open");
-      hamburger.classList.add("open");
-      hamburger.setAttribute("aria-expanded", "true");
-      document.body.style.overflow = "hidden";
-    };
     const close = () => {
       drawer.classList.remove("open");
       hamburger.classList.remove("open");
       hamburger.setAttribute("aria-expanded", "false");
       document.body.style.overflow = "";
     };
+    const open = () => {
+      drawer.classList.add("open");
+      hamburger.classList.add("open");
+      hamburger.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    };
 
-    hamburger.addEventListener("click", () => {
-      if (drawer.classList.contains("open")) close();
-      else open();
-    });
+    hamburger.addEventListener("click", () => drawer.classList.contains("open") ? close() : open());
     if (closeBtn) closeBtn.addEventListener("click", close);
     if (overlay) overlay.addEventListener("click", close);
     drawer.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") close();
-    });
+    root.addEventListener("keydown", (event) => { if (event.key === "Escape") close(); });
   }
 
   function mountShell() {
-    document.querySelectorAll("[data-site-nav]").forEach((node) => {
+    // Replace both centralized placeholders and older hard-coded headers.
+    document.querySelectorAll(".site-header").forEach((node) => {
+      node.setAttribute("data-site-nav", "");
       node.innerHTML = headerHTML();
       bindNav(node);
     });
+
     document.querySelectorAll("[data-site-footer]").forEach((node) => {
       node.innerHTML = footerHTML();
     });
     document.querySelectorAll(".current-year").forEach((node) => {
       node.textContent = String(new Date().getFullYear());
     });
-
-    if (!document.querySelector("[data-site-nav]")) {
-      bindNav(document);
-    }
   }
 
   function renderResults(query) {
@@ -209,16 +207,11 @@
     if (!results) return;
     const normalized = query.trim().toLowerCase();
     const matches = normalized
-      ? searchIndex.filter((item) => {
-          const haystack = `${item.title} ${item.type} ${item.description} ${(item.keywords || []).join(" ")}`.toLowerCase();
-          return haystack.includes(normalized);
-        })
+      ? searchIndex.filter((item) => `${item.title} ${item.type} ${item.description} ${(item.keywords || []).join(" ")}`.toLowerCase().includes(normalized))
       : searchIndex.slice(0, 8);
     results.innerHTML = matches.length
-      ? matches.map((item) =>
-          `<li><a href="${item.url}"><span>${item.title}</span><small>${item.type} · ${item.description}</small></a></li>`
-        ).join("")
-      : "<li class=\"search-empty\">No matching products, tools, docs, or downloads.</li>";
+      ? matches.map((item) => `<li><a href="${item.url}"><span>${item.title}</span><small>${item.type} · ${item.description}</small></a></li>`).join("")
+      : '<li class="search-empty">No matching products, tools, docs, or downloads.</li>';
   }
 
   function mountGlobalSearch() {
@@ -227,10 +220,7 @@
     shell.innerHTML = `
       <button class="global-search-trigger" type="button" aria-label="Search the site" aria-haspopup="dialog">Search <kbd>⌘K</kbd></button>
       <dialog class="global-search-dialog" id="globalSearchDialog" aria-labelledby="globalSearchTitle">
-        <div class="global-search-head">
-          <h2 id="globalSearchTitle">Search Panos Khan</h2>
-          <button type="button" class="global-search-close" aria-label="Close search">×</button>
-        </div>
+        <div class="global-search-head"><h2 id="globalSearchTitle">Search Panos Khan</h2><button type="button" class="global-search-close" aria-label="Close search">×</button></div>
         <label class="sr-only" for="globalSearchInput">Search products, tools, docs, and downloads</label>
         <input id="globalSearchInput" type="search" autocomplete="off" placeholder="Search products, tools, docs, and downloads…" />
         <ul id="globalSearchResults" class="global-search-results"></ul>
@@ -239,23 +229,13 @@
 
     const dialog = document.getElementById("globalSearchDialog");
     const input = document.getElementById("globalSearchInput");
-    const open = () => {
-      dialog.showModal();
-      input.value = "";
-      renderResults("");
-      input.focus();
-    };
+    const open = () => { dialog.showModal(); input.value = ""; renderResults(""); input.focus(); };
     shell.querySelector(".global-search-trigger").addEventListener("click", open);
     shell.querySelector(".global-search-close").addEventListener("click", () => dialog.close());
     input.addEventListener("input", () => renderResults(input.value));
-    dialog.addEventListener("click", (event) => {
-      if (event.target === dialog) dialog.close();
-    });
+    dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
     document.addEventListener("keydown", (event) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
-        event.preventDefault();
-        if (!dialog.open) open();
-      }
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") { event.preventDefault(); if (!dialog.open) open(); }
     });
   }
 
@@ -264,24 +244,19 @@
     try {
       const key = "pk_workspace_recent";
       const existing = JSON.parse(localStorage.getItem(key) || "[]");
-      const next = [itemId].concat(existing.filter((id) => id !== itemId)).slice(0, 20);
-      localStorage.setItem(key, JSON.stringify(next));
-    } catch (_) {
-      /* ignore quota / private mode */
-    }
+      localStorage.setItem(key, JSON.stringify([itemId].concat(existing.filter((id) => id !== itemId)).slice(0, 20)));
+    } catch (_) {}
   }
 
   function mapPlatformItemsToSearch(items) {
     if (!Array.isArray(items)) return [];
-    return items
-      .filter((item) => item && item.title && item.path)
-      .map((item) => ({
-        title: item.title,
-        type: (item.type || "Item").replace(/^./, (ch) => ch.toUpperCase()),
-        url: item.links && item.links.primary ? item.links.primary : item.path,
-        description: item.summary || `${item.type || "item"} from platform registry`,
-        keywords: Array.isArray(item.tags) ? item.tags : []
-      }));
+    return items.filter((item) => item && item.title && item.path).map((item) => ({
+      title: item.title,
+      type: (item.type || "Item").replace(/^./, (ch) => ch.toUpperCase()),
+      url: item.links && item.links.primary ? item.links.primary : item.path,
+      description: item.summary || `${item.type || "item"} from platform registry`,
+      keywords: Array.isArray(item.tags) ? item.tags : []
+    }));
   }
 
   function productById(id) {
@@ -291,41 +266,23 @@
 
   function renderRelatedProducts() {
     document.querySelectorAll("[data-related-products]").forEach((node) => {
-      const ids = (node.getAttribute("data-related-products") || "")
-        .split(",")
-        .map((value) => value.trim())
-        .filter(Boolean);
+      const ids = (node.getAttribute("data-related-products") || "").split(",").map((value) => value.trim()).filter(Boolean);
       const cards = ids.map((id) => {
         const product = productById(id);
-        if (product) {
-          return `<a class="card related-product-card" href="${product.path}">
-            <span class="card-tag">${product.category || "Product"}</span>
-            <h3>${product.name}</h3>
-            <p class="muted">${product.description}</p>
-            <span class="ecosystem-meta">Open ${product.shortName || product.name} →</span>
-          </a>`;
-        }
+        if (product) return `<a class="card related-product-card" href="${product.path}"><span class="card-tag">${product.category || "Product"}</span><h3>${product.name}</h3><p class="muted">${product.description}</p><span class="ecosystem-meta">Open ${product.shortName || product.name} →</span></a>`;
         const fallback = PRIMARY_NAV.concat(DRAWER_EXTRA).find((item) => item.id === id);
         if (!fallback) return "";
-        return `<a class="card related-product-card" href="${fallback.href}">
-          <span class="card-tag">Product</span>
-          <h3>${fallback.label}</h3>
-          <p class="muted">Open this ecosystem surface.</p>
-          <span class="ecosystem-meta">Open →</span>
-        </a>`;
+        return `<a class="card related-product-card" href="${fallback.href}"><span class="card-tag">Product</span><h3>${fallback.label}</h3><p class="muted">Open this ecosystem surface.</p><span class="ecosystem-meta">Open →</span></a>`;
       }).filter(Boolean);
-      node.innerHTML = cards.join("") || "<p class=\"muted\">Related products will appear here.</p>";
+      node.innerHTML = cards.join("") || '<p class="muted">Related products will appear here.</p>';
     });
   }
 
   async function loadJSON(url) {
     try {
       const response = await fetch(url, { credentials: "same-origin" });
-      if (!response.ok) return null;
-      return await response.json();
-    } catch (_) {
-      return null;
-    }
+      return response.ok ? await response.json() : null;
+    } catch (_) { return null; }
   }
 
   async function loadRegistries() {
@@ -334,23 +291,14 @@
       loadJSON("/assets/data/products.json"),
       loadJSON("/assets/data/platform-registry.json")
     ]);
-
     const staticSearch = searchData && Array.isArray(searchData.items) ? searchData.items : [];
-    const platformSearch = platformData && Array.isArray(platformData.items)
-      ? mapPlatformItemsToSearch(platformData.items)
-      : [];
-
+    const platformSearch = platformData && Array.isArray(platformData.items) ? mapPlatformItemsToSearch(platformData.items) : [];
     if (staticSearch.length || platformSearch.length) {
       const dedupe = new Map();
-      staticSearch.concat(platformSearch).forEach((item) => {
-        if (!item || !item.url || dedupe.has(item.url)) return;
-        dedupe.set(item.url, item);
-      });
+      staticSearch.concat(platformSearch).forEach((item) => { if (item && item.url && !dedupe.has(item.url)) dedupe.set(item.url, item); });
       searchIndex = Array.from(dedupe.values());
     }
-    if (productData && Array.isArray(productData.products)) {
-      productsCatalog = productData;
-    }
+    if (productData && Array.isArray(productData.products)) productsCatalog = productData;
     renderRelatedProducts();
   }
 

@@ -155,6 +155,20 @@
     if (closeBtn) closeBtn.addEventListener("click", close);
     if (overlay) overlay.addEventListener("click", close);
     drawer.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
+
+    // Use an explicit same-origin navigation for header links so other page-level
+    // click handlers cannot accidentally cancel the browser's normal navigation.
+    root.addEventListener("click", (event) => {
+      const link = event.target.closest("a");
+      if (!link || !root.contains(link) || link.target === "_blank") return;
+      const href = link.getAttribute("href");
+      if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
+      event.preventDefault();
+      event.stopPropagation();
+      close();
+      window.location.assign(new URL(href, window.location.origin).href);
+    }, true);
+
     document.addEventListener("keydown", (event) => { if (event.key === "Escape") close(); });
   }
 

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Security Checklist: What to Check Before Launching an AI Feature | Panos Khan</title>
+  <meta name="description" content="A practical pre-launch checklist for AI features covering permissions, prompt injection, data handling, logging, cost controls, and human review." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://panoskhan.github.io/blog/ai-security-checklist-before-launch.html" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body>
+  <div class="cyber-bg" aria-hidden="true"><div class="cyber-grid"></div><div class="cyber-orb orb1"></div><div class="cyber-orb orb2"></div></div>
+  <header class="site-header" data-site-nav role="banner"></header>
+  <main>
+    <div class="container">
+      <article class="section" style="max-width:820px;margin:0 auto">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="breadcrumb-sep" aria-hidden="true">/</span><a href="/ai-blog.html">AI Blog</a><span class="breadcrumb-sep" aria-hidden="true">/</span><span>AI Security Checklist</span></nav>
+        <p class="kicker" style="margin-top:32px">AI · Practical Technology</p>
+        <h1>AI Security Checklist: What to Check Before Launching an AI Feature</h1>
+        <p class="lead">AI features can be useful without being complicated, but they still need normal engineering discipline plus a few controls that are specific to AI systems. This checklist is designed for a final review before an AI-powered feature reaches real users.</p>
+        <p class="muted">Published August 15, 2026 · Panos Khan</p>
+
+        <h2>1. Define exactly what the AI is allowed to do</h2>
+        <p>Start with a narrow capability statement. Write down what the model can read, what it can produce, and which actions it can trigger. If an AI feature can call tools or services, give each tool only the permissions it actually needs.</p>
+        <p>A useful rule is: <strong>the model should not receive authority merely because it can ask for it.</strong> Application code should enforce permissions independently of the model's output.</p>
+
+        <h2>2. Treat user and retrieved content as untrusted input</h2>
+        <p>Prompt injection is one of the important security concerns in modern LLM applications. A message, web page, document, or retrieved passage can contain instructions that conflict with the application's intended behavior. OWASP's 2025 guidance includes prompt injection among the risks developers should consider. citeturn0search0</p>
+        <p>Keep system instructions, application policy, user content, and retrieved data conceptually separate. Validate sensitive actions in application code rather than trusting the model to recognize every malicious instruction.</p>
+
+        <h2>3. Protect sensitive data</h2>
+        <ul>
+          <li>Minimize the personal or confidential data sent to the model.</li>
+          <li>Do not place secrets such as API keys in prompts, browser code, or client-visible configuration.</li>
+          <li>Define retention and deletion rules for prompts, outputs, uploaded files, and logs.</li>
+          <li>Check whether third-party model providers receive or retain the data used by your feature.</li>
+        </ul>
+
+        <h2>4. Put limits around actions and spending</h2>
+        <p>AI systems can create unexpected usage and cost when loops, retries, long inputs, or automated actions are not bounded. OWASP's 2025 LLM guidance specifically expands its treatment of unbounded consumption to include resource management and unexpected costs. citeturn0search5</p>
+        <p>Set sensible limits for request size, output length, tool calls, retries, execution time, and daily or monthly usage. Make failure predictable rather than allowing an AI workflow to continue indefinitely.</p>
+
+        <h2>5. Log enough to investigate failures</h2>
+        <p>Good observability is more useful than simply storing every prompt forever. Record the events needed to understand what happened: request identifiers, model and application versions, tool calls, important validation results, latency, and errors. Avoid putting sensitive content into logs unless there is a justified need and appropriate protection.</p>
+
+        <h2>6. Add human review where the impact is high</h2>
+        <p>If an AI output can make a consequential decision or trigger an irreversible action, introduce a human approval step or another strong control. The exact boundary depends on the application, but the principle is simple: higher-impact actions deserve stronger verification.</p>
+
+        <h2>7. Test the whole workflow, not just the prompt</h2>
+        <p>A polished prompt does not make an application secure. Test the complete path: authentication, authorization, input validation, retrieval, model calls, tool permissions, output handling, error states, and monitoring. OWASP's GenAI Security Project provides a useful reference for organizing these AI-specific security reviews. citeturn0search4</p>
+
+        <h2>8. Use a simple pre-launch decision</h2>
+        <p>Before launch, ask four questions:</p>
+        <ol>
+          <li>Can the AI access anything it does not need?</li>
+          <li>Can untrusted content change what the application is authorized to do?</li>
+          <li>Can a bug or unexpected model behavior create uncontrolled cost or activity?</li>
+          <li>Can the team detect, investigate, and stop a bad outcome?</li>
+        </ol>
+        <p>If any answer is unclear, the feature needs another engineering pass before release.</p>
+
+        <h2>Where this fits into a practical web workflow</h2>
+        <p>For a small site or product, security does not need to become a giant process. Start with least-privilege access, careful data handling, bounded execution, useful logging, and tests that represent realistic misuse. These controls can be added alongside normal web-development work rather than treated as a separate AI project.</p>
+        <p>For related practical work on this site, see the <a href="/docs/">Documentation</a>, <a href="/research/">Research</a>, <a href="/labs/">Labs</a>, and <a href="/ai-blog.html">AI Blog</a>.</p>
+
+        <div class="section-cta" style="margin-top:40px"><a href="/ai-blog.html" class="btn btn-primary">Back to AI Blog</a><a href="/contact.html" class="btn" style="margin-left:12px">Contact</a></div>
+      </article>
+    </div>
+  </main>
+  <footer class="site-footer" data-site-footer role="contentinfo"></footer>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>

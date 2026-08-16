@@ -23,7 +23,7 @@
 
         <h2>Why a demo is not enough</h2>
         <p>AI systems are probabilistic components inside larger software systems. A prompt can look excellent in a handful of examples while the surrounding application still has weak permissions, poor error handling, unpredictable costs, or an unclear user experience.</p>
-        <p>NIST's AI Risk Management Framework organizes AI risk work around the functions <strong>Govern, Map, Measure, and Manage</strong>, with risk management treated as an ongoing lifecycle activity rather than a one-time approval. citeturn0search19</p>
+        <p>NIST's <a href="https://airc.nist.gov/airmf-resources/airmf/" rel="noopener">AI Risk Management Framework</a> organizes AI risk work around the functions <strong>Govern, Map, Measure, and Manage</strong>, with risk management treated as an ongoing lifecycle activity rather than a one-time approval.</p>
 
         <h2>Test 1: Can the feature do the job consistently?</h2>
         <p>Create a small evaluation set before launch. Include normal requests, ambiguous requests, incomplete inputs, long inputs, and examples that should be rejected. Measure the outcomes against criteria that matter to the product rather than asking whether the response simply “sounds good.”</p>
@@ -35,7 +35,7 @@
 
         <h2>Test 3: Are permissions enforced outside the model?</h2>
         <p>If the feature can access files, databases, APIs, or business actions, verify that authorization is enforced by the application. A model's decision to call a tool should never be the security boundary.</p>
-        <p>This becomes especially important for agentic workflows. OWASP's Agentic Threats Navigator identifies areas including tools, identity, memory, and human oversight as important attack surfaces. citeturn0search4</p>
+        <p>This becomes especially important for agentic workflows. The <a href="https://genai.owasp.org/resource/owasp-gen-ai-security-project-agentic-threats-navigator/" rel="noopener">OWASP Agentic Threats Navigator</a> identifies areas including tools, identity, memory, and human oversight as important attack surfaces.</p>
 
         <h2>Test 4: What happens when untrusted content enters the workflow?</h2>
         <p>Test user messages, uploaded documents, retrieved pages, and tool outputs as untrusted data. Look for situations where embedded instructions could influence the system's behavior in ways the application did not intend.</p>
@@ -43,7 +43,7 @@
 
         <h2>Test 5: Is usage bounded?</h2>
         <p>Set limits before launch for input size, output length, retries, tool calls, execution time, and other resources relevant to the workflow. Then test the limits deliberately.</p>
-        <p>This is both an engineering and a business control. An unexpected loop or unusually large workload can affect latency and cost even when the underlying model is functioning normally. OWASP's current GenAI security resources emphasize resource management, data security, and lifecycle testing as part of secure AI adoption. citeturn0search6turn0search7</p>
+        <p>This is both an engineering and a business control. An unexpected loop or unusually large workload can affect latency and cost even when the underlying model is functioning normally. OWASP's <a href="https://genai.owasp.org/resource/ai-security-solutions-landscape-for-ai-and-agentic-red-teaming-q2-2026/" rel="noopener">AI security resources</a> and its <a href="https://genai.owasp.org/resource/owasp-genai-data-security-risks-mitigations-2026/" rel="noopener">2026 GenAI data-security guidance</a> emphasize lifecycle testing, resource management, and data protection.</p>
 
         <h2>Test 6: Can a real user understand what happened?</h2>
         <p>Good AI UX is not just a chat box. Users need to understand when the system is working, when it needs more information, when an answer is uncertain, and what they can do next.</p>
@@ -53,7 +53,7 @@
           <li>Give users a clear way to correct or retry an output.</li>
           <li>Ask for confirmation before consequential or irreversible actions.</li>
         </ul>
-        <p>NIST's guidance on human-AI interaction recommends clearly defining human roles and responsibilities, especially where people oversee or make decisions with AI systems. citeturn0search12turn0search16</p>
+        <p>NIST's <a href="https://airc.nist.gov/airmf-resources/airmf/appendices/app-c-ai-risk-management-and-human-ai-interaction/" rel="noopener">guidance on human-AI interaction</a> recommends clearly defining human roles and responsibilities, especially where people oversee or make decisions with AI systems.</p>
 
         <h2>Test 7: Can the team detect drift and investigate incidents?</h2>
         <p>Launch with observability, not after it. Track the technical signals that help explain performance: latency, failures, model or application versions, tool calls, validation results, and usage. Where appropriate, collect user feedback and outcome signals that show whether the feature is actually helping.</p>

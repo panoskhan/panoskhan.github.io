@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to Evaluate an AI Feature Before Launch | Panos Khan</title>
+  <meta name="description" content="A practical seven-test framework for evaluating an AI feature before launch, covering quality, failure handling, security, cost, UX, and monitoring." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://panoskhan.github.io/blog/how-to-evaluate-ai-feature-before-launch.html" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body>
+  <div class="cyber-bg" aria-hidden="true"><div class="cyber-grid"></div><div class="cyber-orb orb1"></div><div class="cyber-orb orb2"></div></div>
+  <header class="site-header" data-site-nav role="banner"></header>
+  <main>
+    <div class="container">
+      <article class="section" style="max-width:820px;margin:0 auto">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="breadcrumb-sep" aria-hidden="true">/</span><a href="/ai-blog.html">AI Blog</a><span class="breadcrumb-sep" aria-hidden="true">/</span><span>AI Feature Evaluation</span></nav>
+        <p class="kicker" style="margin-top:32px">AI · Web Development · Digital Transformation</p>
+        <h1>How to Evaluate an AI Feature Before Launch</h1>
+        <p class="lead">An AI feature should not be judged only by whether it produces an impressive demo. Before real users depend on it, test the complete workflow: what goes in, what the model produces, what the application allows it to do, what happens when it fails, and whether the team can measure the result.</p>
+        <p class="muted">Published August 16, 2026 · Panos Khan</p>
+
+        <h2>Why a demo is not enough</h2>
+        <p>AI systems are probabilistic components inside larger software systems. A prompt can look excellent in a handful of examples while the surrounding application still has weak permissions, poor error handling, unpredictable costs, or an unclear user experience.</p>
+        <p>NIST's AI Risk Management Framework organizes AI risk work around the functions <strong>Govern, Map, Measure, and Manage</strong>, with risk management treated as an ongoing lifecycle activity rather than a one-time approval. citeturn0search19</p>
+
+        <h2>Test 1: Can the feature do the job consistently?</h2>
+        <p>Create a small evaluation set before launch. Include normal requests, ambiguous requests, incomplete inputs, long inputs, and examples that should be rejected. Measure the outcomes against criteria that matter to the product rather than asking whether the response simply “sounds good.”</p>
+        <p>For a summarizer, that might mean factual coverage and omission checks. For a coding assistant, it might mean whether generated changes compile, pass tests, and follow project constraints. The evaluation should match the real job.</p>
+
+        <h2>Test 2: Does the application fail safely?</h2>
+        <p>Intentionally give the system inputs it cannot answer well. A useful AI feature should have a defined fallback: ask for clarification, return a limited result, hand the task to a person, or decline the operation. Avoid designing the interface as if the model will always know what to do.</p>
+        <p>Also test provider errors, timeouts, malformed model responses, unavailable tools, and partial failures. The user should get a controlled application response instead of an unexplained technical failure.</p>
+
+        <h2>Test 3: Are permissions enforced outside the model?</h2>
+        <p>If the feature can access files, databases, APIs, or business actions, verify that authorization is enforced by the application. A model's decision to call a tool should never be the security boundary.</p>
+        <p>This becomes especially important for agentic workflows. OWASP's Agentic Threats Navigator identifies areas including tools, identity, memory, and human oversight as important attack surfaces. citeturn0search4</p>
+
+        <h2>Test 4: What happens when untrusted content enters the workflow?</h2>
+        <p>Test user messages, uploaded documents, retrieved pages, and tool outputs as untrusted data. Look for situations where embedded instructions could influence the system's behavior in ways the application did not intend.</p>
+        <p>Do not rely on a prompt saying “ignore malicious instructions” as the only defense. Separate data from control decisions, validate sensitive operations in code, restrict tool permissions, and require confirmation for high-impact actions.</p>
+
+        <h2>Test 5: Is usage bounded?</h2>
+        <p>Set limits before launch for input size, output length, retries, tool calls, execution time, and other resources relevant to the workflow. Then test the limits deliberately.</p>
+        <p>This is both an engineering and a business control. An unexpected loop or unusually large workload can affect latency and cost even when the underlying model is functioning normally. OWASP's current GenAI security resources emphasize resource management, data security, and lifecycle testing as part of secure AI adoption. citeturn0search6turn0search7</p>
+
+        <h2>Test 6: Can a real user understand what happened?</h2>
+        <p>Good AI UX is not just a chat box. Users need to understand when the system is working, when it needs more information, when an answer is uncertain, and what they can do next.</p>
+        <ul>
+          <li>Show useful loading and error states.</li>
+          <li>Make important generated content easy to review.</li>
+          <li>Give users a clear way to correct or retry an output.</li>
+          <li>Ask for confirmation before consequential or irreversible actions.</li>
+        </ul>
+        <p>NIST's guidance on human-AI interaction recommends clearly defining human roles and responsibilities, especially where people oversee or make decisions with AI systems. citeturn0search12turn0search16</p>
+
+        <h2>Test 7: Can the team detect drift and investigate incidents?</h2>
+        <p>Launch with observability, not after it. Track the technical signals that help explain performance: latency, failures, model or application versions, tool calls, validation results, and usage. Where appropriate, collect user feedback and outcome signals that show whether the feature is actually helping.</p>
+        <p>Be deliberate about privacy. Logs should contain enough information to investigate problems without becoming an unnecessary copy of sensitive user data.</p>
+
+        <h2>A simple launch scorecard</h2>
+        <p>Before release, give the feature a clear status for each area:</p>
+        <ol>
+          <li><strong>Quality:</strong> representative evaluation cases meet the product's acceptance criteria.</li>
+          <li><strong>Reliability:</strong> failures and provider errors have controlled fallbacks.</li>
+          <li><strong>Security:</strong> permissions and sensitive actions are enforced by application code.</li>
+          <li><strong>Safety:</strong> high-impact workflows have appropriate review or confirmation.</li>
+          <li><strong>Cost:</strong> resource and usage limits are defined and tested.</li>
+          <li><strong>UX:</strong> users can understand, review, correct, and recover from AI output.</li>
+          <li><strong>Monitoring:</strong> the team can identify regressions and investigate important failures.</li>
+        </ol>
+        <p>If one of these areas is unknown, that is useful information. The right next step is to close the gap before calling the feature production-ready.</p>
+
+        <h2>Keep the evaluation lightweight, but repeat it</h2>
+        <p>A practical evaluation process does not have to become a large bureaucracy. Start with a small representative test set, automate the checks that can be automated, manually review the cases that require judgment, and rerun the evaluation when the prompt, model, retrieval data, tools, or application logic changes.</p>
+        <p>This approach fits naturally into a modern web-development workflow: build the feature, define acceptance criteria, test the complete path, measure real behavior, and improve it continuously.</p>
+        <p>For related practical material on this site, explore the <a href="/docs/">Documentation</a>, <a href="/research/">Research</a>, <a href="/labs/">Labs</a>, and <a href="/ai-blog.html">AI Blog</a>.</p>
+
+        <h2>Further reading</h2>
+        <ul>
+          <li><a href="https://airc.nist.gov/airmf-resources/airmf/" rel="noopener">NIST AI Risk Management Framework</a></li>
+          <li><a href="https://airc.nist.gov/airmf-resources/airmf/appendices/app-c-ai-risk-management-and-human-ai-interaction/" rel="noopener">NIST: Human-AI Interaction</a></li>
+          <li><a href="https://genai.owasp.org/resource/owasp-gen-ai-security-project-agentic-threats-navigator/" rel="noopener">OWASP: Agentic Threats Navigator</a></li>
+          <li><a href="https://genai.owasp.org/resource/owasp-genai-data-security-risks-mitigations-2026/" rel="noopener">OWASP: GenAI Data Security Risks &amp; Mitigations 2026</a></li>
+        </ul>
+
+        <div class="section-cta" style="margin-top:40px"><a href="/ai-blog.html" class="btn btn-primary">Back to AI Blog</a><a href="/contact.html" class="btn" style="margin-left:12px">Contact</a></div>
+      </article>
+    </div>
+  </main>
+  <footer class="site-footer" data-site-footer role="contentinfo"></footer>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>

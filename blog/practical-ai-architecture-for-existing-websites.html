@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A Practical AI Architecture for an Existing Website | Panos Khan</title>
+  <meta name="description" content="A practical architecture for adding AI to an existing website without turning the whole product into an AI experiment." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://panoskhan.github.io/blog/practical-ai-architecture-for-existing-websites.html" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body>
+  <div class="cyber-bg" aria-hidden="true"><div class="cyber-grid"></div><div class="cyber-orb orb1"></div><div class="cyber-orb orb2"></div></div>
+  <header class="site-header" data-site-nav role="banner"></header>
+  <main>
+    <div class="container">
+      <article class="section" style="max-width:820px;margin:0 auto">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="breadcrumb-sep" aria-hidden="true">/</span><a href="/ai-blog.html">AI Blog</a><span class="breadcrumb-sep" aria-hidden="true">/</span><span>AI Architecture</span></nav>
+        <p class="kicker" style="margin-top:32px">AI · Web Development · Digital Transformation</p>
+        <h1>A Practical AI Architecture for an Existing Website</h1>
+        <p class="lead">Adding AI to a working website does not require rebuilding the entire product around a model. In many cases, the better approach is to keep the existing application in control and introduce AI as a bounded service with clear inputs, validation, permissions, fallbacks, and measurement.</p>
+        <p class="muted">Published August 17, 2026 · Panos Khan</p>
+
+        <h2>Start with the job, not the model</h2>
+        <p>The first architectural decision is not which model to use. It is what the feature is supposed to accomplish for a user. Examples include summarising a document, extracting structured information, helping a user search a knowledge base, generating a first draft, or classifying incoming requests.</p>
+        <p>A narrowly defined job makes it easier to choose the right interface, establish acceptance criteria, and decide where a human needs to remain in control. It also prevents a common failure mode: adding a general chatbot where a small, purpose-built workflow would be more useful.</p>
+
+        <h2>Keep the website as the system of control</h2>
+        <p>A useful baseline architecture looks like this:</p>
+        <ol>
+          <li><strong>Browser:</strong> collects the user's request and presents the result.</li>
+          <li><strong>Application layer:</strong> authenticates the request, checks permissions, validates inputs, and decides which AI operation is allowed.</li>
+          <li><strong>AI service:</strong> receives only the information needed for the specific task.</li>
+          <li><strong>Validation layer:</strong> checks the returned result before it is shown or used by another system.</li>
+          <li><strong>Observability:</strong> records useful operational signals so failures and regressions can be investigated.</li>
+        </ol>
+        <p>The important point is the boundary: the model can generate or classify information, but application code should remain responsible for authorization and consequential actions.</p>
+
+        <h2>Do not put secrets in the browser</h2>
+        <p>If an AI provider requires a private API credential, that credential should not be embedded in client-side JavaScript. A public website can expose every value shipped to the browser. Put provider credentials behind a server-side boundary or use an architecture that does not require a private secret in the client.</p>
+        <p>This is a basic web-development rule, but it becomes easy to overlook when a team prototypes an AI feature directly in a page. A prototype can prove the interaction without becoming the production security architecture.</p>
+
+        <h2>Make the AI operation narrow and explicit</h2>
+        <p>Define the operation as a contract. Specify the input fields, expected output shape, allowed length, error states, and what the application will do with the result.</p>
+        <p>Structured output can help the application validate a response before using it. For example, an extraction feature might require a fixed set of fields and reject a result that does not conform. Validation should happen in application code rather than assuming that a model will always follow instructions.</p>
+
+        <h2>Treat external content as data, not authority</h2>
+        <p>If the feature uses uploaded files, retrieved web pages, emails, documents, or tool results, treat that material as untrusted input. Content can contain instructions that conflict with the application's intended behavior.</p>
+        <p>OWASP's <a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" rel="noopener">Top 10 for LLM Applications 2025</a> highlights prompt injection and related risks as part of the security landscape for LLM applications. The practical response is architectural: separate data from control decisions, limit tool permissions, validate sensitive operations, and avoid giving the model authority that the product does not actually need.</p>
+
+        <h2>Use least privilege for tools and actions</h2>
+        <p>An AI feature that only drafts text needs very different permissions from an agent that can modify records or call external services. Give each operation the smallest set of capabilities required for its job.</p>
+        <p>For consequential actions, add an explicit application-level confirmation step. The user should be able to see what is about to happen and stop it before the action is committed. This is especially important when an AI workflow can affect data, money, accounts, publishing, or other durable state.</p>
+
+        <h2>Plan for failure before launch</h2>
+        <p>AI services can return errors, time out, produce malformed output, or provide an answer that does not satisfy the application's acceptance criteria. Your website should have a defined response for each category.</p>
+        <ul>
+          <li>Validation failure → ask for another attempt or return a controlled error.</li>
+          <li>Provider timeout → retry within a bounded policy or offer a fallback.</li>
+          <li>Unavailable dependency → keep the rest of the site usable where possible.</li>
+          <li>Low-confidence or unsuitable result → request review instead of silently accepting it.</li>
+        </ul>
+        <p>Failure handling is part of the feature, not an optional polish step. A useful AI system is one that remains understandable when the model is unavailable or wrong.</p>
+
+        <h2>Control cost and resource usage</h2>
+        <p>AI usage should have explicit limits. Depending on the workflow, that can include maximum input size, output size, request frequency, retries, tool calls, and execution time.</p>
+        <p>OWASP's 2025 guidance expanded the discussion of denial-of-service concerns into <em>Unbounded Consumption</em>, including resource-management and unexpected-cost risks. citeturn0search0 The engineering lesson is simple: define resource boundaries before the feature reaches real traffic.</p>
+
+        <h2>Measure the complete user outcome</h2>
+        <p>Model quality is only one part of product quality. Measure what matters to the workflow: successful task completion, useful corrections, error rates, latency, adoption, and other product-specific outcomes.</p>
+        <p>NIST's <a href="https://airc.nist.gov/airmf-resources/airmf/" rel="noopener">AI Risk Management Framework</a> treats AI risk management as an ongoing process of governing, mapping, measuring, and managing risk. That mindset fits web products well: release the feature, observe real behavior, evaluate it against its intended job, and improve it as conditions change.</p>
+
+        <h2>Where this fits in the Panos Khan ecosystem</h2>
+        <p>This architecture is intentionally compatible with a normal web platform rather than requiring an isolated AI application. The <a href="/docs/">Panos Khan Documentation</a> provides a place for implementation and architecture notes, while <a href="/research/">Research</a> can hold deeper frameworks and methodology. The <a href="/labs/">Labs</a> area is a natural place for experiments before an idea becomes a production surface, and the <a href="/ai-blog.html">AI Blog</a> collects practical AI and web-development guidance.</p>
+
+        <h2>A compact production checklist</h2>
+        <ol>
+          <li>Define one user job and its acceptance criteria.</li>
+          <li>Keep authentication and authorization in application code.</li>
+          <li>Keep private provider credentials out of browser code.</li>
+          <li>Validate model outputs before using them.</li>
+          <li>Treat retrieved and user-supplied content as untrusted data.</li>
+          <li>Limit tools, permissions, retries, and resource usage.</li>
+          <li>Design fallbacks for model and dependency failures.</li>
+          <li>Measure the real user outcome and review the feature after changes.</li>
+        </ol>
+
+        <h2>The goal is a better website, not a more complicated website</h2>
+        <p>The strongest AI integrations often look less dramatic than the prototypes that inspired them. They solve one problem, fit into an existing workflow, expose only the capabilities they need, and give users a clear path when the system cannot help.</p>
+        <p>That is a useful standard for digital transformation: introduce new capability without giving up the engineering discipline that made the existing product reliable.</p>
+
+        <h2>Further reading</h2>
+        <ul>
+          <li><a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" rel="noopener">OWASP Top 10 for LLM Applications 2025</a></li>
+          <li><a href="https://airc.nist.gov/airmf-resources/airmf/" rel="noopener">NIST AI Risk Management Framework</a></li>
+          <li><a href="/docs/">Panos Khan Documentation</a></li>
+          <li><a href="/research/">Panos Khan Research</a></li>
+        </ul>
+
+        <div class="section-cta" style="margin-top:40px"><a href="/ai-blog.html" class="btn btn-primary">Back to AI Blog</a><a href="/contact.html" class="btn" style="margin-left:12px">Contact</a></div>
+      </article>
+    </div>
+  </main>
+  <footer class="site-footer" data-site-footer role="contentinfo"></footer>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>

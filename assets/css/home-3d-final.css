@@ -1,29 +1,58 @@
-/* Panos Khan — cinematic 3D homepage layer */
-.home-3d-scene{position:relative;isolation:isolate;overflow:hidden;border-radius:32px;min-height:560px;margin:2rem auto;max-width:1400px;border:1px solid rgba(255,255,255,.12);background:radial-gradient(circle at 50% 45%,rgba(70,120,255,.18),transparent 34%),radial-gradient(circle at 75% 20%,rgba(170,70,255,.14),transparent 30%),rgba(5,8,18,.72);box-shadow:0 40px 120px rgba(0,0,0,.35)}
-.home-3d-scene:before{content:"";position:absolute;inset:-30%;background:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:56px 56px;transform:perspective(700px) rotateX(62deg) translateY(28%);transform-origin:center;opacity:.45;mask-image:linear-gradient(to bottom,transparent 5%,black 42%,transparent 100%);z-index:-1}
-.home-3d-orbit{position:absolute;inset:10%;border:1px solid rgba(255,255,255,.11);border-radius:50%;transform:rotateX(68deg) rotateZ(-12deg);animation:homeOrbit 18s linear infinite}
-.home-3d-orbit:nth-child(2){inset:18%;transform:rotateX(68deg) rotateZ(48deg);animation-duration:25s}.home-3d-orbit:nth-child(3){inset:26%;transform:rotateX(68deg) rotateZ(105deg);animation-duration:32s}
-.home-3d-core{position:absolute;left:50%;top:50%;width:180px;height:180px;transform:translate(-50%,-50%);display:grid;place-items:center;border-radius:42%;background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(18px);box-shadow:0 0 80px rgba(80,120,255,.2),inset 0 1px rgba(255,255,255,.22);animation:homeFloat 5s ease-in-out infinite;z-index:3}
-.home-3d-core:after{content:"";position:absolute;inset:-22px;border-radius:50%;border:1px solid rgba(120,160,255,.2);box-shadow:0 0 45px rgba(100,130,255,.16);animation:homePulse 3s ease-in-out infinite}
-.home-3d-monogram{font-size:3.2rem;font-weight:800;letter-spacing:-.08em;background:linear-gradient(120deg,#fff,#b9caff 55%,#d6b8ff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.home-3d-label{position:absolute;left:50%;top:calc(50% + 125px);transform:translateX(-50%);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;opacity:.72;white-space:nowrap}
-.home-3d-node{position:absolute;z-index:4;padding:.7rem 1rem;border:1px solid rgba(255,255,255,.15);background:rgba(12,16,30,.68);backdrop-filter:blur(12px);border-radius:999px;font-size:.8rem;box-shadow:0 12px 40px rgba(0,0,0,.25);animation:homeFloat 6s ease-in-out infinite}
-.home-3d-node:nth-of-type(4){left:12%;top:24%}.home-3d-node:nth-of-type(5){right:11%;top:28%;animation-delay:-1.5s}.home-3d-node:nth-of-type(6){left:16%;bottom:20%;animation-delay:-3s}.home-3d-node:nth-of-type(7){right:14%;bottom:18%;animation-delay:-4s}
-.home-3d-copy{position:absolute;left:34px;bottom:32px;z-index:5;max-width:420px}.home-3d-copy strong{font-size:1rem}.home-3d-copy p{margin:.45rem 0 0;opacity:.7;line-height:1.55}
-@keyframes homeOrbit{to{transform:rotateX(68deg) rotateZ(348deg)}}@keyframes homeFloat{0%,100%{translate:0 0}50%{translate:0 -12px}}@keyframes homePulse{0%,100%{scale:1;opacity:.65}50%{scale:1.08;opacity:1}}
-@media(max-width:700px){.home-3d-scene{min-height:470px;border-radius:24px}.home-3d-orbit{inset:8%}.home-3d-orbit:nth-child(2){inset:18%}.home-3d-orbit:nth-child(3){inset:28%}.home-3d-core{width:130px;height:130px}.home-3d-monogram{font-size:2.4rem}.home-3d-label{top:calc(50% + 100px)}.home-3d-node{font-size:.68rem;padding:.55rem .72rem}.home-3d-node:nth-of-type(4){left:6%;top:16%}.home-3d-node:nth-of-type(5){right:6%;top:20%}.home-3d-node:nth-of-type(6){left:7%;bottom:26%}.home-3d-node:nth-of-type(7){right:7%;bottom:24%}.home-3d-copy{left:20px;right:20px;bottom:18px}.home-3d-copy p{font-size:.82rem}}
-@media(prefers-reduced-motion:reduce){.home-3d-orbit,.home-3d-core,.home-3d-core:after,.home-3d-node{animation:none!important}}
+/* Panos Khan — cinematic 3D ecosystem hero v3 */
+.hero{position:relative;isolation:isolate;min-height:min(900px,calc(100vh - 92px));display:flex;align-items:stretch}
+.hero-inner{position:relative;display:block;width:100%;min-height:min(820px,calc(100vh - 116px));overflow:hidden;border-radius:32px}
+.hero-content{position:relative;z-index:20;max-width:720px;padding:clamp(72px,10vh,130px) 0 90px;text-shadow:0 2px 28px rgba(0,0,0,.55)}
 
-/* v2: make the 3D environment the actual hero canvas, not a card below the copy. */
-.hero{position:relative;isolation:isolate;min-height:min(900px,calc(100vh - 96px));display:flex;align-items:stretch}
-.hero-inner{position:relative;display:block;width:100%;min-height:min(820px,calc(100vh - 120px))}
-.hero-content{position:relative;z-index:8;max-width:720px;padding:clamp(72px,10vh,130px) 0 90px;text-shadow:0 2px 28px rgba(0,0,0,.5)}
-.home-3d-scene{position:absolute;z-index:1;inset:0;width:100%;height:100%;min-height:100%;margin:0;max-width:none;border-radius:32px;background:radial-gradient(circle at 72% 45%,rgba(85,120,255,.22),transparent 27%),radial-gradient(circle at 88% 18%,rgba(180,80,255,.18),transparent 24%),linear-gradient(135deg,rgba(4,10,21,.96),rgba(7,9,24,.88) 48%,rgba(13,7,31,.94));box-shadow:0 30px 100px rgba(0,0,0,.28)}
-.home-3d-scene:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,9,19,.92) 0%,rgba(5,9,19,.72) 34%,rgba(5,9,19,.22) 66%,rgba(5,9,19,.05) 100%);z-index:2;pointer-events:none}
-.home-3d-core{width:210px;height:210px;left:73%;top:50%;box-shadow:0 0 100px rgba(80,120,255,.28),inset 0 1px rgba(255,255,255,.22)}
-.home-3d-label{left:73%;top:calc(50% + 145px);z-index:5}
-.home-3d-node:nth-of-type(4){left:auto;right:16%;top:22%}.home-3d-node:nth-of-type(5){right:5%;top:44%}.home-3d-node:nth-of-type(6){left:auto;right:16%;bottom:22%}.home-3d-node:nth-of-type(7){left:54%;right:auto;bottom:12%}
-.home-3d-copy{z-index:6}
-.hero-ctas,.hero-stats{position:relative;z-index:9}
-@media(max-width:700px){.hero{min-height:auto}.hero-inner{min-height:760px}.hero-content{padding:54px 0 310px;max-width:100%}.home-3d-scene{inset:auto 0 0 0;height:560px;min-height:560px;border-radius:24px}.home-3d-scene:after{background:linear-gradient(180deg,rgba(5,9,19,.08) 0%,rgba(5,9,19,.18) 20%,rgba(5,9,19,.76) 72%,rgba(5,9,19,.95) 100%)}.home-3d-core{width:145px;height:145px;left:50%;top:43%}.home-3d-label{left:50%;top:calc(43% + 105px);font-size:.58rem}.home-3d-node:nth-of-type(4){right:auto;left:7%;top:18%}.home-3d-node:nth-of-type(5){right:6%;top:31%}.home-3d-node:nth-of-type(6){right:auto;left:7%;bottom:25%}.home-3d-node:nth-of-type(7){left:auto;right:7%;bottom:17%}.hero-stats{display:none}}
-@media(prefers-reduced-motion:reduce){.home-3d-scene:before{animation:none}.home-3d-core{animation:none}}
+/* The scene is a real layered 3D composition rather than a flat card. */
+.home-3d-scene{position:absolute;z-index:1;inset:0;width:100%;height:100%;min-height:100%;margin:0;max-width:none;overflow:hidden;border:1px solid rgba(150,210,255,.16);border-radius:32px;background:radial-gradient(circle at 72% 46%,rgba(54,142,255,.24),transparent 25%),radial-gradient(circle at 86% 22%,rgba(186,71,255,.2),transparent 23%),radial-gradient(circle at 52% 90%,rgba(0,214,255,.11),transparent 32%),linear-gradient(135deg,#030812 0%,#061323 45%,#0d0920 100%);box-shadow:0 35px 120px rgba(0,0,0,.42),inset 0 0 80px rgba(80,150,255,.06);perspective:1100px;transform-style:preserve-3d}
+.home-3d-scene:before{content:"";position:absolute;inset:-45%;background:linear-gradient(rgba(120,210,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(120,210,255,.08) 1px,transparent 1px);background-size:58px 58px;transform:perspective(700px) rotateX(64deg) translateY(27%) translateZ(-80px);transform-origin:center;opacity:.62;mask-image:linear-gradient(to bottom,transparent 0%,black 35%,black 78%,transparent 100%);animation:homeGridDrift 18s linear infinite;z-index:0}
+.home-3d-scene:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 73% 50%,transparent 0,transparent 18%,rgba(2,7,16,.18) 42%,rgba(2,5,12,.82) 100%),linear-gradient(90deg,rgba(3,7,15,.95) 0%,rgba(3,7,15,.72) 32%,rgba(3,7,15,.12) 67%,rgba(3,7,15,.18) 100%);z-index:12;pointer-events:none}
+
+/* Ambient depth particles, built without external libraries. */
+.home-3d-scene .home-3d-copy:before,.home-3d-scene .home-3d-copy:after{content:"";position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(160,225,255,.9);box-shadow:90px -130px 0 rgba(180,120,255,.8),220px -70px 0 rgba(80,210,255,.8),390px -155px 0 rgba(210,160,255,.65),520px -15px 0 rgba(90,190,255,.65),340px 100px 0 rgba(170,120,255,.55),600px 170px 0 rgba(90,220,255,.55),150px 170px 0 rgba(200,170,255,.55);animation:homeParticles 9s ease-in-out infinite;opacity:.8;pointer-events:none}
+.home-3d-scene .home-3d-copy:after{width:2px;height:2px;transform:translate(40px,35px);animation-duration:13s;animation-delay:-5s}
+
+.home-3d-orbit{position:absolute;left:73%;top:50%;width:580px;height:580px;margin:-290px 0 0 -290px;border:1px solid rgba(120,195,255,.22);border-radius:50%;transform:rotateX(67deg) rotateZ(-12deg);transform-style:preserve-3d;animation:homeOrbit 18s linear infinite;box-shadow:0 0 50px rgba(60,150,255,.04)}
+.home-3d-orbit:nth-child(2){width:470px;height:470px;margin:-235px 0 0 -235px;transform:rotateX(70deg) rotateZ(48deg);border-color:rgba(193,116,255,.24);animation-duration:25s;animation-direction:reverse}
+.home-3d-orbit:nth-child(3){width:355px;height:355px;margin:-177px 0 0 -177px;transform:rotateX(73deg) rotateZ(105deg);border-color:rgba(100,235,255,.25);animation-duration:32s}
+.home-3d-orbit:after{content:"";position:absolute;left:50%;top:-5px;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:#9cecff;box-shadow:0 0 22px 8px rgba(75,205,255,.5)}
+
+.home-3d-core{position:absolute;left:73%;top:50%;width:220px;height:220px;transform:translate(-50%,-50%) translateZ(70px);display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 35% 25%,rgba(255,255,255,.28),rgba(255,255,255,.06) 35%,rgba(65,125,255,.13) 62%,rgba(3,8,18,.82) 100%);border:1px solid rgba(220,245,255,.34);backdrop-filter:blur(20px);box-shadow:0 0 35px rgba(70,190,255,.28),0 0 110px rgba(110,80,255,.22),inset 0 0 55px rgba(100,180,255,.11),inset 0 1px rgba(255,255,255,.35);animation:homeCoreFloat 5s ease-in-out infinite;z-index:6;transform-style:preserve-3d}
+.home-3d-core:before{content:"";position:absolute;inset:12px;border-radius:50%;border:1px solid rgba(150,220,255,.24);box-shadow:inset 0 0 30px rgba(80,180,255,.1);animation:homeCoreSpin 10s linear infinite}
+.home-3d-core:after{content:"";position:absolute;inset:-28px;border-radius:50%;border:1px solid rgba(120,190,255,.2);box-shadow:0 0 45px rgba(100,130,255,.16);animation:homePulse 3s ease-in-out infinite}
+.home-3d-monogram{font-size:3.5rem;font-weight:850;letter-spacing:-.09em;background:linear-gradient(120deg,#fff 20%,#8feaff 52%,#c9a5ff 85%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 18px rgba(100,210,255,.3));z-index:2}
+.home-3d-label{position:absolute;left:73%;top:calc(50% + 155px);transform:translateX(-50%);font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(210,235,255,.76);white-space:nowrap;z-index:8}
+
+.home-3d-node{position:absolute;z-index:10;padding:.72rem 1rem;border:1px solid rgba(145,215,255,.2);background:linear-gradient(135deg,rgba(19,31,54,.78),rgba(10,13,29,.62));backdrop-filter:blur(14px);border-radius:14px;font-size:.78rem;color:#e9f7ff;letter-spacing:.02em;box-shadow:0 18px 45px rgba(0,0,0,.32),inset 0 1px rgba(255,255,255,.12);transform:translateZ(30px);animation:homeNodeFloat 6s ease-in-out infinite}
+.home-3d-node:before{content:"";display:inline-block;width:6px;height:6px;margin-right:8px;border-radius:50%;background:#72ddff;box-shadow:0 0 12px #72ddff}
+.home-3d-node:nth-of-type(4){left:auto;right:17%;top:20%;animation-delay:-.5s}.home-3d-node:nth-of-type(5){right:4%;top:45%;animation-delay:-2s}.home-3d-node:nth-of-type(6){left:auto;right:17%;bottom:20%;animation-delay:-3.5s}.home-3d-node:nth-of-type(7){left:54%;right:auto;bottom:10%;animation-delay:-5s}
+.home-3d-copy{position:absolute;left:34px;bottom:30px;z-index:14;max-width:430px;padding-left:15px;border-left:2px solid rgba(100,215,255,.55)}
+.home-3d-copy strong{font-size:1rem;letter-spacing:.01em}.home-3d-copy p{margin:.45rem 0 0;opacity:.7;line-height:1.55}
+
+/* Thin energy beams connect the ecosystem nodes to the core. */
+.home-3d-node:after{content:"";position:absolute;right:-210px;top:50%;width:210px;height:1px;background:linear-gradient(90deg,rgba(90,210,255,.55),transparent);transform-origin:left center;opacity:.35;pointer-events:none}
+.home-3d-node:nth-of-type(5):after,.home-3d-node:nth-of-type(7):after{right:auto;left:-190px;transform:scaleX(-1);background:linear-gradient(90deg,rgba(190,120,255,.5),transparent)}
+
+@keyframes homeOrbit{to{transform:rotateX(67deg) rotateZ(348deg)}}
+@keyframes homeCoreSpin{to{transform:rotateZ(360deg)}}
+@keyframes homeCoreFloat{0%,100%{translate:0 0}50%{translate:0 -12px}}
+@keyframes homeNodeFloat{0%,100%{translate:0 0}50%{translate:0 -9px}}
+@keyframes homePulse{0%,100%{scale:1;opacity:.55}50%{scale:1.09;opacity:1}}
+@keyframes homeGridDrift{to{background-position:0 58px,58px 0}}
+@keyframes homeParticles{0%,100%{translate:0 0;opacity:.55}50%{translate:12px -18px;opacity:1}}
+
+.hero-ctas,.hero-stats{position:relative;z-index:22}
+.hero-visual{position:relative;z-index:18}
+
+@media(max-width:900px){.home-3d-core{left:72%;width:180px;height:180px}.home-3d-orbit{left:72%;width:480px;height:480px;margin:-240px 0 0 -240px}.home-3d-orbit:nth-child(2){width:390px;height:390px;margin:-195px 0 0 -195px}.home-3d-orbit:nth-child(3){width:300px;height:300px;margin:-150px 0 0 -150px}.home-3d-label{left:72%}}
+
+@media(max-width:700px){
+  .hero{min-height:auto}.hero-inner{min-height:820px;border-radius:24px}.hero-content{padding:54px 18px 360px;max-width:100%}
+  .home-3d-scene{inset:auto 0 0 0;height:570px;min-height:570px;border-radius:24px;perspective:850px}
+  .home-3d-scene:after{background:linear-gradient(180deg,rgba(3,7,15,.08) 0%,rgba(3,7,15,.12) 25%,rgba(3,7,15,.68) 72%,rgba(3,7,15,.96) 100%)}
+  .home-3d-core{width:148px;height:148px;left:50%;top:42%;transform:translate(-50%,-50%) translateZ(55px)}.home-3d-monogram{font-size:2.45rem}.home-3d-label{left:50%;top:calc(42% + 105px);font-size:.54rem;letter-spacing:.2em}
+  .home-3d-orbit{left:50%;top:42%;width:430px;height:430px;margin:-215px 0 0 -215px}.home-3d-orbit:nth-child(2){width:350px;height:350px;margin:-175px 0 0 -175px}.home-3d-orbit:nth-child(3){width:275px;height:275px;margin:-137px 0 0 -137px}
+  .home-3d-node{font-size:.67rem;padding:.55rem .68rem;border-radius:12px}.home-3d-node:nth-of-type(4){right:auto;left:5%;top:16%}.home-3d-node:nth-of-type(5){right:4%;top:27%}.home-3d-node:nth-of-type(6){right:auto;left:5%;bottom:24%}.home-3d-node:nth-of-type(7){left:auto;right:5%;bottom:15%}.home-3d-node:after{display:none}
+  .home-3d-copy{left:18px;right:18px;bottom:16px;max-width:none}.home-3d-copy p{font-size:.78rem}.hero-stats{display:none}
+}
+@media(prefers-reduced-motion:reduce){.home-3d-orbit,.home-3d-core,.home-3d-core:before,.home-3d-core:after,.home-3d-node,.home-3d-scene:before,.home-3d-scene .home-3d-copy:before,.home-3d-scene .home-3d-copy:after{animation:none!important}}

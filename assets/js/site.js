@@ -148,8 +148,6 @@
     let drawer = root.querySelector("#navDrawer") || document.getElementById("navDrawer");
     if (!hamburger || !drawer || hamburger.dataset.navBound === "1") return;
 
-    // Move the drawer to <body> so it is not trapped by header stacking/overflow
-    // contexts on iOS Safari and other mobile browsers.
     if (drawer.parentElement !== document.body) document.body.appendChild(drawer);
 
     const overlay = document.getElementById("navOverlay");
@@ -185,8 +183,9 @@
       drawer.classList.contains("open") ? close() : open();
     };
 
+    // Use click only. iOS can synthesize a click after touchend; binding both
+    // events can toggle the drawer twice and make it appear not to open.
     hamburger.addEventListener("click", toggle, { passive: false });
-    hamburger.addEventListener("touchend", toggle, { passive: false });
     if (closeBtn) closeBtn.addEventListener("click", close, { passive: true });
     if (overlay) overlay.addEventListener("click", close, { passive: true });
     drawer.querySelectorAll("a").forEach((link) => link.addEventListener("click", close, { passive: true }));

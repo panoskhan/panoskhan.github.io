@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1.0",
+  "name": "Panos Khan Evidence OS",
+  "principle": "Claims require explicit sources, evidence, verification state, confidence and provenance.",
+  "statuses": ["Verified", "Supported", "Unverified", "Disputed"],
+  "records": [
+    {"id":"EOS-001","topic":"Evidence architecture","status":"Supported","confidence":0.86,"claim":"Evidence OS connects claims to traceable source records.","sources":[{"title":"Evidence OS","url":"/evidence-os/"}],"updated":"2026-09-02"},
+    {"id":"EOS-002","topic":"Knowledge systems","status":"Supported","confidence":0.82,"claim":"Public knowledge systems benefit from explicit provenance and verification state.","sources":[{"title":"W3C PROV Overview","url":"https://www.w3.org/TR/prov-overview/"}],"updated":"2026-09-02"},
+    {"id":"EOS-003","topic":"Identity verification","status":"Verified","confidence":0.97,"claim":"A matching name alone is insufficient to establish identity across unrelated web pages.","sources":[{"title":"Evidence OS verification policy","url":"/evidence-os/"}],"updated":"2026-09-02"}
+  ]
+}

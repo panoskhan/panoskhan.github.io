@@ -127,14 +127,15 @@
     style.id = "pk-nav-runtime-styles";
     style.textContent = `
       .site-header{position:relative;z-index:1000}
-      .nav-hamburger{display:none;margin-left:auto;width:44px;height:44px;border:1px solid var(--border,#1e2d4d);border-radius:12px;background:rgba(0,0,0,.22);color:var(--text,#e6edf7);cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
-      .nav-hamburger span{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .2s ease,opacity .2s ease}
+      .nav-hamburger{display:none;margin-left:auto;width:44px;height:44px;border:1px solid var(--border,#1e2d4d);border-radius:12px;background:rgba(0,0,0,.22);color:var(--text,#e6edf7);cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+      .nav-hamburger span{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .2s ease,opacity .2s ease;pointer-events:none}
       .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.nav-hamburger.open span:nth-child(2){opacity:0}.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-      .nav-drawer{display:none;position:fixed;inset:0;z-index:10000}.nav-drawer.open{display:block!important}
-      .nav-drawer-overlay{position:absolute;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
-      .nav-drawer-panel{position:absolute;right:0;top:0;height:100%;width:min(390px,92vw);padding:20px;background:var(--bg,#070b14);border-left:1px solid var(--border,#1e2d4d);box-shadow:-30px 0 80px rgba(0,0,0,.55);overflow:auto}
-      .nav-drawer-close{display:flex;justify-content:flex-end}.nav-drawer-close button{width:42px;height:42px;border:1px solid var(--border,#1e2d4d);border-radius:12px;background:transparent;color:var(--text,#e6edf7);cursor:pointer;font-size:20px}
-      .nav-drawer-links{display:flex;flex-direction:column;gap:4px;margin-top:18px}.nav-drawer-links a{display:block;padding:13px 14px;border-radius:12px;color:var(--text,#e6edf7);text-decoration:none}.nav-drawer-links a:hover,.nav-drawer-links a[aria-current="page"]{background:rgba(0,229,255,.09);color:var(--neon,#00e5ff);text-shadow:none}.nav-drawer-links .nav-cta{margin-top:12px;text-align:center;border:1px solid rgba(0,229,255,.3)}
+      .nav-drawer{display:none;position:fixed;inset:0;z-index:2147483647;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .18s ease,visibility .18s ease}
+      .nav-drawer.open{display:block!important;visibility:visible;opacity:1;pointer-events:auto}
+      .nav-drawer-overlay{position:absolute;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);touch-action:none}
+      .nav-drawer-panel{position:absolute;right:0;top:0;height:100dvh;min-height:100%;width:min(390px,92vw);padding:20px;background:var(--bg,#070b14);border-left:1px solid var(--border,#1e2d4d);box-shadow:-30px 0 80px rgba(0,0,0,.55);overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+      .nav-drawer-close{display:flex;justify-content:flex-end}.nav-drawer-close button{width:42px;height:42px;border:1px solid var(--border,#1e2d4d);border-radius:12px;background:transparent;color:var(--text,#e6edf7);cursor:pointer;font-size:20px;touch-action:manipulation}
+      .nav-drawer-links{display:flex;flex-direction:column;gap:4px;margin-top:18px}.nav-drawer-links a{display:block;padding:13px 14px;border-radius:12px;color:var(--text,#e6edf7);text-decoration:none;touch-action:manipulation}.nav-drawer-links a:hover,.nav-drawer-links a[aria-current="page"]{background:rgba(0,229,255,.09);color:var(--neon,#00e5ff);text-shadow:none}.nav-drawer-links .nav-cta{margin-top:12px;text-align:center;border:1px solid rgba(0,229,255,.3)}
       @media(max-width:1050px){.nav-links{display:none!important}.nav-hamburger{display:flex!important}}
       @media(min-width:1051px){.nav-drawer{display:none!important}}
       @media(max-width:600px){.nav-drawer-panel{width:100%;padding:16px}.nav-drawer-links a{padding:14px 12px}}
@@ -144,68 +145,184 @@
 
   function bindNav(root) {
     const hamburger = root.querySelector("#navHamburger");
-    const drawer = root.querySelector("#navDrawer");
-    const overlay = root.querySelector("#navOverlay");
-    const closeBtn = root.querySelector("#navClose");
+    let drawer = root.querySelector("#navDrawer") || document.getElementById("navDrawer");
     if (!hamburger || !drawer || hamburger.dataset.navBound === "1") return;
-    hamburger.dataset.navBound = "1";
-    const close = () => { drawer.classList.remove("open"); hamburger.classList.remove("open"); hamburger.setAttribute("aria-expanded","false"); document.body.style.overflow=""; };
-    const open = () => { drawer.classList.add("open"); hamburger.classList.add("open"); hamburger.setAttribute("aria-expanded","true"); document.body.style.overflow="hidden"; };
-    hamburger.addEventListener("click", () => drawer.classList.contains("open") ? close() : open());
-    if (closeBtn) closeBtn.addEventListener("click", close);
-    if (overlay) overlay.addEventListener("click", close);
-    drawer.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
 
-    // Use an explicit same-origin navigation for header links so other page-level
-    // click handlers cannot accidentally cancel the browser's normal navigation.
-    root.addEventListener("click", (event) => {
-      const link = event.target.closest("a");
-      if (!link || !root.contains(link) || link.target === "_blank") return;
-      const href = link.getAttribute("href");
-      if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
+    // Move the drawer to <body> so it is not trapped by header stacking/overflow
+    // contexts on iOS Safari and other mobile browsers.
+    if (drawer.parentElement !== document.body) document.body.appendChild(drawer);
+
+    const overlay = document.getElementById("navOverlay");
+    const closeBtn = document.getElementById("navClose");
+    hamburger.dataset.navBound = "1";
+
+    const close = () => {
+      drawer.classList.remove("open");
+      hamburger.classList.remove("open");
+      hamburger.setAttribute("aria-expanded", "false");
+      hamburger.setAttribute("aria-label", "Open navigation menu");
+      document.body.style.overflow = "";
+      document.body.style.overscrollBehavior = "";
+    };
+
+    const open = () => {
+      drawer.classList.add("open");
+      hamburger.classList.add("open");
+      hamburger.setAttribute("aria-expanded", "true");
+      hamburger.setAttribute("aria-label", "Close navigation menu");
+      document.body.style.overflow = "hidden";
+      document.body.style.overscrollBehavior = "none";
+      drawer.scrollTop = 0;
+      requestAnimationFrame(() => {
+        const firstLink = drawer.querySelector("a, button");
+        if (firstLink) firstLink.focus({ preventScroll: true });
+      });
+    };
+
+    const toggle = (event) => {
       event.preventDefault();
       event.stopPropagation();
-      close();
-      window.location.assign(new URL(href, window.location.origin).href);
-    }, true);
+      drawer.classList.contains("open") ? close() : open();
+    };
 
-    document.addEventListener("keydown", (event) => { if (event.key === "Escape") close(); });
+    hamburger.addEventListener("click", toggle, { passive: false });
+    hamburger.addEventListener("touchend", toggle, { passive: false });
+    if (closeBtn) closeBtn.addEventListener("click", close, { passive: true });
+    if (overlay) overlay.addEventListener("click", close, { passive: true });
+    drawer.querySelectorAll("a").forEach((link) => link.addEventListener("click", close, { passive: true }));
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && drawer.classList.contains("open")) close();
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 1051) close();
+    });
   }
 
   function mountShell() {
     document.querySelectorAll(".langbar").forEach((node) => node.remove());
     document.querySelectorAll("body > .nav-drawer").forEach((node) => node.remove());
-    document.querySelectorAll(".site-header").forEach((node) => { node.setAttribute("data-site-nav",""); node.style.top="0"; node.innerHTML=headerHTML(); bindNav(node); });
-    document.querySelectorAll("[data-site-footer]").forEach((node) => { node.innerHTML=footerHTML(); });
-    document.querySelectorAll(".current-year").forEach((node) => { node.textContent=String(new Date().getFullYear()); });
+    document.querySelectorAll(".site-header").forEach((node) => {
+      node.setAttribute("data-site-nav", "");
+      node.style.top = "0";
+      node.innerHTML = headerHTML();
+      bindNav(node);
+    });
+    document.querySelectorAll("[data-site-footer]").forEach((node) => { node.innerHTML = footerHTML(); });
+    document.querySelectorAll(".current-year").forEach((node) => { node.textContent = String(new Date().getFullYear()); });
   }
 
   function renderResults(query) {
-    const results=document.getElementById("globalSearchResults"); if(!results)return;
-    const normalized=query.trim().toLowerCase();
-    const matches=normalized?searchIndex.filter((item)=>`${item.title} ${item.type} ${item.description} ${(item.keywords||[]).join(" ")}`.toLowerCase().includes(normalized)):searchIndex.slice(0,8);
-    results.innerHTML=matches.length?matches.map((item)=>`<li><a href="${item.url}"><span>${item.title}</span><small>${item.type} · ${item.description}</small></a></li>`).join(""): '<li class="search-empty">No matching products, tools, docs, or downloads.</li>';
+    const results = document.getElementById("globalSearchResults"); if (!results) return;
+    const normalized = query.trim().toLowerCase();
+    const matches = normalized
+      ? searchIndex.filter((item) => `${item.title} ${item.type} ${item.description} ${(item.keywords || []).join(" ")}`.toLowerCase().includes(normalized))
+      : searchIndex.slice(0, 8);
+    results.innerHTML = matches.length
+      ? matches.map((item) => `<li><a href="${item.url}"><span>${item.title}</span><small>${item.type} · ${item.description}</small></a></li>`).join("")
+      : '<li class="search-empty">No matching products, tools, docs, or downloads.</li>';
   }
 
   function mountGlobalSearch() {
-    if(document.getElementById("globalSearchDialog"))return;
-    const shell=document.createElement("div");
-    shell.innerHTML=`<button class="global-search-trigger" type="button" aria-label="Search the site" aria-haspopup="dialog">Search <kbd>⌘K</kbd></button><dialog class="global-search-dialog" id="globalSearchDialog" aria-labelledby="globalSearchTitle"><div class="global-search-head"><h2 id="globalSearchTitle">Search Panos Khan</h2><button type="button" class="global-search-close" aria-label="Close search">×</button></div><label class="sr-only" for="globalSearchInput">Search products, tools, docs, and downloads</label><input id="globalSearchInput" type="search" autocomplete="off" placeholder="Search products, tools, docs, and downloads…" /><ul id="globalSearchResults" class="global-search-results"></ul></dialog>`;
+    if (document.getElementById("globalSearchDialog")) return;
+    const shell = document.createElement("div");
+    shell.innerHTML = `<button class="global-search-trigger" type="button" aria-label="Search the site" aria-haspopup="dialog">Search <kbd>⌘K</kbd></button><dialog class="global-search-dialog" id="globalSearchDialog" aria-labelledby="globalSearchTitle"><div class="global-search-head"><h2 id="globalSearchTitle">Search Panos Khan</h2><button type="button" class="global-search-close" aria-label="Close search">×</button></div><label class="sr-only" for="globalSearchInput">Search products, tools, docs, and downloads</label><input id="globalSearchInput" type="search" autocomplete="off" placeholder="Search products, tools, docs, and downloads…" /><ul id="globalSearchResults" class="global-search-results"></ul></dialog>`;
     document.body.appendChild(shell);
-    const dialog=document.getElementById("globalSearchDialog"), input=document.getElementById("globalSearchInput");
-    const open=()=>{dialog.showModal();input.value="";renderResults("");input.focus();};
-    shell.querySelector(".global-search-trigger").addEventListener("click",open); shell.querySelector(".global-search-close").addEventListener("click",()=>dialog.close()); input.addEventListener("input",()=>renderResults(input.value)); dialog.addEventListener("click",(event)=>{if(event.target===dialog)dialog.close();});
-    document.addEventListener("keydown",(event)=>{if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==="k"){event.preventDefault();if(!dialog.open)open();}});
+    const dialog = document.getElementById("globalSearchDialog"), input = document.getElementById("globalSearchInput");
+    const open = () => { dialog.showModal(); input.value = ""; renderResults(""); input.focus(); };
+    shell.querySelector(".global-search-trigger").addEventListener("click", open);
+    shell.querySelector(".global-search-close").addEventListener("click", () => dialog.close());
+    input.addEventListener("input", () => renderResults(input.value));
+    dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
+    document.addEventListener("keydown", (event) => { if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") { event.preventDefault(); if (!dialog.open) open(); } });
   }
 
-  function trackRecent(itemId){if(!itemId||!window.localStorage)return;try{const key="pk_workspace_recent";const existing=JSON.parse(localStorage.getItem(key)||"[]");localStorage.setItem(key,JSON.stringify([itemId].concat(existing.filter((id)=>id!==itemId)).slice(0,20)));}catch(_){} }
-  function mapPlatformItemsToSearch(items){if(!Array.isArray(items))return[];return items.filter((item)=>item&&item.title&&item.path).map((item)=>({title:item.title,type:(item.type||"Item").replace(/^./,(ch)=>ch.toUpperCase()),url:item.links&&item.links.primary?item.links.primary:item.path,description:item.summary||`${item.type||"item"} from platform registry`,keywords:Array.isArray(item.tags)?item.tags:[]}));}
-  function productById(id){if(!productsCatalog||!Array.isArray(productsCatalog.products))return null;return productsCatalog.products.find((item)=>item.id===id)||null;}
-  function renderRelatedProducts(){document.querySelectorAll("[data-related-products]").forEach((node)=>{const ids=(node.getAttribute("data-related-products")||"").split(",").map((value)=>value.trim()).filter(Boolean);const cards=ids.map((id)=>{const product=productById(id);if(product)return `<a class="card related-product-card" href="${product.path}"><span class="card-tag">${product.category||"Product"}</span><h3>${product.name}</h3><p class="muted">${product.description}</p><span class="ecosystem-meta">Open ${product.shortName||product.name} →</span></a>`;const fallback=PRIMARY_NAV.concat(DRAWER_EXTRA).find((item)=>item.id===id);if(!fallback)return"";return `<a class="card related-product-card" href="${fallback.href}"><span class="card-tag">Product</span><h3>${fallback.label}</h3><p class="muted">Open this ecosystem surface.</p><span class="ecosystem-meta">Open →</span></a>`;}).filter(Boolean);node.innerHTML=cards.join("")||'<p class="muted">Related products will appear here.</p>';});}
-  async function loadJSON(url){try{const response=await fetch(url,{credentials:"same-origin"});return response.ok?await response.json():null;}catch(_){return null;}}
-  async function loadRegistries(){const [searchData,productData,platformData]=await Promise.all([loadJSON("/assets/data/search-index.json"),loadJSON("/assets/data/products.json"),loadJSON("/assets/data/platform-registry.json")]);const staticSearch=searchData&&Array.isArray(searchData.items)?searchData.items:[];const platformSearch=platformData&&Array.isArray(platformData.items)?mapPlatformItemsToSearch(platformData.items):[];if(staticSearch.length||platformSearch.length){const dedupe=new Map();staticSearch.concat(platformSearch).forEach((item)=>{if(item&&item.url&&!dedupe.has(item.url))dedupe.set(item.url,item);});searchIndex=Array.from(dedupe.values());}if(productData&&Array.isArray(productData.products))productsCatalog=productData;renderRelatedProducts();}
+  function trackRecent(itemId) {
+    if (!itemId || !window.localStorage) return;
+    try {
+      const key = "pk_workspace_recent";
+      const existing = JSON.parse(localStorage.getItem(key) || "[]");
+      localStorage.setItem(key, JSON.stringify([itemId].concat(existing.filter((id) => id !== itemId)).slice(0, 20)));
+    } catch (_) {}
+  }
 
-  window.PhoenixSite={products:PRIMARY_NAV,get searchIndex(){return searchIndex;},get productsCatalog(){return productsCatalog;},mountShell,mountGlobalSearch,trackRecent,renderRelatedProducts};
-  function boot(){injectNavStyles();mountShell();mountGlobalSearch();renderRelatedProducts();loadRegistries();const toolId=document.body&&document.body.dataset.toolId;if(toolId)trackRecent(toolId);}
-  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot);else boot();
+  function mapPlatformItemsToSearch(items) {
+    if (!Array.isArray(items)) return [];
+    return items.filter((item) => item && item.title && item.path).map((item) => ({
+      title: item.title,
+      type: (item.type || "Item").replace(/^./, (ch) => ch.toUpperCase()),
+      url: item.links && item.links.primary ? item.links.primary : item.path,
+      description: item.summary || `${item.type || "item"} from platform registry`,
+      keywords: Array.isArray(item.tags) ? item.tags : []
+    }));
+  }
+
+  function productById(id) {
+    if (!productsCatalog || !Array.isArray(productsCatalog.products)) return null;
+    return productsCatalog.products.find((item) => item.id === id) || null;
+  }
+
+  function renderRelatedProducts() {
+    document.querySelectorAll("[data-related-products]").forEach((node) => {
+      const ids = (node.getAttribute("data-related-products") || "").split(",").map((value) => value.trim()).filter(Boolean);
+      const cards = ids.map((id) => {
+        const product = productById(id);
+        if (product) return `<a class="card related-product-card" href="${product.path}"><span class="card-tag">${product.category || "Product"}</span><h3>${product.name}</h3><p class="muted">${product.description}</p><span class="ecosystem-meta">Open ${product.shortName || product.name} →</span></a>`;
+        const fallback = PRIMARY_NAV.concat(DRAWER_EXTRA).find((item) => item.id === id);
+        if (!fallback) return "";
+        return `<a class="card related-product-card" href="${fallback.href}"><span class="card-tag">Product</span><h3>${fallback.label}</h3><p class="muted">Open this ecosystem surface.</p><span class="ecosystem-meta">Open →</span></a>`;
+      }).filter(Boolean);
+      node.innerHTML = cards.join("") || '<p class="muted">Related products will appear here.</p>';
+    });
+  }
+
+  async function loadJSON(url) {
+    try {
+      const response = await fetch(url, { credentials: "same-origin" });
+      return response.ok ? await response.json() : null;
+    } catch (_) { return null; }
+  }
+
+  async function loadRegistries() {
+    const [searchData, productData, platformData] = await Promise.all([
+      loadJSON("/assets/data/search-index.json"),
+      loadJSON("/assets/data/products.json"),
+      loadJSON("/assets/data/platform-registry.json")
+    ]);
+    const staticSearch = searchData && Array.isArray(searchData.items) ? searchData.items : [];
+    const platformSearch = platformData && Array.isArray(platformData.items) ? mapPlatformItemsToSearch(platformData.items) : [];
+    if (staticSearch.length || platformSearch.length) {
+      const dedupe = new Map();
+      staticSearch.concat(platformSearch).forEach((item) => {
+        if (item && item.url && !dedupe.has(item.url)) dedupe.set(item.url, item);
+      });
+      searchIndex = Array.from(dedupe.values());
+    }
+    if (productData && Array.isArray(productData.products)) productsCatalog = productData;
+    renderRelatedProducts();
+  }
+
+  window.PhoenixSite = {
+    products: PRIMARY_NAV,
+    get searchIndex() { return searchIndex; },
+    get productsCatalog() { return productsCatalog; },
+    mountShell,
+    mountGlobalSearch,
+    trackRecent,
+    renderRelatedProducts
+  };
+
+  function boot() {
+    injectNavStyles();
+    mountShell();
+    mountGlobalSearch();
+    renderRelatedProducts();
+    loadRegistries();
+    const toolId = document.body && document.body.dataset.toolId;
+    if (toolId) trackRecent(toolId);
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
 })();

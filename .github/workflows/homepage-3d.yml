@@ -1,0 +1,94 @@
+name: Add progressive 3D homepage experience
+
+on:
+  push:
+    branches:
+      - feat/3d-progressive-enhancement
+
+permissions:
+  contents: write
+
+jobs:
+  integrate-3d:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Inject 3D homepage layer
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path("index.html")
+          text = p.read_text(encoding="utf-8")
+
+          css = '<link rel="stylesheet" href="/assets/css/home-3d.css">'
+          js = '<script src="/assets/js/home-3d.js" defer></script>'
+          section_marker = '<!-- HOME_3D_START -->'
+
+          changed = False
+          if css not in text:
+              text = text.replace('</head>', f'  {css}\n</head>', 1)
+              changed = True
+
+          if js not in text:
+              text = text.replace('</body>', f'  {js}\n</body>', 1)
+              changed = True
+
+          if section_marker not in text:
+              anchor = '    <!-- ══════════════════════════════════════════════════ -->\n    <!--  1b. ECOSYSTEM MAP'
+              if anchor not in text:
+                  raise SystemExit('Ecosystem anchor not found')
+              block = '''    <!-- HOME_3D_START -->
+    <section id="vision" class="home3d" aria-labelledby="vision-heading">
+      <div class="container">
+        <div class="home3d-copy">
+          <p class="kicker">Panos Khan · Digital Systems</p>
+          <h2 id="vision-heading">A living ecosystem for <span class="gradient-text">evidence, intelligence &amp; research.</span></h2>
+          <p>Explore the next generation of the Panos Khan platform: public products with a clear evidence trail, connected research, and an architecture designed to evolve from open interface to secure infrastructure.</p>
+          <div class="home3d-pillrow" aria-label="Platform areas">
+            <span class="home3d-pill">Evidence OS</span><span class="home3d-pill">Research</span><span class="home3d-pill">Projects</span><span class="home3d-pill">Platform Intelligence</span>
+          </div>
+        </div>
+        <div class="home3d-stage" aria-hidden="true">
+          <div class="home3d-core">
+            <div class="home3d-orbit"></div>
+            <div class="home3d-orbit two"></div>
+            <div class="home3d-orbit three"></div>
+            <div class="home3d-glass"></div>
+            <div class="home3d-node node-a"></div>
+            <div class="home3d-node node-b"></div>
+            <div class="home3d-node node-c"></div>
+            <div class="home3d-label"><span class="eyebrow">Evidence-first systems</span><strong>PK</strong><span>Connect · Verify · Build</span></div>
+          </div>
+        </div>
+        <div class="home3d-cards">
+          <article class="home3d-card"><b>Evidence OS</b><p>Trace claims to sources, verification, confidence and provenance.</p></article>
+          <article class="home3d-card"><b>Research</b><p>Turn questions and experiments into structured, reusable public knowledge.</p></article>
+          <article class="home3d-card"><b>Intelligence</b><p>Connect diagnostics, projects and signals into one navigable ecosystem.</p></article>
+        </div>
+      </div>
+    </section>
+    <!-- HOME_3D_END -->
+
+'''
+              text = text.replace(anchor, block + anchor, 1)
+              changed = True
+
+          if changed:
+              p.write_text(text, encoding='utf-8')
+          else:
+              print('3D homepage layer already present')
+
+      - name: Commit 3D homepage layer
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "No homepage change required"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Add premium 3D homepage experience"
+          git push

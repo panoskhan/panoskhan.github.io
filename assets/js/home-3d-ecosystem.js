@@ -1,6 +1,7 @@
 (function(){'use strict';
 const MOUNT_ID='pk-3d-ecosystem';
 const SIGNAL_ID='pk-3d-signal-deck';
+const PRISM_ID='pk-3d-evidence-prism';
 function mount(){
   if(document.getElementById(MOUNT_ID)) return;
   const main=document.querySelector('main'); if(!main) return;
@@ -23,6 +24,7 @@ function mount(){
   const marker=main.querySelector('[data-home-3d-anchor]'); if(marker) marker.before(section); else main.appendChild(section);
   initMotion(section);
   mountSignalDeck(main, section);
+  mountEvidencePrism(main, document.getElementById(SIGNAL_ID));
 }
 function initMotion(section){
   const stage=section.querySelector('[data-pk-stage]'), world=section.querySelector('[data-pk-world]'), canvas=section.querySelector('canvas'); if(!stage||!world||!canvas) return;
@@ -59,6 +61,31 @@ function initSignalMotion(section){
   if(reduce) return;
   stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;stage.style.setProperty('--sx',(x*10).toFixed(2)+'deg');stage.style.setProperty('--sy',(y*-7).toFixed(2)+'deg')},{passive:true});
   stage.addEventListener('pointerleave',()=>{stage.style.setProperty('--sx','0deg');stage.style.setProperty('--sy','0deg')},{passive:true});
+}
+function mountEvidencePrism(main, after){
+  if(document.getElementById(PRISM_ID)) return;
+  const section=document.createElement('section'); section.id=PRISM_ID; section.className='pk-prism container'; section.setAttribute('aria-labelledby','pk-prism-title');
+  section.innerHTML=`
+    <div class="pk-prism-head"><div><p class="pk-prism-eyebrow">EVIDENCE OS · VERIFICATION ENGINE</p><h2 id="pk-prism-title">A claim becomes useful when its <span class="gradient-text">proof is traceable.</span></h2><p>See the evidence lifecycle as a visual pipeline: a claim enters, sources are examined, provenance is recorded, and the result remains inspectable.</p></div><a class="pk-prism-cta" href="/evidence-os/">Open Evidence OS <span aria-hidden="true">→</span></a></div>
+    <div class="pk-prism-stage" data-prism-stage>
+      <div class="pk-prism-grid" aria-hidden="true"></div><div class="pk-prism-ring ring-one" aria-hidden="true"></div><div class="pk-prism-ring ring-two" aria-hidden="true"></div>
+      <a class="pk-prism-node prism-claim" href="/evidence-os/"><b>CLAIM</b><span>Define what is being asserted.</span></a>
+      <a class="pk-prism-node prism-source" href="/evidence-os/"><b>SOURCES</b><span>Attach independent evidence.</span></a>
+      <a class="pk-prism-node prism-review" href="/evidence-os/"><b>REVIEW</b><span>Assess quality and confidence.</span></a>
+      <a class="pk-prism-node prism-record" href="/evidence-os/"><b>PROVENANCE</b><span>Keep the verification history.</span></a>
+      <div class="pk-prism-core"><div class="pk-prism-core-face">✓</div><strong>VERIFIED</strong><span>inspectable result</span></div>
+      <div class="pk-prism-scan" aria-hidden="true"></div>
+    </div>
+    <div class="pk-prism-legend"><span><i></i> Traceable</span><span><i></i> Source-linked</span><span><i></i> Confidence-aware</span><span><i></i> History-preserving</span></div>`;
+  if(after&&after.parentNode) after.parentNode.insertBefore(section,after.nextSibling); else main.appendChild(section);
+  initPrismMotion(section);
+}
+function initPrismMotion(section){
+  const stage=section.querySelector('[data-prism-stage]'); if(!stage) return;
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce) return;
+  stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;stage.style.setProperty('--px',(x*7).toFixed(2)+'deg');stage.style.setProperty('--py',(y*-6).toFixed(2)+'deg')},{passive:true});
+  stage.addEventListener('pointerleave',()=>{stage.style.setProperty('--px','0deg');stage.style.setProperty('--py','0deg')},{passive:true});
 }
 if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',mount,{once:true}); else mount();
 })();

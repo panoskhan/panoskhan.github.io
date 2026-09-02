@@ -1,0 +1,51 @@
+name: Activate 3D ecosystem
+
+on:
+  push:
+    branches: ["feat/3d-progressive-enhancement"]
+    paths:
+      - "index.html"
+      - "assets/css/home-3d-ecosystem.css"
+      - "assets/js/home-3d-ecosystem.js"
+      - ".github/workflows/activate-3d-ecosystem.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout production branch
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Wire and normalize the 3D ecosystem
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path("index.html")
+          s = p.read_text(encoding="utf-8")
+          # The first activation used escaped newlines; normalize them into real HTML whitespace.
+          s = s.replace("\\\\n", "\n")
+          css = '<link rel="stylesheet" href="/assets/css/home-3d-ecosystem.css" />'
+          js = '<script defer src="/assets/js/home-3d-ecosystem.js"></script>'
+          marker = '<!-- PK-3D-ECOSYSTEM-ACTIVE -->'
+          if marker not in s:
+              s = s.replace('</head>', f'  {css}\n  {js}\n  {marker}\n</head>', 1)
+              s = s.replace('</main>', '    <div data-home-3d-anchor></div>\n  </main>', 1)
+          p.write_text(s, encoding="utf-8")
+
+      - name: Commit normalization if needed
+        shell: bash
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "3D ecosystem already normalized."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Normalize cinematic 3D homepage activation"
+          git push

@@ -1,0 +1,48 @@
+name: Normalize homepage runtime
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "index.html"
+      - ".github/workflows/normalize-homepage-runtime.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Normalize cinematic homepage assets
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path("index.html")
+          s = p.read_text(encoding="utf-8")
+          s = s.replace('\\\\n', '\n')
+          marker = '<link rel="stylesheet" href="/assets/css/home-reference-design.css" data-ref-home-static />'
+          if marker not in s:
+              anchor = '<link rel="stylesheet" href="/assets/css/home-3d-final.css" />'
+              if anchor not in s:
+                  raise SystemExit("3D stylesheet anchor not found")
+              s = s.replace(anchor, anchor + '\n  ' + marker, 1)
+          p.write_text(s, encoding="utf-8")
+
+      - name: Commit normalized homepage
+        shell: bash
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "Homepage runtime already normalized."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Normalize cinematic homepage runtime assets"
+          git push

@@ -28,3 +28,5 @@
 @keyframes v10Beam{0%,100%{opacity:.3;filter:blur(.3px)}50%{opacity:1;filter:blur(0) drop-shadow(0 0 10px rgba(0,230,255,.75))}}
 @media(max-width:600px){.hero3d{perspective:820px}.hero3d::before{inset:12% 0;filter:blur(18px)}.hero3d .core{animation-duration:9s}.hero3d .node:hover{transform:translate3d(0,-4px,var(--z,40px))}.eco .mapnode:hover{transform:translateZ(48px)}}
 @media(prefers-reduced-motion:reduce){.hero3d::before,.hero3d .core,.hero3d .core::after,.hero3d .core-glint,.hero3d .node::after,.eco .mapcore,.eco .line{animation:none!important}}
+
+@import url('./home-3d-spectacle-v11.css');

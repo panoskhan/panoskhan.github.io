@@ -1,0 +1,30 @@
+/* V10 — live cinematic depth / spatial polish */
+.hero3d{isolation:isolate;perspective:1100px;transform-style:preserve-3d;overflow:visible;}
+.hero3d::before{content:"";position:absolute;inset:10% 8%;z-index:-2;border-radius:50%;background:radial-gradient(ellipse at 50% 50%,rgba(0,231,255,.22),rgba(39,86,255,.12) 30%,transparent 68%);filter:blur(24px);animation:v10Aura 8s ease-in-out infinite;pointer-events:none}
+.hero3d::after{content:"";position:absolute;left:7%;right:7%;top:46%;height:2px;z-index:-1;background:linear-gradient(90deg,transparent,rgba(72,233,255,.12),rgba(116,102,255,.7),rgba(72,233,255,.12),transparent);filter:blur(.3px) drop-shadow(0 0 12px rgba(0,220,255,.6));transform:rotate(-7deg);opacity:.75;pointer-events:none}
+.hero3d .core{transform-style:preserve-3d;animation:v10Core 7s ease-in-out infinite;}
+.hero3d .core::before{content:"";position:absolute;inset:-18px;border-radius:50%;border:1px solid rgba(107,242,255,.34);box-shadow:0 0 34px rgba(0,228,255,.22),inset 0 0 26px rgba(0,228,255,.12);transform:translateZ(-10px);pointer-events:none}
+.hero3d .core::after{content:"";position:absolute;inset:8%;border-radius:50%;background:conic-gradient(from 25deg,transparent 0 18%,rgba(93,238,255,.18) 23%,transparent 29% 53%,rgba(176,112,255,.16) 58%,transparent 66%);mask-image:radial-gradient(circle,transparent 48%,#000 52%,#000 60%,transparent 72%);animation:v10Spin 12s linear infinite;pointer-events:none}
+.hero3d .core-glint{animation:v10Glint 5s ease-in-out infinite;}
+.hero3d .energy-ring{animation-duration:8s;filter:drop-shadow(0 0 9px rgba(0,232,255,.7));}
+.hero3d .node{transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.75,.2,1),box-shadow .45s ease,filter .45s ease;}
+.hero3d .node::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(120deg,rgba(255,255,255,.16),transparent 28%,transparent 72%,rgba(0,229,255,.10));pointer-events:none}
+.hero3d .node::after{content:"";position:absolute;right:10px;top:9px;width:5px;height:5px;border-radius:50%;background:#73f7ff;box-shadow:0 0 7px #73f7ff,0 0 18px rgba(0,225,255,.9);animation:v10Beacon 2.4s ease-in-out infinite;pointer-events:none}
+.hero3d .node:hover{transform:translate3d(0,-8px,var(--z,60px)) rotateX(3deg) rotateY(-3deg);filter:brightness(1.16);box-shadow:0 30px 64px rgba(0,0,0,.72),0 0 48px rgba(0,222,255,.42),inset 0 1px rgba(255,255,255,.28),inset 0 -22px 38px rgba(0,0,0,.38);}
+.hero3d .n1::after,.hero3d .n3::after{animation-delay:.7s}.hero3d .n4::after,.hero3d .n5::after{animation-delay:1.3s}
+.eco .map{perspective:1000px;transform-style:preserve-3d;overflow:hidden;}
+.eco .map::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(0,230,255,.16),transparent 38%),linear-gradient(115deg,transparent 46%,rgba(0,229,255,.08) 50%,transparent 54%);transform:translateZ(1px);pointer-events:none}
+.eco .mapcore{transform-style:preserve-3d;animation:v10MapCore 9s ease-in-out infinite;}
+.eco .mapnode{transform-style:preserve-3d;transition:transform .4s ease,filter .4s ease;}
+.eco .mapnode:hover{transform:translateZ(62px) rotateX(4deg) rotateY(-3deg);filter:brightness(1.15)}
+.eco .line{animation:v10Beam 3.8s ease-in-out infinite;}
+.eco .l2{animation-delay:.7s}.eco .l3{animation-delay:1.4s}.eco .l4{animation-delay:2.1s}
+@keyframes v10Aura{0%,100%{transform:scale(.96);opacity:.7}50%{transform:scale(1.04);opacity:1}}
+@keyframes v10Core{0%,100%{transform:translateZ(0) rotateX(0) rotateY(0)}50%{transform:translateZ(12px) rotateX(1.5deg) rotateY(-2deg)}}
+@keyframes v10Spin{to{transform:rotate(360deg)}}
+@keyframes v10Glint{0%,100%{transform:translate3d(-8px,-4px,10px) scale(.92);opacity:.55}50%{transform:translate3d(10px,8px,18px) scale(1.08);opacity:.95}}
+@keyframes v10Beacon{0%,100%{opacity:.45;transform:scale(.8)}50%{opacity:1;transform:scale(1.3)}}
+@keyframes v10MapCore{0%,100%{transform:translateZ(18px) rotateX(0)}50%{transform:translateZ(32px) rotateX(2deg)}}
+@keyframes v10Beam{0%,100%{opacity:.3;filter:blur(.3px)}50%{opacity:1;filter:blur(0) drop-shadow(0 0 10px rgba(0,230,255,.75))}}
+@media(max-width:600px){.hero3d{perspective:820px}.hero3d::before{inset:12% 0;filter:blur(18px)}.hero3d .core{animation-duration:9s}.hero3d .node:hover{transform:translate3d(0,-4px,var(--z,40px))}.eco .mapnode:hover{transform:translateZ(48px)}}
+@media(prefers-reduced-motion:reduce){.hero3d::before,.hero3d .core,.hero3d .core::after,.hero3d .core-glint,.hero3d .node::after,.eco .mapcore,.eco .line{animation:none!important}}

@@ -1,47 +1,63 @@
-/* FINAL 3D POLISH — additive, dependency-free visual layer. */
-.hero3d{perspective:1400px;transform-style:preserve-3d}
-.hero3d:before{width:82%;height:82%;background:radial-gradient(circle at 50% 48%,rgba(24,221,255,.24),rgba(41,82,255,.11) 28%,transparent 65%);filter:blur(28px);animation:heroAura 6s ease-in-out infinite}
-.hero3d:after{inset:5% 0 4%;background:radial-gradient(circle at 50% 48%,transparent 0 24%,rgba(0,229,255,.045) 25%,transparent 48%),radial-gradient(ellipse at 50% 72%,rgba(49,93,255,.16),transparent 42%);mix-blend-mode:screen}
-.hero3d .core{position:relative;transform-style:preserve-3d;animation:coreBreath 5s ease-in-out infinite;box-shadow:0 0 24px rgba(0,229,255,.65),0 0 75px rgba(0,175,255,.36),0 0 150px rgba(79,124,255,.2),inset 0 0 35px rgba(111,245,255,.3),inset -18px -24px 45px rgba(0,0,0,.55)}
-.hero3d .core:before{width:116%;height:116%;border:1px solid rgba(77,230,255,.5);box-shadow:0 0 20px rgba(0,229,255,.24),inset 0 0 25px rgba(0,229,255,.12);animation:ringSpin 14s linear infinite}
-.hero3d .core:after{width:82%;height:82%;border:1px solid rgba(160,221,255,.22);box-shadow:0 0 26px rgba(0,229,255,.22),inset 0 0 25px rgba(87,157,255,.12);animation:ringSpinReverse 9s linear infinite}
-.hero3d .core .core-glint{position:absolute;width:36%;height:36%;left:13%;top:9%;border-radius:50%;background:radial-gradient(circle,rgba(219,255,255,.95) 0 3%,rgba(94,242,255,.6) 16%,transparent 62%);filter:blur(1px);transform:translateZ(34px);animation:glint 4s ease-in-out infinite;pointer-events:none}
-.hero3d .core .core-grid{position:absolute;inset:9%;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,transparent 0 16px,rgba(118,225,255,.06) 17px 18px),conic-gradient(from 10deg,transparent,rgba(86,221,255,.12),transparent 24%,rgba(139,92,246,.1),transparent 48%);mask-image:radial-gradient(circle,#000 0 58%,transparent 72%);transform:translateZ(18px);animation:gridSpin 20s linear infinite;pointer-events:none}
-.hero3d .core .pk{position:relative;transform:translateZ(42px);font-weight:950;text-shadow:0 0 10px rgba(255,255,255,.9),0 0 28px rgba(0,229,255,.95),0 0 60px rgba(79,124,255,.7);animation:pkFloatPro 4s ease-in-out infinite}
-.hero3d .core .energy-ring{position:absolute;left:50%;top:50%;width:142%;height:38%;border:1px solid rgba(35,225,255,.4);border-radius:50%;transform:translate(-50%,-50%) rotateX(72deg) translateZ(20px);box-shadow:0 0 14px rgba(0,229,255,.22);animation:energyOrbit 7s linear infinite;pointer-events:none}
-.hero3d .core .energy-ring:nth-of-type(2){width:126%;height:31%;border-color:rgba(139,92,246,.35);transform:translate(-50%,-50%) rotateX(68deg) rotateZ(58deg) translateZ(28px);animation-duration:10s;animation-direction:reverse}
-.hero3d .core .energy-ring:nth-of-type(3){width:156%;height:44%;border-color:rgba(88,190,255,.22);transform:translate(-50%,-50%) rotateX(74deg) rotateZ(-24deg) translateZ(10px);animation-duration:13s}
-.hero3d .node{background:linear-gradient(145deg,rgba(9,35,67,.94),rgba(2,9,23,.9));border-color:rgba(86,204,255,.5);box-shadow:0 10px 28px rgba(0,0,0,.5),inset 0 1px rgba(255,255,255,.12),inset 0 -12px 22px rgba(0,0,0,.25),0 0 22px rgba(0,173,255,.12);backdrop-filter:blur(12px);transform:translate3d(calc(var(--mx,0px)*var(--depth,0)),calc(var(--my,0px)*var(--depth,0)),var(--z,18px)) rotateX(var(--tilt,0deg))}
-.hero3d .node:after{content:"";position:absolute;right:10px;top:10px;width:5px;height:5px;border-radius:50%;background:#7ff7ff;box-shadow:0 0 8px #16dcff,0 0 18px rgba(22,220,255,.7);animation:nodeBeaconPro 2.2s ease-in-out infinite}
-.hero3d .n1{--z:34px;--tilt:-1deg}.hero3d .n2{--z:18px;--tilt:1deg}.hero3d .n3{--z:26px;--tilt:-1deg}.hero3d .n4{--z:10px;--tilt:1deg}.hero3d .n5{--z:22px;--tilt:-1deg}
-.hero3d .node:hover,.hero3d .node:focus-visible{transform:translate3d(calc(var(--mx,0px)*var(--depth,0)),calc(var(--my,0px)*var(--depth,0) - 8px),calc(var(--z,18px) + 10px)) scale(1.06);box-shadow:0 0 35px rgba(0,229,255,.25),inset 0 1px rgba(255,255,255,.16),0 20px 40px rgba(0,0,0,.45)}
-.hero3d .scene-floor{background:radial-gradient(ellipse at center,rgba(0,229,255,.18),rgba(34,70,190,.08) 38%,transparent 72%);border-color:rgba(47,226,255,.32);box-shadow:0 0 80px rgba(0,190,255,.2),0 0 160px rgba(76,85,255,.12),inset 0 0 55px rgba(65,110,255,.1)}
-.hero3d .scene-floor:before{inset:7%;border-color:rgba(72,222,255,.22);box-shadow:0 0 35px rgba(0,220,255,.13),inset 0 0 28px rgba(0,220,255,.06)}
-.hero3d .scene-floor:after{inset:24%;border-color:rgba(145,103,255,.24);box-shadow:0 0 28px rgba(139,92,246,.16)}
-.hero3d .particle{width:2px;height:2px;box-shadow:0 0 8px rgba(50,220,255,.95),0 0 18px rgba(79,124,255,.45);filter:brightness(1.2)}
-.hero3d .particle:nth-child(3n){width:4px;height:4px}.hero3d .particle:nth-child(4n){animation-duration:8s}.hero3d .particle:nth-child(5n){background:rgba(177,151,255,.9)}
-.eco .map{perspective:1200px}
-.eco .map:before{background:radial-gradient(ellipse,rgba(0,229,255,.2),rgba(76,85,255,.08) 35%,transparent 70%);filter:blur(5px);animation:ecoFloor 5s ease-in-out infinite}
-.eco .grid3d{opacity:.9;background-size:30px 30px;filter:drop-shadow(0 0 4px rgba(0,180,255,.12))}
-.eco .mapcore{width:118px;height:118px;background:radial-gradient(circle at 32% 24%,#1e9ed1,#0a3862 45%,#020b18 78%);border-radius:26px;box-shadow:0 0 30px rgba(0,229,255,.35),0 0 70px rgba(79,124,255,.18),inset 0 0 25px rgba(0,229,255,.16);animation:mapCorePro 5s ease-in-out infinite}
-.eco .mapcore:before{inset:-18%;border-radius:50%;border:1px solid rgba(41,222,255,.22);transform:rotateX(68deg);animation:energyOrbit 9s linear infinite}
-.eco .mapcore:after{content:"";position:absolute;inset:-5%;border-radius:24px;border:1px solid rgba(139,92,246,.2);box-shadow:0 0 22px rgba(139,92,246,.1);transform:translateZ(18px) rotateZ(45deg);pointer-events:none}
-.eco .mapnode{background:linear-gradient(145deg,rgba(9,34,66,.94),rgba(2,10,24,.92));border-color:rgba(77,195,255,.36);box-shadow:0 18px 34px rgba(0,0,0,.38),inset 0 1px rgba(255,255,255,.1),0 0 22px rgba(0,160,255,.1);transform:translateZ(20px)}
-.eco .mapnode:nth-of-type(6){border-color:rgba(0,229,255,.42)}
-.eco .mapnode:hover,.eco .mapnode:focus-visible{transform:translateY(-8px) translateZ(35px) rotateX(2deg)}
-.eco .line{height:2px;background:linear-gradient(90deg,transparent,rgba(0,229,255,.95),rgba(139,92,246,.65),transparent);box-shadow:0 0 10px rgba(0,229,255,.35);animation:signalPro 2.8s ease-in-out infinite}
-@keyframes heroAura{0%,100%{opacity:.7;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}
-@keyframes coreBreath{0%,100%{transform:translate3d(calc(var(--mx,0px)*.025),calc(var(--my,0px)*.025),0) scale(1)}50%{transform:translate3d(calc(var(--mx,0px)*.025),calc(var(--my,0px)*.025),0) scale(1.025)}}
-@keyframes ringSpin{to{transform:rotateZ(360deg)}}
-@keyframes ringSpinReverse{to{transform:rotateZ(-360deg)}}
-@keyframes gridSpin{to{transform:translateZ(18px) rotateZ(360deg)}}
-@keyframes glint{0%,100%{opacity:.45;transform:translateZ(34px) scale(.9)}50%{opacity:1;transform:translateZ(44px) scale(1.08)}}
-@keyframes pkFloatPro{0%,100%{transform:translateZ(42px) translateY(0)}50%{transform:translateZ(52px) translateY(-4px)}}
-@keyframes energyOrbit{to{rotate:360deg}}
-@keyframes nodeBeaconPro{0%,100%{opacity:.35;transform:scale(.7)}50%{opacity:1;transform:scale(1.5)}}
-@keyframes ecoFloor{0%,100%{opacity:.55;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}
-@keyframes mapCorePro{0%,100%{transform:translate(-50%,-50%) translateZ(28px)}50%{transform:translate(-50%,-50%) translateZ(42px) translateY(-5px)}}
-@keyframes signalPro{0%,100%{opacity:.3}50%{opacity:1;filter:drop-shadow(0 0 12px rgba(0,229,255,.8))}}
-@media(max-width:900px){.hero3d{perspective:1000px}.hero3d .core{box-shadow:0 0 24px rgba(0,229,255,.55),0 0 70px rgba(0,175,255,.28),inset 0 0 30px rgba(111,245,255,.25)}}
-@media(max-width:600px){.hero3d:before{width:110%;height:100%}.hero3d .core .energy-ring{width:150%;height:40%}.hero3d .core .energy-ring:nth-of-type(2){width:136%;height:33%}.hero3d .core .energy-ring:nth-of-type(3){width:165%;height:46%}.hero3d .node{backdrop-filter:blur(8px)}.hero3d .node:after{width:4px;height:4px}.hero3d .particle{width:2px;height:2px}.eco .mapcore{width:102px;height:102px}.eco .mapnode{transform:translateZ(12px)}}
-@media(prefers-reduced-motion:reduce){.hero3d:before,.hero3d .core,.hero3d .core:before,.hero3d .core:after,.hero3d .core .core-glint,.hero3d .core .core-grid,.hero3d .core .pk,.hero3d .core .energy-ring,.eco .map:before,.eco .mapcore,.eco .mapcore:before,.eco .line{animation:none!important}}
+/* FINAL 3D POLISH V4 — additive, dependency-free, responsive */
+.hero3d{perspective:1400px;transform-style:preserve-3d;isolation:isolate}
+.hero3d:before{content:"";position:absolute;inset:8% 4% 0;border-radius:50%;background:radial-gradient(ellipse at 50% 48%,rgba(0,229,255,.28),rgba(50,92,255,.1) 32%,transparent 68%);filter:blur(34px);animation:pkAura 7s ease-in-out infinite;pointer-events:none;z-index:-2}
+.hero3d:after{content:"";position:absolute;inset:3% -6% 0;background:radial-gradient(ellipse at 50% 70%,rgba(0,229,255,.2),transparent 25%),radial-gradient(ellipse at 50% 92%,rgba(87,74,255,.18),transparent 44%);mix-blend-mode:screen;pointer-events:none;z-index:-1}
+
+/* orbital geometry */
+.hero3d .orb{transform-style:preserve-3d;border-width:1px;box-shadow:0 0 20px rgba(0,229,255,.2),0 0 55px rgba(0,150,255,.08)}
+.hero3d .o1{animation:pkOrb1 12s linear infinite}
+.hero3d .o2{animation:pkOrb2 16s linear infinite reverse}
+.hero3d .o3{animation:pkOrb3 21s linear infinite}
+.hero3d .o1:after,.hero3d .o2:after,.hero3d .o3:after{content:"";position:absolute;width:7px;height:7px;top:50%;left:2%;border-radius:50%;background:#bffaff;box-shadow:0 0 9px #16dcff,0 0 24px rgba(0,229,255,.7)}
+.hero3d .o2:after{left:auto;right:6%;background:#d7c9ff;box-shadow:0 0 9px #8b5cf6,0 0 24px rgba(139,92,246,.6)}
+
+/* core depth: glass sphere, concentric shell, holographic scan */
+.hero3d .core{position:relative;transform-style:preserve-3d;backface-visibility:hidden;background:radial-gradient(circle at 30% 20%,#dfffff 0 2%,#57ddff 8%,#147fc5 23%,#082f5b 48%,#020815 76%);box-shadow:0 0 42px rgba(0,229,255,.72),0 0 115px rgba(35,116,255,.38),0 28px 62px rgba(0,0,0,.55),inset 17px 10px 32px rgba(255,255,255,.1),inset -18px -28px 48px rgba(0,0,0,.5);animation:pkCore 5s ease-in-out infinite}
+.hero3d .core:before{content:"";position:absolute;inset:-12%;border:1px solid rgba(93,231,255,.42);border-radius:50%;box-shadow:0 0 35px rgba(0,229,255,.18),inset 0 0 28px rgba(0,229,255,.08);animation:pkShell 9s linear infinite}
+.hero3d .core:after{content:"";position:absolute;inset:8%;border:1px solid rgba(201,249,255,.2);border-radius:50%;background:radial-gradient(circle at 28% 20%,rgba(255,255,255,.22),transparent 10%,transparent 62%,rgba(0,0,0,.2));box-shadow:0 0 32px rgba(0,229,255,.18);pointer-events:none}
+.hero3d .core .core-grid{position:absolute;inset:8%;border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 15px,rgba(140,235,255,.055) 16px 17px),conic-gradient(from 0deg,transparent,rgba(0,229,255,.14),transparent 22%,rgba(139,92,246,.1),transparent 48%);mask-image:radial-gradient(circle,#000 0 58%,transparent 73%);transform:translateZ(18px);animation:pkGrid 18s linear infinite;pointer-events:none}
+.hero3d .core .core-glint{position:absolute;width:38%;height:38%;left:10%;top:8%;border-radius:50%;background:radial-gradient(circle,rgba(235,255,255,.98) 0 3%,rgba(82,238,255,.65) 17%,transparent 63%);filter:blur(1px);transform:translateZ(34px);animation:pkGlint 4s ease-in-out infinite;pointer-events:none}
+.hero3d .core .pk{position:relative;z-index:4;transform:translateZ(45px);font-weight:950;text-shadow:0 0 10px rgba(255,255,255,.95),0 0 28px rgba(0,229,255,.95),0 0 62px rgba(79,124,255,.7);animation:pkLogo 4s ease-in-out infinite}
+.hero3d .core .energy-ring{position:absolute;left:50%;top:50%;width:145%;height:38%;border:1px solid rgba(39,226,255,.45);border-radius:50%;transform:translate(-50%,-50%) rotateX(72deg) translateZ(20px);box-shadow:0 0 15px rgba(0,229,255,.25);animation:pkEnergy 7s linear infinite;pointer-events:none}
+.hero3d .core .energy-ring:nth-of-type(2){width:128%;height:31%;border-color:rgba(139,92,246,.38);transform:translate(-50%,-50%) rotateX(68deg) rotateZ(58deg) translateZ(28px);animation-duration:10s;animation-direction:reverse}
+.hero3d .core .energy-ring:nth-of-type(3){width:158%;height:44%;border-color:rgba(82,193,255,.25);transform:translate(-50%,-50%) rotateX(74deg) rotateZ(-24deg) translateZ(10px);animation-duration:13s}
+
+/* floating nodes */
+.hero3d .node{transform-style:preserve-3d;background:linear-gradient(145deg,rgba(11,42,77,.95),rgba(2,9,22,.92));border:1px solid rgba(92,205,255,.52);backdrop-filter:blur(14px) saturate(135%);-webkit-backdrop-filter:blur(14px) saturate(135%);box-shadow:0 18px 42px rgba(0,0,0,.52),inset 0 1px rgba(255,255,255,.13),inset 0 -14px 24px rgba(0,0,0,.24),0 0 25px rgba(0,180,255,.1);transition:transform .35s ease,box-shadow .35s ease,filter .35s ease}
+.hero3d .node:after{content:"";position:absolute;right:9px;top:9px;width:5px;height:5px;border-radius:50%;background:#83f8ff;box-shadow:0 0 8px #16dcff,0 0 18px rgba(22,220,255,.7);animation:pkBeacon 2s ease-in-out infinite}
+.hero3d .n1{--z:34px}.hero3d .n2{--z:18px}.hero3d .n3{--z:26px}.hero3d .n4{--z:10px}.hero3d .n5{--z:22px}
+.hero3d .node:hover,.hero3d .node:focus-visible{transform:translateY(-7px) translateZ(calc(var(--z) + 12px)) scale(1.05);filter:brightness(1.12);box-shadow:0 26px 48px rgba(0,0,0,.55),0 0 38px rgba(0,229,255,.24),inset 0 1px rgba(255,255,255,.18)}
+
+/* platform / floor */
+.hero3d .scene-floor{background:radial-gradient(ellipse at center,rgba(0,229,255,.2),rgba(40,72,190,.09) 38%,transparent 72%);border-color:rgba(48,227,255,.34);box-shadow:0 0 80px rgba(0,190,255,.2),0 0 150px rgba(76,85,255,.12),inset 0 0 55px rgba(65,110,255,.1)}
+.hero3d .scene-floor:before{inset:7%;border-color:rgba(72,222,255,.23);box-shadow:0 0 35px rgba(0,220,255,.13),inset 0 0 28px rgba(0,220,255,.06)}
+.hero3d .scene-floor:after{inset:24%;border-color:rgba(145,103,255,.25);box-shadow:0 0 28px rgba(139,92,246,.16)}
+
+/* ecosystem depth */
+.eco .map{perspective:1200px;transform-style:preserve-3d}
+.eco .map:before{background:radial-gradient(ellipse,rgba(0,229,255,.2),rgba(76,85,255,.08) 35%,transparent 70%);filter:blur(6px);animation:pkEco 5s ease-in-out infinite}
+.eco .grid3d{opacity:.9;filter:drop-shadow(0 0 5px rgba(0,180,255,.15));transform:rotateX(50deg) translateY(16px);transform-origin:center bottom}
+.eco .mapcore{background:radial-gradient(circle at 30% 23%,#23a9d9,#0b416d 45%,#020a18 78%);border:1px solid rgba(100,230,255,.55);border-radius:26px;box-shadow:0 0 38px rgba(0,229,255,.4),0 0 80px rgba(79,124,255,.18),inset 0 0 28px rgba(0,229,255,.16);transform:translate(-50%,-50%) translateZ(42px);animation:pkMapCore 5s ease-in-out infinite}
+.eco .mapcore:before{content:"";position:absolute;inset:-18%;border-radius:50%;border:1px solid rgba(41,222,255,.24);transform:rotateX(68deg);animation:pkEnergy 9s linear infinite}
+.eco .mapcore:after{content:"";position:absolute;inset:-6%;border:1px solid rgba(139,92,246,.2);border-radius:24px;transform:translateZ(18px) rotateZ(45deg);box-shadow:0 0 22px rgba(139,92,246,.1)}
+.eco .mapnode{transform-style:preserve-3d;background:linear-gradient(145deg,rgba(10,38,70,.95),rgba(2,9,22,.93));border-color:rgba(79,199,255,.4);box-shadow:0 20px 40px rgba(0,0,0,.42),inset 0 1px rgba(255,255,255,.11),0 0 23px rgba(0,170,255,.1);transition:transform .35s ease,box-shadow .35s ease}
+.eco .mapnode:hover,.eco .mapnode:focus-visible{transform:translateY(-8px) translateZ(28px) rotateX(2deg);box-shadow:0 28px 50px rgba(0,0,0,.5),0 0 34px rgba(0,229,255,.2),inset 0 1px rgba(255,255,255,.16)}
+.eco .line{height:2px;background:linear-gradient(90deg,transparent,rgba(0,229,255,.9),rgba(139,92,246,.6),transparent);box-shadow:0 0 10px rgba(0,229,255,.35);animation:pkSignal 3s ease-in-out infinite}
+
+@keyframes pkAura{0%,100%{opacity:.65;transform:scale(.95)}50%{opacity:1;transform:scale(1.05)}}
+@keyframes pkCore{0%,100%{transform:translate3d(calc(var(--mx,0px)*.025),calc(var(--my,0px)*.025),0) scale(1)}50%{transform:translate3d(calc(var(--mx,0px)*.025),calc(var(--my,0px)*.025),0) scale(1.025)}}
+@keyframes pkShell{to{transform:rotateZ(360deg)}}
+@keyframes pkGrid{to{transform:translateZ(18px) rotateZ(360deg)}}
+@keyframes pkGlint{0%,100%{opacity:.45;transform:translateZ(34px) scale(.9)}50%{opacity:1;transform:translateZ(45px) scale(1.08)}}
+@keyframes pkLogo{0%,100%{transform:translateZ(45px) translateY(0)}50%{transform:translateZ(54px) translateY(-4px)}}
+@keyframes pkEnergy{to{rotate:360deg}}
+@keyframes pkBeacon{0%,100%{opacity:.3;transform:scale(.7)}50%{opacity:1;transform:scale(1.5)}}
+@keyframes pkEco{0%,100%{opacity:.5;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}
+@keyframes pkMapCore{0%,100%{transform:translate(-50%,-50%) translateZ(32px)}50%{transform:translate(-50%,-50%) translateZ(46px) translateY(-5px)}}
+@keyframes pkSignal{0%,100%{opacity:.25}50%{opacity:1;filter:drop-shadow(0 0 12px rgba(0,229,255,.8))}}
+@keyframes pkOrb1{from{transform:rotateZ(0) rotateX(62deg)}to{transform:rotateZ(360deg) rotateX(62deg)}}
+@keyframes pkOrb2{from{transform:rotateZ(0) rotateX(66deg) rotateY(10deg)}to{transform:rotateZ(360deg) rotateX(66deg) rotateY(10deg)}}
+@keyframes pkOrb3{from{transform:rotateZ(0) rotateX(58deg) rotateY(-8deg)}to{transform:rotateZ(360deg) rotateX(58deg) rotateY(-8deg)}}
+
+@media(max-width:600px){.hero3d{perspective:900px}.hero3d .core{box-shadow:0 0 30px rgba(0,229,255,.62),0 0 75px rgba(36,115,255,.28),0 20px 40px rgba(0,0,0,.48),inset 12px 8px 24px rgba(255,255,255,.08),inset -12px -18px 34px rgba(0,0,0,.42)}.hero3d .node{backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}.hero3d .node:hover{transform:translateY(-4px) translateZ(var(--z)) scale(1.02)}.eco .grid3d{transform:rotateX(45deg) translateY(10px)}}
+@media(prefers-reduced-motion:reduce){.hero3d:before,.hero3d .o1,.hero3d .o2,.hero3d .o3,.hero3d .core,.hero3d .core:before,.hero3d .core .core-glint,.hero3d .core .core-grid,.hero3d .core .pk,.hero3d .core .energy-ring,.hero3d .node:after,.eco .map:before,.eco .mapcore,.eco .mapcore:before,.eco .line{animation:none!important}}

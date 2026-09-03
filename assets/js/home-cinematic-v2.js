@@ -25,6 +25,14 @@
     scene.appendChild(floor);
   }
 
+  // Give each holographic node its own depth channel so pointer movement creates
+  // an actual layered 3D composition instead of moving every node as one plane.
+  const nodeDepths = { n1: 0.16, n2: 0.28, n3: 0.20, n4: 0.24, n5: 0.18 };
+  Object.entries(nodeDepths).forEach(([name, depth]) => {
+    const node = scene.querySelector(`.${name}`);
+    if (node) node.style.setProperty('--depth', depth);
+  });
+
   let raf = 0;
   let tx = 0, ty = 0, x = 0, y = 0;
 

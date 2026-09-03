@@ -1,0 +1,47 @@
+/* FINAL 3D POLISH — additive, dependency-free visual layer. */
+.hero3d{perspective:1400px;transform-style:preserve-3d}
+.hero3d:before{width:82%;height:82%;background:radial-gradient(circle at 50% 48%,rgba(24,221,255,.24),rgba(41,82,255,.11) 28%,transparent 65%);filter:blur(28px);animation:heroAura 6s ease-in-out infinite}
+.hero3d:after{inset:5% 0 4%;background:radial-gradient(circle at 50% 48%,transparent 0 24%,rgba(0,229,255,.045) 25%,transparent 48%),radial-gradient(ellipse at 50% 72%,rgba(49,93,255,.16),transparent 42%);mix-blend-mode:screen}
+.hero3d .core{position:relative;transform-style:preserve-3d;animation:coreBreath 5s ease-in-out infinite;box-shadow:0 0 24px rgba(0,229,255,.65),0 0 75px rgba(0,175,255,.36),0 0 150px rgba(79,124,255,.2),inset 0 0 35px rgba(111,245,255,.3),inset -18px -24px 45px rgba(0,0,0,.55)}
+.hero3d .core:before{width:116%;height:116%;border:1px solid rgba(77,230,255,.5);box-shadow:0 0 20px rgba(0,229,255,.24),inset 0 0 25px rgba(0,229,255,.12);animation:ringSpin 14s linear infinite}
+.hero3d .core:after{width:82%;height:82%;border:1px solid rgba(160,221,255,.22);box-shadow:0 0 26px rgba(0,229,255,.22),inset 0 0 25px rgba(87,157,255,.12);animation:ringSpinReverse 9s linear infinite}
+.hero3d .core .core-glint{position:absolute;width:36%;height:36%;left:13%;top:9%;border-radius:50%;background:radial-gradient(circle,rgba(219,255,255,.95) 0 3%,rgba(94,242,255,.6) 16%,transparent 62%);filter:blur(1px);transform:translateZ(34px);animation:glint 4s ease-in-out infinite;pointer-events:none}
+.hero3d .core .core-grid{position:absolute;inset:9%;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,transparent 0 16px,rgba(118,225,255,.06) 17px 18px),conic-gradient(from 10deg,transparent,rgba(86,221,255,.12),transparent 24%,rgba(139,92,246,.1),transparent 48%);mask-image:radial-gradient(circle,#000 0 58%,transparent 72%);transform:translateZ(18px);animation:gridSpin 20s linear infinite;pointer-events:none}
+.hero3d .core .pk{position:relative;transform:translateZ(42px);font-weight:950;text-shadow:0 0 10px rgba(255,255,255,.9),0 0 28px rgba(0,229,255,.95),0 0 60px rgba(79,124,255,.7);animation:pkFloatPro 4s ease-in-out infinite}
+.hero3d .core .energy-ring{position:absolute;left:50%;top:50%;width:142%;height:38%;border:1px solid rgba(35,225,255,.4);border-radius:50%;transform:translate(-50%,-50%) rotateX(72deg) translateZ(20px);box-shadow:0 0 14px rgba(0,229,255,.22);animation:energyOrbit 7s linear infinite;pointer-events:none}
+.hero3d .core .energy-ring:nth-of-type(2){width:126%;height:31%;border-color:rgba(139,92,246,.35);transform:translate(-50%,-50%) rotateX(68deg) rotateZ(58deg) translateZ(28px);animation-duration:10s;animation-direction:reverse}
+.hero3d .core .energy-ring:nth-of-type(3){width:156%;height:44%;border-color:rgba(88,190,255,.22);transform:translate(-50%,-50%) rotateX(74deg) rotateZ(-24deg) translateZ(10px);animation-duration:13s}
+.hero3d .node{background:linear-gradient(145deg,rgba(9,35,67,.94),rgba(2,9,23,.9));border-color:rgba(86,204,255,.5);box-shadow:0 10px 28px rgba(0,0,0,.5),inset 0 1px rgba(255,255,255,.12),inset 0 -12px 22px rgba(0,0,0,.25),0 0 22px rgba(0,173,255,.12);backdrop-filter:blur(12px);transform:translate3d(calc(var(--mx,0px)*var(--depth,0)),calc(var(--my,0px)*var(--depth,0)),var(--z,18px)) rotateX(var(--tilt,0deg))}
+.hero3d .node:after{content:"";position:absolute;right:10px;top:10px;width:5px;height:5px;border-radius:50%;background:#7ff7ff;box-shadow:0 0 8px #16dcff,0 0 18px rgba(22,220,255,.7);animation:nodeBeaconPro 2.2s ease-in-out infinite}
+.hero3d .n1{--z:34px;--tilt:-1deg}.hero3d .n2{--z:18px;--tilt:1deg}.hero3d .n3{--z:26px;--tilt:-1deg}.hero3d .n4{--z:10px;--tilt:1deg}.hero3d .n5{--z:22px;--tilt:-1deg}
+.hero3d .node:hover,.hero3d .node:focus-visible{transform:translate3d(calc(var(--mx,0px)*var(--depth,0)),calc(var(--my,0px)*var(--depth,0) - 8px),calc(var(--z,18px) + 10px)) scale(1.06);box-shadow:0 0 35px rgba(0,229,255,.25),inset 0 1px rgba(255,255,255,.16),0 20px 40px rgba(0,0,0,.45)}
+.hero3d .scene-floor{background:radial-gradient(ellipse at center,rgba(0,229,255,.18),rgba(34,70,190,.08) 38%,transparent 72%);border-color:rgba(47,226,255,.32);box-shadow:0 0 80px rgba(0,190,255,.2),0 0 160px rgba(76,85,255,.12),inset 0 0 55px rgba(65,110,255,.1)}
+.hero3d .scene-floor:before{inset:7%;border-color:rgba(72,222,255,.22);box-shadow:0 0 35px rgba(0,220,255,.13),inset 0 0 28px rgba(0,220,255,.06)}
+.hero3d .scene-floor:after{inset:24%;border-color:rgba(145,103,255,.24);box-shadow:0 0 28px rgba(139,92,246,.16)}
+.hero3d .particle{width:2px;height:2px;box-shadow:0 0 8px rgba(50,220,255,.95),0 0 18px rgba(79,124,255,.45);filter:brightness(1.2)}
+.hero3d .particle:nth-child(3n){width:4px;height:4px}.hero3d .particle:nth-child(4n){animation-duration:8s}.hero3d .particle:nth-child(5n){background:rgba(177,151,255,.9)}
+.eco .map{perspective:1200px}
+.eco .map:before{background:radial-gradient(ellipse,rgba(0,229,255,.2),rgba(76,85,255,.08) 35%,transparent 70%);filter:blur(5px);animation:ecoFloor 5s ease-in-out infinite}
+.eco .grid3d{opacity:.9;background-size:30px 30px;filter:drop-shadow(0 0 4px rgba(0,180,255,.12))}
+.eco .mapcore{width:118px;height:118px;background:radial-gradient(circle at 32% 24%,#1e9ed1,#0a3862 45%,#020b18 78%);border-radius:26px;box-shadow:0 0 30px rgba(0,229,255,.35),0 0 70px rgba(79,124,255,.18),inset 0 0 25px rgba(0,229,255,.16);animation:mapCorePro 5s ease-in-out infinite}
+.eco .mapcore:before{inset:-18%;border-radius:50%;border:1px solid rgba(41,222,255,.22);transform:rotateX(68deg);animation:energyOrbit 9s linear infinite}
+.eco .mapcore:after{content:"";position:absolute;inset:-5%;border-radius:24px;border:1px solid rgba(139,92,246,.2);box-shadow:0 0 22px rgba(139,92,246,.1);transform:translateZ(18px) rotateZ(45deg);pointer-events:none}
+.eco .mapnode{background:linear-gradient(145deg,rgba(9,34,66,.94),rgba(2,10,24,.92));border-color:rgba(77,195,255,.36);box-shadow:0 18px 34px rgba(0,0,0,.38),inset 0 1px rgba(255,255,255,.1),0 0 22px rgba(0,160,255,.1);transform:translateZ(20px)}
+.eco .mapnode:nth-of-type(6){border-color:rgba(0,229,255,.42)}
+.eco .mapnode:hover,.eco .mapnode:focus-visible{transform:translateY(-8px) translateZ(35px) rotateX(2deg)}
+.eco .line{height:2px;background:linear-gradient(90deg,transparent,rgba(0,229,255,.95),rgba(139,92,246,.65),transparent);box-shadow:0 0 10px rgba(0,229,255,.35);animation:signalPro 2.8s ease-in-out infinite}
+@keyframes heroAura{0%,100%{opacity:.7;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}
+@keyframes coreBreath{0%,100%{transform:translate3d(calc(var(--mx,0px)*.025),calc(var(--my,0px)*.025),0) scale(1)}50%{transform:translate3d(calc(var(--mx,0px)*.025),calc(var(--my,0px)*.025),0) scale(1.025)}}
+@keyframes ringSpin{to{transform:rotateZ(360deg)}}
+@keyframes ringSpinReverse{to{transform:rotateZ(-360deg)}}
+@keyframes gridSpin{to{transform:translateZ(18px) rotateZ(360deg)}}
+@keyframes glint{0%,100%{opacity:.45;transform:translateZ(34px) scale(.9)}50%{opacity:1;transform:translateZ(44px) scale(1.08)}}
+@keyframes pkFloatPro{0%,100%{transform:translateZ(42px) translateY(0)}50%{transform:translateZ(52px) translateY(-4px)}}
+@keyframes energyOrbit{to{rotate:360deg}}
+@keyframes nodeBeaconPro{0%,100%{opacity:.35;transform:scale(.7)}50%{opacity:1;transform:scale(1.5)}}
+@keyframes ecoFloor{0%,100%{opacity:.55;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}
+@keyframes mapCorePro{0%,100%{transform:translate(-50%,-50%) translateZ(28px)}50%{transform:translate(-50%,-50%) translateZ(42px) translateY(-5px)}}
+@keyframes signalPro{0%,100%{opacity:.3}50%{opacity:1;filter:drop-shadow(0 0 12px rgba(0,229,255,.8))}}
+@media(max-width:900px){.hero3d{perspective:1000px}.hero3d .core{box-shadow:0 0 24px rgba(0,229,255,.55),0 0 70px rgba(0,175,255,.28),inset 0 0 30px rgba(111,245,255,.25)}}
+@media(max-width:600px){.hero3d:before{width:110%;height:100%}.hero3d .core .energy-ring{width:150%;height:40%}.hero3d .core .energy-ring:nth-of-type(2){width:136%;height:33%}.hero3d .core .energy-ring:nth-of-type(3){width:165%;height:46%}.hero3d .node{backdrop-filter:blur(8px)}.hero3d .node:after{width:4px;height:4px}.hero3d .particle{width:2px;height:2px}.eco .mapcore{width:102px;height:102px}.eco .mapnode{transform:translateZ(12px)}}
+@media(prefers-reduced-motion:reduce){.hero3d:before,.hero3d .core,.hero3d .core:before,.hero3d .core:after,.hero3d .core .core-glint,.hero3d .core .core-grid,.hero3d .core .pk,.hero3d .core .energy-ring,.eco .map:before,.eco .mapcore,.eco .mapcore:before,.eco .line{animation:none!important}}

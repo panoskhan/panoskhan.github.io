@@ -2,6 +2,29 @@
   const scene = document.querySelector('.hero3d');
   if (!scene || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+  // Ambient particles give the intelligence core a real spatial volume without a library.
+  if (!scene.querySelector('.particle-field')) {
+    const field = document.createElement('div');
+    field.className = 'particle-field';
+    const count = window.innerWidth < 601 ? 14 : 24;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('i');
+      p.className = 'particle';
+      p.style.left = `${8 + Math.random() * 84}%`;
+      p.style.top = `${8 + Math.random() * 82}%`;
+      p.style.setProperty('--dx', `${-18 + Math.random() * 36}px`);
+      p.style.setProperty('--dy', `${-26 + Math.random() * 52}px`);
+      p.style.setProperty('--dur', `${4.5 + Math.random() * 5}s`);
+      p.style.setProperty('--delay', `${-Math.random() * 6}s`);
+      field.appendChild(p);
+    }
+    scene.appendChild(field);
+
+    const floor = document.createElement('div');
+    floor.className = 'scene-floor';
+    scene.appendChild(floor);
+  }
+
   let raf = 0;
   let tx = 0, ty = 0, x = 0, y = 0;
 
@@ -17,6 +40,7 @@
     scene.style.setProperty('--core-ry', `${(nx * 3.8).toFixed(2)}deg`);
     scene.style.setProperty('--scene-rx', `${(-ny * 1.8).toFixed(2)}deg`);
     scene.style.setProperty('--scene-ry', `${(nx * 2.2).toFixed(2)}deg`);
+    scene.style.setProperty('--scene-depth', `${(Math.abs(nx) + Math.abs(ny)) * 5}px`);
     raf = requestAnimationFrame(render);
   };
 

@@ -1,0 +1,16 @@
+/* Canonical production 3D system. Consolidates the proven cinematic layers without JS dependencies. */
+@import url('./home-3d-spectacle.css');
+@import url('./home-3d-spectacle-v8.css');
+@import url('./home-3d-spectacle-v10.css');
+@import url('./home-3d-spectacle-v12.css');
+
+/* Production coherence overrides */
+.hero3d,.eco .map,.cards,.projects{transform-style:preserve-3d;}
+.hero3d{isolation:isolate;}
+.hero3d .node,.eco .mapnode{backface-visibility:hidden;}
+.hero3d .core{transform-style:preserve-3d;}
+.hero3d .node{will-change:transform,filter;}
+.hero3d .node:hover,.hero3d .node:focus-visible{z-index:20;}
+.cards .card,.projects .project{transform-style:preserve-3d;}
+@media(max-width:600px){.hero3d{overflow:visible}.hero3d .node{will-change:auto}.cards .card:hover,.projects .project:hover{transform:translate3d(0,-4px,8px)}}
+@media(prefers-reduced-motion:reduce){.hero3d *,.eco .map *,.cards .card,.projects .project{animation-duration:.001ms!important;animation-iteration-count:1!important;transition:none!important}}

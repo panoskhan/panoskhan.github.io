@@ -1,0 +1,179 @@
+/*
+ * PANOS KHAN — MOBILE CINEMA V13
+ * Live-visual correction: motion, lighting hierarchy, depth and color polish.
+ * Real HTML/CSS composition only; no image replacement.
+ */
+
+.hero3d{
+  isolation:isolate;
+  perspective:1100px;
+  transform-style:preserve-3d;
+  overflow:hidden;
+}
+
+.hero3d::before,
+.hero3d::after{
+  pointer-events:none;
+}
+
+/* Ambient cinematic atmosphere */
+.hero3d::after{
+  background:
+    radial-gradient(circle at 50% 46%,rgba(37,220,255,.18),transparent 20%),
+    radial-gradient(circle at 22% 52%,rgba(79,91,255,.12),transparent 25%),
+    radial-gradient(circle at 78% 52%,rgba(190,74,255,.10),transparent 24%);
+  animation:pkV13Atmosphere 9s ease-in-out infinite alternate;
+}
+
+/* Independent orbital motion: the planes rotate, while pseudo comets travel along them. */
+.hero3d .orb{
+  transform-style:preserve-3d!important;
+  transform-origin:50% 50%;
+  will-change:transform,filter,opacity;
+}
+.hero3d .o1{animation:pkV13OrbitA 12s linear infinite!important}
+.hero3d .o2{animation:pkV13OrbitB 17s linear infinite!important}
+.hero3d .o3{animation:pkV13OrbitC 24s linear infinite!important}
+
+.hero3d .orb::after{
+  content:'';
+  position:absolute;
+  width:7px;height:7px;
+  left:50%;top:-3px;
+  border-radius:50%;
+  background:#dffcff;
+  box-shadow:0 0 7px #fff,0 0 18px rgba(53,225,255,.95),0 0 38px rgba(65,124,255,.7);
+  animation:pkV13Comet 4.2s linear infinite;
+}
+.hero3d .o2::after{animation-duration:5.8s;animation-delay:-2.2s;background:#f1dcff;box-shadow:0 0 7px #fff,0 0 18px rgba(198,107,255,.95),0 0 38px rgba(130,77,255,.65)}
+.hero3d .o3::after{animation-duration:7.2s;animation-delay:-4.4s}
+
+/* Core: layered energy, breathing light and rotating inner field. */
+.hero3d .core{
+  transform-style:preserve-3d!important;
+  will-change:transform,filter,box-shadow;
+  animation:pkV13Core 4.8s ease-in-out infinite!important;
+  background:
+    radial-gradient(circle at 34% 23%,rgba(235,255,255,.98) 0 1.5%,rgba(86,235,255,.98) 6%,rgba(0,165,255,.88) 16%,rgba(16,78,168,.92) 36%,rgba(4,20,55,.98) 64%,rgba(0,5,18,1) 78%)!important;
+  box-shadow:
+    0 0 18px rgba(0,232,255,.95),
+    0 0 42px rgba(0,191,255,.72),
+    0 0 90px rgba(43,92,255,.48),
+    0 0 150px rgba(108,55,255,.22),
+    inset 0 0 34px rgba(92,236,255,.36)!important;
+}
+.hero3d .core::before{
+  animation:pkV13Shell 5.5s ease-in-out infinite!important;
+  border-color:rgba(89,229,255,.72)!important;
+  box-shadow:0 0 28px rgba(0,216,255,.56),inset 0 0 24px rgba(56,210,255,.25)!important;
+}
+.hero3d .core::after{
+  animation:pkV13InnerShell 8s linear infinite!important;
+}
+.hero3d .core-grid{
+  animation:pkV13Grid 12s linear infinite!important;
+  opacity:.85!important;
+}
+.hero3d .core-glint{
+  animation:pkV13Glint 3.8s ease-in-out infinite!important;
+}
+.hero3d .pk{
+  animation:pkV13Logo 3.5s ease-in-out infinite!important;
+  text-shadow:0 0 12px #fff,0 0 28px rgba(103,236,255,.95),0 0 55px rgba(74,105,255,.7)!important;
+}
+.hero3d .energy-ring{
+  animation:pkV13Ring 6s linear infinite!important;
+  filter:drop-shadow(0 0 7px rgba(70,225,255,.48));
+}
+.hero3d .energy-ring:nth-of-type(2){animation-duration:9s!important}
+.hero3d .energy-ring:nth-of-type(3){animation-duration:13s!important}
+
+/* Energy rays that make the core read as a powered system, not a flat circle. */
+.hero3d .core::marker{display:none}
+.hero3d .corelabel{text-shadow:0 0 12px rgba(78,224,255,.65)!important}
+
+/* Holographic nodes: each node breathes at a different phase and has a moving highlight. */
+.hero3d .node{
+  transform-style:preserve-3d!important;
+  will-change:transform,box-shadow,filter;
+  background:
+    radial-gradient(circle at 34% 20%,rgba(70,157,219,.30),rgba(7,22,48,.91) 48%,rgba(1,7,19,.98) 78%)!important;
+  backdrop-filter:blur(14px) saturate(125%);
+  -webkit-backdrop-filter:blur(14px) saturate(125%);
+  box-shadow:0 0 16px rgba(0,208,255,.18),0 18px 42px rgba(0,0,0,.56),inset 0 1px rgba(255,255,255,.32)!important;
+  animation:pkV13NodeFloat 5.4s ease-in-out infinite!important;
+}
+.hero3d .node::after{
+  content:'';
+  position:absolute;
+  inset:7%;
+  border-radius:inherit;
+  border:1px solid rgba(155,238,255,.10);
+  background:linear-gradient(115deg,transparent 28%,rgba(255,255,255,.20) 42%,transparent 56%);
+  transform:translateX(-130%);
+  animation:pkV13Sweep 4.6s ease-in-out infinite;
+  pointer-events:none;
+}
+.hero3d .n1{animation-delay:-.9s!important}
+.hero3d .n2{animation-delay:-2.3s!important}
+.hero3d .n3{animation-delay:-3.7s!important}
+.hero3d .n4{animation-delay:-1.7s!important}
+.hero3d .n5{animation-delay:-4.2s!important}
+.hero3d .n3{box-shadow:0 0 20px rgba(173,92,255,.28),0 18px 42px rgba(0,0,0,.56),inset 0 1px rgba(255,255,255,.30)!important}
+.hero3d .n4{box-shadow:0 0 20px rgba(133,223,93,.18),0 18px 42px rgba(0,0,0,.56),inset 0 1px rgba(255,255,255,.30)!important}
+.hero3d .node b{position:relative;z-index:2}
+.hero3d .node small{position:relative;z-index:2}
+
+/* Desktop keeps the same system language but gets subtler motion. */
+@media (min-width:601px){
+  .hero3d .orb::after{width:9px;height:9px}
+  .hero3d .node{animation-duration:6.5s!important}
+}
+
+/* Mobile: preserve the reference constellation while giving it actual motion. */
+@media (max-width:600px){
+  .hero3d{
+    height:545px!important;
+    min-height:545px!important;
+    perspective:1050px!important;
+    background:
+      radial-gradient(circle at 50% 43%,rgba(0,219,255,.20),transparent 25%),
+      radial-gradient(circle at 50% 68%,rgba(76,84,255,.18),transparent 44%),
+      linear-gradient(180deg,#020817 0%,#03112b 54%,#07163b 100%)!important;
+  }
+  .hero3d::before{
+    opacity:.9!important;
+    animation:pkV13GridGlow 7s ease-in-out infinite alternate!important;
+  }
+  .hero3d .orb::after{width:6px;height:6px}
+  .hero3d .core{top:47%!important}
+  .hero3d .node{height:112px!important;width:112px!important}
+  .hero3d .n1{top:3%!important}
+  .hero3d .n2,.hero3d .n3{top:34%!important}
+  .hero3d .n4,.hero3d .n5{bottom:5%!important}
+  .hero3d .corelabel{top:47%!important}
+}
+
+@keyframes pkV13Atmosphere{from{filter:brightness(.92) saturate(105%);opacity:.78}to{filter:brightness(1.15) saturate(128%);opacity:1}}
+@keyframes pkV13GridGlow{from{opacity:.55;filter:brightness(.8)}to{opacity:1;filter:brightness(1.3)}}
+@keyframes pkV13OrbitA{0%{transform:translate(-50%,-50%) rotateX(68deg) rotateZ(-8deg) rotateZ(0deg)}50%{filter:brightness(1.2);opacity:1}100%{transform:translate(-50%,-50%) rotateX(68deg) rotateZ(-8deg) rotateZ(360deg)}}
+@keyframes pkV13OrbitB{0%{transform:translate(-50%,-50%) rotateX(66deg) rotateZ(54deg) rotateZ(360deg)}50%{filter:brightness(1.3)}100%{transform:translate(-50%,-50%) rotateX(66deg) rotateZ(54deg) rotateZ(0deg)}}
+@keyframes pkV13OrbitC{0%{transform:translate(-50%,-50%) rotateX(64deg) rotateZ(-34deg) rotateZ(0deg)}50%{filter:brightness(1.12)}100%{transform:translate(-50%,-50%) rotateX(64deg) rotateZ(-34deg) rotateZ(360deg)}}
+@keyframes pkV13Comet{0%{transform:rotate(0deg) translateY(-1px) rotate(0deg)}100%{transform:rotate(360deg) translateY(-1px) rotate(-360deg)}}
+@keyframes pkV13Core{0%,100%{transform:translate(-50%,-50%) translateZ(55px) scale(1);filter:brightness(.98)}50%{transform:translate(-50%,-50%) translateZ(70px) scale(1.035);filter:brightness(1.16)}}
+@keyframes pkV13Shell{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.55}50%{transform:translate(-50%,-50%) scale(1.045);opacity:.9}}
+@keyframes pkV13InnerShell{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes pkV13Grid{from{transform:rotate(0deg) scale(1)}to{transform:rotate(360deg) scale(1.03)}}
+@keyframes pkV13Glint{0%,100%{transform:translate3d(0,0,12px) scale(.72);opacity:.25}45%{transform:translate3d(10px,8px,32px) scale(1.15);opacity:1}70%{transform:translate3d(18px,20px,18px) scale(.9);opacity:.55}}
+@keyframes pkV13Logo{0%,100%{transform:translateZ(16px) scale(1);opacity:.92}50%{transform:translateZ(28px) scale(1.04);opacity:1}}
+@keyframes pkV13Ring{from{transform:translate(-50%,-50%) rotateX(70deg) rotateZ(0deg) scale(.98);opacity:.35}50%{opacity:.9}to{transform:translate(-50%,-50%) rotateX(70deg) rotateZ(360deg) scale(1.02);opacity:.42}}
+@keyframes pkV13NodeFloat{0%,100%{transform:translateZ(var(--pk-depth,42px)) translateY(0) rotateX(0deg)}50%{transform:translateZ(calc(var(--pk-depth,42px) + 16px)) translateY(-6px) rotateX(2deg)}}
+@keyframes pkV13Sweep{0%,100%{transform:translateX(-130%);opacity:0}25%{opacity:.05}55%{transform:translateX(130%);opacity:.55}70%{opacity:0}}
+
+@media (prefers-reduced-motion:reduce){
+  .hero3d::after,.hero3d::before,
+  .hero3d .orb,.hero3d .orb::after,
+  .hero3d .core,.hero3d .core::before,.hero3d .core::after,
+  .hero3d .core-grid,.hero3d .core-glint,.hero3d .pk,
+  .hero3d .energy-ring,.hero3d .node,.hero3d .node::after{animation:none!important}
+}

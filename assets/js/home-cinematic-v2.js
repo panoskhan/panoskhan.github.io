@@ -33,6 +33,15 @@
     if (node) node.style.setProperty('--depth', depth);
   });
 
+  // Load the planet-spectrum visual pass after the existing stylesheet stack.
+  if (!document.querySelector('link[data-pk-planet-spectrum]')) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/assets/css/home-planet-spectrum-v14.css';
+    link.dataset.pkPlanetSpectrum = 'true';
+    document.head.appendChild(link);
+  }
+
   let raf = 0;
   let tx = 0, ty = 0, x = 0, y = 0;
 

@@ -25,19 +25,18 @@
     scene.appendChild(floor);
   }
 
-  // Give each holographic node its own depth channel so pointer movement creates
-  // an actual layered 3D composition instead of moving every node as one plane.
+  // Each planet receives its own depth channel for subtle parallax.
   const nodeDepths = { n1: 0.16, n2: 0.28, n3: 0.20, n4: 0.24, n5: 0.18 };
   Object.entries(nodeDepths).forEach(([name, depth]) => {
     const node = scene.querySelector(`.${name}`);
     if (node) node.style.setProperty('--depth', depth);
   });
 
-  // Load the planet-spectrum visual pass after the existing stylesheet stack.
+  // V15 is the approved planetary reference layer.
   if (!document.querySelector('link[data-pk-planet-spectrum]')) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/assets/css/home-planet-spectrum-v14.css';
+    link.href = '/assets/css/home-planet-spectrum-v15.css';
     link.dataset.pkPlanetSpectrum = 'true';
     document.head.appendChild(link);
   }
@@ -66,7 +65,6 @@
     tx = Math.max(-r.width / 2, Math.min(r.width / 2, e.clientX - (r.left + r.width / 2)));
     ty = Math.max(-r.height / 2, Math.min(r.height / 2, e.clientY - (r.top + r.height / 2)));
   };
-
   const reset = () => { tx = 0; ty = 0; };
 
   scene.addEventListener('pointermove', move, { passive: true });

@@ -1,0 +1,83 @@
+/* PANOS KHAN — MOBILE 3D COLOR + MOTION POLISH
+   Final visual refinement layer for the existing mobile composition.
+   Does not replace the HTML or the 3D scene.
+*/
+@media (max-width:600px){
+  .hero3d{
+    background:
+      radial-gradient(circle at 50% 43%,rgba(0,236,255,.30),transparent 24%),
+      radial-gradient(circle at 14% 48%,rgba(48,119,255,.20),transparent 29%),
+      radial-gradient(circle at 86% 50%,rgba(188,66,255,.20),transparent 30%),
+      radial-gradient(circle at 50% 92%,rgba(26,73,255,.18),transparent 38%),
+      linear-gradient(180deg,#010713 0%,#03132f 48%,#061b45 100%)!important;
+    background-size:100% 100%,100% 100%,100% 100%,100% 100%,100% 100%!important;
+    animation:pkMobileAtmosphere 9s ease-in-out infinite!important;
+  }
+
+  /* Give each node its own spectral identity. */
+  .hero3d .n1{
+    border-color:rgba(78,226,255,.92)!important;
+    background:radial-gradient(circle at 30% 20%,rgba(25,177,255,.30),rgba(5,22,48,.92) 58%,#020914 84%)!important;
+    box-shadow:0 0 24px rgba(0,221,255,.30),0 0 55px rgba(0,143,255,.12),0 16px 38px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.34)!important;
+  }
+  .hero3d .n2{
+    border-color:rgba(88,158,255,.92)!important;
+    background:radial-gradient(circle at 30% 20%,rgba(58,109,255,.32),rgba(7,19,52,.92) 58%,#020817 84%)!important;
+    box-shadow:0 0 24px rgba(48,111,255,.34),0 0 58px rgba(75,63,255,.14),0 16px 38px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.30)!important;
+  }
+  .hero3d .n3{
+    border-color:rgba(226,123,255,.96)!important;
+    background:radial-gradient(circle at 30% 20%,rgba(190,72,255,.34),rgba(31,12,59,.90) 58%,#090419 84%)!important;
+    box-shadow:0 0 25px rgba(194,73,255,.34),0 0 62px rgba(115,55,255,.16),0 16px 38px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.30)!important;
+  }
+  .hero3d .n4{
+    border-color:rgba(158,239,91,.94)!important;
+    background:radial-gradient(circle at 30% 20%,rgba(111,204,90,.30),rgba(9,31,30,.92) 58%,#03110f 84%)!important;
+    box-shadow:0 0 24px rgba(139,225,81,.27),0 0 58px rgba(50,184,126,.12),0 16px 38px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.30)!important;
+  }
+  .hero3d .n5{
+    border-color:rgba(204,133,255,.96)!important;
+    background:radial-gradient(circle at 30% 20%,rgba(145,74,255,.34),rgba(25,12,55,.92) 58%,#070316 84%)!important;
+    box-shadow:0 0 25px rgba(157,77,255,.34),0 0 62px rgba(217,79,255,.13),0 16px 38px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.30)!important;
+  }
+
+  .hero3d .n1:before{color:#8ff6ff!important;box-shadow:0 0 18px rgba(55,224,255,.75)!important}
+  .hero3d .n2:before{color:#9bb8ff!important;box-shadow:0 0 18px rgba(78,126,255,.75)!important}
+  .hero3d .n3:before{color:#f0b2ff!important;box-shadow:0 0 18px rgba(214,93,255,.78)!important}
+  .hero3d .n4:before{color:#c5ff9a!important;box-shadow:0 0 18px rgba(133,229,83,.72)!important}
+  .hero3d .n5:before{color:#d9b0ff!important;box-shadow:0 0 18px rgba(164,84,255,.78)!important}
+
+  .hero3d .node b{letter-spacing:.14em!important}
+  .hero3d .node small{color:rgba(207,223,244,.78)!important}
+
+  /* Separate motion from layout: no position-transform animation on nodes. */
+  .hero3d .node{animation:pkMobileNodeGlow 4.6s ease-in-out infinite!important}
+  .hero3d .n1{animation-delay:-.4s!important}.hero3d .n2{animation-delay:-1.7s!important}.hero3d .n3{animation-delay:-2.8s!important}.hero3d .n4{animation-delay:-3.7s!important}.hero3d .n5{animation-delay:-4.4s!important}
+
+  .hero3d .core{
+    box-shadow:0 0 26px rgba(0,238,255,.98),0 0 62px rgba(0,178,255,.72),0 0 128px rgba(86,79,255,.34),inset 0 0 46px rgba(96,242,255,.45)!important;
+  }
+  .hero3d .core-glint{filter:drop-shadow(0 0 12px rgba(255,255,255,.95))!important}
+  .hero3d .pk{letter-spacing:-.06em!important}
+
+  /* Extra moving energy around the core without changing its geometry. */
+  .hero3d .core:after{border-color:rgba(115,238,255,.42)!important;box-shadow:0 0 32px rgba(0,228,255,.46),inset 0 0 30px rgba(71,180,255,.24)!important}
+  .hero3d .energy-ring{filter:drop-shadow(0 0 8px rgba(0,226,255,.85))!important}
+  .hero3d .energy-ring:nth-child(3){filter:drop-shadow(0 0 9px rgba(112,124,255,.82))!important}
+  .hero3d .energy-ring:nth-child(4){filter:drop-shadow(0 0 10px rgba(223,92,255,.72))!important}
+  .hero3d .energy-ring:nth-child(5){filter:drop-shadow(0 0 9px rgba(112,232,255,.72))!important}
+
+  /* Tiny spectral sparks make the stage feel alive between the large forms. */
+  .hero3d .orb:before{content:''!important;position:absolute!important;left:18%!important;top:50%!important;width:3px!important;height:3px!important;border-radius:50%!important;background:#fff!important;box-shadow:0 0 8px #fff,0 0 20px rgba(0,225,255,.9)!important;animation:pkMobileSpark 3.8s ease-in-out infinite!important}
+  .hero3d .o2:before{left:72%!important;background:#fff4ff!important;box-shadow:0 0 8px #fff,0 0 20px rgba(216,105,255,.9)!important;animation-delay:-1.4s!important}
+  .hero3d .o3:before{left:40%!important;animation-delay:-2.4s!important}
+}
+
+@keyframes pkMobileAtmosphere{0%,100%{filter:saturate(1) brightness(.98)}50%{filter:saturate(1.16) brightness(1.05)}}
+@keyframes pkMobileNodeGlow{0%,100%{filter:brightness(.94) saturate(1);box-shadow:0 0 18px rgba(0,190,255,.16),0 16px 38px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.30)}50%{filter:brightness(1.10) saturate(1.18)}}
+@keyframes pkMobileSpark{0%,100%{opacity:.15;transform:scale(.7)}45%{opacity:1;transform:scale(1.8)}70%{opacity:.45;transform:scale(1)}}
+
+@media (prefers-reduced-motion:reduce){
+  .hero3d{animation:none!important}
+  .hero3d .node,.hero3d .orb:before{animation:none!important}
+}

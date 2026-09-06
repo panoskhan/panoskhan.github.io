@@ -1,0 +1,54 @@
+name: Unify site visual system
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  unify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+
+      - name: Add shared cinematic stylesheet to HTML pages
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          marker = '/assets/css/site-unified-3d.css'
+          changed = []
+          for path in Path('.').rglob('*.html'):
+              if any(part in {'.git','node_modules'} for part in path.parts):
+                  continue
+              text = path.read_text(encoding='utf-8')
+              if marker in text:
+                  continue
+              if '</head>' not in text.lower():
+                  continue
+              head = text.lower().find('</head>')
+              link = '<link rel="stylesheet" href="/assets/css/site-unified-3d.css">\n'
+              text = text[:head] + link + text[head:]
+              path.write_text(text, encoding='utf-8')
+              changed.append(str(path))
+          print(f'Updated {len(changed)} HTML pages')
+          for item in changed:
+              print(item)
+          PY
+
+      - name: Commit generated page wiring
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- '*.html'
+          if git diff --cached --quiet; then
+            echo 'No HTML pages needed visual-system wiring.'
+            exit 0
+          fi
+          git commit -m 'Wire unified 3D visual system across pages'
+          git push

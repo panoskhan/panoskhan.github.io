@@ -1,0 +1,146 @@
+/* PANOS KHAN — 3D PLANET SPECTRUM V14
+   Visual-only polish for the Evidence OS constellation.
+   Distinct planet lighting per node, shared cinematic depth language.
+*/
+
+.hero3d .node{
+  --planet:#27e6ff;
+  --planet2:#2878ff;
+  --planetGlow:rgba(39,230,255,.55);
+  --planetSoft:rgba(39,230,255,.16);
+  position:absolute;
+  overflow:hidden;
+  border:1px solid color-mix(in srgb,var(--planet) 78%,white 22%)!important;
+  background:
+    radial-gradient(circle at 30% 18%,rgba(255,255,255,.28),transparent 10%),
+    radial-gradient(circle at 38% 27%,color-mix(in srgb,var(--planet) 58%,white 42%),transparent 25%),
+    radial-gradient(circle at 62% 76%,rgba(0,0,0,.58),transparent 42%),
+    linear-gradient(155deg,color-mix(in srgb,var(--planet) 42%,#06152b 58%) 0%,#07172d 43%,color-mix(in srgb,var(--planet2) 26%,#010611 74%) 100%)!important;
+  box-shadow:
+    0 0 10px var(--planetSoft),
+    0 0 30px var(--planetSoft),
+    0 18px 42px rgba(0,0,0,.58),
+    inset 10px 8px 24px rgba(255,255,255,.08),
+    inset -18px -20px 34px rgba(0,0,0,.48),
+    inset 0 1px rgba(255,255,255,.42)!important;
+  filter:saturate(1.12) brightness(.98);
+  transition:filter .35s ease,box-shadow .35s ease,border-color .35s ease;
+}
+
+/* A faint planetary terminator gives every circle a spherical, not sticker-like, read. */
+.hero3d .node:after{
+  inset:0!important;
+  border:0!important;
+  border-radius:inherit!important;
+  background:
+    radial-gradient(ellipse at 24% 16%,rgba(255,255,255,.20),transparent 20%),
+    linear-gradient(108deg,transparent 34%,rgba(255,255,255,.16) 46%,transparent 58%),
+    radial-gradient(ellipse at 76% 88%,rgba(0,0,0,.40),transparent 52%)!important;
+  mix-blend-mode:screen;
+  transform:translateX(-125%)!important;
+  animation:pkPlanetSweep 5.4s ease-in-out infinite!important;
+}
+
+.hero3d .node:before{
+  color:color-mix(in srgb,var(--planet) 78%,white 22%)!important;
+  background:
+    radial-gradient(circle at 35% 25%,rgba(255,255,255,.36),transparent 28%),
+    color-mix(in srgb,var(--planet) 24%,#061a34 76%)!important;
+  box-shadow:0 0 9px var(--planetGlow),0 0 20px var(--planetSoft),inset 0 1px rgba(255,255,255,.35)!important;
+}
+
+.hero3d .node b{
+  color:#f7fdff!important;
+  text-shadow:0 0 9px var(--planetGlow),0 1px 8px rgba(0,0,0,.55)!important;
+}
+.hero3d .node small{color:rgba(222,239,255,.78)!important;text-shadow:0 1px 7px rgba(0,0,0,.7)}
+
+/* Individual planet palettes — deliberately different, but coherent. */
+.hero3d .n1{
+  --planet:#ffc857; --planet2:#ff6b2c;
+  --planetGlow:rgba(255,184,72,.72); --planetSoft:rgba(255,126,43,.20);
+}
+.hero3d .n2{
+  --planet:#31e8ff; --planet2:#1680ff;
+  --planetGlow:rgba(49,232,255,.72); --planetSoft:rgba(25,157,255,.20);
+}
+.hero3d .n3{
+  --planet:#d879ff; --planet2:#6d4cff;
+  --planetGlow:rgba(216,121,255,.72); --planetSoft:rgba(128,75,255,.22);
+}
+.hero3d .n4{
+  --planet:#b6ef65; --planet2:#19b875;
+  --planetGlow:rgba(182,239,101,.62); --planetSoft:rgba(52,206,119,.18);
+}
+.hero3d .n5{
+  --planet:#ff86dc; --planet2:#8a5cff;
+  --planetGlow:rgba(255,134,220,.70); --planetSoft:rgba(157,88,255,.22);
+}
+
+/* Different atmospheric depth per orbit plane. */
+.hero3d .o1{border-color:rgba(49,232,255,.34)!important;box-shadow:0 0 20px rgba(49,232,255,.11)!important}
+.hero3d .o2{border-color:rgba(216,121,255,.34)!important;box-shadow:0 0 20px rgba(216,121,255,.11)!important}
+.hero3d .o3{border-color:rgba(255,190,87,.27)!important;box-shadow:0 0 20px rgba(255,157,55,.09)!important}
+
+.hero3d .node:hover,.hero3d .node:focus-visible{
+  filter:saturate(1.28) brightness(1.08)!important;
+  box-shadow:
+    0 0 16px var(--planetSoft),
+    0 0 42px var(--planetSoft),
+    0 20px 46px rgba(0,0,0,.60),
+    inset 10px 8px 24px rgba(255,255,255,.11),
+    inset -18px -20px 34px rgba(0,0,0,.45),
+    inset 0 1px rgba(255,255,255,.48)!important;
+}
+
+@keyframes pkPlanetSweep{
+  0%,100%{transform:translateX(-125%) rotate(0deg);opacity:0}
+  22%{opacity:.12}
+  52%{transform:translateX(125%) rotate(1deg);opacity:.52}
+  70%{opacity:0}
+}
+
+@media (min-width:601px){
+  .hero3d .node{
+    min-width:146px!important;
+    padding:14px 16px!important;
+    border-radius:50%!important;
+    width:146px!important;
+    min-height:146px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+  }
+  .hero3d .node:before{width:30px!important;height:30px!important;margin-bottom:7px!important;font-size:14px!important}
+  .hero3d .node b{font-size:11px!important;letter-spacing:.15em!important}
+  .hero3d .node small{font-size:8px!important;line-height:1.3!important}
+  .hero3d .n1{transform:translate(-50%,0) translateZ(85px)!important}
+}
+
+@media (max-width:600px){
+  .hero3d .node{
+    width:112px!important;
+    min-width:112px!important;
+    max-width:112px!important;
+    height:112px!important;
+    min-height:112px!important;
+    border-radius:50%!important;
+    box-shadow:
+      0 0 11px var(--planetSoft),
+      0 0 28px var(--planetSoft),
+      0 15px 34px rgba(0,0,0,.58),
+      inset 9px 7px 22px rgba(255,255,255,.08),
+      inset -15px -17px 30px rgba(0,0,0,.48),
+      inset 0 1px rgba(255,255,255,.42)!important;
+  }
+  .hero3d .n1{transform:translateX(-50%) translateZ(88px)!important}
+  .hero3d .node b{font-size:9px!important}
+  .hero3d .node small{font-size:6.5px!important}
+  .hero3d .node:after{animation-duration:4.8s!important}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .hero3d .node:after{animation:none!important}
+}

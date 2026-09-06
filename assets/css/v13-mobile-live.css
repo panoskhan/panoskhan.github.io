@@ -1,0 +1,219 @@
+/* PANOS KHAN — MOBILE LIVE LAYOUT CORRECTION
+   Real HTML/CSS composition. No image replacement.
+   Purpose: restore the reference order: header -> 3D Evidence OS -> hero copy.
+*/
+
+@media (max-width:600px){
+  html,body{overflow-x:hidden!important}
+  .cin{overflow-x:hidden!important}
+  .cin-main{padding:0!important;margin:0!important}
+
+  /* Header remains a compact, stable mobile bar. */
+  .cin-nav{
+    height:78px!important;
+    min-height:78px!important;
+    padding:0 18px!important;
+    box-sizing:border-box!important;
+    position:relative!important;
+    z-index:100!important;
+  }
+  .cin-brand{font-size:22px!important}
+  .cin-sub{font-size:9px!important}
+
+  /* The 3D stage is the first visual after the header. */
+  .cin-hero{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:0!important;
+    padding:0!important;
+    margin:0!important;
+  }
+  .cin-hero>div:first-child{order:2!important;margin:0!important}
+  .hero3d{
+    order:1!important;
+    position:relative!important;
+    width:100%!important;
+    height:610px!important;
+    min-height:610px!important;
+    margin:0!important;
+    border-radius:0 0 30px 30px!important;
+    overflow:hidden!important;
+    box-sizing:border-box!important;
+    perspective:1000px!important;
+    transform-style:preserve-3d!important;
+    isolation:isolate!important;
+    background:
+      radial-gradient(circle at 50% 44%,rgba(0,226,255,.24),transparent 25%),
+      radial-gradient(circle at 22% 56%,rgba(72,94,255,.16),transparent 31%),
+      radial-gradient(circle at 78% 58%,rgba(174,72,255,.13),transparent 30%),
+      linear-gradient(180deg,#020817 0%,#03112b 55%,#07173b 100%)!important;
+  }
+
+  /* Perspective floor/atmosphere. */
+  .hero3d:before{
+    content:''!important;
+    position:absolute!important;
+    left:50%!important;top:57%!important;
+    width:155%!important;height:78%!important;
+    transform:translate(-50%,-50%) perspective(650px) rotateX(64deg)!important;
+    background-image:
+      linear-gradient(rgba(68,166,255,.12) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(68,166,255,.12) 1px,transparent 1px)!important;
+    background-size:30px 30px!important;
+    mask-image:linear-gradient(to bottom,transparent 0%,black 18%,black 75%,transparent 100%)!important;
+    opacity:.75!important;
+    pointer-events:none!important;
+  }
+  .hero3d:after{
+    content:''!important;
+    position:absolute!important;
+    left:50%!important;bottom:-3%!important;
+    width:165%!important;height:58%!important;
+    transform:translateX(-50%) rotateX(70deg)!important;
+    background:
+      radial-gradient(ellipse at 50% 65%,rgba(0,229,255,.23),transparent 36%),
+      radial-gradient(ellipse at 25% 60%,rgba(102,71,255,.15),transparent 32%),
+      radial-gradient(ellipse at 75% 58%,rgba(193,65,255,.12),transparent 30%)!important;
+    pointer-events:none!important;
+  }
+
+  /* Orbit planes: centered around the core, visibly animated but not destructive to layout. */
+  .hero3d .orb{
+    position:absolute!important;
+    left:50%!important;top:49%!important;
+    margin:0!important;
+    transform-origin:50% 50%!important;
+    transform-style:preserve-3d!important;
+    pointer-events:none!important;
+  }
+  .hero3d .o1{width:370px!important;height:190px!important;animation:pkLiveOrbit1 11s linear infinite!important}
+  .hero3d .o2{width:300px!important;height:154px!important;animation:pkLiveOrbit2 16s linear infinite!important}
+  .hero3d .o3{width:430px!important;height:218px!important;animation:pkLiveOrbit3 22s linear infinite!important}
+
+  .hero3d .orb:after{
+    content:''!important;
+    position:absolute!important;
+    left:50%!important;top:-3px!important;
+    width:7px!important;height:7px!important;
+    border-radius:50%!important;
+    background:#e8ffff!important;
+    box-shadow:0 0 7px #fff,0 0 18px rgba(0,220,255,.95),0 0 34px rgba(74,106,255,.7)!important;
+    animation:pkLiveComet 3.6s linear infinite!important;
+  }
+  .hero3d .o2:after{animation-duration:5s!important;animation-delay:-1.8s!important;background:#f5e9ff!important;box-shadow:0 0 7px #fff,0 0 18px rgba(204,108,255,.95),0 0 34px rgba(125,72,255,.7)!important}
+  .hero3d .o3:after{animation-duration:6.4s!important;animation-delay:-3s!important}
+
+  /* Central Evidence OS core. */
+  .hero3d .core{
+    position:absolute!important;
+    left:50%!important;top:49%!important;
+    width:174px!important;height:174px!important;
+    margin:0!important;
+    border-radius:50%!important;
+    transform:translate(-50%,-50%) translateZ(70px)!important;
+    transform-style:preserve-3d!important;
+    background:radial-gradient(circle at 35% 24%,#eaffff 0 2%,#2de5ff 7%,#0a83dc 22%,#0a376e 45%,#03152f 64%,#010712 80%)!important;
+    border:1px solid rgba(150,242,255,.95)!important;
+    box-shadow:0 0 22px rgba(0,232,255,.92),0 0 55px rgba(0,168,255,.62),0 0 115px rgba(86,79,255,.30),inset 0 0 42px rgba(92,237,255,.38)!important;
+    animation:pkLiveCore 4.2s ease-in-out infinite!important;
+    z-index:5!important;
+  }
+  .hero3d .core:before{
+    width:118%!important;height:118%!important;
+    border:1px solid rgba(83,231,255,.62)!important;
+    box-shadow:0 0 32px rgba(0,218,255,.48),inset 0 0 25px rgba(56,220,255,.22)!important;
+    animation:pkLiveShell 3.8s ease-in-out infinite!important;
+  }
+  .hero3d .core:after{
+    width:84%!important;height:84%!important;
+    border:1px solid rgba(200,242,255,.25)!important;
+    box-shadow:0 0 28px rgba(0,219,255,.38),inset 0 0 26px rgba(0,210,255,.18)!important;
+    animation:pkLiveInner 8s linear infinite!important;
+  }
+  .hero3d .core-grid{animation:pkLiveSpin 11s linear infinite!important;opacity:.85!important}
+  .hero3d .core-glint{animation:pkLiveGlint 3.2s ease-in-out infinite!important}
+  .hero3d .pk{font-size:58px!important;animation:pkLiveLogo 3.4s ease-in-out infinite!important;text-shadow:0 0 14px #fff,0 0 32px rgba(82,230,255,.98),0 0 62px rgba(76,102,255,.72)!important}
+  .hero3d .energy-ring{animation:pkLiveRing 5.5s linear infinite!important}
+  .hero3d .energy-ring:nth-of-type(2){animation-duration:8.5s!important}
+  .hero3d .energy-ring:nth-of-type(3){animation-duration:12s!important}
+
+  .hero3d .corelabel{
+    position:absolute!important;
+    left:50%!important;top:49%!important;
+    transform:translate(-50%,116px)!important;
+    z-index:6!important;
+    white-space:nowrap!important;
+    font-size:10px!important;
+    letter-spacing:.25em!important;
+    text-shadow:0 0 14px rgba(98,230,255,.7)!important;
+  }
+  .hero3d .corelabel small{font-size:8px!important;margin-top:6px!important;letter-spacing:.2em!important}
+
+  /* Five nodes form a stable constellation around the core. */
+  .hero3d .node{
+    position:absolute!important;
+    width:108px!important;min-width:108px!important;max-width:108px!important;
+    height:108px!important;
+    padding:9px 7px!important;
+    box-sizing:border-box!important;
+    border-radius:50%!important;
+    display:flex!important;flex-direction:column!important;
+    align-items:center!important;justify-content:center!important;
+    text-align:center!important;
+    z-index:8!important;
+    overflow:hidden!important;
+    background:radial-gradient(circle at 34% 22%,rgba(63,145,207,.32),rgba(5,18,41,.94) 58%,rgba(1,7,19,.99) 82%)!important;
+    border:1px solid rgba(116,224,255,.72)!important;
+    box-shadow:0 0 20px rgba(0,216,255,.22),0 16px 38px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.30)!important;
+    backdrop-filter:blur(13px) saturate(130%)!important;
+    -webkit-backdrop-filter:blur(13px) saturate(130%)!important;
+    transform-style:preserve-3d!important;
+    animation:pkLiveNode 4.8s ease-in-out infinite!important;
+  }
+  .hero3d .node:before{content:'✦'!important;display:grid!important;place-items:center!important;width:23px!important;height:23px!important;margin-bottom:5px!important;border-radius:50%!important;background:rgba(8,40,77,.86)!important;color:#a0f2ff!important;box-shadow:0 0 15px rgba(63,222,255,.55)!important;font-size:13px!important}
+  .hero3d .n2:before{content:'◈'!important}.hero3d .n3:before{content:'↗'!important}.hero3d .n4:before{content:'✧'!important}.hero3d .n5:before{content:'▱'!important}
+  .hero3d .node:after{content:''!important;position:absolute!important;inset:7%!important;border-radius:inherit!important;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.20) 45%,transparent 58%)!important;transform:translateX(-140%)!important;animation:pkLiveSweep 4.2s ease-in-out infinite!important;pointer-events:none!important}
+  .hero3d .node b{font-size:9px!important;letter-spacing:.12em!important;color:#f4fdff!important;text-shadow:0 0 10px rgba(80,220,255,.32)!important;position:relative!important;z-index:2!important}
+  .hero3d .node small{font-size:6.5px!important;line-height:1.25!important;margin-top:4px!important;color:#b3c7dd!important;position:relative!important;z-index:2!important}
+
+  .hero3d .n1{left:50%!important;top:5%!important;right:auto!important;bottom:auto!important;transform:translateX(-50%) translateZ(85px)!important;animation-delay:-.8s!important}
+  .hero3d .n2{left:3%!important;top:35%!important;right:auto!important;bottom:auto!important;transform:translateZ(48px)!important;animation-delay:-2.4s!important}
+  .hero3d .n3{right:3%!important;top:35%!important;left:auto!important;bottom:auto!important;transform:translateZ(58px)!important;animation-delay:-1.6s!important;border-color:rgba(202,139,255,.70)!important;box-shadow:0 0 22px rgba(163,83,255,.28),0 16px 38px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.28)!important}
+  .hero3d .n4{left:8%!important;bottom:5%!important;right:auto!important;top:auto!important;transform:translateZ(35px)!important;animation-delay:-3.2s!important;border-color:rgba(155,222,103,.70)!important}
+  .hero3d .n5{right:8%!important;bottom:5%!important;left:auto!important;top:auto!important;transform:translateZ(45px)!important;animation-delay:-4s!important;border-color:rgba(193,137,255,.70)!important}
+
+  /* Hero copy is deliberately below the complete 3D stage. */
+  .cin-hero>div:first-child{
+    width:100%!important;
+    box-sizing:border-box!important;
+    padding:34px 20px 42px!important;
+    text-align:center!important;
+    z-index:10!important;
+  }
+  .cin-hero .ey{font-size:10px!important;letter-spacing:.24em!important}
+  .cin-h1{font-size:clamp(38px,10.5vw,46px)!important;line-height:1.02!important;letter-spacing:-.045em!important;margin:14px auto 18px!important;max-width:390px!important}
+  .cin-lead{font-size:14px!important;line-height:1.55!important;max-width:350px!important;margin:0 auto 20px!important}
+  .actions{justify-content:center!important;flex-wrap:wrap!important}
+  .stats{grid-template-columns:repeat(2,1fr)!important;gap:12px!important;margin-top:28px!important}
+
+  /* Keep the ecosystem from touching the viewport edge after the hero. */
+  .eco{margin-top:0!important;padding-top:42px!important}
+}
+
+@keyframes pkLiveOrbit1{0%{transform:translate(-50%,-50%) rotateX(68deg) rotateZ(-8deg) rotateZ(0)}100%{transform:translate(-50%,-50%) rotateX(68deg) rotateZ(-8deg) rotateZ(360deg)}}
+@keyframes pkLiveOrbit2{0%{transform:translate(-50%,-50%) rotateX(66deg) rotateZ(54deg) rotateZ(360deg)}100%{transform:translate(-50%,-50%) rotateX(66deg) rotateZ(54deg) rotateZ(0)}}
+@keyframes pkLiveOrbit3{0%{transform:translate(-50%,-50%) rotateX(64deg) rotateZ(-34deg) rotateZ(0)}100%{transform:translate(-50%,-50%) rotateX(64deg) rotateZ(-34deg) rotateZ(360deg)}}
+@keyframes pkLiveComet{from{transform:rotate(0) translateY(-1px) rotate(0)}to{transform:rotate(360deg) translateY(-1px) rotate(-360deg)}}
+@keyframes pkLiveCore{0%,100%{transform:translate(-50%,-50%) translateZ(65px) scale(1);filter:brightness(.98)}50%{transform:translate(-50%,-50%) translateZ(86px) scale(1.045);filter:brightness(1.18)}}
+@keyframes pkLiveShell{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.55}50%{transform:translate(-50%,-50%) scale(1.06);opacity:.95}}
+@keyframes pkLiveInner{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes pkLiveSpin{from{transform:rotate(0) scale(1)}to{transform:rotate(360deg) scale(1.03)}}
+@keyframes pkLiveGlint{0%,100%{transform:translate3d(0,0,12px) scale(.7);opacity:.25}45%{transform:translate3d(12px,10px,35px) scale(1.18);opacity:1}70%{transform:translate3d(20px,22px,20px) scale(.9);opacity:.5}}
+@keyframes pkLiveLogo{0%,100%{transform:translateZ(18px) scale(1);opacity:.92}50%{transform:translateZ(32px) scale(1.06);opacity:1}}
+@keyframes pkLiveRing{from{transform:translate(-50%,-50%) rotateX(70deg) rotateZ(0) scale(.98);opacity:.35}50%{opacity:.95}to{transform:translate(-50%,-50%) rotateX(70deg) rotateZ(360deg) scale(1.03);opacity:.42}}
+@keyframes pkLiveNode{0%,100%{translate:0 0;filter:brightness(.96)}50%{translate:0 -7px;filter:brightness(1.13)}}
+@keyframes pkLiveSweep{0%,100%{transform:translateX(-140%);opacity:0}48%{opacity:.05}58%{transform:translateX(140%);opacity:.6}72%{opacity:0}}
+
+@media (prefers-reduced-motion:reduce){
+  .hero3d .orb,.hero3d .orb:after,.hero3d .core,.hero3d .core:before,.hero3d .core:after,.hero3d .core-grid,.hero3d .core-glint,.hero3d .pk,.hero3d .energy-ring,.hero3d .node,.hero3d .node:after{animation:none!important}
+}

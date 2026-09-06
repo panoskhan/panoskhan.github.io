@@ -1,0 +1,69 @@
+/* Live visual polish — fixes section visibility, strengthens 3D depth, and keeps the reference composition responsive. */
+html{scroll-padding-top:76px}
+.cin-main{position:relative}
+.cin-hero{isolation:isolate}
+.hero3d{isolation:isolate;contain:layout style;}
+.hero3d .orb{z-index:1}
+.hero3d .core{z-index:5}
+.hero3d .corelabel{z-index:7}
+.hero3d .node{z-index:8}
+
+/* Keep hash navigation stable: sections remain visible and paint above decorative layers. */
+.section{isolation:isolate;scroll-margin-top:76px;visibility:visible;opacity:1}
+.section>*{position:relative;z-index:2}
+.section:before,.section:after{z-index:0}
+.eco{min-height:410px;overflow:hidden}
+.eco .map{position:relative;z-index:2;display:block;visibility:visible;opacity:1;min-height:338px}
+.eco .grid3d{z-index:0;pointer-events:none}
+.eco .line{z-index:1;pointer-events:none}
+.eco .mapcore,.eco .mapnode{z-index:4}
+.eco .mapcore{transform:translate(-50%,-50%) translateZ(28px)}
+.eco .mapnode{transform:translateZ(12px);}
+.eco .mapnode:hover,.eco .mapnode:focus-visible{transform:translateY(-7px) translateZ(22px)}
+
+/* Add a subtle platform floor so the ecosystem reads as a real spatial system. */
+.eco .map:after{content:"";position:absolute;left:13%;right:13%;bottom:2%;height:36%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(0,218,255,.09),transparent 67%);border-top:1px solid rgba(66,209,255,.08);filter:blur(.2px);pointer-events:none;z-index:0}
+
+/* Make the capability/project cards feel like one connected interface. */
+.card,.project{overflow:hidden}
+.card:after,.project:after{opacity:.9}
+.cards .card:nth-child(2) .icon{box-shadow:0 0 32px rgba(139,92,246,.14),inset 0 1px rgba(255,255,255,.12)}
+.cards .card:nth-child(3) .icon{box-shadow:0 0 32px rgba(79,124,255,.14),inset 0 1px rgba(255,255,255,.12)}
+.cards .card:nth-child(4) .icon{box-shadow:0 0 32px rgba(22,220,255,.14),inset 0 1px rgba(255,255,255,.12)}
+.cards .card:nth-child(5) .icon{box-shadow:0 0 32px rgba(34,224,196,.14),inset 0 1px rgba(255,255,255,.12)}
+.projects .project{min-height:204px}
+.projects .project:before{background:linear-gradient(125deg,rgba(255,255,255,.075),transparent 24%,transparent 68%,rgba(22,220,255,.055))}
+.projects .project:after{bottom:-12px;height:70px}
+
+/* Desktop reference balance: the hero graphic occupies the same visual weight as the copy. */
+@media(min-width:901px){
+  .cin-hero{grid-template-columns:.86fr 1.14fr;gap:10px;min-height:650px}
+  .hero3d{height:620px;min-height:620px}
+  .cin-h1{font-size:clamp(50px,4.55vw,67px);max-width:610px}
+  .hero3d .core{width:266px;height:266px}
+  .hero3d .pk{font-size:84px}
+  .hero3d .n1{top:2%;left:49%}
+  .hero3d .n2{top:28%;left:2%}
+  .hero3d .n3{top:29%;right:0}
+  .hero3d .n4{bottom:9%;left:7%}
+  .hero3d .n5{bottom:8%;right:6%}
+  .eco .map{height:350px}
+}
+
+/* Phone is a separate composition rather than a shrunken desktop. */
+@media(max-width:600px){
+  html{scroll-padding-top:70px}
+  .section{scroll-margin-top:70px}
+  .eco{min-height:0}
+  .eco .map{height:330px;min-height:330px;margin-top:12px}
+  .eco .map:after{left:5%;right:5%;bottom:1%;height:34%}
+  .eco .mapcore{transform:translate(-50%,-50%) translateZ(18px)}
+  .eco .mapnode{transform:translateZ(8px)}
+  .eco .mapnode:hover,.eco .mapnode:focus-visible{transform:translateY(-5px) translateZ(14px)}
+  .cards .card,.projects .project{min-height:188px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .eco .mapcore{animation:none!important}
+  .eco .line{animation:none!important;opacity:.65}
+}

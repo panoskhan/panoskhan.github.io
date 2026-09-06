@@ -1,0 +1,38 @@
+name: Validate site visual system
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+
+      - name: Verify shared visual system wiring
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          marker = '/assets/css/site-unified-3d.css'
+          missing = []
+          checked = 0
+          for path in Path('.').rglob('*.html'):
+              if any(part in {'.git', 'node_modules'} for part in path.parts):
+                  continue
+              checked += 1
+              text = path.read_text(encoding='utf-8')
+              if marker not in text:
+                  missing.append(str(path))
+          print(f'Checked {checked} HTML pages')
+          if missing:
+              print('Missing shared visual-system stylesheet:')
+              for item in missing:
+                  print(item)
+              raise SystemExit(1)
+          print('Visual-system wiring verified.')
+          PY

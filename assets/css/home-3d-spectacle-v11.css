@@ -1,0 +1,33 @@
+/* V11 — cinematic spatial depth pass. Additive only: preserve V8–V10 foundation. */
+.hero3d{perspective:1700px;transform-style:preserve-3d;}
+.hero3d .orb{will-change:transform,opacity;filter:drop-shadow(0 0 10px rgba(0,225,255,.42)) drop-shadow(0 0 28px rgba(65,105,255,.16));}
+.hero3d .o1{animation-name:v11OrbitA;}
+.hero3d .o2{animation-name:v11OrbitB;}
+.hero3d .o3{animation-name:v11OrbitC;}
+.hero3d .orb::before{background:linear-gradient(90deg,transparent 0 36%,rgba(91,239,255,.30) 45%,rgba(255,255,255,.72) 50%,rgba(91,239,255,.16) 55%,transparent 64%);background-size:240% 100%;animation:v11Sweep 7s ease-in-out infinite;}
+.hero3d .orb::after{box-shadow:0 0 26px rgba(120,105,255,.18);}
+.hero3d .core{box-shadow:0 0 24px rgba(0,238,255,1),0 0 72px rgba(0,190,255,.62),0 0 160px rgba(78,106,255,.40),0 28px 70px rgba(0,0,0,.58),inset 18px 15px 38px rgba(177,255,255,.28),inset -38px -44px 62px rgba(0,0,0,.82);}
+.hero3d .core::before{box-shadow:0 0 38px rgba(0,228,255,.38),0 0 86px rgba(0,160,255,.16),inset 0 0 34px rgba(0,228,255,.16);}
+.hero3d .core::after{filter:drop-shadow(0 0 10px rgba(88,225,255,.48));}
+.hero3d .core-glint{filter:blur(.4px) drop-shadow(0 0 20px rgba(70,236,255,.55));}
+.hero3d .pk{letter-spacing:-.08em;}
+.hero3d .node{backdrop-filter:blur(16px) saturate(125%);box-shadow:0 24px 54px rgba(0,0,0,.68),0 0 34px rgba(0,188,255,.23),inset 0 1px rgba(255,255,255,.20),inset 0 -20px 34px rgba(0,0,0,.34);}
+.hero3d .node::before{background:linear-gradient(125deg,rgba(255,255,255,.20),transparent 24%,transparent 66%,rgba(0,229,255,.13));box-shadow:inset 0 0 22px rgba(91,226,255,.08);}
+.hero3d .node::after{box-shadow:0 0 10px #73f7ff,0 0 24px rgba(0,225,255,1),0 0 42px rgba(0,190,255,.48);}
+.hero3d .n1{--depth:.060;}.hero3d .n2{--depth:.045;}.hero3d .n3{--depth:.055;}.hero3d .n4{--depth:.040;}.hero3d .n5{--depth:.050;}
+.hero3d .node:hover,.hero3d .node:focus-visible{filter:brightness(1.20) saturate(1.08);}
+.eco .map{perspective:1700px;isolation:isolate;}
+.eco .map::before{background:radial-gradient(circle at 50% 50%,rgba(0,230,255,.22),transparent 34%),radial-gradient(circle at 25% 70%,rgba(84,96,255,.10),transparent 34%),linear-gradient(115deg,transparent 45%,rgba(0,229,255,.10) 50%,transparent 55%);filter:blur(.2px);}
+.eco .grid3d{filter:drop-shadow(0 0 10px rgba(0,205,255,.25));opacity:.92;}
+.eco .mapcore{box-shadow:0 0 44px rgba(0,229,255,.64),0 0 110px rgba(79,124,255,.34),0 22px 48px rgba(0,0,0,.62),inset 0 0 36px rgba(0,229,255,.26),inset -20px -22px 30px rgba(0,0,0,.58);}
+.eco .mapcore::before{box-shadow:0 0 34px rgba(0,229,255,.28),0 0 74px rgba(0,190,255,.12);}
+.eco .mapnode{box-shadow:0 26px 50px rgba(0,0,0,.62),0 0 34px rgba(0,175,255,.22),inset 0 1px rgba(255,255,255,.16),inset 0 -20px 34px rgba(0,0,0,.34);}
+.eco .line{height:2px;box-shadow:0 0 16px rgba(0,229,255,.82),0 0 38px rgba(0,150,255,.28);background-size:200% 100%;animation:v11Beam 3.2s ease-in-out infinite;}
+@keyframes v11OrbitA{0%{transform:rotateX(67deg) rotateZ(-10deg) translateZ(34px)}50%{transform:rotateX(67deg) rotateZ(170deg) translateZ(50px)}100%{transform:rotateX(67deg) rotateZ(350deg) translateZ(34px)}}
+@keyframes v11OrbitB{0%{transform:rotateX(63deg) rotateZ(44deg) translateZ(58px)}50%{transform:rotateX(63deg) rotateZ(-136deg) translateZ(76px)}100%{transform:rotateX(63deg) rotateZ(-316deg) translateZ(58px)}}
+@keyframes v11OrbitC{0%{transform:rotateX(58deg) rotateZ(-31deg) translateZ(12px)}50%{transform:rotateX(58deg) rotateZ(149deg) translateZ(28px)}100%{transform:rotateX(58deg) rotateZ(329deg) translateZ(12px)}}
+@keyframes v11Sweep{0%,100%{background-position:120% 0;opacity:.45}50%{background-position:-20% 0;opacity:.95}}
+@keyframes v11Beam{0%,100%{opacity:.28;background-position:120% 0}50%{opacity:1;background-position:-20% 0}}
+@media(max-width:900px){.hero3d{perspective:1050px}.hero3d .orb{filter:drop-shadow(0 0 7px rgba(0,225,255,.34));}.hero3d .node{backdrop-filter:blur(12px);}.eco .map{perspective:1100px}.eco .line{box-shadow:0 0 10px rgba(0,229,255,.58)}}
+@media(max-width:600px){.hero3d{perspective:860px}.hero3d .core{box-shadow:0 0 20px rgba(0,238,255,.92),0 0 54px rgba(0,190,255,.52),0 0 100px rgba(78,106,255,.26),0 18px 40px rgba(0,0,0,.56),inset 14px 12px 30px rgba(177,255,255,.24),inset -28px -32px 44px rgba(0,0,0,.78)}.hero3d .node{box-shadow:0 16px 34px rgba(0,0,0,.58),0 0 22px rgba(0,188,255,.18),inset 0 1px rgba(255,255,255,.16);}.eco .map{perspective:900px}}
+@media(prefers-reduced-motion:reduce){.hero3d .orb::before,.hero3d .o1,.hero3d .o2,.hero3d .o3,.eco .line{animation:none!important}}

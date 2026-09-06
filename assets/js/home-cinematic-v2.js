@@ -2,13 +2,22 @@
   const scene = document.querySelector('.hero3d');
   if (!scene) return;
 
-  // Keep the approved V15 visual layer available on every device,
-  // including users who prefer reduced motion.
+  // Keep the approved planetary visual layer available on every device.
   if (!document.querySelector('link[data-pk-planet-spectrum]')) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = '/assets/css/home-planet-spectrum-v15.css';
     link.dataset.pkPlanetSpectrum = 'true';
+    document.head.appendChild(link);
+  }
+
+  // V18 is the final responsive placement pass. It loads after the earlier
+  // constellation layers so the approved mobile contact positions win.
+  if (!document.querySelector('link[data-pk-planetary-v18]')) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/assets/css/home-planetary-production-v18.css';
+    link.dataset.pkPlanetaryV18 = 'true';
     document.head.appendChild(link);
   }
 

@@ -1,6 +1,19 @@
 (() => {
   const scene = document.querySelector('.hero3d');
-  if (!scene || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!scene) return;
+
+  // Keep the approved V15 visual layer available on every device,
+  // including users who prefer reduced motion.
+  if (!document.querySelector('link[data-pk-planet-spectrum]')) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/assets/css/home-planet-spectrum-v15.css';
+    link.dataset.pkPlanetSpectrum = 'true';
+    document.head.appendChild(link);
+  }
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
   if (!document.querySelector('link[data-reference-constellation]')) {
     const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = '/assets/css/home-reference-constellation.css'; css.dataset.referenceConstellation = 'true'; document.head.appendChild(css);
   }
@@ -17,9 +30,6 @@
   }
   const nodeDepths = { n1: 0.16, n2: 0.28, n3: 0.20, n4: 0.24, n5: 0.18 };
   Object.entries(nodeDepths).forEach(([name, depth]) => { const node = scene.querySelector(`.${name}`); if (node) node.style.setProperty('--depth', depth); });
-  if (!document.querySelector('link[data-pk-planet-spectrum]')) {
-    const link = document.createElement('link'); link.rel = 'stylesheet'; link.href = '/assets/css/home-planet-spectrum-v15.css'; link.dataset.pkPlanetSpectrum = 'true'; document.head.appendChild(link);
-  }
   let raf = 0, tx = 0, ty = 0, x = 0, y = 0;
   const render = () => {
     x += (tx - x) * 0.075; y += (ty - y) * 0.075; scene.style.setProperty('--mx', `${x}px`); scene.style.setProperty('--my', `${y}px`);

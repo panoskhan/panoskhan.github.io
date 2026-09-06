@@ -1,0 +1,97 @@
+/* PANOS KHAN — V18 PLANETARY PRODUCTION LAYOUT
+   Correct mobile node positions against the approved planetary composition.
+   Same color/planet system on mobile and desktop; layout scales independently.
+*/
+
+.cin .hero3d .node{z-index:10!important}
+
+/* Desktop: spacious five-planet constellation around the intelligence core. */
+@media (min-width:901px){
+  .cin .hero3d .n1{left:50%!important;top:5%!important;right:auto!important;bottom:auto!important;}
+  .cin .hero3d .n2{left:5%!important;top:37%!important;right:auto!important;bottom:auto!important;}
+  .cin .hero3d .n3{right:5%!important;top:37%!important;left:auto!important;bottom:auto!important;}
+  .cin .hero3d .n4{left:15%!important;bottom:5%!important;right:auto!important;top:auto!important;}
+  .cin .hero3d .n5{right:15%!important;bottom:5%!important;left:auto!important;top:auto!important;}
+  .cin .hero3d .core{left:50%!important;top:51%!important;}
+  .cin .hero3d .corelabel{left:50%!important;top:51%!important;}
+}
+
+@media (min-width:601px) and (max-width:900px){
+  .cin .hero3d .n1{left:50%!important;top:4%!important;right:auto!important;bottom:auto!important}
+  .cin .hero3d .n2{left:2%!important;top:35%!important;right:auto!important;bottom:auto!important}
+  .cin .hero3d .n3{right:2%!important;top:35%!important;left:auto!important;bottom:auto!important}
+  .cin .hero3d .n4{left:8%!important;bottom:6%!important;right:auto!important;top:auto!important}
+  .cin .hero3d .n5{right:8%!important;bottom:6%!important;left:auto!important;top:auto!important}
+  .cin .hero3d .core{left:50%!important;top:50%!important}
+  .cin .hero3d .corelabel{left:50%!important;top:50%!important}
+}
+
+/* Approved mobile composition: top / middle-left / middle-right / bottom-left / bottom-right. */
+@media (max-width:600px){
+  .cin .hero3d{
+    height:620px!important;
+    min-height:620px!important;
+    overflow:hidden!important;
+    perspective:1000px!important;
+    perspective-origin:50% 48%!important;
+  }
+
+  /* Keep the whole constellation visually centered and inside the phone. */
+  .cin .hero3d .o1{left:50%!important;top:48%!important;width:392px!important;height:204px!important}
+  .cin .hero3d .o2{left:50%!important;top:49%!important;width:326px!important;height:166px!important}
+  .cin .hero3d .o3{left:50%!important;top:50%!important;width:454px!important;height:228px!important}
+
+  /* Central core */
+  .cin .hero3d .core{
+    left:50%!important;
+    top:49%!important;
+    width:178px!important;
+    height:178px!important;
+    z-index:12!important;
+  }
+  .cin .hero3d .corelabel{
+    left:50%!important;
+    top:49%!important;
+    transform:translate(-50%,116px)!important;
+    white-space:nowrap!important;
+    z-index:13!important;
+  }
+
+  /* Correct contact positions. */
+  .cin .hero3d .n1{
+    left:50%!important;right:auto!important;top:4%!important;bottom:auto!important;
+    width:114px!important;height:114px!important;min-width:114px!important;min-height:114px!important;
+    transform:translateX(-50%) translateZ(74px)!important;
+  }
+  .cin .hero3d .n2{
+    left:3%!important;right:auto!important;top:35%!important;bottom:auto!important;
+    width:114px!important;height:114px!important;min-width:114px!important;min-height:114px!important;
+    transform:translateZ(42px)!important;
+  }
+  .cin .hero3d .n3{
+    right:3%!important;left:auto!important;top:35%!important;bottom:auto!important;
+    width:114px!important;height:114px!important;min-width:114px!important;min-height:114px!important;
+    transform:translateZ(56px)!important;
+  }
+  .cin .hero3d .n4{
+    left:9%!important;right:auto!important;top:auto!important;bottom:7%!important;
+    width:114px!important;height:114px!important;min-width:114px!important;min-height:114px!important;
+    transform:translateZ(34px)!important;
+  }
+  .cin .hero3d .n5{
+    right:9%!important;left:auto!important;top:auto!important;bottom:7%!important;
+    width:114px!important;height:114px!important;min-width:114px!important;min-height:114px!important;
+    transform:translateZ(48px)!important;
+  }
+
+  /* Keep labels crisp and inside each spherical planet. */
+  .cin .hero3d .node b{font-size:9px!important;letter-spacing:.14em!important;line-height:1.14!important}
+  .cin .hero3d .node small{font-size:6.8px!important;line-height:1.28!important;margin-top:4px!important}
+
+  /* Space for the constellation, then cleanly transition into hero copy. */
+  .cin .hero3d + .section{margin-top:0!important}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .cin .hero3d .node{transition:none!important}
+}

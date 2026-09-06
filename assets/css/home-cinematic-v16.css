@@ -1,0 +1,13 @@
+/* PANOS KHAN — V16 CINEMATIC INTELLIGENCE PASS */
+/* Builds on V15 without replacing the approved five-planet system. */
+.cin .hero3d{--v16-cyan:rgba(48,231,255,.9);--v16-violet:rgba(151,91,255,.75);--v16-depth:calc((var(--mx,0px) + var(--my,0px)) * .035);}
+.cin .hero3d .core{transform:translate3d(calc(var(--mx,0px) * .045),calc(var(--my,0px) * .045),0) rotateX(var(--core-rx,0deg)) rotateY(var(--core-ry,0deg));transition:transform .18s ease-out;}
+.cin .hero3d .orb{transform:translate3d(calc(var(--mx,0px) * -.018),calc(var(--my,0px) * -.018),0);}
+.cin .hero3d .node{transform:translate3d(calc(var(--mx,0px) * var(--depth,0)),calc(var(--my,0px) * var(--depth,0)),var(--v16-depth));transition:transform .2s ease-out,filter .35s ease,box-shadow .35s ease;}
+.cin .hero3d .node:hover,.cin .hero3d .node:focus-visible{transform:translate3d(calc(var(--mx,0px) * var(--depth,0)),calc(var(--my,0px) * var(--depth,0) - 5px),18px) scale(1.035)!important;filter:saturate(1.28) brightness(1.08)!important;}
+.cin .hero3d .node:focus-visible{outline:2px solid currentColor;outline-offset:5px;}
+.cin .hero3d .corelabel{transform:translate3d(calc(var(--mx,0px) * .025),calc(var(--my,0px) * .025),0);transition:transform .2s ease-out;}
+.cin .hero3d:after{content:"";pointer-events:none;position:absolute;inset:8% 6%;border:1px solid rgba(91,215,255,.07);border-radius:50%;box-shadow:0 0 90px rgba(35,146,255,.08),inset 0 0 80px rgba(128,74,255,.045);transform:rotateX(var(--scene-rx,0deg)) rotateY(var(--scene-ry,0deg));transition:transform .25s ease-out;}
+.cin .hero3d .core:after{box-shadow:0 0 34px var(--v16-cyan),0 0 75px rgba(91,86,255,.42),inset 0 0 20px rgba(255,255,255,.12);}
+@media(max-width:600px){.cin .hero3d .node{transform:translate3d(0,0,0)!important}.cin .hero3d .node:hover,.cin .hero3d .node:focus-visible{transform:translate3d(0,-4px,10px) scale(1.025)!important}.cin .hero3d .core{transform:translate3d(0,0,0) rotateX(0deg) rotateY(0deg)}.cin .hero3d:after{inset:5% 2%;}}
+@media(prefers-reduced-motion:reduce){.cin .hero3d .core,.cin .hero3d .orb,.cin .hero3d .node,.cin .hero3d .corelabel,.cin .hero3d:after{transform:none!important;transition:none!important}.cin .hero3d .node:hover,.cin .hero3d .node:focus-visible{transform:translateY(-3px)!important;}}

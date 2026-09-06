@@ -2,7 +2,15 @@
   const scene = document.querySelector('.hero3d');
   if (!scene || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  // Ambient particles give the intelligence core a real spatial volume without a library.
+  // Load the dedicated reference-inspired constellation layer without replacing content.
+  if (!document.querySelector('link[data-reference-constellation]')) {
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = '/assets/css/home-reference-constellation.css';
+    css.dataset.referenceConstellation = 'true';
+    document.head.appendChild(css);
+  }
+
   if (!scene.querySelector('.particle-field')) {
     const field = document.createElement('div');
     field.className = 'particle-field';
@@ -19,14 +27,11 @@
       field.appendChild(p);
     }
     scene.appendChild(field);
-
     const floor = document.createElement('div');
     floor.className = 'scene-floor';
     scene.appendChild(floor);
   }
 
-  // Give each holographic node its own depth channel so pointer movement creates
-  // an actual layered 3D composition instead of moving every node as one plane.
   const nodeDepths = { n1: 0.16, n2: 0.28, n3: 0.20, n4: 0.24, n5: 0.18 };
   Object.entries(nodeDepths).forEach(([name, depth]) => {
     const node = scene.querySelector(`.${name}`);
@@ -35,13 +40,11 @@
 
   let raf = 0;
   let tx = 0, ty = 0, x = 0, y = 0;
-
   const render = () => {
     x += (tx - x) * 0.075;
     y += (ty - y) * 0.075;
     scene.style.setProperty('--mx', `${x}px`);
     scene.style.setProperty('--my', `${y}px`);
-
     const nx = Math.max(-1, Math.min(1, x / Math.max(1, scene.clientWidth * 0.5)));
     const ny = Math.max(-1, Math.min(1, y / Math.max(1, scene.clientHeight * 0.5)));
     scene.style.setProperty('--core-rx', `${(-ny * 3.2).toFixed(2)}deg`);
@@ -51,19 +54,15 @@
     scene.style.setProperty('--scene-depth', `${(Math.abs(nx) + Math.abs(ny)) * 5}px`);
     raf = requestAnimationFrame(render);
   };
-
-  const move = (e) => {
+  const move = e => {
     const r = scene.getBoundingClientRect();
     tx = Math.max(-r.width / 2, Math.min(r.width / 2, e.clientX - (r.left + r.width / 2)));
     ty = Math.max(-r.height / 2, Math.min(r.height / 2, e.clientY - (r.top + r.height / 2)));
   };
-
   const reset = () => { tx = 0; ty = 0; };
-
   scene.addEventListener('pointermove', move, { passive: true });
   scene.addEventListener('pointerleave', reset, { passive: true });
   scene.addEventListener('pointercancel', reset, { passive: true });
-
   render();
   window.addEventListener('pagehide', () => cancelAnimationFrame(raf), { once: true });
 })();

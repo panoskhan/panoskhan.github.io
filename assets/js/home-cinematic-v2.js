@@ -39,16 +39,27 @@
   }
   const nodeDepths = { n1: 0.16, n2: 0.28, n3: 0.20, n4: 0.24, n5: 0.18 };
   Object.entries(nodeDepths).forEach(([name, depth]) => { const node = scene.querySelector(`.${name}`); if (node) node.style.setProperty('--depth', depth); });
+
+  // Animate only while the pointer is moving toward a target. This preserves the
+  // smooth 3D response without an always-running requestAnimationFrame loop.
   let raf = 0, tx = 0, ty = 0, x = 0, y = 0;
   const render = () => {
-    x += (tx - x) * 0.075; y += (ty - y) * 0.075; scene.style.setProperty('--mx', `${x}px`); scene.style.setProperty('--my', `${y}px`);
+    x += (tx - x) * 0.075; y += (ty - y) * 0.075;
+    scene.style.setProperty('--mx', `${x}px`); scene.style.setProperty('--my', `${y}px`);
     const nx = Math.max(-1, Math.min(1, x / Math.max(1, scene.clientWidth * 0.5))); const ny = Math.max(-1, Math.min(1, y / Math.max(1, scene.clientHeight * 0.5)));
     scene.style.setProperty('--core-rx', `${(-ny * 3.2).toFixed(2)}deg`); scene.style.setProperty('--core-ry', `${(nx * 3.8).toFixed(2)}deg`);
     scene.style.setProperty('--scene-rx', `${(-ny * 1.8).toFixed(2)}deg`); scene.style.setProperty('--scene-ry', `${(nx * 2.2).toFixed(2)}deg`); scene.style.setProperty('--scene-depth', `${(Math.abs(nx) + Math.abs(ny)) * 5}px`);
-    raf = requestAnimationFrame(render);
+    if (Math.abs(tx - x) > 0.05 || Math.abs(ty - y) > 0.05) raf = requestAnimationFrame(render); else raf = 0;
   };
-  const move = e => { const r = scene.getBoundingClientRect(); tx = Math.max(-r.width / 2, Math.min(r.width / 2, e.clientX - (r.left + r.width / 2))); ty = Math.max(-r.height / 2, Math.min(r.height / 2, e.clientY - (r.top + r.height / 2))); };
-  const reset = () => { tx = 0; ty = 0; };
-  scene.addEventListener('pointermove', move, { passive: true }); scene.addEventListener('pointerleave', reset, { passive: true }); scene.addEventListener('pointercancel', reset, { passive: true }); render();
-  window.addEventListener('pagehide', () => cancelAnimationFrame(raf), { once: true });
+  const schedule = () => { if (!raf) raf = requestAnimationFrame(render); };
+  const move = e => {
+    if (e.pointerType && e.pointerType !== 'mouse') return;
+    const r = scene.getBoundingClientRect();
+    tx = Math.max(-r.width / 2, Math.min(r.width / 2, e.clientX - (r.left + r.width / 2)));
+    ty = Math.max(-r.height / 2, Math.min(r.height / 2, e.clientY - (r.top + r.height / 2)));
+    schedule();
+  };
+  const reset = () => { tx = 0; ty = 0; schedule(); };
+  scene.addEventListener('pointermove', move, { passive: true }); scene.addEventListener('pointerleave', reset, { passive: true }); scene.addEventListener('pointercancel', reset, { passive: true });
+  window.addEventListener('pagehide', () => { if (raf) cancelAnimationFrame(raf); raf = 0; }, { once: true });
 })();

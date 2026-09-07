@@ -3,7 +3,7 @@ name: Static quality checks
 on:
   pull_request:
   push:
-    branches: ["feat/3d-progressive-enhancement"]
+    branches: ["main"]
 
 permissions:
   contents: read

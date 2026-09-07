@@ -1,30 +1,40 @@
-/* PANOS KHAN — V17 PRODUCTION POLISH */
-/* Corrects V16 transform composition while preserving V15/V16 visuals. */
-
-.cin .hero3d{perspective:1100px;perspective-origin:50% 50%;}
+/* PANOS KHAN — V18.1 RESPONSIVE PLANETARY POLISH */
+/* Mobile: fixed contact positions. Desktop: controlled 3D depth/parallax. */
+.cin .hero3d{perspective:1200px;perspective-origin:50% 50%;}
 .cin .hero3d .core{transform:translate3d(calc(var(--mx,0px) * .045),calc(var(--my,0px) * .045),22px) rotateX(var(--core-rx,0deg)) rotateY(var(--core-ry,0deg));}
 .cin .hero3d .corelabel{transform:translate3d(calc(var(--mx,0px) * .025),calc(var(--my,0px) * .025),26px);}
-
-/* Preserve the intentional V12 depth stack while adding pointer parallax. */
 .cin .hero3d .n1{transform:translate3d(calc(var(--mx,0px) * .16),calc(var(--my,0px) * .16),42px) rotateY(-2deg);}
 .cin .hero3d .n2{transform:translate3d(calc(var(--mx,0px) * .28),calc(var(--my,0px) * .28),20px);}
 .cin .hero3d .n3{transform:translate3d(calc(var(--mx,0px) * .20),calc(var(--my,0px) * .20),52px) rotateY(2deg);}
 .cin .hero3d .n4{transform:translate3d(calc(var(--mx,0px) * .24),calc(var(--my,0px) * .24),30px) rotateY(-1deg);}
 .cin .hero3d .n5{transform:translate3d(calc(var(--mx,0px) * .18),calc(var(--my,0px) * .18),46px) rotateY(1deg);}
-
+.cin .hero3d .node{will-change:transform,filter;}
 .cin .hero3d .node:hover,.cin .hero3d .node:focus-visible{filter:saturate(1.22) brightness(1.07)!important;}
-.cin .hero3d .n1:hover,.cin .hero3d .n1:focus-visible{transform:translate3d(calc(var(--mx,0px) * .16),calc(var(--my,0px) * .16 - 8px),82px) rotateY(-3deg)!important;}
-.cin .hero3d .n2:hover,.cin .hero3d .n2:focus-visible{transform:translate3d(calc(var(--mx,0px) * .28),calc(var(--my,0px) * .28 - 8px),60px) rotateY(-2deg)!important;}
-.cin .hero3d .n3:hover,.cin .hero3d .n3:focus-visible{transform:translate3d(calc(var(--mx,0px) * .20),calc(var(--my,0px) * .20 - 8px),92px) rotateY(3deg)!important;}
-.cin .hero3d .n4:hover,.cin .hero3d .n4:focus-visible{transform:translate3d(calc(var(--mx,0px) * .24),calc(var(--my,0px) * .24 - 8px),70px) rotateY(-2deg)!important;}
-.cin .hero3d .n5:hover,.cin .hero3d .n5:focus-visible{transform:translate3d(calc(var(--mx,0px) * .18),calc(var(--my,0px) * .18 - 8px),86px) rotateY(2deg)!important;}
-
-@media (pointer:coarse), (max-width:600px){
-  .cin .hero3d{perspective:none;}
+@media (pointer:coarse),(max-width:600px){
+  .cin .hero3d{perspective:none;overflow:visible;}
   .cin .hero3d .core{transform:translate3d(0,0,22px)!important;}
   .cin .hero3d .corelabel{transform:translateZ(26px)!important;}
-  .cin .hero3d .n1{transform:translateZ(26px)!important}.cin .hero3d .n2{transform:translateZ(14px)!important}.cin .hero3d .n3{transform:translateZ(30px)!important}.cin .hero3d .n4{transform:translateZ(20px)!important}.cin .hero3d .n5{transform:translateZ(28px)!important}
-  .cin .hero3d .n1:hover,.cin .hero3d .n1:focus-visible{transform:translate3d(0,-4px,48px)!important}.cin .hero3d .n2:hover,.cin .hero3d .n2:focus-visible{transform:translate3d(0,-4px,36px)!important}.cin .hero3d .n3:hover,.cin .hero3d .n3:focus-visible{transform:translate3d(0,-4px,52px)!important}.cin .hero3d .n4:hover,.cin .hero3d .n4:focus-visible{transform:translate3d(0,-4px,42px)!important}.cin .hero3d .n5:hover,.cin .hero3d .n5:focus-visible{transform:translate3d(0,-4px,50px)!important}
+  /* Fixed mobile contact geometry: no X/Y animation or pointer parallax. */
+  .cin .hero3d .n1{transform:translate3d(-50%,-50%,26px)!important;}
+  .cin .hero3d .n2{transform:translate3d(-50%,-50%,14px)!important;}
+  .cin .hero3d .n3{transform:translate3d(-50%,-50%,30px)!important;}
+  .cin .hero3d .n4{transform:translate3d(-50%,-50%,20px)!important;}
+  .cin .hero3d .n5{transform:translate3d(-50%,-50%,28px)!important;}
+  .cin .hero3d .node:hover,.cin .hero3d .node:focus-visible{filter:saturate(1.18) brightness(1.05)!important;}
 }
-
-@media(prefers-reduced-motion:reduce){.cin .hero3d{perspective:none}.cin .hero3d .core,.cin .hero3d .corelabel,.cin .hero3d .node{transition:none!important}}
+@media (max-width:600px){
+  .cin .hero3d .n1{left:50%!important;top:14%!important;}
+  .cin .hero3d .n2{left:21%!important;top:43%!important;}
+  .cin .hero3d .n3{left:79%!important;top:43%!important;}
+  .cin .hero3d .n4{left:31%!important;top:76%!important;}
+  .cin .hero3d .n5{left:69%!important;top:76%!important;}
+}
+@media (min-width:601px){
+  .cin .hero3d .node{transition:transform .22s ease-out,filter .35s ease,box-shadow .35s ease;}
+  .cin .hero3d .n1:hover,.cin .hero3d .n1:focus-visible{transform:translate3d(calc(var(--mx,0px) * .16),calc(var(--my,0px) * .16 - 8px),82px) rotateY(-3deg)!important;}
+  .cin .hero3d .n2:hover,.cin .hero3d .n2:focus-visible{transform:translate3d(calc(var(--mx,0px) * .28),calc(var(--my,0px) * .28 - 8px),60px) rotateY(-2deg)!important;}
+  .cin .hero3d .n3:hover,.cin .hero3d .n3:focus-visible{transform:translate3d(calc(var(--mx,0px) * .20),calc(var(--my,0px) * .20 - 8px),92px) rotateY(3deg)!important;}
+  .cin .hero3d .n4:hover,.cin .hero3d .n4:focus-visible{transform:translate3d(calc(var(--mx,0px) * .24),calc(var(--my,0px) * .24 - 8px),70px) rotateY(-2deg)!important;}
+  .cin .hero3d .n5:hover,.cin .hero3d .n5:focus-visible{transform:translate3d(calc(var(--mx,0px) * .18),calc(var(--my,0px) * .18 - 8px),86px) rotateY(2deg)!important;}
+}
+@media(prefers-reduced-motion:reduce){.cin .hero3d{perspective:none}.cin .hero3d .core,.cin .hero3d .corelabel,.cin .hero3d .node{transition:none!important;}}

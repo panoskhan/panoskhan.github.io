@@ -1,6 +1,6 @@
-/* PANOS KHAN — V17 PRODUCTION POLISH */
-/* Final composition layer: desktop two-column hero + contained 3D constellation. */
-.cin .hero3d{perspective:1100px;perspective-origin:50% 50%;}
+/* PANOS KHAN — V18.1 RESPONSIVE PLANETARY POLISH */
+/* Mobile: fixed contact positions. Desktop: controlled 3D depth/parallax. */
+.cin .hero3d{perspective:1200px;perspective-origin:50% 50%;}
 .cin .hero3d .core{transform:translate3d(calc(var(--mx,0px) * .045),calc(var(--my,0px) * .045),22px) rotateX(var(--core-rx,0deg)) rotateY(var(--core-ry,0deg));}
 .cin .hero3d .corelabel{transform:translate3d(calc(var(--mx,0px) * .025),calc(var(--my,0px) * .025),26px);}
 .cin .hero3d .n1{transform:translate3d(calc(var(--mx,0px) * .16),calc(var(--my,0px) * .16),42px) rotateY(-2deg);}
@@ -8,59 +8,33 @@
 .cin .hero3d .n3{transform:translate3d(calc(var(--mx,0px) * .20),calc(var(--my,0px) * .20),52px) rotateY(2deg);}
 .cin .hero3d .n4{transform:translate3d(calc(var(--mx,0px) * .24),calc(var(--my,0px) * .24),30px) rotateY(-1deg);}
 .cin .hero3d .n5{transform:translate3d(calc(var(--mx,0px) * .18),calc(var(--my,0px) * .18),46px) rotateY(1deg);}
+.cin .hero3d .node{will-change:transform,filter;}
 .cin .hero3d .node:hover,.cin .hero3d .node:focus-visible{filter:saturate(1.22) brightness(1.07)!important;}
-
-/* FINAL DESKTOP LOCK — full composition remains inside the first viewport. */
-@media (min-width:901px){
-  .cin-main{width:100%;max-width:none!important;margin:0!important;overflow-x:hidden!important}
-  .cin-hero{display:grid!important;grid-template-columns:minmax(420px,.9fr) minmax(560px,1.1fr)!important;align-items:center!important;gap:24px!important;min-height:calc(100vh - 76px)!important;padding:42px clamp(30px,5vw,86px) 42px!important;box-sizing:border-box!important}
-  .cin-hero>div:first-child{min-width:0!important;max-width:650px!important;align-self:center!important}
-  .cin-hero>.hero3d{grid-column:2!important;grid-row:1!important;position:relative!important;width:100%!important;height:min(690px,calc(100vh - 128px))!important;min-height:590px!important;max-height:690px!important;margin:0!important;overflow:hidden!important;border-radius:34px!important;box-sizing:border-box!important;isolation:isolate!important}
-  .cin-h1{font-size:clamp(50px,4.05vw,68px)!important;line-height:.99!important;letter-spacing:-.045em!important;max-width:620px!important}
-  .cin-lead{max-width:570px!important;font-size:17px!important;line-height:1.6!important}
-  .hero3d .core{left:50%!important;top:52%!important;width:290px!important;height:290px!important}
-  .hero3d .corelabel{left:50%!important;top:79%!important;white-space:nowrap!important}
-  .hero3d .node{position:absolute!important;width:128px!important;height:128px!important;min-width:128px!important;max-width:128px!important;z-index:12!important}
-  .hero3d .n1{left:50%!important;top:4%!important;right:auto!important;bottom:auto!important}
-  .hero3d .n2{left:3%!important;top:35%!important;right:auto!important;bottom:auto!important}
-  .hero3d .n3{right:3%!important;top:35%!important;left:auto!important;bottom:auto!important}
-  .hero3d .n4{left:13%!important;bottom:4%!important;right:auto!important;top:auto!important}
-  .hero3d .n5{right:13%!important;bottom:4%!important;left:auto!important;top:auto!important}
-  .hero3d .node b{font-size:12px!important;letter-spacing:.15em!important}.hero3d .node small{font-size:9px!important}
-}
-
-/* TOUCH / MOBILE: one contained stage; movement changes depth only, never X/Y placement. */
-@media (pointer:coarse),(max-width:900px){
-  .cin .hero3d{perspective:none;}
+@media (pointer:coarse),(max-width:600px){
+  .cin .hero3d{perspective:none;overflow:visible;}
   .cin .hero3d .core{transform:translate3d(0,0,22px)!important;}
   .cin .hero3d .corelabel{transform:translateZ(26px)!important;}
-  .cin .hero3d .n1{transform:translateZ(26px)!important}.cin .hero3d .n2{transform:translateZ(14px)!important}.cin .hero3d .n3{transform:translateZ(30px)!important}.cin .hero3d .n4{transform:translateZ(20px)!important}.cin .hero3d .n5{transform:translateZ(28px)!important}
+  /* Fixed mobile contact geometry: no X/Y animation or pointer parallax. */
+  .cin .hero3d .n1{transform:translate3d(-50%,-50%,26px)!important;}
+  .cin .hero3d .n2{transform:translate3d(-50%,-50%,14px)!important;}
+  .cin .hero3d .n3{transform:translate3d(-50%,-50%,30px)!important;}
+  .cin .hero3d .n4{transform:translate3d(-50%,-50%,20px)!important;}
+  .cin .hero3d .n5{transform:translate3d(-50%,-50%,28px)!important;}
+  .cin .hero3d .node:hover,.cin .hero3d .node:focus-visible{filter:saturate(1.18) brightness(1.05)!important;}
 }
-
-/* MOBILE CONSTELLATION — all planets stay inside the same stage. */
 @media (max-width:600px){
-  .cin .cin-hero{display:flex!important;flex-direction:column!important;gap:0!important;overflow:hidden!important}
-  .cin .cin-hero>.hero3d{order:1!important;position:relative!important;width:100%!important;height:560px!important;min-height:560px!important;max-height:560px!important;margin:0!important;overflow:hidden!important;isolation:isolate!important}
-  .cin .cin-hero>div:first-child{order:2!important;width:100%!important;margin:0!important}
-  .cin .hero3d .core{left:50%!important;top:48%!important;width:290px!important;height:290px!important;transform:translate3d(-50%,-50%,22px)!important;animation:pkMobileCoreStable 4.8s ease-in-out infinite!important}
-  .cin .hero3d .corelabel{left:50%!important;top:82%!important;transform:translate3d(-50%,-50%,26px)!important}
-  .cin .hero3d .n1{left:50%!important;right:auto!important;top:5%!important;bottom:auto!important;transform:translate3d(-50%,0,26px)!important;animation:pkMobileN1 6.8s ease-in-out infinite!important}
-  .cin .hero3d .n2{left:3%!important;right:auto!important;top:36%!important;bottom:auto!important;transform:translate3d(0,0,14px)!important;animation:pkMobileN2 7.4s ease-in-out infinite!important}
-  .cin .hero3d .n3{right:3%!important;left:auto!important;top:36%!important;bottom:auto!important;transform:translate3d(0,0,30px)!important;animation:pkMobileN3 7s ease-in-out infinite!important}
-  .cin .hero3d .n4{left:8%!important;right:auto!important;bottom:5%!important;top:auto!important;transform:translate3d(0,0,20px)!important;animation:pkMobileN4 7.8s ease-in-out infinite!important}
-  .cin .hero3d .n5{right:8%!important;left:auto!important;bottom:5%!important;top:auto!important;transform:translate3d(0,0,28px)!important;animation:pkMobileN5 7.2s ease-in-out infinite!important}
-  .cin .hero3d .node{position:absolute!important;z-index:12!important}
+  .cin .hero3d .n1{left:50%!important;top:14%!important;}
+  .cin .hero3d .n2{left:21%!important;top:43%!important;}
+  .cin .hero3d .n3{left:79%!important;top:43%!important;}
+  .cin .hero3d .n4{left:31%!important;top:76%!important;}
+  .cin .hero3d .n5{left:69%!important;top:76%!important;}
 }
-@media (max-width:390px){
-  .cin .cin-hero>.hero3d{height:535px!important;min-height:535px!important;max-height:535px!important}
-  .cin .hero3d .core{width:265px!important;height:265px!important}
-  .cin .hero3d .node{width:104px!important;height:104px!important;min-width:104px!important;max-width:104px!important}
-  .cin .hero3d .n2{left:2%!important}.cin .hero3d .n3{right:2%!important}.cin .hero3d .n4{left:5%!important}.cin .hero3d .n5{right:5%!important}
+@media (min-width:601px){
+  .cin .hero3d .node{transition:transform .22s ease-out,filter .35s ease,box-shadow .35s ease;}
+  .cin .hero3d .n1:hover,.cin .hero3d .n1:focus-visible{transform:translate3d(calc(var(--mx,0px) * .16),calc(var(--my,0px) * .16 - 8px),82px) rotateY(-3deg)!important;}
+  .cin .hero3d .n2:hover,.cin .hero3d .n2:focus-visible{transform:translate3d(calc(var(--mx,0px) * .28),calc(var(--my,0px) * .28 - 8px),60px) rotateY(-2deg)!important;}
+  .cin .hero3d .n3:hover,.cin .hero3d .n3:focus-visible{transform:translate3d(calc(var(--mx,0px) * .20),calc(var(--my,0px) * .20 - 8px),92px) rotateY(3deg)!important;}
+  .cin .hero3d .n4:hover,.cin .hero3d .n4:focus-visible{transform:translate3d(calc(var(--mx,0px) * .24),calc(var(--my,0px) * .24 - 8px),70px) rotateY(-2deg)!important;}
+  .cin .hero3d .n5:hover,.cin .hero3d .n5:focus-visible{transform:translate3d(calc(var(--mx,0px) * .18),calc(var(--my,0px) * .18 - 8px),86px) rotateY(2deg)!important;}
 }
-@keyframes pkMobileCoreStable{0%,100%{transform:translate3d(-50%,-50%,22px) scale(1);filter:brightness(.98)}50%{transform:translate3d(-50%,-50%,28px) scale(1.035);filter:brightness(1.14)}}
-@keyframes pkMobileN1{0%,100%{transform:translate3d(-50%,0,26px) translateY(0);filter:brightness(.96)}50%{transform:translate3d(-50%,0,34px) translateY(-7px);filter:brightness(1.1)}}
-@keyframes pkMobileN2{0%,100%{transform:translate3d(0,0,14px) translateY(0);filter:brightness(.96)}50%{transform:translate3d(0,0,22px) translateY(-7px);filter:brightness(1.1)}}
-@keyframes pkMobileN3{0%,100%{transform:translate3d(0,0,30px) translateY(0);filter:brightness(.96)}50%{transform:translate3d(0,0,40px) translateY(-7px);filter:brightness(1.12)}}
-@keyframes pkMobileN4{0%,100%{transform:translate3d(0,0,20px) translateY(0);filter:brightness(.96)}50%{transform:translate3d(0,0,28px) translateY(-7px);filter:brightness(1.1)}}
-@keyframes pkMobileN5{0%,100%{transform:translate3d(0,0,28px) translateY(0);filter:brightness(.96)}50%{transform:translate3d(0,0,38px) translateY(-7px);filter:brightness(1.12)}}
-@media(prefers-reduced-motion:reduce){.cin .hero3d .core,.cin .hero3d .node{animation:none!important}.cin .hero3d .core{transform:translate3d(-50%,-50%,22px)!important}.cin .hero3d .n1{transform:translate3d(-50%,0,26px)!important}.cin .hero3d .n2{transform:translate3d(0,0,14px)!important}.cin .hero3d .n3{transform:translate3d(0,0,30px)!important}.cin .hero3d .n4{transform:translate3d(0,0,20px)!important}.cin .hero3d .n5{transform:translate3d(0,0,28px)!important}}
+@media(prefers-reduced-motion:reduce){.cin .hero3d{perspective:none}.cin .hero3d .core,.cin .hero3d .corelabel,.cin .hero3d .node{transition:none!important;}}

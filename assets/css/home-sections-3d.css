@@ -1,0 +1,45 @@
+/* Homepage section depth system — extends the existing 3D language beyond the hero. */
+.cin .section{position:relative;isolation:isolate;perspective:1200px;}
+.cin .section::after{content:"";position:absolute;inset:12% 2% 8%;z-index:0;pointer-events:none;border:1px solid rgba(32,217,255,.055);border-radius:32px;transform:translateZ(-40px) rotateX(.7deg);box-shadow:0 35px 90px rgba(0,0,0,.18),inset 0 0 70px rgba(32,217,255,.025);}
+.cin .section::before{z-index:0;}
+
+/* Floating depth planes. */
+.cin .eco,.cin #capabilities,.cin #projects,.cin .proof,.cin .cta{transform-style:preserve-3d;}
+.cin .eco::after{background:radial-gradient(circle at 50% 45%,rgba(32,217,255,.06),transparent 42%),linear-gradient(135deg,rgba(32,217,255,.025),transparent 55%);}
+.cin #capabilities::after{background:radial-gradient(circle at 18% 35%,rgba(139,92,246,.055),transparent 35%),radial-gradient(circle at 82% 65%,rgba(32,217,255,.045),transparent 35%);}
+.cin #projects::after{background:linear-gradient(120deg,rgba(32,217,255,.035),transparent 38%,rgba(139,92,246,.045));}
+.cin .proof::after{background:radial-gradient(circle at 75% 35%,rgba(32,217,255,.055),transparent 36%);}
+.cin .cta::after{background:radial-gradient(circle at 50% 35%,rgba(139,92,246,.07),transparent 42%);}
+
+/* Add Z-depth independently so existing X/Y/rotation transforms are preserved. */
+.cin .cards,.cin .projects,.cin .prooflist{transform-style:preserve-3d;}
+.cin .cards .card,.cin .projects .project,.cin .proofitem{backface-visibility:hidden;}
+.cin .cards .card:nth-child(odd){translate:0 0 10px;transform:rotateX(.35deg);}
+.cin .cards .card:nth-child(even){translate:0 0 18px;transform:rotateX(-.35deg);}
+.cin .projects .project:nth-child(1){translate:0 0 16px;transform:rotateY(-1deg);}
+.cin .projects .project:nth-child(2){translate:0 0 28px;}
+.cin .projects .project:nth-child(3){translate:0 0 16px;transform:rotateY(1deg);}
+.cin .proofitem:nth-child(odd){translate:0 0 12px;transform:rotateY(-.7deg);}
+.cin .proofitem:nth-child(even){translate:0 0 20px;transform:rotateY(.7deg);}
+
+/* Keep existing hover X/Y movement and add only the extra Z lift. */
+.cin .cards .card:hover,.cin .projects .project:hover,.cin .proofitem:hover{translate:0 0 30px;}
+.cin .cards .card:focus-within,.cin .projects .project:focus-within,.cin .proofitem:focus-visible{outline:2px solid rgba(32,217,255,.75);outline-offset:4px;}
+.cin .cards .card a:focus-visible,.cin .projects .project a:focus-visible,.cin .proofitem:focus-visible{outline:2px solid currentColor;outline-offset:4px;border-radius:6px;}
+
+/* Subtle heading depth accent. */
+.cin #capabilities h2,.cin #projects h2,.cin .proof h2,.cin .cta h2{position:relative;translate:0 0 18px;}
+.cin #capabilities h2::after,.cin #projects h2::after,.cin .proof h2::after,.cin .cta h2::after{content:"";position:absolute;left:0;bottom:-12px;width:72px;height:2px;background:linear-gradient(90deg,rgba(32,217,255,.8),rgba(139,92,246,.35),transparent);box-shadow:0 0 16px rgba(32,217,255,.2);}
+
+@media(max-width:700px){
+  .cin .section{perspective:900px;}
+  .cin .section::after{inset:7% 0 5%;border-radius:24px;transform:translateZ(-24px);}
+  .cin .cards .card:nth-child(n),.cin .projects .project:nth-child(n),.cin .proofitem:nth-child(n){translate:0 0 5px;transform:none;}
+  .cin .cards .card:hover,.cin .projects .project:hover,.cin .proofitem:hover{translate:0 0 10px;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .cin .section::after{transform:none;}
+  .cin .cards .card:nth-child(n),.cin .projects .project:nth-child(n),.cin .proofitem:nth-child(n),.cin #capabilities h2,.cin #projects h2,.cin .proof h2,.cin .cta h2{transform:none;translate:none;}
+  .cin .cards .card:hover,.cin .projects .project:hover,.cin .proofitem:hover{transform:none!important;translate:none;}
+}

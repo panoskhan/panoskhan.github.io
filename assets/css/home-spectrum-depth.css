@@ -1,0 +1,27 @@
+/* Final spectrum depth pass — richer color separation and a balanced spatial layout. */
+:root{--pk-aurora:#48f7d0;--pk-electric:#50a7ff;--pk-magenta:#ef65ff;--pk-amber:#ffc45b;}
+.cin{background:radial-gradient(circle at 12% 16%,rgba(72,247,208,.09),transparent 24%),radial-gradient(circle at 86% 14%,rgba(239,101,255,.10),transparent 28%),radial-gradient(circle at 52% 63%,rgba(80,167,255,.06),transparent 34%),#050914;}
+.cin .cin-nav{background:linear-gradient(105deg,rgba(5,13,31,.92),rgba(10,12,38,.82) 56%,rgba(24,10,48,.84));border-bottom-color:rgba(80,167,255,.22);box-shadow:0 14px 44px rgba(0,0,0,.32),0 1px 0 rgba(72,247,208,.12),inset 0 -1px rgba(239,101,255,.07);}
+.cin .cin-h1 .grad{background:linear-gradient(100deg,var(--pk-aurora),var(--pk-cyan) 30%,var(--pk-electric) 58%,var(--pk-magenta));-webkit-background-clip:text;background-clip:text;}
+.cin .ey{color:var(--pk-aurora);text-shadow:0 0 18px rgba(72,247,208,.28);}
+.cin .hero3d::before{background:radial-gradient(circle at 34% 42%,rgba(72,247,208,.22),transparent 25%),radial-gradient(circle at 73% 44%,rgba(239,101,255,.19),transparent 35%),radial-gradient(circle at 51% 68%,rgba(80,167,255,.17),transparent 45%);}
+.cin .hero3d .core{box-shadow:0 30px 64px rgba(0,0,0,.48),0 0 58px rgba(72,247,208,.19),0 0 110px rgba(239,101,255,.12),inset 12px 12px 28px rgba(255,255,255,.08),inset -22px -24px 34px rgba(2,6,22,.62);}
+.cin .hero3d .core::before{border-color:rgba(72,247,208,.36);box-shadow:0 0 46px rgba(72,247,208,.38),0 0 102px rgba(239,101,255,.16),inset 0 0 42px rgba(80,167,255,.18);}
+.cin .hero3d .node{border-color:rgba(80,167,255,.25);box-shadow:0 18px 35px rgba(0,0,0,.34),inset 0 1px rgba(255,255,255,.13),inset 0 -12px 22px rgba(2,7,22,.2);}
+.cin .hero3d .n1{border-color:rgba(72,247,208,.34)}.cin .hero3d .n2{border-color:rgba(80,167,255,.34)}.cin .hero3d .n3{border-color:rgba(239,101,255,.34)}.cin .hero3d .n4{border-color:rgba(255,196,91,.34)}.cin .hero3d .n5{border-color:rgba(32,217,255,.34)}
+.cin .hero3d .node:hover,.cin .hero3d .node:focus-visible{box-shadow:0 26px 48px rgba(0,0,0,.42),0 0 34px rgba(80,167,255,.21),inset 0 1px rgba(255,255,255,.18);}
+.cin .section::after{border-color:rgba(80,167,255,.10);box-shadow:0 38px 96px rgba(0,0,0,.24),inset 0 0 82px rgba(80,167,255,.035);}
+.cin #capabilities::after{background:radial-gradient(circle at 12% 30%,rgba(72,247,208,.08),transparent 32%),radial-gradient(circle at 84% 66%,rgba(239,101,255,.08),transparent 36%);}
+.cin #projects::after{background:radial-gradient(circle at 86% 24%,rgba(255,196,91,.07),transparent 30%),linear-gradient(115deg,rgba(80,167,255,.05),transparent 44%,rgba(239,101,255,.07));}
+.cin .cards,.cin .projects,.cin .prooflist{perspective:1400px;}
+.cin .cards .card,.cin .projects .project,.cin .proofitem{border-color:rgba(80,167,255,.24);box-shadow:0 20px 46px rgba(0,0,0,.32),inset 0 1px rgba(255,255,255,.09),inset 0 -12px 24px rgba(1,5,18,.2);}
+.cin .cards .card:nth-child(3n+1)::before,.cin .projects .project:nth-child(3n+1)::before{background:radial-gradient(circle at 14% 0%,rgba(72,247,208,.18),transparent 34%),linear-gradient(120deg,transparent 45%,rgba(80,167,255,.08));}
+.cin .cards .card:nth-child(3n+2)::before,.cin .projects .project:nth-child(3n+2)::before{background:radial-gradient(circle at 14% 0%,rgba(80,167,255,.18),transparent 34%),linear-gradient(120deg,transparent 45%,rgba(239,101,255,.09));}
+.cin .cards .card:nth-child(3n)::before,.cin .projects .project:nth-child(3n)::before{background:radial-gradient(circle at 14% 0%,rgba(239,101,255,.16),transparent 34%),linear-gradient(120deg,transparent 45%,rgba(255,196,91,.08));}
+.cin .cards .card:hover,.cin .projects .project:hover,.cin .proofitem:hover{border-color:rgba(72,247,208,.5);box-shadow:0 30px 62px rgba(0,0,0,.42),0 0 34px rgba(80,167,255,.15),inset 0 1px rgba(255,255,255,.14);}
+.cin .proofitem:nth-child(2n){border-color:rgba(239,101,255,.28)}.cin .proofitem:nth-child(3n){border-color:rgba(255,196,91,.26)}
+.cin .btn.primary{background:linear-gradient(110deg,#0baab7,#2588e8 52%,#8d48d7);box-shadow:0 13px 30px rgba(25,136,232,.26),0 0 28px rgba(72,247,208,.12),inset 0 1px rgba(255,255,255,.22);}
+.cin .cta{background:radial-gradient(circle at 14% 25%,rgba(72,247,208,.09),transparent 26%),radial-gradient(circle at 86% 72%,rgba(239,101,255,.1),transparent 30%);}
+@media(max-width:900px){.cin .cin-hero{grid-template-columns:1fr;gap:0}.cin .cin-hero>div:first-child{max-width:680px}.cin .hero3d{margin-inline:auto;width:min(100%,650px)}}
+@media(max-width:600px){.cin .cin-nav{background:rgba(5,13,31,.94)}.cin .cards,.cin .projects,.cin .prooflist{perspective:900px}.cin .hero3d .core{box-shadow:0 22px 46px rgba(0,0,0,.44),0 0 42px rgba(72,247,208,.17),inset 8px 8px 20px rgba(255,255,255,.07),inset -16px -18px 26px rgba(2,6,22,.58)}}
+@media(prefers-reduced-motion:reduce){.cin .hero3d::before{animation:none}.cin .cards .card,.cin .projects .project,.cin .proofitem{transition:none}}

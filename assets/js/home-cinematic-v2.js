@@ -11,12 +11,12 @@
     document.head.appendChild(link);
   }
 
-  // V18 is the final responsive placement pass. It loads after the earlier
-  // constellation layers so the approved mobile contact positions win.
-  if (!document.querySelector('link[data-pk-planetary-v18]')) {
+  // V18 is the final responsive placement pass. Ensure the canonical stylesheet
+  // is present so the approved mobile contact positions win.
+  if (!document.querySelector('link[data-pk-planetary-v18], link[href="/assets/css/home-cinematic-v18.css"]')) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/assets/css/home-planetary-production-v18.css';
+    link.href = '/assets/css/home-cinematic-v18.css';
     link.dataset.pkPlanetaryV18 = 'true';
     document.head.appendChild(link);
   }

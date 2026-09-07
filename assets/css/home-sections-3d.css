@@ -1,7 +1,7 @@
 /* Homepage section depth system — extends the existing 3D language beyond the hero. */
-.cin .section{isolation:isolate;perspective:1200px;}
-.cin .section::after{content:"";position:absolute;inset:12% 2% 8%;z-index:-2;pointer-events:none;border:1px solid rgba(32,217,255,.055);border-radius:32px;transform:translateZ(-40px) rotateX(.7deg);box-shadow:0 35px 90px rgba(0,0,0,.18),inset 0 0 70px rgba(32,217,255,.025);}
-.cin .section::before{z-index:1;}
+.cin .section{position:relative;isolation:isolate;perspective:1200px;}
+.cin .section::after{content:"";position:absolute;inset:12% 2% 8%;z-index:0;pointer-events:none;border:1px solid rgba(32,217,255,.055);border-radius:32px;transform:translateZ(-40px) rotateX(.7deg);box-shadow:0 35px 90px rgba(0,0,0,.18),inset 0 0 70px rgba(32,217,255,.025);}
+.cin .section::before{z-index:0;}
 
 /* Floating depth planes. */
 .cin .eco,.cin #capabilities,.cin #projects,.cin .proof,.cin .cta{transform-style:preserve-3d;}
@@ -27,8 +27,7 @@
 .cin .cards .card:focus-within,.cin .projects .project:focus-within,.cin .proofitem:focus-visible{outline:2px solid rgba(32,217,255,.75);outline-offset:4px;}
 .cin .cards .card a:focus-visible,.cin .projects .project a:focus-visible,.cin .proofitem:focus-visible{outline:2px solid currentColor;outline-offset:4px;border-radius:6px;}
 
-/* Subtle grid horizon behind content-heavy sections. */
-.cin #capabilities::marker,.cin #projects::marker{display:none;}
+/* Subtle heading depth accent. */
 .cin #capabilities h2,.cin #projects h2,.cin .proof h2,.cin .cta h2{position:relative;transform:translateZ(18px);}
 .cin #capabilities h2::after,.cin #projects h2::after,.cin .proof h2::after,.cin .cta h2::after{content:"";position:absolute;left:0;bottom:-12px;width:72px;height:2px;background:linear-gradient(90deg,rgba(32,217,255,.8),rgba(139,92,246,.35),transparent);box-shadow:0 0 16px rgba(32,217,255,.2);}
 

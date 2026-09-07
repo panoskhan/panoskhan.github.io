@@ -1,41 +1,37 @@
-/* PANOS KHAN — V18 RESPONSIVE PLANETARY COMPOSITION
-   Final positioning pass: mobile geometry is locked to the viewport; desktop gets
-   controlled depth without changing the approved five-planet architecture.
+/* PANOS KHAN — V18 RESPONSIVE 3D DEPTH
+   Positioning correction: preserve the V17 X/Y constellation anchors and add
+   depth only, so the 3D pass cannot shift the planets away from their layout.
 */
 
 .cin .hero3d{
   transform-style:preserve-3d;
-  perspective:1200px;
-  perspective-origin:50% 48%;
+  perspective:1100px;
+  perspective-origin:50% 50%;
 }
 
-/* Desktop: give each planet a deliberate depth channel while keeping the constellation stable. */
 @media (min-width:601px){
   .cin .hero3d .node{will-change:transform,filter;}
-  .cin .hero3d .n1{transform:translate3d(calc(var(--mx,0px)*.10),calc(var(--my,0px)*.10),70px) rotateY(-2deg)!important;}
-  .cin .hero3d .n2{transform:translate3d(calc(var(--mx,0px)*.16),calc(var(--my,0px)*.16),28px)!important;}
-  .cin .hero3d .n3{transform:translate3d(calc(var(--mx,0px)*.12),calc(var(--my,0px)*.12),78px) rotateY(2deg)!important;}
-  .cin .hero3d .n4{transform:translate3d(calc(var(--mx,0px)*.14),calc(var(--my,0px)*.14),42px) rotateY(-1deg)!important;}
-  .cin .hero3d .n5{transform:translate3d(calc(var(--mx,0px)*.11),calc(var(--my,0px)*.11),62px) rotateY(1deg)!important;}
+  .cin .hero3d .n1{transform:translate3d(calc(var(--mx,0px)*.16),calc(var(--my,0px)*.16),42px) rotateY(-2deg)!important;}
+  .cin .hero3d .n2{transform:translate3d(calc(var(--mx,0px)*.28),calc(var(--my,0px)*.28),20px)!important;}
+  .cin .hero3d .n3{transform:translate3d(calc(var(--mx,0px)*.20),calc(var(--my,0px)*.20),52px) rotateY(2deg)!important;}
+  .cin .hero3d .n4{transform:translate3d(calc(var(--mx,0px)*.24),calc(var(--my,0px)*.24),30px) rotateY(-1deg)!important;}
+  .cin .hero3d .n5{transform:translate3d(calc(var(--mx,0px)*.18),calc(var(--my,0px)*.18),46px) rotateY(1deg)!important;}
   .cin .hero3d .core{filter:saturate(1.08) brightness(1.03);}
   .cin .hero3d .node:hover,.cin .hero3d .node:focus-visible{filter:saturate(1.28) brightness(1.10)!important;}
 }
 
-/* Phone: use fixed anchor positions instead of transform-based placement.
-   This prevents the V16/V17 depth transforms from moving planets away from their
-   intended contact points on narrow screens. */
 @media (max-width:600px){
   html,body{overflow-x:hidden!important;}
   .cin,.cin-main,.cin-hero{overflow-x:hidden!important;}
   .cin .hero3d{
     width:100%!important;
-    height:610px!important;
-    min-height:610px!important;
+    height:560px!important;
+    min-height:560px!important;
+    max-height:560px!important;
     position:relative!important;
     perspective:none!important;
     transform-style:preserve-3d!important;
   }
-
   .cin .hero3d .node{
     position:absolute!important;
     width:108px!important;
@@ -49,34 +45,31 @@
     will-change:filter!important;
   }
 
-  /* Exact mobile anchors. No translateX/Y is used for the five planets. */
-  .cin .hero3d .n1{left:50%!important;top:5%!important;right:auto!important;bottom:auto!important;transform:translateX(-50%) translateZ(34px)!important;}
-  .cin .hero3d .n2{left:3%!important;top:35%!important;right:auto!important;bottom:auto!important;transform:translateZ(18px)!important;}
-  .cin .hero3d .n3{right:3%!important;top:35%!important;left:auto!important;bottom:auto!important;transform:translateZ(42px)!important;}
-  .cin .hero3d .n4{left:8%!important;bottom:5%!important;right:auto!important;top:auto!important;transform:translateZ(24px)!important;}
-  .cin .hero3d .n5{right:8%!important;bottom:5%!important;left:auto!important;top:auto!important;transform:translateZ(36px)!important;}
+  /* Preserve the approved V17 mobile anchors; only Z-depth changes. */
+  .cin .hero3d .n1{left:50%!important;right:auto!important;top:5%!important;bottom:auto!important;transform:translate3d(-50%,0,26px)!important;}
+  .cin .hero3d .n2{left:3%!important;right:auto!important;top:36%!important;bottom:auto!important;transform:translate3d(0,0,14px)!important;}
+  .cin .hero3d .n3{right:3%!important;left:auto!important;top:36%!important;bottom:auto!important;transform:translate3d(0,0,30px)!important;}
+  .cin .hero3d .n4{left:8%!important;right:auto!important;bottom:5%!important;top:auto!important;transform:translate3d(0,0,20px)!important;}
+  .cin .hero3d .n5{right:8%!important;left:auto!important;bottom:5%!important;top:auto!important;transform:translate3d(0,0,28px)!important;}
 
-  /* On compact phones keep every circle safely inside the viewport. */
   @media(max-width:390px){
-    .cin .hero3d{height:560px!important;min-height:560px!important;}
-    .cin .hero3d .node{width:102px!important;min-width:102px!important;height:102px!important;min-height:102px!important;}
-    .cin .hero3d .n1{top:4%!important;}
-    .cin .hero3d .n2{left:2%!important;top:35%!important;}
-    .cin .hero3d .n3{right:2%!important;top:35%!important;}
-    .cin .hero3d .n4{left:5%!important;bottom:4%!important;}
-    .cin .hero3d .n5{right:5%!important;bottom:4%!important;}
+    .cin .hero3d{height:535px!important;min-height:535px!important;max-height:535px!important;}
+    .cin .hero3d .node{width:104px!important;min-width:104px!important;height:104px!important;min-height:104px!important;max-width:104px!important;}
+    .cin .hero3d .n2{left:2%!important;}
+    .cin .hero3d .n3{right:2%!important;}
+    .cin .hero3d .n4{left:5%!important;}
+    .cin .hero3d .n5{right:5%!important;}
   }
 
-  /* Touch devices get lift only; never alter their contact coordinates. */
-  .cin .hero3d .node:hover,.cin .hero3d .node:focus-visible{transform:translateY(-4px)!important;filter:saturate(1.24) brightness(1.07)!important;}
-  .cin .hero3d .n1:hover,.cin .hero3d .n1:focus-visible{transform:translateX(-50%) translateY(-4px) translateZ(48px)!important;}
-  .cin .hero3d .n2:hover,.cin .hero3d .n2:focus-visible{transform:translateY(-4px) translateZ(32px)!important;}
-  .cin .hero3d .n3:hover,.cin .hero3d .n3:focus-visible{transform:translateY(-4px) translateZ(56px)!important;}
-  .cin .hero3d .n4:hover,.cin .hero3d .n4:focus-visible{transform:translateY(-4px) translateZ(38px)!important;}
-  .cin .hero3d .n5:hover,.cin .hero3d .n5:focus-visible{transform:translateY(-4px) translateZ(50px)!important;}
+  .cin .hero3d .node:hover,.cin .hero3d .node:focus-visible{filter:saturate(1.24) brightness(1.07)!important;}
+  .cin .hero3d .n1:hover,.cin .hero3d .n1:focus-visible{transform:translate3d(-50%,-4px,34px)!important;}
+  .cin .hero3d .n2:hover,.cin .hero3d .n2:focus-visible{transform:translate3d(0,-4px,22px)!important;}
+  .cin .hero3d .n3:hover,.cin .hero3d .n3:focus-visible{transform:translate3d(0,-4px,40px)!important;}
+  .cin .hero3d .n4:hover,.cin .hero3d .n4:focus-visible{transform:translate3d(0,-4px,28px)!important;}
+  .cin .hero3d .n5:hover,.cin .hero3d .n5:focus-visible{transform:translate3d(0,-4px,36px)!important;}
 
-  .cin .hero3d .core{transform:translate3d(0,0,22px)!important;}
-  .cin .hero3d .corelabel{transform:translate(-50%,116px)!important;}
+  .cin .hero3d .core{transform:translate3d(-50%,-50%,22px)!important;}
+  .cin .hero3d .corelabel{transform:translate3d(-50%,-50%,26px)!important;}
 }
 
 @media(prefers-reduced-motion:reduce){

@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panos Khan - AI & Digital Transformation Consultant - Futuristic Portfolio">
+    <meta name="theme-color" content="#0a0e27">
+    <title>Panos Khan | AI & Digital Transformation Consultant</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: #0a0e27;
+            color: #e0e7ff;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* Background Animation */
+        .cyber-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at 50% 50%, rgba(10, 14, 39, 1) 0%, rgba(5, 7, 18, 1) 100%);
+            overflow: hidden;
+        }
+
+        .cyber-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+
+        .cyber-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: orb-pulse 6s ease-in-out infinite;
+        }
+
+        .orb1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 229, 255, 0.3) 0%, transparent 70%);
+            top: -100px;
+            left: 10%;
+            animation: orb-pulse 8s ease-in-out infinite;
+        }
+
+        .orb2 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%);
+            bottom: -50px;
+            right: 5%;
+            animation: orb-pulse 7s ease-in-out infinite reverse;
+        }
+
+        @keyframes orb-pulse {
+            0%, 100% { transform: scale(1) translateY(0); opacity: 0.3; }
+            50% { transform: scale(1.2) translateY(20px); opacity: 0.5; }
+        }
+
+        /* Header Navigation */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(10, 14, 39, 0.8);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+            padding: 16px 0;
+        }
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00e5ff 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #e0e7ff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #00e5ff;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00e5ff, #a855f7);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            background: rgba(0, 229, 255, 0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: rgba(0, 229, 255, 0.6);
+            background: rgba(0, 229, 255, 0.15);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 80px 24px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(42px, 8vw, 72px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, #a855f7 50%, #00e5ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: #a0aec0;
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .hero-text .highlight {
+            color: #00e5ff;
+            font-weight: 600;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border: 2px solid;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00e5ff 0%, #a855f7 100%);
+            border-color: transparent;
+            color: #0a0e27;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 40px rgba(0, 229, 255, 0.6), 0 0 60px rgba(168, 85, 247, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border-color: rgba(0, 229, 255, 0.5);
+            color: #00e5ff;
+        }
+
+        .btn-secondary:hover {
+            border-color: #00e5ff;
+            background: rgba(0, 229, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .stat-item {
+            padding: 16px;
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 12px;
+            background: rgba(0, 229, 255, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            border-color: rgba(0, 229, 255, 0.6);
+            background: rgba(0, 229, 255, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 800;
+            color: #00e5ff;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #a0aec0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 3D Hub System */
+        .hub-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .hub-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 50;
+        }
+
+        .hub-badge {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(135deg, rgba(0, 229, 255, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
+            border: 2px solid rgba(0, 229, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 72px;
+            font-weight: 900;
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(168, 85, 247, 0.1));
+            box-shadow: 
+                0 0 0 2px rgba(0, 229, 255, 0.2),
+                0 0 40px rgba(0, 229, 255, 0.3),
+                inset 0 0 40px rgba(0, 229, 255, 0.1);
+            animation: hub-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes hub-pulse {
+            0%, 100% {
+                box-shadow: 
+                    0 0 0 2px rgba(0, 229, 255, 0.2),
+                    0 0 40px rgba(0, 229, 255, 0.3),
+                    inset 0 0 40px rgba(0, 229, 255, 0.1);
+            }
+            50% {
+                box-shadow: 
+                    0 0 0 2px rgba(0, 229, 255, 0.4),
+                    0 0 60px rgba(0, 229, 255, 0.5),
+                    inset 0 0 60px rgba(0, 229, 255, 0.15);
+            }
+        }
+
+        .hub-label {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            bottom: -50px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #a0aec0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Node System */
+        .nodes-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .node-item {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .node-circle {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .node-icon {
+            font-size: 32px;
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+
+        .node-text {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .node-label {
+            position: absolute;
+            width: 120px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 5;
+        }
+
+        /* Node Specific Styles */
+        .node-research .node-circle {
+            border-color: #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4), inset 0 0 20px rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+        }
+
+        .node-evidence .node-circle {
+            border-color: #fbbf24;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.4), inset 0 0 20px rgba(251, 191, 36, 0.1);
+            color: #fbbf24;
+        }
+
+        .node-projects .node-circle {
+            border-color: #00e5ff;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4), inset 0 0 20px rgba(0, 229, 255, 0.1);
+            color: #00e5ff;
+        }
+
+        .node-ai .node-circle {
+            border-color: #a855f7;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4), inset 0 0 20px rgba(168, 85, 247, 0.1);
+            color: #a855f7;
+        }
+
+        .node-platform .node-circle {
+            border-color: #06b6d4;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.4), inset 0 0 20px rgba(6, 182, 212, 0.1);
+            color: #06b6d4;
+        }
+
+        .node-item:hover .node-circle {
+            transform: scale(1.15);
+            box-shadow: 0 0 40px currentColor, inset 0 0 30px currentColor;
+        }
+
+        .node-item:hover .node-label {
+            opacity: 1;
+        }
+
+        /* Connection Lines */
+        svg.connections {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .connection-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw-line 2s ease-in-out forwards;
+        }
+
+        @keyframes draw-line {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hub-container {
+                max-width: 400px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 40px 16px;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hub-container {
+                max-width: 280px;
+                margin: 40px auto 0;
+            }
+
+            .hub-badge {
+                width: 140px;
+                height: 140px;
+                font-size: 56px;
+            }
+
+            .node-item {
+                width: 90px;
+                height: 90px;
+            }
+
+            .node-circle {
+                width: 80px;
+                height: 80px;
+            }
+
+            .node-icon {
+                font-size: 24px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .stat-number {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="cyber-bg" aria-hidden="true">
+        <div class="cyber-grid"></div>
+        <div class="cyber-orb orb1"></div>
+        <div class="cyber-orb orb2"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="site-header" role="banner">
+        <div class="header-content">
+            <div class="logo">Panos Khan</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#expertise">Expertise</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#insights">Insights</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home" aria-label="Hero section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>AI, Web Engineering & Growth Systems for Organizations <span class="highlight">That Win</span></h1>
+                    <p>I build intelligent systems, software platforms, and digital strategies that transform ideas into <span class="highlight">measurable results</span>.</p>
+                    
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary">Explore My Work →</button>
+                        <button class="btn btn-secondary">View Projects</button>
+                    </div>
+
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Projects Delivered</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">AI</div>
+                            <div class="stat-label">First Approach</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">🌍</div>
+                            <div class="stat-label">Global Impact</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3D Hub System -->
+                <div class="hub-container" aria-label="Skills hub visualization">
+                    <svg class="connections" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid meet">
+                        <!-- Connection lines will be drawn with JS -->
+                    </svg>
+                    
+                    <div class="nodes-wrapper">
+                        <!-- Center Hub -->
+                        <div class="hub-center">
+                            <div class="hub-badge">PK</div>
+                            <div class="hub-label">Evidence OS</div>
+                        </div>
+
+                        <!-- Nodes -->
+                        <div class="node-item node-research" style="top: 0%; left: 50%; transform: translate(-50%, -50%);">
+                            <div class="node-circle">
+                                <div class="node-icon">🔬</div>
+                                <div class="node-text">Research</div>
+                            </div>
+                            <div class="node-label">Research & Innovation</div>
+                        </div>
+
+                        <div class="node-item node-evidence" style="top: 25%; right: 5%;">
+                            <div class="node-circle">
+                                <div class="node-icon">🛡️</div>
+                                <div class="node-text">Evidence OS</div>
+                            </div>
+                            <div class="node-label">Evidence Network</div>
+                        </div>
+
+                        <div class="node-item node-projects" style="bottom: 5%; right: 15%;">
+                            <div class="node-circle">
+                                <div class="node-icon">🚀</div>
+                                <div class="node-text">Projects</div>
+                            </div>
+                            <div class="node-label">Real-World Impact</div>
+                        </div>
+
+                        <div class="node-item node-ai" style="bottom: 25%; left: 5%;">
+                            <div class="node-circle">
+                                <div class="node-icon">🧠</div>
+                                <div class="node-text">AI Tools</div>
+                            </div>
+                            <div class="node-label">Intelligence Layer</div>
+                        </div>
+
+                        <div class="node-item node-platform" style="top: 25%; left: 5%;">
+                            <div class="node-circle">
+                                <div class="node-icon">⚙️</div>
+                                <div class="node-text">Platform</div>
+                            </div>
+                            <div class="node-label">Scalable Systems</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Draw connection lines between hub and nodes
+        function drawConnections() {
+            const svg = document.querySelector('.connections');
+            const nodes = document.querySelectorAll('.node-item');
+            const hub = document.querySelector('.hub-badge');
+            
+            if (!hub) return;
+            
+            const hubRect = hub.getBoundingClientRect();
+            const containerRect = svg.getBoundingClientRect();
+            
+            const hubX = (hubRect.left - containerRect.left + hubRect.width / 2) / containerRect.width * 500;
+            const hubY = (hubRect.top - containerRect.top + hubRect.height / 2) / containerRect.height * 500;
+            
+            nodes.forEach((node, index) => {
+                const nodeRect = node.getBoundingClientRect();
+                const nodeX = (nodeRect.left - containerRect.left + nodeRect.width / 2) / containerRect.width * 500;
+                const nodeY = (nodeRect.top - containerRect.top + nodeRect.height / 2) / containerRect.height * 500;
+                
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('x1', hubX);
+                line.setAttribute('y1', hubY);
+                line.setAttribute('x2', nodeX);
+                line.setAttribute('y2', nodeY);
+                line.setAttribute('stroke', 'rgba(0, 229, 255, 0.3)');
+                line.setAttribute('stroke-width', '1');
+                line.setAttribute('class', 'connection-line');
+                line.style.animationDelay = `${index * 0.2}s`;
+                
+                svg.appendChild(line);
+            });
+        }
+
+        // Initialize on load and on resize
+        window.addEventListener('load', drawConnections);
+        window.addEventListener('resize', () => {
+            const svg = document.querySelector('.connections');
+            svg.innerHTML = '';
+            drawConnections();
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Theme toggle
+        document.querySelector('.theme-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            this.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+    </script>
+</body>
+</html>

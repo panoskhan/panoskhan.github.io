@@ -24,6 +24,8 @@
 
 /* Keep interaction coherent with the existing unified 3D hover language. */
 .cin .cards .card:hover,.cin .projects .project:hover,.cin .proofitem:hover{transform:translateY(-7px) translateZ(30px) rotateX(1deg)!important;}
+.cin .cards .card:focus-within,.cin .projects .project:focus-within,.cin .proofitem:focus-visible{outline:2px solid rgba(32,217,255,.75);outline-offset:4px;}
+.cin .cards .card a:focus-visible,.cin .projects .project a:focus-visible,.cin .proofitem:focus-visible{outline:2px solid currentColor;outline-offset:4px;border-radius:6px;}
 
 /* Subtle grid horizon behind content-heavy sections. */
 .cin #capabilities::marker,.cin #projects::marker{display:none;}
@@ -40,4 +42,5 @@
 @media(prefers-reduced-motion:reduce){
   .cin .section::after{transform:none;}
   .cin .cards .card:nth-child(n),.cin .projects .project:nth-child(n),.cin .proofitem:nth-child(n),.cin #capabilities h2,.cin #projects h2,.cin .proof h2,.cin .cta h2{transform:none;}
+  .cin .cards .card:hover,.cin .projects .project:hover,.cin .proofitem:hover{transform:none!important;}
 }

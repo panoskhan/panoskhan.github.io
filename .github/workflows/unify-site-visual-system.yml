@@ -2,6 +2,13 @@ name: Validate site visual system
 
 on:
   workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "index.html"
+      - "assets/css/**"
+      - "assets/js/**"
+      - ".github/workflows/unify-site-visual-system.yml"
 
 permissions:
   contents: read
@@ -11,28 +18,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      - name: Verify shared visual system wiring
+      - name: Verify homepage visual-system assets
         shell: bash
         run: |
           python - <<'PY'
           from pathlib import Path
-          marker = '/assets/css/site-unified-3d.css'
-          missing = []
-          checked = 0
-          for path in Path('.').rglob('*.html'):
-              if any(part in {'.git', 'node_modules'} for part in path.parts):
-                  continue
-              checked += 1
-              text = path.read_text(encoding='utf-8')
-              if marker not in text:
-                  missing.append(str(path))
-          print(f'Checked {checked} HTML pages')
+          html = Path('index.html').read_text(encoding='utf-8')
+          required = [
+              '/assets/css/home-cinematic-v2.css',
+              '/assets/css/home-cinematic-v17.css',
+              '/assets/css/v13-mobile-live.css',
+              '/assets/css/home-mobile-color-motion.css',
+              '/assets/js/home-cinematic-v2.js',
+          ]
+          missing = [item for item in required if item not in html or not Path(item.lstrip('/')).exists()]
           if missing:
-              print('Missing shared visual-system stylesheet:')
+              print('Missing homepage visual-system assets:')
               for item in missing:
                   print(item)
               raise SystemExit(1)
-          print('Visual-system wiring verified.')
+          print('Homepage visual-system wiring verified.')
           PY

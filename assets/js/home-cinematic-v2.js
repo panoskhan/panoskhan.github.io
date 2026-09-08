@@ -81,6 +81,13 @@
     microPolishCss.dataset.pkReferenceV23 = 'true';
     document.head.appendChild(microPolishCss);
   }
+  if (!document.querySelector('link[data-pk-lighting-v24]')) {
+    const lightingCss = document.createElement('link');
+    lightingCss.rel = 'stylesheet';
+    lightingCss.href = '/assets/css/home-final-lighting-v24.css?v=20260908-231';
+    lightingCss.dataset.pkLightingV24 = 'true';
+    document.head.appendChild(lightingCss);
+  }
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 

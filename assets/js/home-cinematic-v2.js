@@ -74,6 +74,13 @@
     polishCss.dataset.pkReferenceV22 = 'true';
     document.head.appendChild(polishCss);
   }
+  if (!document.querySelector('link[data-pk-reference-v23]')) {
+    const microPolishCss = document.createElement('link');
+    microPolishCss.rel = 'stylesheet';
+    microPolishCss.href = '/assets/css/home-final-reference-v23.css?v=20260908-230';
+    microPolishCss.dataset.pkReferenceV23 = 'true';
+    document.head.appendChild(microPolishCss);
+  }
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 

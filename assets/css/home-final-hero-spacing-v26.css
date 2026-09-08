@@ -1,0 +1,25 @@
+/* PANOS KHAN — HERO SPACING POLISH v26
+   Controlled pass 3 of 5: hero spacing only.
+   Preserve planet geometry, lighting and typography.
+*/
+@media (max-width:600px){
+  .cin .hero3d{
+    height:440px!important;
+    min-height:440px!important;
+    max-height:440px!important;
+    margin-bottom:0!important;
+  }
+  .cin .hero3d .scene-inner{padding-bottom:0!important}
+  .cin .hero3d .corelabel{margin-top:0!important}
+  .cin .hero3d .n1,.cin .hero3d .n2,.cin .hero3d .n3,.cin .hero3d .n4,.cin .hero3d .n5{margin:0!important}
+
+  /* Reserve a clean visual gap between the constellation and the headline. */
+  .cin .hero-copy,.cin .hero-content,.cin .hero-text{margin-top:0!important}
+  .cin .hero3d + *{margin-top:0!important}
+}
+@media (max-width:390px){
+  .cin .hero3d{height:425px!important;min-height:425px!important;max-height:425px!important}
+}
+@media (min-width:601px){
+  .cin .hero3d{height:414px!important;min-height:414px!important}
+}

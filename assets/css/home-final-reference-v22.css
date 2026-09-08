@@ -1,0 +1,66 @@
+/* PANOS KHAN — MOBILE MICRO-POLISH v22
+   Small-to-big refinement after V21 QA.
+   Keeps the approved planet positions/colors and tightens the core, rings,
+   label spacing and constellation density for phone screens.
+*/
+@media (max-width:600px){
+  .cin .hero3d{
+    height:470px!important;
+    min-height:470px!important;
+    max-height:470px!important;
+  }
+
+  /* Keep satellites exactly where approved; only refine their visual weight. */
+  .cin .hero3d .node{
+    box-shadow:
+      0 0 7px var(--planetSoft),
+      0 0 18px var(--planetSoft),
+      0 10px 24px rgba(0,0,0,.58),
+      inset 7px 5px 16px rgba(255,255,255,.10),
+      inset -12px -14px 24px rgba(0,0,0,.62),
+      inset 0 1px rgba(255,255,255,.52)!important;
+  }
+
+  /* Smaller, cleaner central intelligence core. */
+  .cin .hero3d .core{
+    left:50%!important;
+    top:50%!important;
+    width:122px!important;
+    height:122px!important;
+    min-width:122px!important;
+    min-height:122px!important;
+    transform:translate3d(-50%,-50%,22px)!important;
+    z-index:30!important;
+  }
+  .cin .hero3d .core:before{width:104%!important;height:104%!important}
+  .cin .hero3d .core:after{width:70%!important;height:70%!important}
+  .cin .hero3d .pk{font-size:48px!important}
+
+  .cin .hero3d .corelabel{
+    left:50%!important;
+    top:50%!important;
+    transform:translate3d(-50%,70px,26px)!important;
+    z-index:90!important;
+  }
+  .cin .hero3d .corelabel small{font-size:5.5px!important;letter-spacing:.18em!important}
+
+  /* Rings become a supporting depth cue instead of competing with the core. */
+  .cin .hero3d .orb{left:50%!important;top:50%!important;opacity:.76!important}
+  .cin .hero3d .o1{width:82%!important;height:32%!important}
+  .cin .hero3d .o2{width:64%!important;height:26%!important}
+  .cin .hero3d .o3{width:94%!important;height:40%!important}
+
+  /* Slightly more breathing room between satellites and their labels. */
+  .cin .hero3d .n1>b{top:66px!important}.cin .hero3d .n1>small{top:78px!important}
+  .cin .hero3d .n2>b,.cin .hero3d .n3>b,.cin .hero3d .n4>b,.cin .hero3d .n5>b{top:17px!important}
+  .cin .hero3d .n2>small,.cin .hero3d .n3>small,.cin .hero3d .n4>small,.cin .hero3d .n5>small{top:29px!important}
+}
+@media (max-width:390px){
+  .cin .hero3d{height:455px!important;min-height:455px!important;max-height:455px!important}
+  .cin .hero3d .core{width:116px!important;height:116px!important;min-width:116px!important;min-height:116px!important}
+  .cin .hero3d .pk{font-size:45px!important}
+  .cin .hero3d .corelabel{transform:translate3d(-50%,66px,26px)!important}
+  .cin .hero3d .n1>b{top:62px!important}.cin .hero3d .n1>small{top:74px!important}
+  .cin .hero3d .n2>b,.cin .hero3d .n3>b,.cin .hero3d .n4>b,.cin .hero3d .n5>b{top:16px!important}
+  .cin .hero3d .n2>small,.cin .hero3d .n3>small,.cin .hero3d .n4>small,.cin .hero3d .n5>small{top:28px!important}
+}

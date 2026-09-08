@@ -88,6 +88,13 @@
     lightingCss.dataset.pkLightingV24 = 'true';
     document.head.appendChild(lightingCss);
   }
+  if (!document.querySelector('link[data-pk-typography-v25]')) {
+    const typographyCss = document.createElement('link');
+    typographyCss.rel = 'stylesheet';
+    typographyCss.href = '/assets/css/home-final-typography-v25.css?v=20260908-232';
+    typographyCss.dataset.pkTypographyV25 = 'true';
+    document.head.appendChild(typographyCss);
+  }
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 

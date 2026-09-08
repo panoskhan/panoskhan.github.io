@@ -1,0 +1,63 @@
+/* PANOS KHAN — DESKTOP REFERENCE CORRECTION v30
+   Desktop/laptop geometry only. Mobile constellation is untouched.
+   Goal: restore the supplied reference composition at 601px+.
+*/
+@media (min-width:601px){
+  .cin .hero3d{
+    position:relative!important;
+    height:414px!important;
+    min-height:414px!important;
+    max-height:414px!important;
+    overflow:visible!important;
+    perspective:1050px!important;
+    perspective-origin:50% 48%!important;
+    transform-style:preserve-3d!important;
+  }
+
+  /* Keep the intelligence core and orbital deck on one stable centerline. */
+  .cin .hero3d .core,
+  .cin .hero3d .orb,
+  .cin .hero3d .corelabel{left:50%!important}
+  .cin .hero3d .core{top:49%!important;width:168px!important;height:168px!important}
+  .cin .hero3d .orb{top:49%!important}
+  .cin .hero3d .corelabel{top:49%!important}
+
+  /* Reference-scale satellites: small spheres, evenly distributed around the core. */
+  .cin .hero3d .node{
+    width:48px!important;
+    min-width:48px!important;
+    max-width:48px!important;
+    height:48px!important;
+    min-height:48px!important;
+    max-height:48px!important;
+    padding:0!important;
+    box-sizing:border-box!important;
+    border-radius:50%!important;
+    overflow:visible!important;
+    z-index:40!important;
+    will-change:transform,filter,box-shadow!important;
+  }
+  .cin .hero3d .n1{left:50%!important;right:auto!important;top:5%!important;bottom:auto!important;transform:translateX(-50%) translateZ(58px)!important}
+  .cin .hero3d .n2{left:7%!important;right:auto!important;top:28%!important;bottom:auto!important;transform:translateZ(26px)!important}
+  .cin .hero3d .n3{right:7%!important;left:auto!important;top:31%!important;bottom:auto!important;transform:translateZ(62px)!important}
+  .cin .hero3d .n4{left:9%!important;right:auto!important;top:auto!important;bottom:19%!important;transform:translateZ(35px)!important}
+  .cin .hero3d .n5{right:10%!important;left:auto!important;top:auto!important;bottom:18%!important;transform:translateZ(50px)!important}
+
+  /* Keep labels outside the spheres, matching the desktop reference hierarchy. */
+  .cin .hero3d .node>b,.cin .hero3d .node>small{
+    position:absolute!important;
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    white-space:nowrap!important;
+    z-index:100!important;
+    pointer-events:none!important;
+  }
+  .cin .hero3d .node>b{font-size:8px!important;line-height:1.15!important;letter-spacing:.07em!important}
+  .cin .hero3d .node>small{font-size:5.8px!important;line-height:1.2!important}
+  .cin .hero3d .n1>b{left:25px!important;top:-1px!important}.cin .hero3d .n1>small{left:25px!important;top:14px!important}
+  .cin .hero3d .n2>b,.cin .hero3d .n2>small,.cin .hero3d .n4>b,.cin .hero3d .n4>small{left:48px!important;right:auto!important;text-align:left!important}
+  .cin .hero3d .n3>b,.cin .hero3d .n3>small,.cin .hero3d .n5>b,.cin .hero3d .n5>small{right:48px!important;left:auto!important;text-align:right!important}
+  .cin .hero3d .n2>b,.cin .hero3d .n3>b,.cin .hero3d .n4>b,.cin .hero3d .n5>b{top:4px!important}
+  .cin .hero3d .n2>small,.cin .hero3d .n3>small,.cin .hero3d .n4>small,.cin .hero3d .n5>small{top:17px!important}
+}

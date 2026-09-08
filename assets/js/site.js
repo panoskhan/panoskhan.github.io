@@ -3,15 +3,11 @@
 
   const PRIMARY_NAV = [
     { id: "about", label: "About", href: "/about/" },
-    { id: "platform", label: "Dashboard", href: "/platform/" },
-    { id: "ai", label: "AI", href: "/ai/" },
-    { id: "device", label: "Device", href: "/device/" },
-    { id: "intelligence", label: "Intelligence", href: "/intelligence/" },
-    { id: "research", label: "Research", href: "/research/" },
-    { id: "downloads", label: "Downloads", href: "/downloads/" },
+    { id: "services", label: "Services", href: "/services.html" },
+    { id: "ai", label: "AI Tools", href: "/ai/" },
     { id: "projects", label: "Projects", href: "/projects/" },
-    { id: "docs", label: "Docs", href: "/docs/" },
-    { id: "services", label: "Services", href: "/services.html" }
+    { id: "research", label: "Research", href: "/research/" },
+    { id: "evidence-os", label: "Evidence OS", href: "/evidence-os/" }
   ];
 
   const DRAWER_EXTRA = [

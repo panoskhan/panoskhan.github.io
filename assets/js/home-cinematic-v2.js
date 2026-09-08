@@ -11,8 +11,7 @@
     document.head.appendChild(link);
   }
 
-  // V18 is the final responsive placement pass. It loads after the earlier
-  // constellation layers so the approved mobile contact positions win.
+  // Preserve the production constellation geometry.
   if (!document.querySelector('link[data-pk-planetary-v18]')) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
@@ -24,32 +23,66 @@
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   if (!document.querySelector('link[data-reference-constellation]')) {
-    const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = '/assets/css/home-reference-constellation.css'; css.dataset.referenceConstellation = 'true'; document.head.appendChild(css);
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = '/assets/css/home-reference-constellation.css';
+    css.dataset.referenceConstellation = 'true';
+    document.head.appendChild(css);
   }
+
+  // FINAL STABILIZATION: load last so legacy cinematic layers cannot override
+  // the approved mobile contact points or final desktop depth transforms.
+  if (!document.querySelector('link[data-pk-final-stabilization]')) {
+    const finalCss = document.createElement('link');
+    finalCss.rel = 'stylesheet';
+    finalCss.href = '/assets/css/home-final-stabilization-v19.css';
+    finalCss.dataset.pkFinalStabilization = 'true';
+    document.head.appendChild(finalCss);
+  }
+
   if (!scene.querySelector('.particle-field')) {
-    const field = document.createElement('div'); field.className = 'particle-field';
+    const field = document.createElement('div');
+    field.className = 'particle-field';
     const count = window.innerWidth < 601 ? 14 : 24;
     for (let i = 0; i < count; i++) {
-      const p = document.createElement('i'); p.className = 'particle';
-      p.style.left = `${8 + Math.random() * 84}%`; p.style.top = `${8 + Math.random() * 82}%`;
-      p.style.setProperty('--dx', `${-18 + Math.random() * 36}px`); p.style.setProperty('--dy', `${-26 + Math.random() * 52}px`);
-      p.style.setProperty('--dur', `${4.5 + Math.random() * 5}s`); p.style.setProperty('--delay', `${-Math.random() * 6}s`); field.appendChild(p);
+      const p = document.createElement('i');
+      p.className = 'particle';
+      p.style.left = `${8 + Math.random() * 84}%`;
+      p.style.top = `${8 + Math.random() * 82}%`;
+      p.style.setProperty('--dx', `${-18 + Math.random() * 36}px`);
+      p.style.setProperty('--dy', `${-26 + Math.random() * 52}px`);
+      p.style.setProperty('--dur', `${4.5 + Math.random() * 5}s`);
+      p.style.setProperty('--delay', `${-Math.random() * 6}s`);
+      field.appendChild(p);
     }
-    scene.appendChild(field); const floor = document.createElement('div'); floor.className = 'scene-floor'; scene.appendChild(floor);
+    scene.appendChild(field);
+    const floor = document.createElement('div');
+    floor.className = 'scene-floor';
+    scene.appendChild(floor);
   }
-  const nodeDepths = { n1: 0.16, n2: 0.28, n3: 0.20, n4: 0.24, n5: 0.18 };
-  Object.entries(nodeDepths).forEach(([name, depth]) => { const node = scene.querySelector(`.${name}`); if (node) node.style.setProperty('--depth', depth); });
 
-  // Animate only while the pointer is moving toward a target. This preserves the
-  // smooth 3D response without an always-running requestAnimationFrame loop.
+  const nodeDepths = { n1: 0.16, n2: 0.28, n3: 0.20, n4: 0.24, n5: 0.18 };
+  Object.entries(nodeDepths).forEach(([name, depth]) => {
+    const node = scene.querySelector(`.${name}`);
+    if (node) node.style.setProperty('--depth', depth);
+  });
+
+  // Desktop-only pointer parallax. Mobile remains position-locked by V18/V19.
   let raf = 0, tx = 0, ty = 0, x = 0, y = 0;
   const render = () => {
-    x += (tx - x) * 0.075; y += (ty - y) * 0.075;
-    scene.style.setProperty('--mx', `${x}px`); scene.style.setProperty('--my', `${y}px`);
-    const nx = Math.max(-1, Math.min(1, x / Math.max(1, scene.clientWidth * 0.5))); const ny = Math.max(-1, Math.min(1, y / Math.max(1, scene.clientHeight * 0.5)));
-    scene.style.setProperty('--core-rx', `${(-ny * 3.2).toFixed(2)}deg`); scene.style.setProperty('--core-ry', `${(nx * 3.8).toFixed(2)}deg`);
-    scene.style.setProperty('--scene-rx', `${(-ny * 1.8).toFixed(2)}deg`); scene.style.setProperty('--scene-ry', `${(nx * 2.2).toFixed(2)}deg`); scene.style.setProperty('--scene-depth', `${(Math.abs(nx) + Math.abs(ny)) * 5}px`);
-    if (Math.abs(tx - x) > 0.05 || Math.abs(ty - y) > 0.05) raf = requestAnimationFrame(render); else raf = 0;
+    x += (tx - x) * 0.075;
+    y += (ty - y) * 0.075;
+    scene.style.setProperty('--mx', `${x}px`);
+    scene.style.setProperty('--my', `${y}px`);
+    const nx = Math.max(-1, Math.min(1, x / Math.max(1, scene.clientWidth * 0.5)));
+    const ny = Math.max(-1, Math.min(1, y / Math.max(1, scene.clientHeight * 0.5)));
+    scene.style.setProperty('--core-rx', `${(-ny * 3.2).toFixed(2)}deg`);
+    scene.style.setProperty('--core-ry', `${(nx * 3.8).toFixed(2)}deg`);
+    scene.style.setProperty('--scene-rx', `${(-ny * 1.8).toFixed(2)}deg`);
+    scene.style.setProperty('--scene-ry', `${(nx * 2.2).toFixed(2)}deg`);
+    scene.style.setProperty('--scene-depth', `${(Math.abs(nx) + Math.abs(ny)) * 5}px`);
+    if (Math.abs(tx - x) > 0.05 || Math.abs(ty - y) > 0.05) raf = requestAnimationFrame(render);
+    else raf = 0;
   };
   const schedule = () => { if (!raf) raf = requestAnimationFrame(render); };
   const move = e => {
@@ -60,6 +93,8 @@
     schedule();
   };
   const reset = () => { tx = 0; ty = 0; schedule(); };
-  scene.addEventListener('pointermove', move, { passive: true }); scene.addEventListener('pointerleave', reset, { passive: true }); scene.addEventListener('pointercancel', reset, { passive: true });
+  scene.addEventListener('pointermove', move, { passive: true });
+  scene.addEventListener('pointerleave', reset, { passive: true });
+  scene.addEventListener('pointercancel', reset, { passive: true });
   window.addEventListener('pagehide', () => { if (raf) cancelAnimationFrame(raf); raf = 0; }, { once: true });
 })();

@@ -1,0 +1,191 @@
+/* Homepage Web Polish — layered after reference + 3D styles. */
+
+/* Wide desktop: use the viewport instead of leaving excessive side gutters. */
+@media (min-width: 1281px) {
+  .home-ref {
+    width: min(calc(100% - 48px), 1680px);
+    padding-top: 20px;
+  }
+
+  .site-header {
+    grid-template-columns: minmax(220px, auto) minmax(0, 1fr) auto;
+    gap: 24px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .site-nav {
+    gap: clamp(18px, 2vw, 32px);
+  }
+
+  .site-nav a {
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(24px, 3vw, 52px);
+    min-height: 720px;
+    padding: 48px clamp(36px, 4vw, 64px) 34px;
+  }
+
+  .hero-copy {
+    max-width: 640px;
+    padding: 34px 8px 14px;
+  }
+
+  .hero h1 {
+    max-width: 11ch;
+    font-size: clamp(3.4rem, 4.35vw, 5.35rem);
+  }
+
+  .hero-lead {
+    max-width: 48ch;
+    font-size: 1.08rem;
+  }
+
+  .hero-visual {
+    min-height: 650px;
+  }
+
+  .hero-core {
+    top: 148px;
+    width: min(30vw, 315px);
+  }
+
+  .orbit {
+    width: 76%;
+  }
+
+  .orbit-two {
+    width: 88%;
+  }
+
+  .orbit-three {
+    width: 98%;
+  }
+
+  .panel-ecosystem {
+    grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.22fr);
+    gap: 36px;
+  }
+
+  .ecosystem-visual {
+    min-height: 560px;
+  }
+}
+
+/* Medium desktop/tablet landscape: keep the hero horizontal longer. */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .home-ref {
+    width: min(calc(100% - 36px), 1220px);
+  }
+
+  .site-header {
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: center;
+    text-align: left;
+  }
+
+  .site-nav {
+    gap: 16px;
+  }
+
+  .site-nav a {
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  .header-cta {
+    padding: 12px 16px;
+    min-height: 48px;
+    font-size: 0.84rem;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 0.94fr) minmax(460px, 1.06fr);
+    min-height: 700px;
+    gap: 12px;
+    padding: 34px 24px 28px;
+  }
+
+  .hero-copy {
+    max-width: 520px;
+    padding: 22px 8px 10px;
+  }
+
+  .hero h1 {
+    max-width: 10ch;
+    font-size: clamp(3rem, 4.4vw, 4.35rem);
+  }
+
+  .hero-visual {
+    min-height: 610px;
+  }
+}
+
+/* Mobile safety: avoid horizontal clipping and oversized 3D layers. */
+@media (max-width: 760px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .home-ref {
+    width: min(calc(100% - 16px), 680px);
+  }
+
+  .site-header {
+    gap: 16px;
+    padding-bottom: 20px;
+  }
+
+  .site-nav a {
+    font-size: 0.84rem;
+  }
+
+  .hero {
+    min-height: 0;
+  }
+
+  .hero-visual {
+    min-height: 540px;
+  }
+
+  .hero-core {
+    width: 205px;
+    top: 136px;
+  }
+
+  .core-mark {
+    font-size: 4rem;
+  }
+
+  .platform-base {
+    width: min(420px, 88vw);
+  }
+
+  .platform-glow {
+    width: min(370px, 78vw);
+  }
+
+  .beam {
+    height: 250px;
+  }
+
+  .callout-left,
+  .callout-right {
+    top: 222px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual,
+  .orbit,
+  .hero-core {
+    animation: none !important;
+    transition: none !important;
+  }
+}

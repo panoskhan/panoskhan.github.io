@@ -29,11 +29,11 @@
     document.head.appendChild(css);
   }
 
-  // FINAL: load the demo-match layer last. Query version prevents stale cached CSS.
+  // FINAL: load the same cache-busted demo-match layer used by index.html.
   if (!document.querySelector('link[data-pk-final-stabilization]')) {
     const finalCss = document.createElement('link');
     finalCss.rel = 'stylesheet';
-    finalCss.href = '/assets/css/home-final-stabilization-v19.css?v=20260908-191';
+    finalCss.href = '/assets/css/home-final-stabilization-v19.css?v=20260908-194';
     finalCss.dataset.pkFinalStabilization = 'true';
     document.head.appendChild(finalCss);
   }

@@ -7,18 +7,24 @@
     height:440px!important;
     min-height:440px!important;
     max-height:440px!important;
-    margin-bottom:0!important;
+    margin-bottom:8px!important;
   }
   .cin .hero3d .scene-inner{padding-bottom:0!important}
   .cin .hero3d .corelabel{margin-top:0!important}
   .cin .hero3d .n1,.cin .hero3d .n2,.cin .hero3d .n3,.cin .hero3d .n4,.cin .hero3d .n5{margin:0!important}
-
-  /* Reserve a clean visual gap between the constellation and the headline. */
-  .cin .hero-copy,.cin .hero-content,.cin .hero-text{margin-top:0!important}
+  .cin .hero3d .n1>b{top:64px!important}.cin .hero3d .n1>small{top:76px!important}
+  .cin .hero3d .n2>b,.cin .hero3d .n3>b,.cin .hero3d .n4>b,.cin .hero3d .n5>b{top:15px!important}
+  .cin .hero3d .n2>small,.cin .hero3d .n3>small,.cin .hero3d .n4>small,.cin .hero3d .n5>small{top:27px!important}
+  .cin .hero3d .hero3d-scrollhint{bottom:5px!important}
+  .cin .hero-copy,.cin .hero-content,.cin .hero-text{margin-top:0!important;padding-top:4px!important}
   .cin .hero3d + *{margin-top:0!important}
 }
 @media (max-width:390px){
-  .cin .hero3d{height:425px!important;min-height:425px!important;max-height:425px!important}
+  .cin .hero3d{height:425px!important;min-height:425px!important;max-height:425px!important;margin-bottom:5px!important}
+  .cin .hero3d .corelabel{transform:translate3d(-50%,64px,26px)!important}
+  .cin .hero3d .n1>b{top:60px!important}.cin .hero3d .n1>small{top:72px!important}
+  .cin .hero3d .n2>b,.cin .hero3d .n3>b,.cin .hero3d .n4>b,.cin .hero3d .n5>b{top:14px!important}
+  .cin .hero3d .n2>small,.cin .hero3d .n3>small,.cin .hero3d .n4>small,.cin .hero3d .n5>small{top:26px!important}
 }
 @media (min-width:601px){
   .cin .hero3d{height:414px!important;min-height:414px!important}

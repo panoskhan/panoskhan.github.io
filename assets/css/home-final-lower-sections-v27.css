@@ -1,0 +1,97 @@
+/* PANOS KHAN — LOWER SECTIONS POLISH v27
+   Controlled pass 4 of 5: lower-page sections only.
+   Preserve hero lighting, typography and constellation geometry.
+*/
+.cin-main > .section{position:relative;box-sizing:border-box;}
+.cin-main > .section > *{position:relative;z-index:2;}
+.cin-main > .section::after{z-index:0!important;}
+
+/* Ecosystem: reference-like wide visual panel with compact copy/map balance. */
+.cin .eco{
+  min-height:312px!important;
+  padding:30px 26px 26px!important;
+  border-radius:18px!important;
+  overflow:hidden!important;
+}
+.cin .eco h2{margin:14px 0 14px!important;line-height:1.12!important}
+.cin .eco>.muted{max-width:360px!important;line-height:1.55!important}
+.cin .eco>.btn{margin-top:18px!important}
+.cin .eco .map{min-height:255px!important}
+
+/* Capabilities: five compact cards with a consistent visual rhythm. */
+.cin #capabilities{
+  min-height:255px!important;
+  padding:28px 18px 24px!important;
+  border-radius:18px!important;
+}
+.cin #capabilities h2{margin:10px 0 14px!important}
+.cin #capabilities .cards{gap:12px!important;}
+.cin #capabilities .card{
+  min-height:170px!important;
+  padding:18px 14px 14px!important;
+  border-radius:12px!important;
+}
+.cin #capabilities .card .icon{margin-bottom:12px!important}
+.cin #capabilities .card h3{margin:0 0 7px!important}
+.cin #capabilities .card p{line-height:1.42!important;margin:0 0 10px!important}
+
+/* Projects: three equal, readable cards. */
+.cin #projects{
+  min-height:220px!important;
+  padding:26px 28px 22px!important;
+  border-radius:18px!important;
+}
+.cin #projects h2{margin:9px 0 14px!important}
+.cin #projects .projects{gap:12px!important}
+.cin #projects .project{
+  min-height:126px!important;
+  padding:16px 16px 14px!important;
+  border-radius:12px!important;
+}
+.cin #projects .project h3{margin:6px 0 7px!important}
+.cin #projects .project p{line-height:1.4!important}
+
+/* Proof: compact horizontal credibility strip. */
+.cin .proof{
+  min-height:112px!important;
+  padding:22px 26px!important;
+  border-radius:18px!important;
+}
+.cin .proof h2{margin:9px 0 7px!important}
+.cin .proof .muted{line-height:1.45!important}
+.cin .prooflist{gap:10px!important}
+.cin .proofitem{min-height:64px!important;padding:10px 9px!important;border-radius:10px!important}
+
+/* CTA: compact final conversion panel. */
+.cin .cta{
+  min-height:102px!important;
+  padding:20px 26px!important;
+  border-radius:18px!important;
+}
+.cin .cta h2{margin:5px 0 5px!important}
+.cin .cta p{line-height:1.4!important}
+
+@media(max-width:700px){
+  .cin-main > .section{margin-left:16px!important;margin-right:16px!important;}
+  .cin .eco{min-height:520px!important;padding:26px 18px 18px!important}
+  .cin .eco>.muted{max-width:none!important}
+  .cin .eco .map{min-height:310px!important;margin-top:16px!important}
+  .cin #capabilities{min-height:auto!important;padding:26px 14px 18px!important}
+  .cin #capabilities .cards{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
+  .cin #capabilities .card{min-height:150px!important;padding:15px 12px 12px!important}
+  .cin #capabilities .card:last-child{grid-column:1/-1}
+  .cin #projects{min-height:auto!important;padding:26px 14px 18px!important}
+  .cin #projects .projects{display:grid!important;grid-template-columns:1fr!important;gap:10px!important}
+  .cin #projects .project{min-height:125px!important}
+  .cin .proof{min-height:auto!important;padding:24px 16px!important}
+  .cin .prooflist{display:grid!important;grid-template-columns:1fr 1fr!important;gap:9px!important}
+  .cin .proofitem{min-height:72px!important}
+  .cin .cta{min-height:auto!important;padding:24px 16px!important;display:grid!important;gap:18px!important}
+}
+@media(max-width:390px){
+  .cin-main > .section{margin-left:12px!important;margin-right:12px!important}
+  .cin .eco{min-height:500px!important}
+  .cin #capabilities .cards{grid-template-columns:1fr!important}
+  .cin #capabilities .card:last-child{grid-column:auto}
+  .cin .prooflist{grid-template-columns:1fr!important}
+}

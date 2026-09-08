@@ -1,0 +1,50 @@
+/* PANOS KHAN — MOBILE VISUAL MICRO-POLISH v23
+   QA pass after V22.
+   Preserve approved geometry; refine visual hierarchy only.
+*/
+@media (max-width:600px){
+  /* Slightly tighten the constellation without changing its topology. */
+  .cin .hero3d{
+    height:455px!important;
+    min-height:455px!important;
+    max-height:455px!important;
+  }
+
+  /* Core: smaller visual mass, stronger center definition. */
+  .cin .hero3d .core{
+    width:116px!important;
+    height:116px!important;
+    min-width:116px!important;
+    min-height:116px!important;
+    transform:translate3d(-50%,-50%,24px)!important;
+    box-shadow:0 0 18px rgba(39,230,255,.26),0 0 46px rgba(19,140,255,.18),inset 10px 8px 24px rgba(255,255,255,.10),inset -18px -20px 30px rgba(0,0,0,.58)!important;
+  }
+  .cin .hero3d .pk{font-size:46px!important;letter-spacing:-.06em!important}
+  .cin .hero3d .corelabel{transform:translate3d(-50%,67px,28px)!important}
+
+  /* Rings: crisp center ellipse, quieter outer arcs. */
+  .cin .hero3d .orb{opacity:.68!important}
+  .cin .hero3d .o1{width:78%!important;height:29%!important;opacity:.78!important}
+  .cin .hero3d .o2{width:61%!important;height:24%!important;opacity:.62!important}
+  .cin .hero3d .o3{width:90%!important;height:37%!important;opacity:.48!important}
+
+  /* Planet lighting: retain the five approved colors but reduce halo spill. */
+  .cin .hero3d .node{
+    box-shadow:0 0 6px var(--planetSoft),0 0 15px var(--planetSoft),0 9px 20px rgba(0,0,0,.58),inset 6px 5px 14px rgba(255,255,255,.09),inset -11px -13px 22px rgba(0,0,0,.60),inset 0 1px rgba(255,255,255,.50)!important;
+  }
+  .cin .hero3d .node:after{opacity:.62!important}
+
+  /* Give labels a little more air from the spheres. */
+  .cin .hero3d .n1>b{top:67px!important}.cin .hero3d .n1>small{top:79px!important}
+  .cin .hero3d .n2>b,.cin .hero3d .n3>b,.cin .hero3d .n4>b,.cin .hero3d .n5>b{top:18px!important}
+  .cin .hero3d .n2>small,.cin .hero3d .n3>small,.cin .hero3d .n4>small,.cin .hero3d .n5>small{top:30px!important}
+
+  /* Prevent the core label from visually competing with the lower pair. */
+  .cin .hero3d .corelabel b{letter-spacing:.16em!important}
+}
+@media (max-width:390px){
+  .cin .hero3d{height:440px!important;min-height:440px!important;max-height:440px!important}
+  .cin .hero3d .core{width:110px!important;height:110px!important;min-width:110px!important;min-height:110px!important}
+  .cin .hero3d .pk{font-size:43px!important}
+  .cin .hero3d .corelabel{transform:translate3d(-50%,64px,28px)!important}
+}

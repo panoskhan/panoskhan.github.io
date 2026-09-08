@@ -1,0 +1,39 @@
+/* PANOS KHAN — LIGHTING BALANCE v24
+   QA correction after V23: preserve the refined geometry but restore the
+   luminous planetary color and readable spherical volume visible in the reference.
+   Typography/layout are intentionally untouched.
+*/
+.cin .hero3d .node{
+  filter:saturate(1.30) brightness(1.18) contrast(1.02)!important;
+  box-shadow:
+    0 0 8px var(--planetSoft),
+    0 0 22px var(--planetSoft),
+    0 0 38px color-mix(in srgb,var(--planet) 22%,transparent),
+    0 12px 26px rgba(0,0,0,.48),
+    inset 8px 6px 18px rgba(255,255,255,.16),
+    inset -13px -15px 25px rgba(0,0,0,.46),
+    inset 0 1px rgba(255,255,255,.58)!important;
+}
+.cin .hero3d .node:before{
+  opacity:.95!important;
+  box-shadow:0 0 10px var(--planetGlow),0 0 20px var(--planetSoft),inset 0 1px rgba(255,255,255,.65)!important;
+}
+.cin .hero3d .node:after{opacity:.82!important}
+.cin .hero3d .core{
+  filter:saturate(1.10) brightness(1.06)!important;
+  box-shadow:0 0 26px rgba(35,221,255,.34),0 0 70px rgba(20,145,255,.20),inset 10px 8px 24px rgba(255,255,255,.15),inset -18px -20px 32px rgba(0,12,45,.40)!important;
+}
+@media(max-width:600px){
+  .cin .hero3d .node{
+    filter:saturate(1.32) brightness(1.20) contrast(1.02)!important;
+    box-shadow:
+      0 0 8px var(--planetSoft),
+      0 0 20px var(--planetSoft),
+      0 0 34px color-mix(in srgb,var(--planet) 20%,transparent),
+      0 10px 22px rgba(0,0,0,.44),
+      inset 7px 5px 17px rgba(255,255,255,.17),
+      inset -12px -14px 23px rgba(0,0,0,.44),
+      inset 0 1px rgba(255,255,255,.60)!important;
+  }
+  .cin .hero3d .core{filter:saturate(1.08) brightness(1.04)!important}
+}

@@ -2,7 +2,7 @@
   const scene = document.querySelector('.hero3d');
   if (!scene) return;
 
-  // Keep the approved planetary visual layer available on every device.
+  // Final demo visual system.
   if (!document.querySelector('link[data-pk-planet-spectrum]')) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
@@ -11,7 +11,6 @@
     document.head.appendChild(link);
   }
 
-  // Preserve the production constellation geometry.
   if (!document.querySelector('link[data-pk-planetary-v18]')) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
@@ -30,12 +29,11 @@
     document.head.appendChild(css);
   }
 
-  // FINAL STABILIZATION: load last so legacy cinematic layers cannot override
-  // the approved mobile contact points or final desktop depth transforms.
+  // FINAL: load the demo-match layer last. Query version prevents stale cached CSS.
   if (!document.querySelector('link[data-pk-final-stabilization]')) {
     const finalCss = document.createElement('link');
     finalCss.rel = 'stylesheet';
-    finalCss.href = '/assets/css/home-final-stabilization-v19.css';
+    finalCss.href = '/assets/css/home-final-stabilization-v19.css?v=20260908-191';
     finalCss.dataset.pkFinalStabilization = 'true';
     document.head.appendChild(finalCss);
   }
@@ -67,7 +65,7 @@
     if (node) node.style.setProperty('--depth', depth);
   });
 
-  // Desktop-only pointer parallax. Mobile remains position-locked by V18/V19.
+  // Desktop-only pointer parallax. Mobile remains position-locked.
   let raf = 0, tx = 0, ty = 0, x = 0, y = 0;
   const render = () => {
     x += (tx - x) * 0.075;

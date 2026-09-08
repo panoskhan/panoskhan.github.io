@@ -3,36 +3,45 @@
    Geometry, positions, typography and lower-page layout remain unchanged.
 */
 @media (max-width:600px){
-  /* Give every satellite a clearer single-direction light source. */
+  /* Restore the intended color volume with a clear upper-left light source. */
   .cin .hero3d .node{
     background:
-      radial-gradient(circle at 31% 27%,rgba(255,255,255,.46) 0 3%,rgba(255,255,255,.12) 9%,transparent 19%),
-      radial-gradient(circle at 34% 32%,var(--planetHot) 0%,var(--planetBase) 38%,var(--planetDeep) 76%,#020817 100%)!important;
+      radial-gradient(circle at 31% 27%,rgba(255,255,255,.48) 0 3%,rgba(255,255,255,.13) 9%,transparent 19%),
+      radial-gradient(circle at 34% 32%,var(--planetHot) 0%,var(--planet) 38%,var(--planet2) 72%,#020817 100%)!important;
+    filter:saturate(1.22) brightness(1.14) contrast(1.02)!important;
     box-shadow:
-      0 0 5px var(--planetSoft),
-      0 0 14px var(--planetSoft),
-      0 9px 22px rgba(0,0,0,.62),
-      inset 6px 5px 13px rgba(255,255,255,.12),
-      inset -10px -12px 20px rgba(0,0,0,.68),
-      inset 0 1px rgba(255,255,255,.55)!important;
+      0 0 6px var(--planetSoft),
+      0 0 17px var(--planetSoft),
+      0 0 30px color-mix(in srgb,var(--planet) 18%,transparent),
+      0 9px 22px rgba(0,0,0,.48),
+      inset 6px 5px 13px rgba(255,255,255,.15),
+      inset -10px -12px 20px rgba(0,0,0,.48),
+      inset 0 1px rgba(255,255,255,.58)!important;
   }
 
-  /* Reduce the broad cyan wash around the core and restore spherical shading. */
+  .cin .hero3d .node:before{
+    opacity:1!important;
+    box-shadow:0 0 10px var(--planetGlow),0 0 20px var(--planetSoft),inset 0 1px rgba(255,255,255,.68)!important;
+  }
+  .cin .hero3d .node:after{opacity:.78!important}
+
+  /* Central core: bright cyan volume, but no oversized wash. */
   .cin .hero3d .core{
     background:
-      radial-gradient(circle at 32% 27%,rgba(255,255,255,.70) 0 2%,rgba(112,247,255,.52) 7%,transparent 20%),
-      radial-gradient(circle at 35% 32%,#55efff 0%,#159eea 25%,#0754a8 58%,#03152f 84%,#020918 100%)!important;
+      radial-gradient(circle at 32% 27%,rgba(255,255,255,.72) 0 2%,rgba(112,247,255,.54) 7%,transparent 20%),
+      radial-gradient(circle at 35% 32%,#55efff 0%,#159eea 28%,#0754a8 60%,#03152f 84%,#020918 100%)!important;
+    filter:saturate(1.08) brightness(1.05)!important;
     box-shadow:
-      0 0 14px rgba(43,231,255,.72),
-      0 0 38px rgba(0,174,255,.40),
-      0 22px 44px rgba(0,0,0,.62),
+      0 0 15px rgba(43,231,255,.68),
+      0 0 38px rgba(0,174,255,.34),
+      0 18px 38px rgba(0,0,0,.52),
       inset 12px 9px 26px rgba(255,255,255,.16),
-      inset -18px -20px 34px rgba(0,0,0,.66),
-      inset 0 1px rgba(255,255,255,.62)!important;
+      inset -18px -20px 34px rgba(0,0,0,.52),
+      inset 0 1px rgba(255,255,255,.64)!important;
   }
   .cin .hero3d .core:before{
     background:
-      radial-gradient(circle at 32% 28%,rgba(255,255,255,.70),rgba(255,255,255,.16) 10%,transparent 28%),
+      radial-gradient(circle at 32% 28%,rgba(255,255,255,.72),rgba(255,255,255,.16) 10%,transparent 28%),
       radial-gradient(circle,transparent 49%,rgba(93,244,255,.26) 66%,transparent 76%)!important;
     box-shadow:0 0 20px rgba(50,230,255,.42),inset 0 0 20px rgba(255,255,255,.10)!important;
   }
@@ -41,7 +50,7 @@
     opacity:.9!important;
   }
 
-  /* Orbital light is cooler and thinner so it supports the core instead of flattening it. */
+  /* Orbital light remains subordinate to the planets/core. */
   .cin .hero3d .orb{
     opacity:.64!important;
     filter:drop-shadow(0 0 4px rgba(49,216,255,.38))!important;
@@ -50,7 +59,6 @@
     box-shadow:0 0 10px rgba(41,210,255,.20),inset 0 0 8px rgba(41,210,255,.12)!important;
   }
 
-  /* Keep the scene atmosphere deep; no geometry changes in this pass. */
   .cin .hero3d:after{
     background:radial-gradient(ellipse at 50% 48%,rgba(18,184,255,.10) 0%,rgba(12,54,112,.06) 32%,transparent 68%)!important;
     pointer-events:none!important;

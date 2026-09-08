@@ -18,38 +18,26 @@
     document.head.appendChild(link);
   }
 
-  // Keep the original node labels. They were part of the working visual system;
+  // Keep the original node labels. They are part of the working visual system;
   // do not hide them or replace them with a second overlay layer.
   const labelData = {
-    n1: ['RESEARCH', 'Research & Innovation', 'below'],
-    n2: ['EVIDENCE OS', 'Evidence Network', 'right'],
-    n3: ['PROJECTS', 'Real World Impact', 'left'],
-    n4: ['AI TOOLS', 'Intelligence Layer', 'right'],
-    n5: ['PLATFORM', 'Scalable Systems', 'left']
+    n1: ['RESEARCH', 'Research & Innovation'],
+    n2: ['EVIDENCE OS', 'Evidence Network'],
+    n3: ['PROJECTS', 'Real World Impact'],
+    n4: ['AI TOOLS', 'Intelligence Layer'],
+    n5: ['PLATFORM', 'Scalable Systems']
   };
-  const ensureLabels = () => {
-    Object.entries(labelData).forEach(([name, data]) => {
-      const node = scene.querySelector(`.${name}`);
-      if (!node) return;
-      node.querySelectorAll(':scope > b, :scope > small').forEach(el => el.style.removeProperty('display'));
-      let label = scene.querySelector(`.pk-scene-label[data-node="${name}"]`);
-      if (!label) {
-        label = document.createElement('div');
-        label.className = 'pk-scene-label';
-        label.dataset.node = name;
-        label.innerHTML = '<b></b><small></small>';
-        scene.appendChild(label);
-      }
-      label.querySelector('b').textContent = data[0];
-      label.querySelector('small').textContent = data[1];
-      // The overlay is retained only as a fallback and is hidden so it cannot
-      // duplicate the original labels.
-      label.style.cssText = 'display:none!important;';
+  Object.entries(labelData).forEach(([name, data]) => {
+    const node = scene.querySelector(`.${name}`);
+    if (!node) return;
+    node.querySelectorAll(':scope > b, :scope > small').forEach(el => {
+      el.style.removeProperty('display');
+      el.style.removeProperty('visibility');
+      el.style.removeProperty('opacity');
     });
-  };
-  ensureLabels();
-
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const fallback = scene.querySelector(`.pk-scene-label[data-node="${name}"]`);
+    if (fallback) fallback.style.cssText = 'display:none!important;';
+  });
 
   if (!document.querySelector('link[data-reference-constellation]')) {
     const css = document.createElement('link');
@@ -65,6 +53,15 @@
     finalCss.dataset.pkFinalStabilization = 'true';
     document.head.appendChild(finalCss);
   }
+  if (!document.querySelector('link[data-pk-reference-v20]')) {
+    const referenceCss = document.createElement('link');
+    referenceCss.rel = 'stylesheet';
+    referenceCss.href = '/assets/css/home-final-reference-v20.css?v=20260908-201';
+    referenceCss.dataset.pkReferenceV20 = 'true';
+    document.head.appendChild(referenceCss);
+  }
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   if (!scene.querySelector('.particle-field')) {
     const field = document.createElement('div');

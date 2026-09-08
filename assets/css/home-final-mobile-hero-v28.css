@@ -1,0 +1,62 @@
+/* PANOS KHAN — MOBILE HERO POLISH v28
+   Controlled pass 5: mobile hero spacing + headline typography only.
+   IMPORTANT: no .hero3d geometry, planet, orbit, lighting or core rules here.
+*/
+@media (max-width:600px){
+  /* Keep the completed 3D stage completely untouched; refine only the copy block below it. */
+  .cin-hero>div:first-child{
+    width:100%!important;
+    box-sizing:border-box!important;
+    padding:30px 18px 34px!important;
+    margin:0!important;
+    text-align:center!important;
+  }
+  .cin-hero .ey{
+    font-size:9.5px!important;
+    line-height:1.25!important;
+    letter-spacing:.22em!important;
+    margin:0 auto!important;
+  }
+  .cin-h1{
+    font-size:36px!important;
+    line-height:1.045!important;
+    letter-spacing:-.042em!important;
+    font-weight:750!important;
+    max-width:350px!important;
+    margin:12px auto 16px!important;
+  }
+  .cin-lead{
+    font-size:13px!important;
+    line-height:1.52!important;
+    max-width:340px!important;
+    margin:0 auto 18px!important;
+  }
+  .actions{
+    justify-content:center!important;
+    gap:9px!important;
+  }
+  .actions .btn{
+    min-height:42px!important;
+    padding:10px 16px!important;
+    font-size:11.5px!important;
+  }
+  .stats{
+    grid-template-columns:repeat(2,1fr)!important;
+    gap:10px 12px!important;
+    margin-top:24px!important;
+  }
+  .stat b{font-size:18px!important}
+  .stat span{font-size:9px!important;line-height:1.3!important}
+}
+@media (max-width:390px){
+  .cin-hero>div:first-child{padding:27px 15px 30px!important}
+  .cin-h1{
+    font-size:34px!important;
+    line-height:1.05!important;
+    max-width:340px!important;
+    margin-top:11px!important;
+  }
+  .cin-lead{font-size:12.5px!important;max-width:320px!important}
+  .actions .btn{font-size:11px!important;padding-inline:14px!important}
+  .stats{gap:9px 10px!important;margin-top:21px!important}
+}

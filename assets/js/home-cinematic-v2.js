@@ -3,23 +3,30 @@
   if (!scene) return;
 
   // Final demo visual system.
-  if (!document.querySelector('link[data-pk-planet-spectrum]')) {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = '/assets/css/home-planet-spectrum-v15.css';
-    link.dataset.pkPlanetSpectrum = 'true';
-    document.head.appendChild(link);
-  }
-  if (!document.querySelector('link[data-pk-planetary-v18]')) {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = '/assets/css/home-planetary-production-v18.css';
-    link.dataset.pkPlanetaryV18 = 'true';
-    document.head.appendChild(link);
-  }
+  const styles = [
+    ['/assets/css/home-planet-spectrum-v15.css','pkPlanetSpectrum'],
+    ['/assets/css/home-planetary-production-v18.css','pkPlanetaryV18'],
+    ['/assets/css/home-reference-constellation.css','referenceConstellation'],
+    ['/assets/css/home-final-stabilization-v19.css?v=20260908-194','pkFinalStabilization'],
+    ['/assets/css/home-final-reference-v20.css?v=20260908-201','pkReferenceV20'],
+    ['/assets/css/home-final-reference-v21.css?v=20260908-210','pkReferenceV21'],
+    ['/assets/css/home-final-reference-v22.css?v=20260908-220','pkReferenceV22'],
+    ['/assets/css/home-final-reference-v23.css?v=20260908-230','pkReferenceV23'],
+    ['/assets/css/home-final-lighting-v24.css?v=20260908-231','pkLightingV24'],
+    ['/assets/css/home-final-typography-v25.css?v=20260908-232','pkTypographyV25'],
+    ['/assets/css/home-final-hero-spacing-v26.css?v=20260908-240','pkHeroSpacingV26']
+  ];
+  styles.forEach(([href, key]) => {
+    if (!document.querySelector(`link[data-${key.replace(/[A-Z]/g,m=>'-'+m.toLowerCase())}]`)) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      link.dataset[key] = 'true';
+      document.head.appendChild(link);
+    }
+  });
 
-  // Keep the original node labels. They are part of the working visual system;
-  // do not hide them or replace them with a second overlay layer.
+  // Keep the original node labels; never replace them with duplicate overlays.
   const labelData = {
     n1: ['RESEARCH', 'Research & Innovation'],
     n2: ['EVIDENCE OS', 'Evidence Network'],
@@ -38,63 +45,6 @@
     const fallback = scene.querySelector(`.pk-scene-label[data-node="${name}"]`);
     if (fallback) fallback.style.cssText = 'display:none!important;';
   });
-
-  if (!document.querySelector('link[data-reference-constellation]')) {
-    const css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = '/assets/css/home-reference-constellation.css';
-    css.dataset.referenceConstellation = 'true';
-    document.head.appendChild(css);
-  }
-  if (!document.querySelector('link[data-pk-final-stabilization]')) {
-    const finalCss = document.createElement('link');
-    finalCss.rel = 'stylesheet';
-    finalCss.href = '/assets/css/home-final-stabilization-v19.css?v=20260908-194';
-    finalCss.dataset.pkFinalStabilization = 'true';
-    document.head.appendChild(finalCss);
-  }
-  if (!document.querySelector('link[data-pk-reference-v20]')) {
-    const referenceCss = document.createElement('link');
-    referenceCss.rel = 'stylesheet';
-    referenceCss.href = '/assets/css/home-final-reference-v20.css?v=20260908-201';
-    referenceCss.dataset.pkReferenceV20 = 'true';
-    document.head.appendChild(referenceCss);
-  }
-  if (!document.querySelector('link[data-pk-reference-v21]')) {
-    const mobileCss = document.createElement('link');
-    mobileCss.rel = 'stylesheet';
-    mobileCss.href = '/assets/css/home-final-reference-v21.css?v=20260908-210';
-    mobileCss.dataset.pkReferenceV21 = 'true';
-    document.head.appendChild(mobileCss);
-  }
-  if (!document.querySelector('link[data-pk-reference-v22]')) {
-    const polishCss = document.createElement('link');
-    polishCss.rel = 'stylesheet';
-    polishCss.href = '/assets/css/home-final-reference-v22.css?v=20260908-220';
-    polishCss.dataset.pkReferenceV22 = 'true';
-    document.head.appendChild(polishCss);
-  }
-  if (!document.querySelector('link[data-pk-reference-v23]')) {
-    const microPolishCss = document.createElement('link');
-    microPolishCss.rel = 'stylesheet';
-    microPolishCss.href = '/assets/css/home-final-reference-v23.css?v=20260908-230';
-    microPolishCss.dataset.pkReferenceV23 = 'true';
-    document.head.appendChild(microPolishCss);
-  }
-  if (!document.querySelector('link[data-pk-lighting-v24]')) {
-    const lightingCss = document.createElement('link');
-    lightingCss.rel = 'stylesheet';
-    lightingCss.href = '/assets/css/home-final-lighting-v24.css?v=20260908-231';
-    lightingCss.dataset.pkLightingV24 = 'true';
-    document.head.appendChild(lightingCss);
-  }
-  if (!document.querySelector('link[data-pk-typography-v25]')) {
-    const typographyCss = document.createElement('link');
-    typographyCss.rel = 'stylesheet';
-    typographyCss.href = '/assets/css/home-final-typography-v25.css?v=20260908-232';
-    typographyCss.dataset.pkTypographyV25 = 'true';
-    document.head.appendChild(typographyCss);
-  }
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 

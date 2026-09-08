@@ -10,7 +10,6 @@
     link.dataset.pkPlanetSpectrum = 'true';
     document.head.appendChild(link);
   }
-
   if (!document.querySelector('link[data-pk-planetary-v18]')) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
@@ -18,6 +17,64 @@
     link.dataset.pkPlanetaryV18 = 'true';
     document.head.appendChild(link);
   }
+
+  // Independent label layer. This removes the remaining dependency on the
+  // legacy node text box/overflow rules while keeping the approved geometry.
+  const labelData = {
+    n1: ['RESEARCH', 'Research & Innovation', 'below'],
+    n2: ['EVIDENCE OS', 'Evidence Network', 'right'],
+    n3: ['PROJECTS', 'Real World Impact', 'left'],
+    n4: ['AI TOOLS', 'Intelligence Layer', 'right'],
+    n5: ['PLATFORM', 'Scalable Systems', 'left']
+  };
+  const ensureLabels = () => {
+    Object.entries(labelData).forEach(([name, data]) => {
+      const node = scene.querySelector(`.${name}`);
+      if (!node) return;
+      node.querySelectorAll(':scope > b, :scope > small').forEach(el => el.style.setProperty('display', 'none', 'important'));
+      let label = scene.querySelector(`.pk-scene-label[data-node="${name}"]`);
+      if (!label) {
+        label = document.createElement('div');
+        label.className = 'pk-scene-label';
+        label.dataset.node = name;
+        label.innerHTML = '<b></b><small></small>';
+        scene.appendChild(label);
+      }
+      label.querySelector('b').textContent = data[0];
+      label.querySelector('small').textContent = data[1];
+      label.style.cssText = 'position:absolute!important;display:block!important;visibility:visible!important;opacity:1!important;z-index:100!important;pointer-events:none!important;font-family:inherit!important;line-height:1.2!important;';
+      label.querySelector('b').style.cssText = 'display:block!important;color:#f4fbff!important;font-size:8px!important;font-weight:700!important;letter-spacing:.12em!important;white-space:nowrap!important;text-shadow:0 0 10px rgba(100,230,255,.8),0 2px 8px rgba(0,0,0,.9)!important;';
+      label.querySelector('small').style.cssText = 'display:block!important;color:#b9cbe2!important;font-size:6px!important;font-weight:500!important;letter-spacing:.04em!important;white-space:nowrap!important;margin-top:5px!important;text-shadow:0 1px 7px rgba(0,0,0,.95)!important;';
+    });
+  };
+  const positionLabels = () => {
+    const sr = scene.getBoundingClientRect();
+    Object.entries(labelData).forEach(([name, data]) => {
+      const node = scene.querySelector(`.${name}`);
+      const label = scene.querySelector(`.pk-scene-label[data-node="${name}"]`);
+      if (!node || !label) return;
+      const nr = node.getBoundingClientRect();
+      if (data[2] === 'below') {
+        label.style.left = `${nr.left - sr.left + nr.width / 2}px`;
+        label.style.top = `${nr.bottom - sr.top + 9}px`;
+        label.style.transform = 'translateX(-50%)';
+        label.style.textAlign = 'center';
+      } else if (data[2] === 'right') {
+        label.style.left = `${nr.right - sr.left + 10}px`;
+        label.style.top = `${nr.top - sr.top + nr.height * .34}px`;
+        label.style.transform = 'none';
+        label.style.textAlign = 'left';
+      } else {
+        label.style.left = `${nr.left - sr.left - 10}px`;
+        label.style.top = `${nr.top - sr.top + nr.height * .34}px`;
+        label.style.transform = 'translateX(-100%)';
+        label.style.textAlign = 'right';
+      }
+    });
+  };
+  ensureLabels();
+  requestAnimationFrame(() => requestAnimationFrame(positionLabels));
+  window.addEventListener('resize', () => requestAnimationFrame(positionLabels), { passive: true });
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -28,8 +85,6 @@
     css.dataset.referenceConstellation = 'true';
     document.head.appendChild(css);
   }
-
-  // FINAL: load the same cache-busted demo-match layer used by index.html.
   if (!document.querySelector('link[data-pk-final-stabilization]')) {
     const finalCss = document.createElement('link');
     finalCss.rel = 'stylesheet';

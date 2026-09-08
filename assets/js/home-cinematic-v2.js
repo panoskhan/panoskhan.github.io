@@ -15,7 +15,8 @@
     ['/assets/css/home-final-lighting-v24.css?v=20260908-231','pkLightingV24'],
     ['/assets/css/home-final-typography-v25.css?v=20260908-232','pkTypographyV25'],
     ['/assets/css/home-final-hero-spacing-v26.css?v=20260908-241','pkHeroSpacingV26'],
-    ['/assets/css/home-final-mobile-hero-v28.css?v=20260908-250','pkMobileHeroV28']
+    ['/assets/css/home-final-mobile-hero-v28.css?v=20260908-250','pkMobileHeroV28'],
+    ['/assets/css/home-final-atmosphere-v29.css?v=20260908-252','pkAtmosphereV29']
   ];
   styles.forEach(([href, key]) => {
     if (!document.querySelector(`link[data-${key.replace(/[A-Z]/g,m=>'-'+m.toLowerCase())}]`)) {

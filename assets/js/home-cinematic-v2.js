@@ -27,7 +27,7 @@
     n4: ['AI TOOLS', 'Intelligence Layer'],
     n5: ['PLATFORM', 'Scalable Systems']
   };
-  Object.entries(labelData).forEach(([name, data]) => {
+  Object.entries(labelData).forEach(([name]) => {
     const node = scene.querySelector(`.${name}`);
     if (!node) return;
     node.querySelectorAll(':scope > b, :scope > small').forEach(el => {
@@ -59,6 +59,13 @@
     referenceCss.href = '/assets/css/home-final-reference-v20.css?v=20260908-201';
     referenceCss.dataset.pkReferenceV20 = 'true';
     document.head.appendChild(referenceCss);
+  }
+  if (!document.querySelector('link[data-pk-reference-v21]')) {
+    const mobileCss = document.createElement('link');
+    mobileCss.rel = 'stylesheet';
+    mobileCss.href = '/assets/css/home-final-reference-v21.css?v=20260908-210';
+    mobileCss.dataset.pkReferenceV21 = 'true';
+    document.head.appendChild(mobileCss);
   }
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

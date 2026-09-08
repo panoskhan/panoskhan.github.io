@@ -1,0 +1,141 @@
+/* PANOS KHAN — MOBILE REFERENCE CORRECTION v21
+   Fixes the mobile regression visible in QA: oversized planets, oversized
+   highlight discs, label collisions, and an over-expanded constellation.
+   Desktop V20 remains unchanged.
+*/
+@media (max-width:600px){
+  .cin .hero3d{
+    height:500px!important;
+    min-height:500px!important;
+    max-height:500px!important;
+    overflow:visible!important;
+    position:relative!important;
+    perspective:none!important;
+    transform-style:preserve-3d!important;
+  }
+
+  /* Match the compact planet scale of the supplied reference. */
+  .cin .hero3d .node{
+    position:absolute!important;
+    width:58px!important;
+    min-width:58px!important;
+    max-width:58px!important;
+    height:58px!important;
+    min-height:58px!important;
+    max-height:58px!important;
+    margin:0!important;
+    padding:0!important;
+    box-sizing:border-box!important;
+    overflow:visible!important;
+    border-radius:50%!important;
+    z-index:50!important;
+    animation:none!important;
+  }
+
+  /* Remove the legacy oversized inner 'moon' and retain a small specular highlight. */
+  .cin .hero3d .node:before{
+    left:8px!important;
+    top:7px!important;
+    width:10px!important;
+    height:10px!important;
+    min-width:10px!important;
+    min-height:10px!important;
+    margin:0!important;
+    border-radius:50%!important;
+    background:radial-gradient(circle at 35% 30%,#fff 0 18%,rgba(255,255,255,.5) 36%,transparent 70%)!important;
+    box-shadow:0 0 8px var(--planetHot)!important;
+    z-index:5!important;
+  }
+  .cin .hero3d .node:after{
+    inset:-4px!important;
+    z-index:4!important;
+    animation:none!important;
+    opacity:.75!important;
+  }
+
+  /* Fixed constellation anchors — same topology as the reference, scaled for phone. */
+  .cin .hero3d .n1{left:50%!important;right:auto!important;top:4%!important;bottom:auto!important;transform:translate3d(-50%,0,24px)!important}
+  .cin .hero3d .n2{left:5%!important;right:auto!important;top:34%!important;bottom:auto!important;transform:translate3d(0,0,14px)!important}
+  .cin .hero3d .n3{right:5%!important;left:auto!important;top:34%!important;bottom:auto!important;transform:translate3d(0,0,28px)!important}
+  .cin .hero3d .n4{left:10%!important;right:auto!important;top:auto!important;bottom:7%!important;transform:translate3d(0,0,18px)!important}
+  .cin .hero3d .n5{right:10%!important;left:auto!important;top:auto!important;bottom:7%!important;transform:translate3d(0,0,26px)!important}
+
+  /* Labels sit outside the planets and never overlap the core. */
+  .cin .hero3d .node>b,
+  .cin .hero3d .node>small{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    position:absolute!important;
+    z-index:100!important;
+    white-space:nowrap!important;
+    pointer-events:none!important;
+    clip:auto!important;
+    clip-path:none!important;
+    text-indent:0!important;
+  }
+  .cin .hero3d .node>b{
+    font-size:7px!important;
+    line-height:1.15!important;
+    letter-spacing:.08em!important;
+    color:var(--planetHot)!important;
+    text-shadow:0 0 8px var(--planetGlow),0 2px 7px rgba(0,0,0,.95)!important;
+  }
+  .cin .hero3d .node>small{
+    font-size:5.3px!important;
+    line-height:1.2!important;
+    color:#cbd9ee!important;
+    text-shadow:0 1px 6px rgba(0,0,0,.95)!important;
+  }
+  .cin .hero3d .n1>b{left:50%!important;right:auto!important;top:66px!important;transform:translateX(-50%)!important;text-align:center!important}
+  .cin .hero3d .n1>small{left:50%!important;right:auto!important;top:78px!important;transform:translateX(-50%)!important;text-align:center!important}
+  .cin .hero3d .n2>b,.cin .hero3d .n2>small,.cin .hero3d .n4>b,.cin .hero3d .n4>small{left:66px!important;right:auto!important;text-align:left!important}
+  .cin .hero3d .n3>b,.cin .hero3d .n3>small,.cin .hero3d .n5>b,.cin .hero3d .n5>small{right:66px!important;left:auto!important;text-align:right!important}
+  .cin .hero3d .n2>b,.cin .hero3d .n3>b,.cin .hero3d .n4>b,.cin .hero3d .n5>b{top:18px!important}
+  .cin .hero3d .n2>small,.cin .hero3d .n3>small,.cin .hero3d .n4>small,.cin .hero3d .n5>small{top:31px!important}
+
+  /* Compact central core and controlled glow. */
+  .cin .hero3d .core{
+    left:50%!important;
+    top:50%!important;
+    width:158px!important;
+    height:158px!important;
+    min-width:158px!important;
+    min-height:158px!important;
+    transform:translate3d(-50%,-50%,22px)!important;
+    z-index:30!important;
+  }
+  .cin .hero3d .core:before{width:108%!important;height:108%!important}
+  .cin .hero3d .core:after{width:76%!important;height:76%!important}
+  .cin .hero3d .pk{font-size:60px!important}
+  .cin .hero3d .corelabel{
+    left:50%!important;
+    top:50%!important;
+    transform:translate3d(-50%,86px,26px)!important;
+    z-index:90!important;
+    white-space:nowrap!important;
+  }
+  .cin .hero3d .corelabel small{font-size:6px!important}
+
+  /* Rings remain visible but stay subordinate to the planets/core. */
+  .cin .hero3d .orb{left:50%!important;top:50%!important;opacity:.9!important}
+  .cin .hero3d .o1{width:88%!important;height:38%!important;transform:translate(-50%,-50%) rotateX(69deg)!important}
+  .cin .hero3d .o2{width:70%!important;height:30%!important;transform:translate(-50%,-50%) rotateX(69deg) rotateZ(48deg)!important}
+  .cin .hero3d .o3{width:102%!important;height:46%!important;transform:translate(-50%,-50%) rotateX(66deg) rotateZ(-25deg)!important}
+
+  /* Keep particles behind the constellation. */
+  .cin .hero3d .particle-field{z-index:1!important}
+  .cin .hero3d .scene-floor{z-index:2!important}
+}
+@media (max-width:390px){
+  .cin .hero3d{height:480px!important;min-height:480px!important;max-height:480px!important}
+  .cin .hero3d .node{width:54px!important;min-width:54px!important;height:54px!important;min-height:54px!important;max-height:54px!important}
+  .cin .hero3d .n2{left:4%!important}.cin .hero3d .n3{right:4%!important}
+  .cin .hero3d .n4{left:8%!important}.cin .hero3d .n5{right:8%!important}
+  .cin .hero3d .n1>b{top:62px!important}.cin .hero3d .n1>small{top:74px!important}
+  .cin .hero3d .n2>b,.cin .hero3d .n3>b,.cin .hero3d .n4>b,.cin .hero3d .n5>b{top:16px!important}
+  .cin .hero3d .n2>small,.cin .hero3d .n3>small,.cin .hero3d .n4>small,.cin .hero3d .n5>small{top:29px!important}
+  .cin .hero3d .core{width:150px!important;height:150px!important;min-width:150px!important;min-height:150px!important}
+  .cin .hero3d .pk{font-size:56px!important}
+  .cin .hero3d .corelabel{transform:translate3d(-50%,82px,26px)!important}
+}

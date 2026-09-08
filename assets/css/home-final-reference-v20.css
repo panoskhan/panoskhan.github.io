@@ -1,0 +1,75 @@
+/* PANOS KHAN — REFERENCE MATCH v20
+   Final geometry layer for the supplied 1024px reference.
+   v19 remains intact underneath; this file only corrects proportions,
+   planet scale, label placement, depth and responsive stability.
+*/
+
+/* --- desktop reference geometry --- */
+@media (min-width:601px){
+  .cin-main{max-width:1200px!important;padding:0 20px!important}
+  .cin-hero{height:414px!important;min-height:414px!important;grid-template-columns:40% 60%!important;gap:0!important;padding:0!important}
+  .cin-hero>div:first-child{padding-left:30px!important;padding-top:28px!important}
+  .cin-h1{font-size:clamp(29px,3vw,44px)!important;line-height:1.05!important;letter-spacing:-.04em!important;margin:11px 0 14px!important;max-width:390px!important}
+  .cin-lead{font-size:10px!important;line-height:1.55!important;max-width:365px!important}
+  .actions{margin-top:18px!important;gap:12px!important}.actions .btn{padding:10px 18px!important;font-size:10px!important}
+  .stats{margin-top:30px!important;gap:34px!important}.stats .stat b{font-size:19px!important}.stats .stat span{font-size:7px!important}
+  .cin .hero3d{height:414px!important;min-height:414px!important;overflow:visible!important;perspective:1050px!important;perspective-origin:50% 48%!important}
+
+  /* Core: reference-sized, bright, spherical and slightly above the orbital deck. */
+  .cin .hero3d .core{left:53%!important;top:48%!important;width:164px!important;height:164px!important;transform:translate3d(-50%,-50%,46px)!important}
+  .cin .hero3d .pk{font-size:66px!important}
+  .cin .hero3d .corelabel{left:53%!important;top:48%!important;transform:translate3d(-50%,57px,68px)!important;font-size:9px!important}
+  .cin .hero3d .corelabel small{font-size:6px!important}
+  .cin .hero3d .orb{left:53%!important;top:48%!important}
+  .cin .hero3d .o1{width:90%!important;height:43%!important;transform:translate(-50%,-50%) rotateX(69deg)!important}
+  .cin .hero3d .o2{width:72%!important;height:34%!important;transform:translate(-50%,-50%) rotateX(69deg) rotateZ(48deg)!important}
+  .cin .hero3d .o3{width:106%!important;height:50%!important;transform:translate(-50%,-50%) rotateX(66deg) rotateZ(-25deg)!important}
+
+  /* Five small spherical planets — deliberately smaller than v19. */
+  .cin .hero3d .node{width:38px!important;min-width:38px!important;height:38px!important;min-height:38px!important;border-radius:50%!important;overflow:visible!important;z-index:40!important}
+  .cin .hero3d .node:before{left:6px!important;top:5px!important;width:10px!important;height:10px!important}
+  .cin .hero3d .node:after{inset:-4px!important}
+
+  .cin .hero3d .n1{left:51%!important;top:5%!important;right:auto!important;bottom:auto!important;transform:translateX(-50%) translateZ(58px)!important}
+  .cin .hero3d .n2{left:8%!important;top:28%!important;right:auto!important;bottom:auto!important;transform:translateZ(26px)!important}
+  .cin .hero3d .n3{right:7%!important;top:31%!important;left:auto!important;bottom:auto!important;transform:translateZ(62px)!important}
+  .cin .hero3d .n4{left:10%!important;bottom:19%!important;right:auto!important;top:auto!important;transform:translateZ(35px)!important}
+  .cin .hero3d .n5{right:9%!important;bottom:18%!important;left:auto!important;top:auto!important;transform:translateZ(50px)!important}
+
+  /* Labels are independent UI elements, never clipped by the sphere. */
+  .cin .hero3d .node>b,.cin .hero3d .node>small{display:block!important;visibility:visible!important;opacity:1!important;position:absolute!important;z-index:100!important;white-space:nowrap!important;pointer-events:none!important;text-indent:0!important;clip:auto!important;clip-path:none!important}
+  .cin .hero3d .node>b{font-size:8px!important;line-height:1.15!important;letter-spacing:.07em!important;color:var(--planetHot)!important;text-shadow:0 0 10px var(--planetGlow),0 2px 8px rgba(0,0,0,.9)!important}
+  .cin .hero3d .node>small{font-size:5.8px!important;line-height:1.2!important;color:#cbd9ee!important;text-shadow:0 1px 7px rgba(0,0,0,.95)!important}
+  .cin .hero3d .n1>b{left:22px!important;top:1px!important}.cin .hero3d .n1>small{left:22px!important;top:14px!important}
+  .cin .hero3d .n2>b,.cin .hero3d .n2>small,.cin .hero3d .n4>b,.cin .hero3d .n4>small{left:48px!important}
+  .cin .hero3d .n2>b,.cin .hero3d .n3>b,.cin .hero3d .n4>b,.cin .hero3d .n5>b{top:4px!important}
+  .cin .hero3d .n2>small,.cin .hero3d .n3>small,.cin .hero3d .n4>small,.cin .hero3d .n5>small{top:17px!important}
+  .cin .hero3d .n3>b,.cin .hero3d .n3>small,.cin .hero3d .n5>b,.cin .hero3d .n5>small{right:48px!important;left:auto!important;text-align:right!important}
+}
+
+/* --- mobile: preserve the approved constellation anchors while making labels unmissable --- */
+@media (max-width:600px){
+  .cin .hero3d{height:560px!important;min-height:560px!important;max-height:560px!important;overflow:visible!important;perspective:none!important}
+  .cin .hero3d .node{overflow:visible!important;z-index:50!important}
+  .cin .hero3d .node>b,.cin .hero3d .node>small{display:block!important;visibility:visible!important;opacity:1!important;position:absolute!important;z-index:100!important;white-space:nowrap!important;pointer-events:none!important;clip:auto!important;clip-path:none!important}
+  .cin .hero3d .n1>b,.cin .hero3d .n1>small{left:50%!important;right:auto!important;transform:translateX(-50%)!important;text-align:center!important}
+  .cin .hero3d .n1>b{top:112px!important;font-size:8px!important}.cin .hero3d .n1>small{top:127px!important;font-size:6px!important}
+  .cin .hero3d .n2>b,.cin .hero3d .n2>small,.cin .hero3d .n4>b,.cin .hero3d .n4>small{left:112px!important;right:auto!important;text-align:left!important}
+  .cin .hero3d .n3>b,.cin .hero3d .n3>small,.cin .hero3d .n5>b,.cin .hero3d .n5>small{right:112px!important;left:auto!important;text-align:right!important}
+  .cin .hero3d .n2>b,.cin .hero3d .n3>b,.cin .hero3d .n4>b,.cin .hero3d .n5>b{top:34px!important;font-size:8px!important}
+  .cin .hero3d .n2>small,.cin .hero3d .n3>small,.cin .hero3d .n4>small,.cin .hero3d .n5>small{top:49px!important;font-size:6px!important}
+  .cin .hero3d .corelabel{z-index:90!important}
+}
+@media (max-width:390px){
+  .cin .hero3d{height:535px!important;min-height:535px!important;max-height:535px!important}
+  .cin .hero3d .n2{left:2%!important}.cin .hero3d .n3{right:2%!important}.cin .hero3d .n4{left:5%!important}.cin .hero3d .n5{right:5%!important}
+}
+
+/* Keep the lower page panels visually close to the reference density. */
+@media (min-width:601px){
+  .cin-main>.section{margin:14px 0!important;border-radius:14px!important;padding:20px 24px!important}
+  .cin-main>.section h2{font-size:22px!important}
+  .cin-main>.eco{min-height:310px!important}.cin-main>.eco .map{height:270px!important}
+  .cin-main>.section .cards{gap:12px!important}.cin-main>.section .card{min-height:180px!important;padding:15px!important;border-radius:12px!important}
+  .cin-main>.section .projects{gap:12px!important}.cin-main>.section .project{min-height:165px!important;padding:15px!important;border-radius:12px!important}
+}

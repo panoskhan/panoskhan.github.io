@@ -1,4 +1,4 @@
-/* PANOS KHAN — FINAL DEMO MATCH / STABILIZED v19.2
+/* PANOS KHAN — FINAL DEMO MATCH / STABILIZED v19.3
    Authoritative last visual layer. Demo geometry + spectrum remain stable.
 */
 .cin-main{max-width:1200px!important;padding:0 20px!important}
@@ -10,9 +10,9 @@
 .cin .hero3d .node{z-index:20!important;width:48px!important;min-width:48px!important;height:48px!important;min-height:48px!important;padding:0!important;border-radius:50%!important;overflow:visible!important;display:block!important;background-color:#050913!important;box-shadow:0 0 10px var(--planetSoft),0 0 30px var(--planetSoft),0 12px 24px rgba(0,0,0,.48),inset -8px -9px 15px rgba(0,0,0,.58),inset 4px 3px 9px rgba(255,255,255,.22)!important;filter:saturate(1.16) contrast(1.05)!important;animation:none!important}
 .cin .hero3d .node:before{content:""!important;position:absolute!important;left:8px!important;top:7px!important;width:13px!important;height:13px!important;margin:0!important;border:0!important;border-radius:50%!important;background:radial-gradient(circle at 35% 30%,#fff,rgba(255,255,255,.35) 27%,transparent 67%)!important;box-shadow:0 0 10px var(--planetHot)!important;z-index:4!important}
 .cin .hero3d .node:after{content:""!important;position:absolute!important;inset:-5px!important;border-radius:50%!important;border:1px solid color-mix(in srgb,var(--planet) 55%,transparent)!important;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.34) 50%,transparent 62%)!important;animation:demoSweep 4.8s ease-in-out infinite!important;pointer-events:none!important;z-index:3!important}
-.cin .hero3d .node b,.cin .hero3d .node small{position:absolute!important;display:block!important;white-space:nowrap!important;z-index:8!important}
-.cin .hero3d .node b{left:40px!important;top:4px!important;color:var(--planetHot)!important;font-size:10px!important;letter-spacing:.08em!important;text-shadow:0 0 10px var(--planetGlow),0 2px 8px rgba(0,0,0,.8)!important}
-.cin .hero3d .node small{left:40px!important;top:19px!important;color:#aebfd7!important;font-size:6.5px!important;line-height:1.2!important;text-shadow:0 1px 7px rgba(0,0,0,.9)!important}
+.cin .hero3d .node b,.cin .hero3d .node small{position:absolute!important;display:block!important;visibility:visible!important;opacity:1!important;white-space:nowrap!important;z-index:30!important;pointer-events:none!important}
+.cin .hero3d .node b{left:40px!important;top:4px!important;color:var(--planetHot)!important;font-size:10px!important;line-height:1.15!important;letter-spacing:.08em!important;text-shadow:0 0 10px var(--planetGlow),0 2px 8px rgba(0,0,0,.8)!important}
+.cin .hero3d .node small{left:40px!important;top:19px!important;color:#c8d8ee!important;font-size:6.5px!important;line-height:1.2!important;text-shadow:0 1px 7px rgba(0,0,0,.9)!important}
 .cin .hero3d .n1 b{left:25px!important;top:-1px!important}.cin .hero3d .n1 small{left:25px!important;top:14px!important}
 @media(min-width:901px){
   .cin-nav{height:64px!important}.cin-links{gap:28px!important;font-size:10px!important}

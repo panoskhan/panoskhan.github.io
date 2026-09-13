@@ -3,11 +3,14 @@ import json
 import os
 import uuid
 
+from model_adapter import LocalModelAdapter
+
 HOST = os.getenv("KHAN_HOST", "127.0.0.1")
 PORT = int(os.getenv("KHAN_PORT", "8787"))
 VERSION = "0.1.0"
 MAX_BODY_BYTES = 256 * 1024
 MAX_MESSAGE_CHARS = 12000
+MODEL = LocalModelAdapter()
 
 
 def json_error(code, message, request_id=None):
@@ -80,9 +83,9 @@ class Handler(BaseHTTPRequestHandler):
             self._json(400, json_error("invalid_request", "sessionId must be a string of at most 128 characters", request_id))
             return
 
-        # Local-first foundation: no provider credentials or external calls here.
+        response_message = MODEL.generate(user_message)
         self._json(200, {
-            "message": user_message.strip(),
+            "message": response_message,
             "sessionId": session_id or uuid.uuid4().hex,
             "requestId": request_id,
         })

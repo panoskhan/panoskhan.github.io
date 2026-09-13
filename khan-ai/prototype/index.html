@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#02030a">
+<meta name="description" content="KHAN AI galaxy prototype — an iPhone-first AI command center concept.">
+<title>KHAN AI — Galaxy Prototype</title>
+<style>
+:root{color-scheme:dark;--bg:#02030a;--text:#eef6ff;--muted:#8b99b4;--cyan:#6fe7ff}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;color:var(--text)}
+body{overflow-x:hidden;background:radial-gradient(circle at 50% 44%,#111b35 0,#070b18 30%,#02030a 68%)}
+button{font:inherit}button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.app{min-height:100svh;position:relative;overflow:hidden;padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom)}
+.stars,.stars:before,.stars:after{position:absolute;inset:0;content:"";background-image:radial-gradient(circle,#fff 0 1px,transparent 1.5px);background-size:97px 113px;opacity:.22;pointer-events:none}.stars:before{transform:scale(1.6);opacity:.09}.stars:after{transform:scale(.7);opacity:.12}
+.top{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:18px 4px}.brand{font-weight:700;letter-spacing:.3em;font-size:15px}.brand b{color:var(--cyan);font-weight:600}.status{font-size:10px;letter-spacing:.18em;color:#7ff2d0}.profile{font-size:12px;color:var(--muted);margin-top:8px}
+.galaxy{position:relative;height:calc(100svh - 160px);min-height:590px;display:grid;place-items:center}.nebula{position:absolute;width:90vw;height:70vw;max-width:620px;max-height:480px;border-radius:50%;background:radial-gradient(ellipse,rgba(74,123,255,.16),rgba(170,76,255,.07) 38%,transparent 68%);filter:blur(16px);transform:rotate(-15deg)}
+.orbit{position:absolute;border:1px solid rgba(128,206,255,.18);border-radius:50%;transform:rotate(-17deg);box-shadow:0 0 20px rgba(65,150,255,.05)}.o1{width:86%;height:39%}.o2{width:110%;height:50%;border-color:rgba(255,177,92,.12)}.o3{width:135%;height:62%;border-color:rgba(165,130,255,.12)}
+.core{position:absolute;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 50% 50%,#000 0 35%,#06070b 42%,rgba(255,165,75,.5) 52%,rgba(100,184,255,.18) 61%,transparent 73%);box-shadow:0 0 30px rgba(255,153,63,.3),0 0 80px rgba(55,136,255,.16);display:grid;place-items:center;z-index:3}.core:after{content:"";position:absolute;width:230px;height:64px;border-radius:50%;border:8px solid rgba(255,170,83,.45);filter:blur(6px);transform:rotate(-15deg)}.core span{z-index:4;font-size:12px;letter-spacing:.35em;margin-left:.35em}.core small{position:absolute;top:calc(100% + 14px);font-size:9px;letter-spacing:.3em;color:var(--muted);white-space:nowrap}
+.planet{position:absolute;width:76px;height:76px;border:0;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:10px;font-weight:650;letter-spacing:.03em;color:#fff;z-index:4;cursor:pointer;box-shadow:inset -16px -12px 25px rgba(0,0,0,.55),inset 8px 8px 18px rgba(255,255,255,.16),0 0 28px var(--glow)}.planet small{position:absolute;top:84px;font-size:9px;color:#b4bfd3;letter-spacing:.08em;font-weight:500;white-space:nowrap;pointer-events:none}.planet:hover{filter:brightness(1.08)}
+.p-research{top:8%;left:18%;background:radial-gradient(circle at 35% 30%,#80eaff,#1266b7 45%,#07172b);--glow:rgba(48,184,255,.4)}.p-knowledge{top:7%;right:13%;background:radial-gradient(circle at 35% 30%,#b5a5ff,#4d31a8 45%,#17112f);--glow:rgba(139,110,255,.4)}.p-projects{left:4%;top:39%;background:radial-gradient(circle at 35% 30%,#ffb27e,#c33825 46%,#35100c);--glow:rgba(255,84,58,.4)}.p-automation{left:12%;bottom:15%;background:radial-gradient(circle at 35% 30%,#b7ffd8,#1c9a67 46%,#07291d);--glow:rgba(55,226,155,.35)}.p-creativity{right:4%;top:38%;background:radial-gradient(circle at 35% 30%,#e1a7ff,#7628c4 46%,#210b3b);--glow:rgba(188,72,255,.4)}.p-communication{right:13%;bottom:16%;background:radial-gradient(circle at 35% 30%,#ffe1a1,#c27a20 46%,#35200b);--glow:rgba(255,179,77,.35)}.p-strategy{left:42%;bottom:7%;background:radial-gradient(circle at 35% 30%,#9dc8ff,#2465bd 46%,#0b1b36);--glow:rgba(80,155,255,.35)}.p-tools{right:38%;top:19%;background:radial-gradient(circle at 35% 30%,#fff1a8,#b98a21 46%,#332507);--glow:rgba(255,201,83,.3);width:58px;height:58px;font-size:9px}.p-tools small{top:66px}
+.bottom{position:fixed;left:16px;right:16px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:10;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:9px;border:1px solid rgba(160,190,220,.16);background:rgba(6,10,22,.72);backdrop-filter:blur(18px);border-radius:24px}.action{border:0;background:transparent;color:#aab7cb;font-size:10px;padding:10px 4px;border-radius:16px;cursor:pointer}.action.main{color:#fff}.action .dot{display:block;width:30px;height:30px;margin:0 auto 5px;border-radius:50%;border:1px solid rgba(120,180,255,.25);box-shadow:0 0 18px rgba(74,152,255,.16)}
+@media(max-width:699px){.planet{min-width:44px;min-height:44px}.core{width:150px;height:150px}}
+@media(min-width:700px){.app{max-width:1100px;margin:auto}.galaxy{height:760px}.planet{width:92px;height:92px}.planet small{top:100px}.core{width:190px;height:190px}.bottom{position:absolute;max-width:620px;left:50%;transform:translateX(-50%)}.p-tools{width:70px;height:70px}.p-tools small{top:78px}}
+@media(prefers-reduced-motion:no-preference){.orbit{animation:spin 24s linear infinite}.core{animation:pulse 4s ease-in-out infinite}@keyframes spin{to{transform:rotate(343deg)}}@keyframes pulse{50%{filter:brightness(1.16)}}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="stars" aria-hidden="true"></div>
+<header class="top"><div><div class="brand">KHAN <b>AI</b></div><div class="profile">Your intelligent digital command center</div></div><div class="status" role="status" aria-label="Core online">● CORE ONLINE</div></header>
+<main class="galaxy" aria-label="KHAN AI capability galaxy">
+<div class="nebula" aria-hidden="true"></div><div class="orbit o1" aria-hidden="true"></div><div class="orbit o2" aria-hidden="true"></div><div class="orbit o3" aria-hidden="true"></div>
+<div class="core" aria-label="KHAN AI Core"><span>KHAN</span><small>AI CORE</small></div>
+<button class="planet p-research" type="button" aria-label="Research">R<small>Research</small></button>
+<button class="planet p-knowledge" type="button" aria-label="Knowledge">K<small>Knowledge</small></button>
+<button class="planet p-projects" type="button" aria-label="Projects">P<small>Projects</small></button>
+<button class="planet p-automation" type="button" aria-label="Automation">A<small>Automation</small></button>
+<button class="planet p-creativity" type="button" aria-label="Creativity">C<small>Creativity</small></button>
+<button class="planet p-communication" type="button" aria-label="Communication">M<small>Communication</small></button>
+<button class="planet p-strategy" type="button" aria-label="Strategy">S<small>Strategy</small></button>
+<button class="planet p-tools" type="button" aria-label="Tools">T<small>Tools</small></button>
+</main>
+<nav class="bottom" aria-label="Primary actions"><button class="action" type="button"><span class="dot" aria-hidden="true"></span>Chat</button><button class="action" type="button"><span class="dot" aria-hidden="true"></span>Voice</button><button class="action main" type="button"><span class="dot" aria-hidden="true"></span>KHAN</button><button class="action" type="button"><span class="dot" aria-hidden="true"></span>Vision</button></nav>
+</div>
+</body>
+</html>

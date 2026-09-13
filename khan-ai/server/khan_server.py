@@ -4,6 +4,7 @@ import os
 import uuid
 
 from agent_runtime import AgentRuntime
+from authorization import AuthorizationBoundary
 from model_adapter import LocalModelAdapter
 
 HOST = os.getenv("KHAN_HOST", "127.0.0.1")
@@ -12,7 +13,8 @@ VERSION = "0.1.0"
 MAX_BODY_BYTES = 256 * 1024
 MAX_MESSAGE_CHARS = 12000
 MODEL = LocalModelAdapter()
-AGENT = AgentRuntime(MODEL)
+AUTH = AuthorizationBoundary()
+AGENT = AgentRuntime(MODEL, AUTH)
 
 
 def json_error(code, message, request_id=None):
@@ -58,17 +60,14 @@ class Handler(BaseHTTPRequestHandler):
         if path.startswith("/v1/agent/runs/"):
             run_id = path.rsplit("/", 1)[-1]
             record = AGENT.get(run_id)
-            if record is None:
-                self._json(404, json_error("not_found", "Run not found"))
-            else:
-                self._json(200, record)
+            self._json(404 if record is None else 200, record if record is not None else json_error("not_found", "Run not found"))
             return
         self._json(404, json_error("not_found", "Route not found"))
 
     def do_POST(self):
         path = self.path.split("?", 1)[0]
         request_id = self._request_id()
-        if path not in {"/v1/chat", "/v1/agent/run"}:
+        if path not in {"/v1/chat", "/v1/agent/run", "/v1/tools/authorize"}:
             self._json(404, json_error("not_found", "Route not found", request_id))
             return
 
@@ -78,6 +77,15 @@ class Handler(BaseHTTPRequestHandler):
             return
         if not isinstance(payload, dict):
             self._json(400, json_error("invalid_request", "JSON body must be an object", request_id))
+            return
+
+        if path == "/v1/tools/authorize":
+            try:
+                record = AUTH.authorize(payload.get("tool"), payload.get("permissionLevel"), payload.get("decision"), payload.get("reason"))
+            except ValueError as exc:
+                self._json(400, json_error("invalid_request", str(exc), request_id))
+                return
+            self._json(200, {"decision": record["decision"], "decisionId": record["decisionId"]})
             return
 
         if path == "/v1/chat":

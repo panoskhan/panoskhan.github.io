@@ -1,0 +1,66 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "KHAN AI Service API",
+    "version": "0.1.0",
+    "description": "Contract-first API for the KHAN AI agent core. This specification defines interfaces only; it does not claim a deployed backend."
+  },
+  "servers": [{"url": "http://127.0.0.1:8787", "description": "Local development placeholder"}],
+  "paths": {
+    "/v1/health": {
+      "get": {
+        "operationId": "getHealth",
+        "responses": {"200": {"description": "Service health", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/HealthResponse"}}}}}
+      }
+    },
+    "/v1/chat": {
+      "post": {
+        "operationId": "createChat",
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ChatRequest"}}}},
+        "responses": {"200": {"description": "Assistant response", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ChatResponse"}}}}, "400": {"$ref": "#/components/responses/BadRequest"}}
+      }
+    },
+    "/v1/agent/run": {
+      "post": {
+        "operationId": "runAgent",
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/AgentRunRequest"}}}},
+        "responses": {"200": {"description": "Agent run result", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/AgentRunResponse"}}}}, "400": {"$ref": "#/components/responses/BadRequest"}}
+      }
+    },
+    "/v1/memory": {
+      "get": {
+        "operationId": "listMemory",
+        "responses": {"200": {"description": "Memory entries", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/MemoryListResponse"}}}}}
+      },
+      "post": {
+        "operationId": "createMemory",
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/MemoryWriteRequest"}}}},
+        "responses": {"201": {"description": "Memory created", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/MemoryEntry"}}}}, "400": {"$ref": "#/components/responses/BadRequest"}}
+      }
+    },
+    "/v1/tools/authorize": {
+      "post": {
+        "operationId": "authorizeTool",
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ToolAuthorizationRequest"}}}},
+        "responses": {"200": {"description": "Authorization decision", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ToolAuthorizationResponse"}}}}, "400": {"$ref": "#/components/responses/BadRequest"}}
+      }
+    }
+  },
+  "components": {
+    "responses": {"BadRequest": {"description": "Invalid request", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ErrorResponse"}}}}},
+    "schemas": {
+      "HealthResponse": {"type": "object", "required": ["status", "version"], "properties": {"status": {"type": "string", "enum": ["ok", "degraded"]}, "version": {"type": "string"}}},
+      "ChatRequest": {"type": "object", "required": ["message"], "properties": {"message": {"type": "string", "minLength": 1, "maxLength": 12000}, "sessionId": {"type": "string", "maxLength": 128}}},
+      "ChatResponse": {"type": "object", "required": ["message"], "properties": {"message": {"type": "string"}, "sessionId": {"type": "string"}, "requestId": {"type": "string"}}},
+      "AgentRunRequest": {"type": "object", "required": ["task"], "properties": {"task": {"type": "string", "minLength": 1, "maxLength": 12000}, "sessionId": {"type": "string", "maxLength": 128}, "permissionLevel": {"type": "string", "enum": ["read", "prepare", "confirm", "execute"]}}},
+      "AgentRunResponse": {"type": "object", "required": ["runId", "status", "steps"], "properties": {"runId": {"type": "string"}, "status": {"type": "string", "enum": ["planned", "running", "completed", "blocked", "failed"]}, "steps": {"type": "array", "items": {"$ref": "#/components/schemas/AgentStep"}}}},
+      "AgentStep": {"type": "object", "required": ["id", "kind", "status"], "properties": {"id": {"type": "string"}, "kind": {"type": "string", "enum": ["plan", "tool", "verify", "respond"]}, "status": {"type": "string", "enum": ["pending", "running", "completed", "blocked", "failed"]}, "summary": {"type": "string"}}},
+      "MemoryWriteRequest": {"type": "object", "required": ["content"], "properties": {"content": {"type": "string", "minLength": 1, "maxLength": 4000}, "category": {"type": "string", "maxLength": 64}, "source": {"type": "string", "maxLength": 64}}},
+      "MemoryEntry": {"type": "object", "required": ["id", "content", "createdAt"], "properties": {"id": {"type": "string"}, "content": {"type": "string"}, "category": {"type": "string"}, "source": {"type": "string"}, "createdAt": {"type": "string", "format": "date-time"}}},
+      "MemoryListResponse": {"type": "object", "required": ["items"], "properties": {"items": {"type": "array", "items": {"$ref": "#/components/schemas/MemoryEntry"}}}},
+      "ToolAuthorizationRequest": {"type": "object", "required": ["tool", "permissionLevel"], "properties": {"tool": {"type": "string", "minLength": 1, "maxLength": 128}, "permissionLevel": {"type": "string", "enum": ["read", "prepare", "confirm", "execute"]}, "reason": {"type": "string", "maxLength": 1000}}},
+      "ToolAuthorizationResponse": {"type": "object", "required": ["allowed", "requiresConfirmation"], "properties": {"allowed": {"type": "boolean"}, "requiresConfirmation": {"type": "boolean"}, "decisionId": {"type": "string"}}},
+      "ErrorResponse": {"type": "object", "required": ["error", "message"], "properties": {"error": {"type": "string"}, "message": {"type": "string"}, "requestId": {"type": "string"}}}
+    }
+  }
+}

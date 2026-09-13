@@ -1,5 +1,6 @@
 import uuid
 
+from authorization import AuthorizationBoundary
 from model_adapter import LocalModelAdapter
 
 PERMISSIONS = {"read", "prepare", "confirm", "execute"}
@@ -8,8 +9,9 @@ PERMISSIONS = {"read", "prepare", "confirm", "execute"}
 class AgentRuntime:
     """Small in-memory agent lifecycle implementation for local development."""
 
-    def __init__(self, model=None):
+    def __init__(self, model=None, authorization=None):
         self.model = model or LocalModelAdapter()
+        self.authorization = authorization or AuthorizationBoundary()
         self.runs = {}
 
     def run(self, task, permission_level, authorization_decision_id=None, session_id=None):
@@ -23,25 +25,22 @@ class AgentRuntime:
             raise ValueError("sessionId must be a string of at most 128 characters")
 
         run_id = uuid.uuid4().hex
-        steps = [
-            {"id": uuid.uuid4().hex, "kind": "plan", "status": "completed", "summary": "Task normalized and execution scope selected."}
-        ]
+        steps = [{"id": uuid.uuid4().hex, "kind": "plan", "status": "completed", "summary": "Task normalized and execution scope selected."}]
 
-        if permission_level in {"confirm", "execute"} and not authorization_decision_id:
-            steps.append({"id": uuid.uuid4().hex, "kind": "verify", "status": "blocked", "summary": "Authorization decision is required before consequential execution."})
-            result = None
-            status = "blocked"
-        else:
-            steps.append({"id": uuid.uuid4().hex, "kind": "tool", "status": "completed", "summary": "Local model adapter executed without external side effects."})
-            response = self.model.generate(task)
-            steps.append({"id": uuid.uuid4().hex, "kind": "verify", "status": "completed", "summary": "Local result produced; no external evidence was claimed."})
-            steps.append({"id": uuid.uuid4().hex, "kind": "respond", "status": "completed", "summary": "Agent response prepared."})
-            result = {"message": response, "evidence": []}
-            status = "completed"
+        decision = "allow" if permission_level in {"read", "prepare"} else self.authorization.check(
+            authorization_decision_id, "agent", permission_level
+        )
+        if decision != "allow":
+            steps.append({"id": uuid.uuid4().hex, "kind": "verify", "status": "blocked", "summary": "Authorization did not permit execution."})
+            record = {"runId": run_id, "status": "blocked", "steps": steps}
+            self.runs[run_id] = record
+            return record
 
-        record = {"runId": run_id, "status": status, "steps": steps}
-        if result is not None:
-            record["result"] = result
+        steps.append({"id": uuid.uuid4().hex, "kind": "tool", "status": "completed", "summary": "Local model adapter executed without external side effects."})
+        response = self.model.generate(task)
+        steps.append({"id": uuid.uuid4().hex, "kind": "verify", "status": "completed", "summary": "Local result produced; no external evidence was claimed."})
+        steps.append({"id": uuid.uuid4().hex, "kind": "respond", "status": "completed", "summary": "Agent response prepared."})
+        record = {"runId": run_id, "status": "completed", "steps": steps, "result": {"message": response, "evidence": []}}
         self.runs[run_id] = record
         return record
 

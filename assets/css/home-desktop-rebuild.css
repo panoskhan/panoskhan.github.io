@@ -1,0 +1,311 @@
+/* Panos Khan — Desktop Homepage Rebuild
+   Desktop-only composition layer. Mobile/tablet remain on the existing layout.
+*/
+@media (min-width: 901px) {
+  :root {
+    --desktop-max: 1480px;
+    --desktop-gap: clamp(28px, 3vw, 54px);
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .home-ref {
+    width: min(calc(100% - 48px), var(--desktop-max));
+    margin: 0 auto;
+    padding: 18px 0 48px;
+  }
+
+  .site-header {
+    min-height: 72px;
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 28px;
+    padding: 4px 18px 20px;
+    border-bottom: 1px solid rgba(180, 205, 255, .24);
+  }
+
+  .site-nav {
+    justify-content: center;
+    gap: clamp(18px, 2.1vw, 34px);
+  }
+
+  .site-nav a {
+    font-size: .82rem;
+    white-space: nowrap;
+  }
+
+  .header-cta {
+    min-height: 46px;
+    padding: 11px 18px;
+    font-size: .8rem;
+    border-radius: 14px;
+  }
+
+  main {
+    display: grid;
+    gap: 20px;
+  }
+
+  /* HERO — fixed two-column stage with one shared visual coordinate system. */
+  .hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(430px, .78fr) minmax(620px, 1.22fr);
+    align-items: stretch;
+    gap: var(--desktop-gap);
+    min-height: 680px;
+    padding: 54px 44px 34px;
+    overflow: visible;
+  }
+
+  .hero-copy {
+    align-self: center;
+    max-width: 650px;
+    padding: 0;
+    z-index: 5;
+  }
+
+  .hero .eyebrow {
+    margin-bottom: 20px;
+    font-size: .78rem;
+  }
+
+  .hero h1 {
+    max-width: 10.5ch;
+    font-size: clamp(3.35rem, 4.5vw, 5.25rem);
+    line-height: .94;
+    letter-spacing: -.055em;
+  }
+
+  .hero-lead {
+    max-width: 48ch;
+    margin: 24px 0 28px;
+    font-size: 1rem;
+    line-height: 1.62;
+  }
+
+  .hero-actions {
+    margin-bottom: 30px;
+  }
+
+  .hero-stats {
+    max-width: 610px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .hero-visual {
+    position: relative;
+    width: min(100%, 800px);
+    height: 600px;
+    min-height: 600px;
+    align-self: center;
+    justify-self: center;
+    isolation: isolate;
+    transform: none !important;
+  }
+
+  .hero-backdrop {
+    inset: 2% 3%;
+    opacity: .72;
+    border-radius: 50%;
+  }
+
+  .hero-visual .orbit {
+    left: 50%;
+    top: 50%;
+    width: 76%;
+    height: 44%;
+    margin: 0;
+    transform: translate(-50%, -50%) rotate(12deg);
+  }
+
+  .hero-visual .orbit-two {
+    width: 92%;
+    height: 51%;
+    transform: translate(-50%, -50%) rotate(-12deg);
+  }
+
+  .hero-visual .orbit-three {
+    width: 106%;
+    height: 59%;
+    transform: translate(-50%, -50%) rotate(20deg);
+  }
+
+  .hero-core {
+    left: 50%;
+    top: 51%;
+    width: 255px;
+    height: 255px;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+  }
+
+  .core-mark {
+    font-size: 4.6rem;
+  }
+
+  .beam {
+    bottom: 34px;
+    width: 150px;
+    height: 270px;
+  }
+
+  .platform-glow {
+    bottom: 24px;
+    width: 330px;
+  }
+
+  .platform-base {
+    bottom: 0;
+    width: 390px;
+    height: 155px;
+  }
+
+  /* Callouts are tied to the same 800x600 visual coordinate system. */
+  .hero-callout {
+    width: 145px;
+    padding: 8px 0;
+    z-index: 6;
+  }
+
+  .hero-callout strong {
+    font-size: .72rem;
+  }
+
+  .hero-callout span {
+    font-size: .64rem;
+  }
+
+  .callout-top {
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .callout-left {
+    top: 31%;
+    left: 5%;
+  }
+
+  .callout-right {
+    top: 33%;
+    right: 5%;
+  }
+
+  .callout-bottom-left {
+    bottom: 18%;
+    left: 9%;
+  }
+
+  .callout-bottom-right {
+    bottom: 17%;
+    right: 9%;
+  }
+
+  /* Ecosystem — no floating content over the panel boundary. */
+  .panel-ecosystem {
+    display: grid;
+    grid-template-columns: minmax(300px, .42fr) minmax(620px, .58fr);
+    align-items: center;
+    gap: 42px;
+    min-height: 590px;
+    padding: 34px 40px;
+  }
+
+  .panel-copy {
+    max-width: 430px;
+    align-self: start;
+    padding-top: 12px;
+  }
+
+  .ecosystem-visual {
+    position: relative;
+    width: 100%;
+    height: 510px;
+    min-height: 510px;
+    overflow: hidden;
+    border-radius: 24px;
+  }
+
+  .ecosystem-node {
+    width: 148px;
+    min-height: 124px;
+  }
+
+  .node-research { top: 8%; left: 17%; }
+  .node-evidence { top: 8%; left: 50%; }
+  .node-projects { top: 8%; right: 17%; }
+  .node-tools { bottom: 6%; left: 25%; }
+  .node-platform { right: 25%; bottom: 6%; }
+
+  /* Keep the rest of the desktop page aligned to one grid. */
+  .panel,
+  .proof-strip,
+  .cta-band {
+    width: 100%;
+  }
+
+  .capability-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .proof-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* Avoid hover transforms moving the coordinate anchors. */
+  .hero-callout:hover {
+    transform: translateY(-2px);
+  }
+
+  .callout-top:hover {
+    transform: translateX(-50%) translateY(-2px);
+  }
+
+  @media (min-width: 1281px) {
+    .hero {
+      grid-template-columns: minmax(500px, .78fr) minmax(680px, 1.22fr);
+      min-height: 720px;
+      padding-left: 54px;
+      padding-right: 54px;
+    }
+
+    .hero-visual {
+      height: 640px;
+      min-height: 640px;
+    }
+
+    .hero-core {
+      width: 275px;
+      height: 275px;
+    }
+  }
+
+  @media (min-width: 901px) and (max-width: 1120px) {
+    .home-ref { width: min(calc(100% - 32px), 1080px); }
+    .site-header { grid-template-columns: 210px 1fr auto; gap: 14px; }
+    .site-nav { gap: 13px; }
+    .site-nav a { font-size: .72rem; }
+    .hero {
+      grid-template-columns: minmax(360px, .8fr) minmax(500px, 1.2fr);
+      gap: 18px;
+      padding: 38px 26px 28px;
+    }
+    .hero h1 { font-size: clamp(2.8rem, 4.5vw, 3.8rem); }
+    .hero-visual { height: 560px; min-height: 560px; }
+    .hero-core { width: 220px; height: 220px; }
+    .callout-left { left: 1%; }
+    .callout-right { right: 1%; }
+    .callout-bottom-left { left: 3%; }
+    .callout-bottom-right { right: 3%; }
+    .panel-ecosystem { grid-template-columns: minmax(260px, .4fr) minmax(500px, .6fr); }
+  }
+}

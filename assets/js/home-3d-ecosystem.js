@@ -1,9 +1,22 @@
 (function () {
   "use strict";
 
+  function loadDesktopRebuild() {
+    if (window.matchMedia("(min-width: 901px)").matches && !document.querySelector('link[data-pk-desktop-rebuild]')) {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "/assets/css/home-desktop-rebuild.css?v=1";
+      link.dataset.pkDesktopRebuild = "true";
+      document.head.appendChild(link);
+    }
+  }
+
   function initHomeMotion() {
     const heroVisual = document.querySelector(".hero-visual");
     const heroBackdrop = document.querySelector(".hero-backdrop");
+
+    loadDesktopRebuild();
+
     if (!heroVisual || !heroBackdrop) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -47,4 +60,6 @@
   } else {
     initHomeMotion();
   }
+
+  window.addEventListener("resize", loadDesktopRebuild, { passive: true });
 })();

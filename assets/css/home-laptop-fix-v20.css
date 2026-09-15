@@ -1,0 +1,34 @@
+/* Laptop layout fix v20 — preserve the approved desktop geometry while fitting 901–1280px viewports. */
+@media (min-width:901px) and (max-width:1280px){
+  html,body{overflow-x:hidden!important}
+  .cin{width:100%!important}
+  .cin-main{width:100%!important;max-width:1180px!important;padding:0 16px!important}
+  .cin-nav{grid-template-columns:auto minmax(0,1fr)!important;gap:18px!important;padding-left:12px!important;padding-right:12px!important}
+  .cin-links{gap:15px!important;font-size:9px!important;justify-content:flex-end!important;min-width:0!important}
+  .cin-book{padding-left:11px!important;padding-right:11px!important;white-space:nowrap!important}
+
+  .cin-hero{grid-template-columns:minmax(0,.88fr) minmax(470px,1.12fr)!important;gap:6px!important;min-height:414px!important;height:414px!important;overflow:visible!important}
+  .cin-hero>div:first-child{min-width:0!important;padding-right:8px!important}
+  .cin-h1{font-size:clamp(31px,3.7vw,43px)!important;max-width:470px!important;line-height:1.02!important}
+  .cin-lead{max-width:400px!important;font-size:10.5px!important}
+  .stats{gap:12px!important}
+  .stat b{font-size:22px!important}
+  .stat span{font-size:8px!important}
+
+  /* Scale the existing constellation as one unit so its approved contact points stay intact. */
+  .cin .hero3d{width:112%!important;height:414px!important;margin-left:-6%!important;transform:scale(.88) rotateX(var(--hero-rx,0deg)) rotateY(var(--hero-ry,0deg))!important;transform-origin:50% 50%!important}
+}
+
+@media (min-width:901px) and (max-width:1060px){
+  .cin-nav{gap:10px!important}
+  .cin-links{gap:10px!important;font-size:8px!important}
+  .cin-brand{font-size:17px!important}
+  .cin-sub{font-size:7px!important}
+  .cin-hero{grid-template-columns:minmax(0,.92fr) minmax(420px,1.08fr)!important}
+  .cin .hero3d{transform:scale(.80) rotateX(var(--hero-rx,0deg)) rotateY(var(--hero-ry,0deg))!important}
+  .cin-h1{font-size:31px!important}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .cin .hero3d{transition:none!important}
+}

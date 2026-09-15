@@ -1,6 +1,7 @@
 /* PANOS KHAN — DESKTOP REFERENCE CORRECTION v30
-   Desktop/laptop geometry only. Mobile constellation is untouched.
-   Goal: restore the supplied reference composition at 601px+.
+   Desktop/laptop geometry. Mobile constellation remains untouched.
+   Goal: keep the approved constellation centered while scaling the complete
+   hero composition proportionally on narrower laptop viewports.
 */
 @media (min-width:601px){
   .cin .hero3d{
@@ -60,4 +61,32 @@
   .cin .hero3d .n3>b,.cin .hero3d .n3>small,.cin .hero3d .n5>b,.cin .hero3d .n5>small{right:48px!important;left:auto!important;text-align:right!important}
   .cin .hero3d .n2>b,.cin .hero3d .n3>b,.cin .hero3d .n4>b,.cin .hero3d .n5>b{top:4px!important}
   .cin .hero3d .n2>small,.cin .hero3d .n3>small,.cin .hero3d .n4>small,.cin .hero3d .n5>small{top:17px!important}
+}
+
+/* Laptop: scale the whole constellation as one unit. This prevents the
+   satellite contact points from drifting when the hero column gets narrower. */
+@media (min-width:901px) and (max-width:1440px){
+  .cin-main{max-width:1200px!important;padding-left:18px!important;padding-right:18px!important}
+  .cin-hero{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)!important;gap:10px!important;min-height:414px!important;height:414px!important}
+  .cin-hero>div:first-child{min-width:0!important}
+  .cin-h1{font-size:clamp(32px,3.45vw,48px)!important;max-width:500px!important;line-height:1.02!important}
+  .cin-lead{max-width:410px!important}
+  .cin .hero3d{
+    width:100%!important;
+    margin-left:0!important;
+    transform:scale(clamp(.82,calc(100vw / 1440),1))!important;
+    transform-origin:50% 50%!important;
+  }
+}
+
+@media (min-width:901px) and (max-width:1120px){
+  .cin-nav{gap:10px!important}
+  .cin-links{gap:9px!important;font-size:8px!important}
+  .cin-book{padding-left:9px!important;padding-right:9px!important}
+  .cin-hero{grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr)!important;gap:4px!important}
+  .cin .hero3d{transform:scale(.82)!important}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .cin .hero3d{transition:none!important}
 }

@@ -32,7 +32,7 @@ Consulting, credentials, and contact remain first-class supporting surfaces.
 
 - [ARCHITECTURE.md](./ARCHITECTURE.md) — Platform Intelligence v2 spec, runtime boundaries, migration rules, SEO/a11y/perf notes
 - [Project Phoenix Charter](./docs/PROJECT_CHARTER.md) — mission, releases, and product quality standards
-- [Docs hub](https://panoskhan.github.io/docs/) — guides and release notes
+- [Docs hub](https://panoskhan.online/docs/) — guides and release notes
 - [Component catalog](./assets/components/README.md) — reusable UI patterns
 - [Templates](./templates/) — product hub / doc / tool starters
 - [Schema examples](./schema/) — JSON-LD patterns

@@ -28,9 +28,9 @@ The audit is intentionally transparent: each check corresponds to a public HTML 
 
 ## Project
 
-Live demo: https://panoskhan.github.io/projects/entity-readiness-audit/
+Live demo: https://panoskhan.online/projects/entity-readiness-audit/
 
-Project author: Panos Khan — https://panoskhan.github.io/about/
+Project author: Panos Khan — https://panoskhan.online/about/
 
 ## Contributing
 

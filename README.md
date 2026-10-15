@@ -1,5 +1,7 @@
 # Panos Khan — Technology Ecosystem
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23405141.svg)](https://doi.org/10.5281/zenodo.23405141)
+
 Official site for the **Panos Khan** product ecosystem: AI tools, Device Service guidance, Research, Open Source, Downloads, Docs, Labs, and consulting.
 
 **Phase:** Platform Intelligence v2 — Shared Runtime Architecture

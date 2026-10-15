@@ -20,14 +20,14 @@ def contains(page, pattern):
     return re.search(pattern, (ROOT/page).read_text(encoding="utf-8"), re.I) is not None
 
 def site_path(location):
-    path=(location or "").removeprefix("https://panoskhan.github.io/").split("#",1)[0].split("?",1)[0].lstrip("/")
+    path=(location or "").removeprefix("https://panoskhan.online/").split("#",1)[0].split("?",1)[0].lstrip("/")
     return ROOT/path/"index.html" if not path or path.endswith("/") else ROOT/path
 
 def resolve_local(url):
     if not url or url.startswith(("mailto:","tel:","data:","//")): return None
     if url.startswith(("http://","https://")):
-        if not url.startswith("https://panoskhan.github.io/"): return None
-        url=url[len("https://panoskhan.github.io"):]
+        if not url.startswith("https://panoskhan.online/"): return None
+        url=url[len("https://panoskhan.online"):]
     path=url.split("#",1)[0].split("?",1)[0]
     if path and not path.startswith("/"):
         if "://" in path: return None
@@ -51,7 +51,7 @@ def main():
     for page in PAGES:
         target=ROOT/page
         if not target.is_file(): failures.append(f"{page}: missing file"); continue
-        for name,pattern in (("title",r"<title>[^<]+</title>"),("description",r'<meta\s+name="description"\s+content="[^"]+"'),("canonical",r'<link\s+rel="canonical"\s+href="https://panoskhan\.github\.io/[^"]*"'),("Open Graph title",r'<meta\s+property="og:title"\s+content="[^"]+"')):
+        for name,pattern in (("title",r"<title>[^<]+</title>"),("description",r'<meta\s+name="description"\s+content="[^"]+"'),("canonical",r'<link\s+rel="canonical"\s+href="https://panoskhan\.online/[^"]*"'),("Open Graph title",r'<meta\s+property="og:title"\s+content="[^"]+"')):
             if not contains(page,pattern): failures.append(f"{page}: missing {name}")
     for page in ("index.html","ai/index.html","capabilities/index.html","intelligence/index.html"):
         if not contains(page,r"/capabilities/"): failures.append(f"{page}: missing capabilities link")

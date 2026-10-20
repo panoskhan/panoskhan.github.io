@@ -52,6 +52,8 @@
         <button class="ai-btn ai-btn-primary" type="submit">Decode Token</button>
       </div>
     </form>
+  
+    <section class="ai-tool-guide" aria-label="How to use JWT Decoder" style="margin-top:28px;line-height:1.65"><h2 style="font-size:1.25rem">How to use the JWT Decoder</h2><h3 style="font-size:1.05rem;margin-top:16px">When to use it</h3><p>Use this decoder when debugging login or API problems and you need to see what a JSON Web Token contains and when it expires.</p><h3 style="font-size:1.05rem;margin-top:16px">Step by step</h3><ol><li>Paste the token that starts with eyJ.</li><li>Decode it.</li><li>Read the header and payload.</li><li>Check the exp and iat claims to see expiry and issue time.</li></ol><h3 style="font-size:1.05rem;margin-top:16px">Example</h3><p>A developer finds that API calls fail because the token's exp claim shows it expired ten minutes earlier.</p><h3 style="font-size:1.05rem;margin-top:16px">Good to know</h3><p>Decoding is not verification. Only the server holding the key can confirm a token is genuine, and production tokens should not be pasted into online tools.</p><p class="muted">This tool runs in your browser. Results are a starting point and should be reviewed before use. Built by <a href="/about/">Panos Khan</a>; see more <a href="/ai/">AI tools</a>.</p></section>
   </div>
 
   <script src="/assets/js/site.js"></script>

@@ -24,38 +24,58 @@
   <meta name="twitter:image" content="https://panoskhan.online/assets/og-preview.svg" />
   <link rel="preload" href="/assets/css/main.css" as="style" />
   <link rel="stylesheet" href="/assets/css/main.css" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://panoskhan.online/#website",
-        "url": "https://panoskhan.online/",
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://panoskhan.online/#website",
+      "url": "https://panoskhan.online/",
+      "name": "Panos Khan",
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://www.wikidata.org/entity/Q141592296",
         "name": "Panos Khan",
-        "publisher": {"@type": "Person", "name": "Panos Khan", "url": "https://panoskhan.online/"}
-      },
-      {
-        "@type": "WebApplication",
-        "@id": "https://panoskhan.online/digital-health/website-health/#webapp",
-        "url": "https://panoskhan.online/digital-health/website-health/",
-        "name": "Website Health",
-        "description": "Generate a Website Health report powered by the shared Platform Intelligence runtime.",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Any",
-        "isPartOf": {"@id": "https://panoskhan.online/#website"},
-        "breadcrumb": {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://panoskhan.online/"},
-            {"@type": "ListItem", "position": 2, "name": "Digital Health", "item": "https://panoskhan.online/digital-health/"},
-            {"@type": "ListItem", "position": 3, "name": "Website Health", "item": "https://panoskhan.online/digital-health/website-health/"}
-          ]
-        }
+        "url": "https://panoskhan.online/"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://panoskhan.online/digital-health/website-health/#webapp",
+      "url": "https://panoskhan.online/digital-health/website-health/",
+      "name": "Website Health",
+      "description": "Generate a Website Health report powered by the shared Platform Intelligence runtime.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any",
+      "isPartOf": {
+        "@id": "https://panoskhan.online/#website"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://panoskhan.online/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Digital Health",
+            "item": "https://panoskhan.online/digital-health/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Website Health",
+            "item": "https://panoskhan.online/digital-health/website-health/"
+          }
+        ]
+      }
+    }
+  ]
+}</script>
   <style>
     .health-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
     .health-card { padding: 1.5rem; border-radius: 1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }

@@ -603,7 +603,7 @@
    Capabilities → colored scanline sweep per card
    Projects → terminal-boot character reveal
    Press → levitation float + mouse spotlight
-   Proof → laser-scan VERIFIED animation
+   Proof → laser-scan reference-link animation
    Contact → warp-speed star field                    */
 (function () {
   'use strict';
@@ -976,7 +976,7 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════
-     PROOF — horizontal laser scan + VERIFIED badge per item
+     PROOF — horizontal laser scan + reference-link badge per item
   ═══════════════════════════════════════════════════════════════════ */
   function initProof() {
     const section = document.querySelector('#proof, .proof');
@@ -1018,7 +1018,7 @@
       laser.className = 'pk-laser';
       const badge = document.createElement('div');
       badge.className = 'pk-verified';
-      badge.textContent = '✓ VERIFIED';
+      badge.textContent = 'VIEW RECORD';
       item.appendChild(laser);
       item.appendChild(badge);
 

@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use or reference this platform, please cite it using the metadata below."
+title: "Panos Khan Technology Ecosystem"
+type: software
+authors:
+  - family-names: Khan
+    given-names: Panos
+    orcid: "https://orcid.org/0009-0002-9718-4637"
+url: "https://panoskhan.online/"
+repository-code: "https://github.com/panoskhan/panoskhan.github.io"
+doi: "10.5281/zenodo.23405141"
+license: "SEE REPOSITORY"
